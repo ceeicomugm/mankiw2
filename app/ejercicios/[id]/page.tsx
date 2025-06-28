@@ -82,6 +82,146 @@ const ejerciciosData = {
       },
     ],
   },
+  2: {
+    titulo: "Ejercicios: Pensando como Economista",
+    descripcion: "Practica el método científico y los modelos económicos",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 10,
+        pregunta: "¿Cuál de las siguientes es una declaración positiva?",
+        opciones: [
+          "El gobierno debería reducir los impuestos",
+          "La inflación es mala para la economía",
+          "El desempleo aumentó 2% el año pasado",
+          "Los ricos deberían pagar más impuestos",
+        ],
+        respuestaCorrecta: 2,
+        explicacion:
+          "Una declaración positiva describe cómo es el mundo, no cómo debería ser. 'El desempleo aumentó 2% el año pasado' es un hecho verificable, mientras que las otras opciones expresan opiniones o juicios de valor.",
+        conceptosClave: ["Análisis positivo", "Análisis normativo", "Método científico"],
+      },
+      {
+        id: 2,
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 15,
+        pregunta: "En el diagrama de flujo circular, ¿qué fluye de los hogares a las empresas en el mercado de factores?",
+        opciones: [
+          "Dinero",
+          "Bienes y servicios",
+          "Trabajo, tierra y capital",
+          "Ganancias",
+        ],
+        respuestaCorrecta: 2,
+        explicacion:
+          "En el mercado de factores, los hogares venden sus factores de producción (trabajo, tierra, capital) a las empresas. A cambio, reciben pagos en forma de salarios, rentas y beneficios.",
+        conceptosClave: ["Flujo circular", "Mercado de factores", "Factores de producción"],
+      },
+      {
+        id: 3,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta:
+          "Una economía puede producir 100 computadoras y 0 automóviles, o 0 computadoras y 50 automóviles. Si actualmente produce 60 computadoras, ¿cuántos automóviles puede producir máximo?",
+        solucion: {
+          pasos: [
+            "Identificar los puntos extremos de la FPP: (100,0) y (0,50)",
+            "Calcular la pendiente: -50/100 = -0.5",
+            "La ecuación de la FPP: A = 50 - 0.5C",
+            "Si C = 60: A = 50 - 0.5(60) = 50 - 30 = 20",
+          ],
+          respuesta: "Puede producir máximo 20 automóviles",
+        },
+        conceptosClave: ["Frontera de posibilidades de producción", "Costo de oportunidad", "Eficiencia"],
+      },
+      {
+        id: 4,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 25,
+        pregunta:
+          "Explica por qué los economistas usan modelos simplificados de la realidad. Da un ejemplo de un supuesto simplificador y explica su utilidad.",
+        respuestaSugerida:
+          "Los economistas usan modelos simplificados porque la realidad es demasiado compleja para analizarla en su totalidad. Los modelos omiten detalles irrelevantes para enfocarse en las relaciones importantes. Ejemplo: Al estudiar el comercio internacional, podemos suponer que solo existen dos países y dos bienes. Este supuesto simplifica el análisis pero nos permite entender los principios fundamentales del comercio, como la ventaja comparativa. Sin esta simplificación, sería imposible derivar conclusiones claras sobre los beneficios del comercio.",
+        conceptosClave: ["Modelos económicos", "Supuestos", "Simplificación", "Método científico"],
+      },
+    ],
+  },
+  3: {
+    titulo: "Ejercicios: Interdependencia y Ganancias del Comercio",
+    descripcion: "Practica los conceptos de ventaja comparativa y especialización",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta:
+          "María puede producir 10 tortas o 20 panes por día. Juan puede producir 6 tortas o 18 panes por día. ¿Quién tiene ventaja comparativa en la producción de tortas?",
+        solucion: {
+          pasos: [
+            "Calcular el costo de oportunidad de tortas para María: 20 panes ÷ 10 tortas = 2 panes por torta",
+            "Calcular el costo de oportunidad de tortas para Juan: 18 panes ÷ 6 tortas = 3 panes por torta",
+            "Comparar los costos de oportunidad: María (2 panes) < Juan (3 panes)",
+            "Quien tiene menor costo de oportunidad tiene ventaja comparativa",
+          ],
+          respuesta: "María tiene ventaja comparativa en tortas porque su costo de oportunidad (2 panes) es menor que el de Juan (3 panes)",
+        },
+        conceptosClave: ["Ventaja comparativa", "Costo de oportunidad", "Especialización"],
+      },
+      {
+        id: 2,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "¿Cuál es la diferencia principal entre ventaja absoluta y ventaja comparativa?",
+        opciones: [
+          "No hay diferencia, son lo mismo",
+          "Ventaja absoluta compara productividades, ventaja comparativa compara costos de oportunidad",
+          "Ventaja absoluta es para países, ventaja comparativa es para personas",
+          "Ventaja absoluta es más importante que ventaja comparativa",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "La ventaja absoluta se determina comparando quién puede producir más con los mismos recursos (productividad). La ventaja comparativa se determina comparando costos de oportunidad. La ventaja comparativa es la base de las ganancias del comercio.",
+        conceptosClave: ["Ventaja absoluta", "Ventaja comparativa", "Productividad", "Costo de oportunidad"],
+      },
+      {
+        id: 3,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "País A puede producir 40 vinos o 20 quesos. País B puede producir 15 vinos o 30 quesos. Si se especializan completamente y comercian, ¿cuál sería un precio de intercambio mutuamente beneficioso?",
+        solucion: {
+          pasos: [
+            "CO de vino para A: 20 quesos ÷ 40 vinos = 0.5 quesos por vino",
+            "CO de vino para B: 30 quesos ÷ 15 vinos = 2 quesos por vino",
+            "A tiene ventaja comparativa en vino (menor CO)",
+            "Para que ambos se beneficien, el precio debe estar entre 0.5 y 2 quesos por vino",
+            "Ejemplo: 1 vino por 1 queso beneficia a ambos países",
+          ],
+          respuesta: "Un precio entre 0.5 y 2 quesos por vino. Por ejemplo: 1 vino = 1 queso",
+        },
+        conceptosClave: ["Términos de intercambio", "Especialización completa", "Ganancias del comercio"],
+      },
+      {
+        id: 4,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 25,
+        pregunta:
+          "Explica por qué incluso si un país tiene ventaja absoluta en todos los bienes, aún puede beneficiarse del comercio internacional.",
+        respuestaSugerida:
+          "Aunque un país tenga ventaja absoluta en todos los bienes, aún puede beneficiarse del comercio si se especializa en los bienes donde su ventaja es mayor (ventaja comparativa). Ejemplo: Si Estados Unidos es 50% más eficiente produciendo computadoras y solo 10% más eficiente produciendo textiles que México, debería especializarse en computadoras y comerciar con México por textiles. Esto permite que ambos países consuman más de ambos bienes que si intentaran producir todo internamente. El comercio se basa en ventaja comparativa, no absoluta.",
+        conceptosClave: ["Ventaja comparativa", "Especialización", "Comercio internacional", "Eficiencia"],
+      },
+    ],
+  },
   4: {
     titulo: "Ejercicios: Oferta y Demanda",
     descripcion: "Domina los fundamentos del análisis de mercado",
@@ -209,6 +349,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
   const [respuestasDesarrollo, setRespuestasDesarrollo] = useState<{ [key: number]: string }>({})
   const [puntajeTotal, setPuntajeTotal] = useState(0)
   const [ejerciciosCompletados, setEjerciciosCompletados] = useState(0)
+  const [ejerciciosIntentados, setEjerciciosIntentados] = useState<Set<number>>(new Set())
 
   const ejercicios = ejerciciosData[Number.parseInt(params.id) as keyof typeof ejerciciosData]
 
@@ -254,19 +395,28 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
     const ejercicio = ejercicios.ejercicios.find((e) => e.id === ejercicioId)
     if (!ejercicio) return
 
+    // Marcar como mostrado
     setMostrarResultados((prev) => ({
       ...prev,
       [ejercicioId]: true,
     }))
 
-    // Calcular puntaje si es correcto
-    if (ejercicio.tipo === "multiple" && Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta) {
-      setPuntajeTotal((prev) => prev + ejercicio.puntos)
-      setEjerciciosCompletados((prev) => prev + 1)
-    } else if (ejercicio.tipo === "desarrollo" || ejercicio.tipo === "calculo") {
-      // Para ejercicios de desarrollo, asumimos que se completan
-      setPuntajeTotal((prev) => prev + ejercicio.puntos)
-      setEjerciciosCompletados((prev) => prev + 1)
+    // Si no se había intentado antes, contar como nuevo intento
+    if (!ejerciciosIntentados.has(ejercicioId)) {
+      setEjerciciosIntentados(prev => new Set([...prev, ejercicioId]))
+      
+      // Calcular puntaje
+      if (ejercicio.tipo === "multiple") {
+        const esCorrecta = Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta
+        if (esCorrecta) {
+          setPuntajeTotal((prev) => prev + ejercicio.puntos)
+          setEjerciciosCompletados((prev) => prev + 1)
+        }
+      } else if (ejercicio.tipo === "desarrollo" || ejercicio.tipo === "calculo") {
+        // Para ejercicios de desarrollo y cálculo, otorgar puntos por completar
+        setPuntajeTotal((prev) => prev + ejercicio.puntos)
+        setEjerciciosCompletados((prev) => prev + 1)
+      }
     }
   }
 
@@ -274,6 +424,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
     const ejercicio = ejercicios.ejercicios.find((e) => e.id === ejercicioId)
     if (!ejercicio) return
 
+    // Limpiar respuestas
     setRespuestas((prev) => {
       const nuevas = { ...prev }
       delete nuevas[ejercicioId]
@@ -290,10 +441,24 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
       return nuevas
     })
 
-    // Restar puntaje si estaba completado
-    if (mostrarResultados[ejercicioId]) {
-      setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
-      setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
+    // Restar puntaje y completados si ya se había intentado
+    if (ejerciciosIntentados.has(ejercicioId)) {
+      setEjerciciosIntentados(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(ejercicioId)
+        return newSet
+      })
+      
+      if (ejercicio.tipo === "multiple") {
+        const eraCorrecta = Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta
+        if (eraCorrecta) {
+          setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
+          setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
+        }
+      } else {
+        setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
+        setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
+      }
     }
   }
 
@@ -361,7 +526,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            {/* Panel de progreso */}
+            {/* Panel de progreso mejorado */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-slate-200 min-w-[280px]">
               <div className="text-center mb-4">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -386,6 +551,16 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                   ></div>
                 </div>
                 <div className="text-center text-sm text-slate-600">{porcentajeCompletado.toFixed(0)}% completado</div>
+                
+                {/* Indicador de rendimiento */}
+                <div className="mt-4 p-3 bg-slate-50 rounded-xl">
+                  <div className="text-xs text-slate-600 mb-1">Rendimiento</div>
+                  <div className="text-sm font-medium text-slate-800">
+                    {porcentajeCompletado >= 80 ? "¡Excelente!" : 
+                     porcentajeCompletado >= 60 ? "Muy bien" :
+                     porcentajeCompletado >= 40 ? "Buen progreso" : "Sigue practicando"}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -656,7 +831,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
           ))}
         </div>
 
-        {/* Resumen final */}
+        {/* Resumen final mejorado */}
         <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-50 to-violet-50 mt-12">
           <CardContent className="pt-8 pb-8 text-center">
             <div className="max-w-2xl mx-auto">
@@ -665,6 +840,17 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                 Has completado {ejerciciosCompletados} de {ejercicios.ejercicios.length} ejercicios y obtenido{" "}
                 {puntajeTotal} de {puntajeMaximo} puntos posibles.
               </p>
+              
+              {/* Mensaje motivacional basado en rendimiento */}
+              <div className="mb-6 p-4 rounded-xl bg-white/50">
+                <p className="text-slate-700">
+                  {porcentajeCompletado === 100 ? "¡Perfecto! Has dominado todos los conceptos." :
+                   porcentajeCompletado >= 75 ? "¡Muy bien! Tienes un excelente dominio del tema." :
+                   porcentajeCompletado >= 50 ? "Buen progreso. Sigue practicando para mejorar." :
+                   "Continúa practicando. Cada ejercicio te acerca más al dominio del tema."}
+                </p>
+              </div>
+              
               <div className="flex justify-center gap-4">
                 <Link href={`/capitulo/${params.id}`}>
                   <Button variant="outline" size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">

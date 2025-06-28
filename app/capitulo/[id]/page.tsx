@@ -185,6 +185,255 @@ const capitulosData = {
       },
     ],
   },
+  2: {
+    titulo: "Pensando como economista",
+    resumen: "El método científico aplicado a la economía y los modelos económicos fundamentales.",
+    duracion: "50 min",
+    dificultad: "Básico",
+    objetivos: [
+      "Comprender el método científico en economía",
+      "Distinguir entre economía positiva y normativa",
+      "Analizar modelos económicos básicos",
+      "Interpretar gráficos económicos fundamentales",
+    ],
+    contenido: {
+      introduccion:
+        "Los economistas intentan abordar su tema de estudio con la objetividad de un científico. Desarrollan teorías, recopilan datos y analizan estos datos para verificar o refutar sus teorías. Para los principiantes, puede parecer extraño afirmar que la economía es una ciencia.",
+      secciones: [
+        {
+          titulo: "El economista como científico",
+          descripcion: "Los economistas siguen el método científico para estudiar la economía.",
+          contenido: [
+            {
+              subtitulo: "El método científico: observación, teoría y más observación",
+              texto: "Los economistas, como los astrónomos y los biólogos evolutivos, a menudo no pueden realizar experimentos controlados. En su lugar, deben hacer uso de los experimentos que la historia les proporciona. Cuando ocurre una guerra en Medio Oriente, los precios del petróleo suben en todo el mundo. Para un economista que estudia los efectos de los cambios en los precios del petróleo, esta guerra ofrece un experimento natural.",
+              ejemplo: "Cuando el huracán Katrina interrumpió la producción de petróleo en el Golfo de México en 2005, los economistas pudieron estudiar cómo los choques de oferta afectan los precios y la economía."
+            },
+            {
+              subtitulo: "El papel de los supuestos",
+              texto: "Los supuestos pueden simplificar el mundo complejo y hacer que sea más fácil de entender. Para estudiar los efectos del comercio internacional, por ejemplo, podríamos suponer que el mundo consiste en solo dos países y que cada país produce solo dos bienes.",
+              ejemplo: "Al estudiar la física de los objetos que caen, los físicos pueden suponer que no hay resistencia del aire. Al estudiar el comercio internacional, los economistas pueden suponer que hay solo dos países."
+            },
+            {
+              subtitulo: "Modelos económicos",
+              texto: "Los modelos económicos omiten muchos detalles para permitirnos ver lo que es verdaderamente importante. Así como un mapa de la ciudad omite muchos detalles menores para que podamos ver las calles principales más claramente.",
+              ejemplo: "El modelo de flujo circular es una representación visual de cómo fluye el dinero a través de los mercados entre hogares y empresas."
+            }
+          ]
+        },
+        {
+          titulo: "Dos modelos económicos simples",
+          descripcion: "Modelos fundamentales para entender la economía.",
+          contenido: [
+            {
+              subtitulo: "El diagrama de flujo circular",
+              texto: "El diagrama de flujo circular es un modelo visual de la economía que muestra cómo fluye el dinero a través de los mercados entre hogares y empresas. En este modelo simplificado, la economía se compone de dos tipos de tomadores de decisiones: hogares y empresas.",
+              ejemplo: "Los hogares venden su trabajo a las empresas en el mercado de factores y usan sus ingresos para comprar bienes y servicios de las empresas en el mercado de bienes."
+            },
+            {
+              subtitulo: "La frontera de posibilidades de producción",
+              texto: "La frontera de posibilidades de producción es un gráfico que muestra las combinaciones de producción que la economía puede producir posiblemente dados los factores de producción disponibles y la tecnología de producción disponible.",
+              ejemplo: "Una economía que produce solo computadoras y automóviles. Si todos los recursos se dedican a computadoras, se pueden producir 1000 computadoras y 0 automóviles. Si todos se dedican a automóviles, se pueden producir 700 automóviles y 0 computadoras."
+            }
+          ]
+        },
+        {
+          titulo: "Microeconomía y macroeconomía",
+          descripcion: "Las dos ramas principales del estudio económico.",
+          contenido: [
+            {
+              subtitulo: "Microeconomía",
+              texto: "La microeconomía es el estudio de cómo los hogares y las empresas toman decisiones y cómo interactúan en los mercados. Un microeconomista podría estudiar los efectos del alquiler controlado en la vivienda en la ciudad de Nueva York.",
+              ejemplo: "Estudiar cómo el precio de la gasolina afecta la demanda de automóviles grandes, o cómo las políticas de salario mínimo afectan el empleo juvenil."
+            },
+            {
+              subtitulo: "Macroeconomía",
+              texto: "La macroeconomía es el estudio de los fenómenos de toda la economía, incluida la inflación, el desempleo y el crecimiento económico. Un macroeconomista podría estudiar los efectos del endeudamiento del gobierno federal en la economía.",
+              ejemplo: "Estudiar por qué las economías experimentan períodos de recesión y crecimiento, o cómo las políticas gubernamentales pueden reducir el desempleo."
+            }
+          ]
+        },
+        {
+          titulo: "El economista como asesor de políticas",
+          descripcion: "Cómo los economistas contribuyen a la formulación de políticas públicas.",
+          contenido: [
+            {
+              subtitulo: "Análisis positivo versus normativo",
+              texto: "Las declaraciones positivas son declaraciones que intentan describir el mundo tal como es. Las declaraciones normativas son declaraciones que intentan prescribir cómo debería ser el mundo.",
+              ejemplo: "Positivo: 'El salario mínimo causa desempleo.' Normativo: 'El gobierno debería aumentar el salario mínimo.'"
+            },
+            {
+              subtitulo: "Economistas en Washington",
+              texto: "Los economistas que asesoran a los responsables de las políticas ofrecen consejos que están destinados a hacer que las políticas sean más efectivas o el resultado económico más eficiente.",
+              ejemplo: "El Consejo de Asesores Económicos del Presidente, la Reserva Federal, y organismos como el Departamento del Tesoro emplean muchos economistas."
+            }
+          ]
+        }
+      ]
+    },
+    formulas: [
+      {
+        nombre: "Costo de Oportunidad en FPP",
+        formula: "CO = Cantidad sacrificada del bien Y / Cantidad ganada del bien X",
+        descripcion: "En la frontera de posibilidades de producción, el costo de oportunidad se mide por la pendiente de la curva.",
+        ejemplo: "Si para producir 1 computadora adicional debemos sacrificar 2 automóviles, el CO de la computadora es 2 automóviles."
+      },
+      {
+        nombre: "Eficiencia Productiva",
+        formula: "Punto sobre la FPP = Uso eficiente de recursos",
+        descripcion: "La eficiencia productiva se logra cuando la economía está produciendo en su frontera de posibilidades de producción.",
+        ejemplo: "Cualquier punto dentro de la FPP representa ineficiencia; cualquier punto fuera es inalcanzable con los recursos actuales."
+      }
+    ],
+    conceptosClave: [
+      "Método científico",
+      "Modelos económicos",
+      "Supuestos",
+      "Flujo circular",
+      "Frontera de posibilidades de producción",
+      "Microeconomía",
+      "Macroeconomía",
+      "Análisis positivo",
+      "Análisis normativo",
+      "Eficiencia productiva"
+    ],
+    ejemplosReales: [
+      {
+        titulo: "Modelos Climáticos vs Modelos Económicos",
+        descripcion: "Así como los climatólogos usan modelos para predecir el clima, los economistas usan modelos para entender y predecir comportamientos económicos, ambos simplificando la realidad compleja."
+      },
+      {
+        titulo: "FPP durante la Segunda Guerra Mundial",
+        descripcion: "Estados Unidos tuvo que decidir entre producir bienes civiles (automóviles, electrodomésticos) y bienes militares (tanques, aviones), ilustrando perfectamente el concepto de frontera de posibilidades de producción."
+      },
+      {
+        titulo: "Debate sobre Salario Mínimo",
+        descripcion: "Los economistas pueden estar de acuerdo en que el salario mínimo causa algún desempleo (positivo) pero diferir sobre si debería aumentarse (normativo)."
+      }
+    ]
+  },
+  3: {
+    titulo: "La interdependencia y las ganancias del comercio",
+    resumen: "Ventaja absoluta, comparativa y los beneficios de la especialización en el comercio.",
+    duracion: "55 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Distinguir entre ventaja absoluta y ventaja comparativa",
+      "Explicar cómo la especialización aumenta la producción total",
+      "Analizar las ganancias del comercio para todas las partes",
+      "Aplicar estos conceptos al comercio internacional",
+    ],
+    contenido: {
+      introduccion:
+        "Considere su día típico. Se despierta por la mañana y se sirve jugo de naranja de Florida y café de Brasil. Durante el desayuno, mira las noticias en su televisor hecho en Japón. Se viste con ropa hecha en China y conduce al trabajo en un automóvil hecho en Japón, Alemania o Corea. Luego abre su computadora portátil hecha en Malasia. Esta interdependencia es posible porque las personas comercian entre sí.",
+      secciones: [
+        {
+          titulo: "Una parábola para la economía moderna",
+          descripcion: "El ejemplo de dos personas que se especializan y comercian.",
+          contenido: [
+            {
+              subtitulo: "Posibilidades de producción",
+              texto: "Supongamos que hay dos bienes: carne y papas. Y hay dos personas: un ganadero y un agricultor. El ganadero es mejor criando ganado y produciendo carne, mientras que el agricultor es mejor cultivando papas.",
+              ejemplo: "Si el ganadero dedica todo su tiempo a la carne, puede producir 18 onzas por día. Si dedica todo su tiempo a las papas, puede producir 12 onzas por día. El agricultor puede producir 6 onzas de carne o 24 onzas de papas por día."
+            },
+            {
+              subtitulo: "Especialización y comercio",
+              texto: "Aunque el ganadero es mejor en ambas actividades (ventaja absoluta), ambos pueden beneficiarse del comercio si se especializan según su ventaja comparativa.",
+              ejemplo: "El ganadero se especializa en carne y el agricultor en papas. Luego intercambian: el ganadero da 5 onzas de carne por 15 onzas de papas del agricultor."
+            }
+          ]
+        },
+        {
+          titulo: "Ventaja comparativa: la fuerza motriz de la especialización",
+          descripcion: "El principio fundamental que explica por qué el comercio beneficia a todos.",
+          contenido: [
+            {
+              subtitulo: "Ventaja absoluta",
+              texto: "Una persona tiene ventaja absoluta en la producción de un bien si puede producir ese bien usando menos insumos que otra persona. La ventaja absoluta se mide comparando productividades.",
+              ejemplo: "Si el ganadero puede producir tanto carne como papas con menos tiempo que el agricultor, el ganadero tiene ventaja absoluta en ambos bienes."
+            },
+            {
+              subtitulo: "Ventaja comparativa",
+              texto: "Una persona tiene ventaja comparativa en la producción de un bien si puede producir ese bien a un menor costo de oportunidad que otra persona. La ventaja comparativa se mide comparando costos de oportunidad.",
+              ejemplo: "El costo de oportunidad del ganadero de producir 1 onza de papas es 1.5 onzas de carne. El costo de oportunidad del agricultor es 0.25 onzas de carne. El agricultor tiene ventaja comparativa en papas."
+            },
+            {
+              subtitulo: "Ventaja comparativa y comercio",
+              texto: "Las ganancias del comercio se basan en la ventaja comparativa, no en la ventaja absoluta. Cuando cada persona se especializa en producir el bien en el que tiene ventaja comparativa, la producción total en la economía aumenta.",
+              ejemplo: "Incluso si el ganadero es mejor en todo, ambos se benefician si el ganadero se especializa en carne (donde su ventaja es mayor) y el agricultor en papas."
+            }
+          ]
+        },
+        {
+          titulo: "Aplicaciones de la ventaja comparativa",
+          descripcion: "Cómo se aplica este principio en el mundo real.",
+          contenido: [
+            {
+              subtitulo: "¿Debería Tiger Woods cortar su propio césped?",
+              texto: "Tiger Woods probablemente puede cortar su césped más rápido que cualquier otra persona. Pero eso no significa que deba hacerlo. Su tiempo es muy valioso dando clases de golf o jugando torneos.",
+              ejemplo: "Aunque Tiger tenga ventaja absoluta cortando césped, su costo de oportunidad es muy alto. Es mejor que pague a alguien más para que corte su césped mientras él se enfoca en el golf."
+            },
+            {
+              subtitulo: "Comercio internacional",
+              texto: "El principio de ventaja comparativa explica por qué los países comercian entre sí. Cada país se especializa en producir los bienes en los que tiene ventaja comparativa.",
+              ejemplo: "Japón tiene ventaja comparativa en electrónicos, Brasil en café, y Arabia Saudita en petróleo. Todos se benefician del comercio internacional."
+            },
+            {
+              subtitulo: "Comercio dentro de las familias",
+              texto: "Incluso dentro de una familia, los miembros se especializan según sus ventajas comparativas y 'comercian' entre sí.",
+              ejemplo: "En una familia, quizás la madre tiene ventaja comparativa en cocinar y el padre en reparaciones del hogar. Se especializan y ambos se benefician."
+            }
+          ]
+        }
+      ]
+    },
+    formulas: [
+      {
+        nombre: "Costo de Oportunidad",
+        formula: "CO de X = Cantidad de Y sacrificada / Cantidad de X ganada",
+        descripcion: "Para determinar ventaja comparativa, calculamos el costo de oportunidad de cada bien para cada productor.",
+        ejemplo: "Si para producir 1 unidad de carne debo sacrificar 2 unidades de papas, el CO de la carne es 2 papas."
+      },
+      {
+        nombre: "Ventaja Comparativa",
+        formula: "Ventaja Comparativa en X: menor CO de X entre los productores",
+        descripcion: "Quien tenga el menor costo de oportunidad en la producción de un bien tiene ventaja comparativa en ese bien.",
+        ejemplo: "Si el CO del ganadero para papas es 1.5 carne y el del agricultor es 0.25 carne, el agricultor tiene ventaja comparativa en papas."
+      },
+      {
+        nombre: "Ganancias del Comercio",
+        formula: "Precio de intercambio debe estar entre los CO de ambos productores",
+        descripcion: "Para que ambas partes se beneficien, el precio de intercambio debe estar entre sus costos de oportunidad.",
+        ejemplo: "Si el CO de carne es 0.67 papas para el ganadero y 4 papas para el agricultor, pueden intercambiar entre 0.67 y 4 papas por carne."
+      }
+    ],
+    conceptosClave: [
+      "Ventaja absoluta",
+      "Ventaja comparativa", 
+      "Costo de oportunidad",
+      "Especialización",
+      "Ganancias del comercio",
+      "Interdependencia",
+      "Comercio internacional",
+      "Productividad",
+      "Frontera de posibilidades de producción",
+      "Términos de intercambio"
+    ],
+    ejemplosReales: [
+      {
+        titulo: "Comercio entre Estados Unidos y México",
+        descripcion: "Estados Unidos tiene ventaja comparativa en bienes intensivos en capital (aviones, maquinaria), mientras México tiene ventaja comparativa en bienes intensivos en trabajo (textiles, agricultura). Ambos se benefician del TLCAN."
+      },
+      {
+        titulo: "Especialización en Silicon Valley",
+        descripcion: "Las empresas tecnológicas se especializan: Apple en diseño de productos, Intel en procesadores, Microsoft en software. Esta especialización aumenta la innovación y eficiencia total."
+      },
+      {
+        titulo: "Médicos y Asistentes",
+        descripcion: "Aunque un médico puede ser mejor tomando presión arterial que una enfermera, es más eficiente que la enfermera haga esto mientras el médico se enfoca en diagnósticos complejos donde su ventaja comparativa es mayor."
+      }
+    ]
+  }
 }
 
 export default function CapituloPage({ params }: { params: { id: string } }) {
@@ -306,7 +555,7 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
             </CardContent>
           </Card>
 
-          {/* Contenido principal - Los 10 principios */}
+          {/* Contenido principal - Los 10 principios para capítulo 1 */}
           {params.id === "1" && capitulo.contenido.principios && (
             <div className="space-y-8">
               {capitulo.contenido.principios.map((categoria, index) => (
@@ -340,6 +589,41 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
                                 <p className="text-emerald-700 text-sm leading-relaxed">{principio.aplicacion}</p>
                               </div>
                             </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* Contenido para capítulos 2 y 3 */}
+          {(params.id === "2" || params.id === "3") && capitulo.contenido.secciones && (
+            <div className="space-y-8">
+              {capitulo.contenido.secciones.map((seccion, index) => (
+                <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-blue-700">{seccion.titulo}</CardTitle>
+                    <p className="text-slate-600 text-lg">{seccion.descripcion}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-6">
+                      {seccion.contenido.map((item, idx) => (
+                        <div key={idx} className="border-l-4 border-blue-200 pl-6">
+                          <div className="bg-gradient-to-r from-blue-50 to-violet-50 p-6 rounded-2xl">
+                            <h4 className="font-bold text-xl mb-4 text-slate-800">{item.subtitulo}</h4>
+                            <p className="text-slate-700 mb-4 text-lg leading-relaxed">{item.texto}</p>
+                            
+                            {item.ejemplo && (
+                              <div className="bg-amber-100 p-4 rounded-xl">
+                                <h5 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+                                  💡 Ejemplo
+                                </h5>
+                                <p className="text-amber-700 text-sm leading-relaxed">{item.ejemplo}</p>
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}

@@ -36,7 +36,7 @@ const partesData = {
         descripcion: "Ventaja absoluta, comparativa y los beneficios de la especialización",
         temas: ["Ventaja absoluta", "Ventaja comparativa", "Términos de intercambio"],
         duracion: "55 min",
-        completado: false,
+        completado: true,
         dificultad: "Intermedio",
       },
     ],
