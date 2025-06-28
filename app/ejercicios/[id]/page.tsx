@@ -84,59 +84,59 @@ const ejerciciosData = {
   },
   2: {
     titulo: "Ejercicios: Pensando como Economista",
-    descripcion: "Practica el método científico y los modelos económicos",
+    descripcion: "Domina el método científico y los modelos económicos",
     ejercicios: [
       {
         id: 1,
         tipo: "multiple",
         dificultad: "Básico",
         puntos: 10,
-        pregunta: "¿Cuál de las siguientes es una declaración positiva?",
+        pregunta: "¿Cuál es el propósito principal de los supuestos en los modelos económicos?",
         opciones: [
-          "El gobierno debería reducir los impuestos",
-          "La inflación es mala para la economía",
-          "El desempleo aumentó 2% el año pasado",
-          "Los ricos deberían pagar más impuestos",
+          "Hacer que los modelos sean más complicados",
+          "Simplificar la realidad para entender lo esencial",
+          "Hacer que los modelos sean menos precisos",
+          "Confundir a los estudiantes",
         ],
-        respuestaCorrecta: 2,
+        respuestaCorrecta: 1,
         explicacion:
-          "Una declaración positiva describe cómo es el mundo, no cómo debería ser. 'El desempleo aumentó 2% el año pasado' es un hecho verificable, mientras que las otras opciones expresan opiniones o juicios de valor.",
-        conceptosClave: ["Análisis positivo", "Análisis normativo", "Método científico"],
+          "Los supuestos simplifican la realidad compleja para permitirnos enfocarnos en los aspectos más importantes del fenómeno que estamos estudiando. Como dijo Einstein: 'Todo debe hacerse tan simple como sea posible, pero no más simple'.",
+        conceptosClave: ["Supuestos", "Modelos económicos", "Simplificación"],
       },
       {
         id: 2,
-        tipo: "multiple",
-        dificultad: "Intermedio",
-        puntos: 15,
-        pregunta: "En el diagrama de flujo circular, ¿qué fluye de los hogares a las empresas en el mercado de factores?",
-        opciones: [
-          "Dinero",
-          "Bienes y servicios",
-          "Trabajo, tierra y capital",
-          "Ganancias",
-        ],
-        respuestaCorrecta: 2,
-        explicacion:
-          "En el mercado de factores, los hogares venden sus factores de producción (trabajo, tierra, capital) a las empresas. A cambio, reciben pagos en forma de salarios, rentas y beneficios.",
-        conceptosClave: ["Flujo circular", "Mercado de factores", "Factores de producción"],
-      },
-      {
-        id: 3,
         tipo: "calculo",
         dificultad: "Intermedio",
         puntos: 20,
         pregunta:
-          "Una economía puede producir 100 computadoras y 0 automóviles, o 0 computadoras y 50 automóviles. Si actualmente produce 60 computadoras, ¿cuántos automóviles puede producir máximo?",
+          "Una economía puede producir computadoras y automóviles. Si dedica todos sus recursos a computadoras, puede producir 100 computadoras. Si los dedica todos a automóviles, puede producir 50 automóviles. ¿Cuál es el costo de oportunidad de producir 1 automóvil?",
         solucion: {
           pasos: [
-            "Identificar los puntos extremos de la FPP: (100,0) y (0,50)",
-            "Calcular la pendiente: -50/100 = -0.5",
-            "La ecuación de la FPP: A = 50 - 0.5C",
-            "Si C = 60: A = 50 - 0.5(60) = 50 - 30 = 20",
+            "Identificar los extremos de la FPP: 100 computadoras o 50 automóviles",
+            "El costo de oportunidad es lo que se sacrifica por cada unidad adicional",
+            "Por cada automóvil adicional, se sacrifican computadoras",
+            "Costo de oportunidad = 100 computadoras ÷ 50 automóviles = 2 computadoras por automóvil",
           ],
-          respuesta: "Puede producir máximo 20 automóviles",
+          respuesta: "El costo de oportunidad de 1 automóvil es 2 computadoras",
         },
-        conceptosClave: ["Frontera de posibilidades de producción", "Costo de oportunidad", "Eficiencia"],
+        conceptosClave: ["Frontera de posibilidades de producción", "Costo de oportunidad", "Trade-offs"],
+      },
+      {
+        id: 3,
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 15,
+        pregunta: "¿Cuál de las siguientes es una diferencia clave entre microeconomía y macroeconomía?",
+        opciones: [
+          "La microeconomía estudia el comportamiento individual, la macroeconomía estudia la economía como un todo",
+          "La microeconomía es más importante que la macroeconomía",
+          "La microeconomía usa matemáticas, la macroeconomía no",
+          "No hay diferencia real entre ambas",
+        ],
+        respuestaCorrecta: 0,
+        explicacion:
+          "La microeconomía se enfoca en decisiones individuales de hogares y empresas, mientras que la macroeconomía estudia fenómenos que afectan a toda la economía como inflación, desempleo y crecimiento económico.",
+        conceptosClave: ["Microeconomía", "Macroeconomía", "Niveles de análisis"],
       },
       {
         id: 4,
@@ -144,32 +144,36 @@ const ejerciciosData = {
         dificultad: "Avanzado",
         puntos: 25,
         pregunta:
-          "Explica por qué los economistas usan modelos simplificados de la realidad. Da un ejemplo de un supuesto simplificador y explica su utilidad.",
+          "Explica la diferencia entre economía positiva y economía normativa. Proporciona un ejemplo de cada una relacionado con el salario mínimo.",
         respuestaSugerida:
-          "Los economistas usan modelos simplificados porque la realidad es demasiado compleja para analizarla en su totalidad. Los modelos omiten detalles irrelevantes para enfocarse en las relaciones importantes. Ejemplo: Al estudiar el comercio internacional, podemos suponer que solo existen dos países y dos bienes. Este supuesto simplifica el análisis pero nos permite entender los principios fundamentales del comercio, como la ventaja comparativa. Sin esta simplificación, sería imposible derivar conclusiones claras sobre los beneficios del comercio.",
-        conceptosClave: ["Modelos económicos", "Supuestos", "Simplificación", "Método científico"],
+          "La economía positiva describe 'lo que es' - hechos y relaciones causales que pueden ser probados. Ejemplo: 'Un aumento del 10% en el salario mínimo reduce el empleo juvenil en 2%'. La economía normativa prescribe 'lo que debería ser' - juicios de valor sobre políticas. Ejemplo: 'El gobierno debería aumentar el salario mínimo para ayudar a los trabajadores pobres'. La primera es verificable con datos, la segunda involucra valores y opiniones.",
+        conceptosClave: ["Economía positiva", "Economía normativa", "Análisis científico", "Juicios de valor"],
       },
     ],
   },
   3: {
-    titulo: "Ejercicios: Interdependencia y Ganancias del Comercio",
-    descripcion: "Practica los conceptos de ventaja comparativa y especialización",
+    titulo: "Ejercicios: Interdependencia y Comercio",
+    descripcion: "Practica el análisis de ventaja comparativa y ganancias del comercio",
     ejercicios: [
       {
         id: 1,
         tipo: "calculo",
         dificultad: "Intermedio",
-        puntos: 20,
+        puntos: 25,
         pregunta:
-          "María puede producir 10 tortas o 20 panes por día. Juan puede producir 6 tortas o 18 panes por día. ¿Quién tiene ventaja comparativa en la producción de tortas?",
+          "María puede producir 10 pasteles o 20 panes en un día. Juan puede producir 6 pasteles o 18 panes en un día. ¿Quién tiene ventaja comparativa en cada bien?",
         solucion: {
           pasos: [
-            "Calcular el costo de oportunidad de tortas para María: 20 panes ÷ 10 tortas = 2 panes por torta",
-            "Calcular el costo de oportunidad de tortas para Juan: 18 panes ÷ 6 tortas = 3 panes por torta",
-            "Comparar los costos de oportunidad: María (2 panes) < Juan (3 panes)",
-            "Quien tiene menor costo de oportunidad tiene ventaja comparativa",
+            "Calcular costo de oportunidad para María:",
+            "- 1 pastel = 20/10 = 2 panes",
+            "- 1 pan = 10/20 = 0.5 pasteles",
+            "Calcular costo de oportunidad para Juan:",
+            "- 1 pastel = 18/6 = 3 panes", 
+            "- 1 pan = 6/18 = 0.33 pasteles",
+            "Comparar costos de oportunidad:",
+            "María tiene menor CO en pasteles (2 < 3), Juan tiene menor CO en panes (0.33 < 0.5)",
           ],
-          respuesta: "María tiene ventaja comparativa en tortas porque su costo de oportunidad (2 panes) es menor que el de Juan (3 panes)",
+          respuesta: "María tiene ventaja comparativa en pasteles, Juan en panes",
         },
         conceptosClave: ["Ventaja comparativa", "Costo de oportunidad", "Especialización"],
       },
@@ -178,47 +182,45 @@ const ejerciciosData = {
         tipo: "multiple",
         dificultad: "Básico",
         puntos: 15,
-        pregunta: "¿Cuál es la diferencia principal entre ventaja absoluta y ventaja comparativa?",
+        pregunta: "¿Cuál es la diferencia entre ventaja absoluta y ventaja comparativa?",
         opciones: [
           "No hay diferencia, son lo mismo",
-          "Ventaja absoluta compara productividades, ventaja comparativa compara costos de oportunidad",
-          "Ventaja absoluta es para países, ventaja comparativa es para personas",
-          "Ventaja absoluta es más importante que ventaja comparativa",
+          "Ventaja absoluta es producir más; ventaja comparativa es producir con menor costo de oportunidad",
+          "Ventaja comparativa es producir más; ventaja absoluta es producir con menor costo",
+          "Solo la ventaja absoluta importa para el comercio",
         ],
         respuestaCorrecta: 1,
         explicacion:
-          "La ventaja absoluta se determina comparando quién puede producir más con los mismos recursos (productividad). La ventaja comparativa se determina comparando costos de oportunidad. La ventaja comparativa es la base de las ganancias del comercio.",
-        conceptosClave: ["Ventaja absoluta", "Ventaja comparativa", "Productividad", "Costo de oportunidad"],
+          "La ventaja absoluta significa poder producir más de un bien con los mismos recursos. La ventaja comparativa significa poder producir un bien con menor costo de oportunidad. La ventaja comparativa, no la absoluta, determina los patrones de comercio beneficioso.",
+        conceptosClave: ["Ventaja absoluta", "Ventaja comparativa", "Comercio"],
       },
       {
         id: 3,
-        tipo: "calculo",
+        tipo: "desarrollo",
         dificultad: "Avanzado",
         puntos: 30,
         pregunta:
-          "País A puede producir 40 vinos o 20 quesos. País B puede producir 15 vinos o 30 quesos. Si se especializan completamente y comercian, ¿cuál sería un precio de intercambio mutuamente beneficioso?",
-        solucion: {
-          pasos: [
-            "CO de vino para A: 20 quesos ÷ 40 vinos = 0.5 quesos por vino",
-            "CO de vino para B: 30 quesos ÷ 15 vinos = 2 quesos por vino",
-            "A tiene ventaja comparativa en vino (menor CO)",
-            "Para que ambos se beneficien, el precio debe estar entre 0.5 y 2 quesos por vino",
-            "Ejemplo: 1 vino por 1 queso beneficia a ambos países",
-          ],
-          respuesta: "Un precio entre 0.5 y 2 quesos por vino. Por ejemplo: 1 vino = 1 queso",
-        },
-        conceptosClave: ["Términos de intercambio", "Especialización completa", "Ganancias del comercio"],
+          "Explica por qué el comercio puede beneficiar a ambos países incluso cuando uno tiene ventaja absoluta en todos los bienes. Usa un ejemplo numérico.",
+        respuestaSugerida:
+          "Ejemplo: País A puede producir 100 computadoras o 200 camisas. País B puede producir 50 computadoras o 50 camisas. A tiene ventaja absoluta en ambos. Costos de oportunidad: País A: 1 computadora = 2 camisas, 1 camisa = 0.5 computadoras. País B: 1 computadora = 1 camisa, 1 camisa = 1 computadora. A tiene ventaja comparativa en camisas (0.5 < 1), B en computadoras (1 < 2). Si A se especializa en camisas y B en computadoras, y comercian a 1.5 camisas por computadora, ambos ganan: A obtiene computadoras más baratas (1.5 < 2 camisas) y B obtiene más camisas por computadora (1.5 > 1).",
+        conceptosClave: ["Ventaja comparativa", "Especialización", "Ganancias del comercio", "Términos de intercambio"],
       },
       {
         id: 4,
-        tipo: "desarrollo",
-        dificultad: "Avanzado",
-        puntos: 25,
-        pregunta:
-          "Explica por qué incluso si un país tiene ventaja absoluta en todos los bienes, aún puede beneficiarse del comercio internacional.",
-        respuestaSugerida:
-          "Aunque un país tenga ventaja absoluta en todos los bienes, aún puede beneficiarse del comercio si se especializa en los bienes donde su ventaja es mayor (ventaja comparativa). Ejemplo: Si Estados Unidos es 50% más eficiente produciendo computadoras y solo 10% más eficiente produciendo textiles que México, debería especializarse en computadoras y comerciar con México por textiles. Esto permite que ambos países consuman más de ambos bienes que si intentaran producir todo internamente. El comercio se basa en ventaja comparativa, no absoluta.",
-        conceptosClave: ["Ventaja comparativa", "Especialización", "Comercio internacional", "Eficiencia"],
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta: "¿Qué determina los términos de intercambio en el comercio internacional?",
+        opciones: [
+          "Solo los costos de producción del país exportador",
+          "Solo los costos de producción del país importador", 
+          "Los costos de oportunidad de ambos países",
+          "El gobierno del país más poderoso",
+        ],
+        respuestaCorrecta: 2,
+        explicacion:
+          "Los términos de intercambio deben estar entre los costos de oportunidad de ambos países para que el comercio sea mutuamente beneficioso. Si están fuera de este rango, uno de los países no tendría incentivo para comerciar.",
+        conceptosClave: ["Términos de intercambio", "Costo de oportunidad", "Comercio mutuamente beneficioso"],
       },
     ],
   },
@@ -345,23 +347,23 @@ const ejerciciosData = {
         dificultad: "Avanzado",
         puntos: 30,
         pregunta:
-          "Una empresa tiene una función de demanda P = 50 - 2Q. Calcula el ingreso total cuando Q = 10 y determina si debería aumentar o disminuir la cantidad para maximizar ingresos.",
+          "El ingreso de los consumidores aumenta de $40,000 a $50,000, y la demanda de un bien aumenta de 200 a 250 unidades. Calcula la elasticidad ingreso de la demanda e interpreta el resultado.",
         solucion: {
           pasos: [
-            "Cuando Q = 10: P = 50 - 2(10) = 30",
-            "Ingreso Total = P × Q = 30 × 10 = 300",
-            "Para maximizar IT, derivamos: IT = PQ = (50 - 2Q)Q = 50Q - 2Q²",
-            "dIT/dQ = 50 - 4Q = 0, entonces Q* = 12.5",
-            "Como Q = 10 < 12.5, debería aumentar la cantidad",
+            "Fórmula: Ei = (% cambio en cantidad) / (% cambio en ingreso)",
+            "Cambio en cantidad: (250-200)/200 = 0.25 = 25%",
+            "Cambio en ingreso: (50,000-40,000)/40,000 = 0.25 = 25%",
+            "Ei = 25% / 25% = 1.0",
+            "Como Ei = 1, es un bien normal con elasticidad unitaria",
           ],
-          respuesta: "IT = $300. Debería aumentar la cantidad hasta Q = 12.5 para maximizar ingresos",
+          respuesta: "Elasticidad ingreso = 1.0. Es un bien normal con elasticidad ingreso unitaria",
         },
-        conceptosClave: ["Ingreso total", "Maximización", "Elasticidad unitaria"],
+        conceptosClave: ["Elasticidad ingreso", "Bienes normales", "Interpretación económica"],
       },
     ],
   },
   6: {
-    titulo: "Ejercicios: Oferta, Demanda y Políticas Gubernamentales",
+    titulo: "Ejercicios: Políticas Gubernamentales",
     descripcion: "Analiza el impacto de la intervención gubernamental",
     ejercicios: [
       {
@@ -378,8 +380,8 @@ const ejerciciosData = {
         ],
         respuestaCorrecta: 1,
         explicacion:
-          "Un precio máximo solo es vinculante cuando se establece por debajo del precio de equilibrio. Si se establece por encima, el mercado operará al precio de equilibrio natural y el control no tendrá efecto.",
-        conceptosClave: ["Precio máximo", "Precio de equilibrio", "Política vinculante"],
+          "Un precio máximo solo es vinculante si se establece por debajo del precio de equilibrio. Si se establece por encima, el mercado operará al precio de equilibrio natural y el control no tendrá efecto.",
+        conceptosClave: ["Precio máximo", "Política vinculante", "Equilibrio de mercado"],
       },
       {
         id: 2,
@@ -387,17 +389,17 @@ const ejerciciosData = {
         dificultad: "Intermedio",
         puntos: 25,
         pregunta:
-          "En un mercado con Qd = 100 - P y Qs = 2P - 50, el gobierno impone un impuesto de $6 por unidad a los vendedores. Calcula el nuevo precio que pagan los compradores y el precio que reciben los vendedores.",
+          "En un mercado con demanda Qd = 100 - P y oferta Qs = P - 20, el gobierno impone un impuesto de $6 por unidad a los vendedores. Calcula el nuevo precio que pagan los compradores y el precio que reciben los vendedores.",
         solucion: {
           pasos: [
-            "Equilibrio original: 100 - P = 2P - 50, entonces P = 50, Q = 50",
-            "Con impuesto: Pc - Pv = 6 (donde Pc = precio compradores, Pv = precio vendedores)",
-            "Nueva condición de equilibrio: 100 - Pc = 2Pv - 50",
-            "Sustituyendo Pv = Pc - 6: 100 - Pc = 2(Pc - 6) - 50",
-            "100 - Pc = 2Pc - 12 - 50, entonces 162 = 3Pc, Pc = 54",
-            "Pv = 54 - 6 = 48, Q = 100 - 54 = 46",
+            "Sin impuesto: 100 - P = P - 20, entonces P = 60, Q = 40",
+            "Con impuesto, la oferta se desplaza: Qs = (P - 6) - 20 = P - 26",
+            "Nuevo equilibrio: 100 - P = P - 26",
+            "126 = 2P, entonces P = 63 (precio que pagan compradores)",
+            "Precio que reciben vendedores = 63 - 6 = 57",
+            "Nueva cantidad: Q = 100 - 63 = 37",
           ],
-          respuesta: "Precio compradores: $54, Precio vendedores: $48, Cantidad: 46 unidades",
+          respuesta: "Compradores pagan $63, vendedores reciben $57, cantidad = 37",
         },
         conceptosClave: ["Impuestos", "Incidencia fiscal", "Cuña fiscal"],
       },
@@ -407,147 +409,141 @@ const ejerciciosData = {
         dificultad: "Avanzado",
         puntos: 30,
         pregunta:
-          "Explica por qué un salario mínimo puede causar desempleo y qué factores determinan la magnitud de este efecto.",
+          "Explica por qué un salario mínimo puede causar desempleo y analiza los argumentos a favor y en contra de esta política.",
         respuestaSugerida:
-          "Un salario mínimo causa desempleo cuando se establece por encima del salario de equilibrio. A este salario más alto, más personas quieren trabajar (mayor cantidad ofrecida de trabajo) pero las empresas demandan menos trabajadores (menor cantidad demandada). La diferencia es desempleo. La magnitud depende de: (1) Elasticidad de la demanda laboral - si es más elástica, mayor desempleo; (2) Elasticidad de la oferta laboral - si es más elástica, más personas buscarán trabajo; (3) Qué tan por encima del equilibrio se establece el salario mínimo. El efecto es mayor en trabajadores jóvenes y no calificados cuya demanda laboral es más elástica.",
-        conceptosClave: ["Salario mínimo", "Desempleo", "Elasticidad laboral", "Precio mínimo"],
+          "Un salario mínimo por encima del equilibrio crea desempleo porque: (1) Aumenta la cantidad de trabajo ofrecida (más personas quieren trabajar al salario más alto), (2) Reduce la cantidad de trabajo demandada (las empresas contratan menos al costo más alto), (3) El exceso de oferta laboral = desempleo. Argumentos a favor: ayuda a trabajadores de bajos ingresos, reduce pobreza, estimula consumo. Argumentos en contra: causa desempleo (especialmente juvenil), puede acelerar automatización, perjudica a pequeñas empresas. La evidencia empírica es mixta, sugiriendo que los efectos dependen del nivel del salario mínimo y las condiciones del mercado laboral.",
+        conceptosClave: ["Salario mínimo", "Desempleo", "Política laboral", "Trade-offs"],
       },
       {
         id: 4,
-        tipo: "calculo",
-        dificultad: "Avanzado",
-        puntos: 35,
-        pregunta:
-          "Un mercado tiene Qd = 80 - P y Qs = P - 20. Se impone un impuesto de $10. Calcula: (a) la pérdida de peso muerto, (b) la recaudación fiscal, (c) quién paga más del impuesto.",
-        solucion: {
-          pasos: [
-            "Equilibrio original: 80 - P = P - 20, entonces P = 50, Q = 30",
-            "Con impuesto: 80 - Pc = Pv - 20 y Pc - Pv = 10",
-            "Sustituyendo: 80 - (Pv + 10) = Pv - 20, entonces 110 = 2Pv, Pv = 55",
-            "Pc = 65, Q = 15",
-            "(a) PPM = (1/2) × 10 × (30-15) = 75",
-            "(b) Recaudación = 10 × 15 = 150",
-            "(c) Compradores pagan 65-50 = 15, vendedores pagan 50-45 = 5",
-          ],
-          respuesta: "(a) PPM = $75, (b) Recaudación = $150, (c) Compradores pagan $15, vendedores $5",
-        },
-        conceptosClave: ["Pérdida de peso muerto", "Recaudación fiscal", "Incidencia fiscal", "Elasticidad"],
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta: "¿Quién soporta la mayor carga de un impuesto cuando la demanda es inelástica y la oferta es elástica?",
+        opciones: [
+          "Los vendedores",
+          "Los compradores", 
+          "El gobierno",
+          "Se reparte igualmente",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "Cuando la demanda es inelástica y la oferta es elástica, los compradores soportan la mayor parte del impuesto. Esto se debe a que los compradores no pueden reducir fácilmente su consumo (demanda inelástica), mientras que los vendedores pueden ajustar fácilmente la cantidad ofrecida (oferta elástica).",
+        conceptosClave: ["Incidencia fiscal", "Elasticidad", "Carga tributaria"],
       },
     ],
   },
   7: {
-    titulo: "Ejercicios: Consumidores, Productores y Eficiencia",
-    descripcion: "Practica el análisis de bienestar económico",
+    titulo: "Ejercicios: Excedentes y Eficiencia",
+    descripcion: "Analiza el bienestar económico y la eficiencia de mercados",
     ejercicios: [
       {
         id: 1,
-        tipo: "multiple",
-        dificultad: "Básico",
-        puntos: 15,
-        pregunta: "El excedente del consumidor se define como:",
-        opciones: [
-          "El precio que paga el consumidor",
-          "La diferencia entre disposición a pagar y precio pagado",
-          "La cantidad total consumida",
-          "El costo de producción del bien",
-        ],
-        respuestaCorrecta: 1,
-        explicacion:
-          "El excedente del consumidor es la diferencia entre lo que un consumidor está dispuesto a pagar por un bien y lo que realmente paga. Representa el beneficio neto que obtiene el consumidor de la transacción.",
-        conceptosClave: ["Excedente del consumidor", "Disposición a pagar", "Bienestar económico"],
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 25,
+        pregunta:
+          "En un mercado con demanda P = 50 - Q y oferta P = 10 + Q, calcula el excedente del consumidor y del productor en equilibrio.",
+        solucion: {
+          pasos: [
+            "Encontrar equilibrio: 50 - Q = 10 + Q",
+            "40 = 2Q, entonces Q = 20, P = 30",
+            "Excedente del consumidor = (1/2) × base × altura",
+            "EC = (1/2) × 20 × (50 - 30) = (1/2) × 20 × 20 = 200",
+            "Excedente del productor = (1/2) × 20 × (30 - 10) = (1/2) × 20 × 20 = 200",
+            "Excedente total = 200 + 200 = 400",
+          ],
+          respuesta: "EC = $200, EP = $200, Excedente total = $400",
+        },
+        conceptosClave: ["Excedente del consumidor", "Excedente del productor", "Bienestar económico"],
       },
       {
         id: 2,
-        tipo: "calculo",
-        dificultad: "Intermedio",
-        puntos: 20,
-        pregunta:
-          "En un mercado con demanda P = 100 - Q y oferta P = 20 + Q, calcula el excedente del consumidor y del productor en equilibrio.",
-        solucion: {
-          pasos: [
-            "Encontrar equilibrio: 100 - Q = 20 + Q, entonces 2Q = 80, Q = 40",
-            "Precio de equilibrio: P = 100 - 40 = 60",
-            "Excedente del consumidor: (1/2) × (100 - 60) × 40 = (1/2) × 40 × 40 = 800",
-            "Excedente del productor: (1/2) × (60 - 20) × 40 = (1/2) × 40 × 40 = 800",
-            "Excedente total = 800 + 800 = 1600",
-          ],
-          respuesta: "EC = $800, EP = $800, Excedente total = $1600",
-        },
-        conceptosClave: ["Excedente del consumidor", "Excedente del productor", "Equilibrio de mercado"],
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "¿Qué mide el excedente del consumidor?",
+        opciones: [
+          "Lo que los consumidores pagan por un bien",
+          "La diferencia entre lo que están dispuestos a pagar y lo que realmente pagan",
+          "El costo de producir un bien",
+          "El precio de equilibrio del mercado",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "El excedente del consumidor mide el beneficio neto que obtienen los compradores de participar en el mercado. Es la diferencia entre su disposición a pagar (valor que le dan al bien) y el precio que realmente pagan.",
+        conceptosClave: ["Excedente del consumidor", "Disposición a pagar", "Bienestar"],
       },
       {
         id: 3,
         tipo: "desarrollo",
         dificultad: "Avanzado",
-        puntos: 25,
+        puntos: 30,
         pregunta:
-          "Explica por qué los mercados libres son eficientes en términos de asignación de recursos. ¿Qué condiciones deben cumplirse para esta eficiencia?",
+          "Explica las tres condiciones que deben cumplirse para que un mercado libre sea eficiente. ¿Qué sucede cuando no se cumplen?",
         respuestaSugerida:
-          "Los mercados libres son eficientes porque: (1) Asignan bienes a compradores con mayor valoración - quienes más valoran el bien son quienes lo compran; (2) Asignan producción a vendedores con menor costo - los productores más eficientes son quienes producen; (3) Producen la cantidad que maximiza excedente total - se produce hasta donde beneficio marginal = costo marginal. Condiciones necesarias: competencia perfecta, información completa, sin externalidades, sin poder de mercado, derechos de propiedad bien definidos. Cuando estas condiciones se cumplen, el equilibrio de mercado maximiza el bienestar económico total.",
-        conceptosClave: ["Eficiencia económica", "Asignación de recursos", "Competencia perfecta", "Bienestar social"],
+          "Las tres condiciones para eficiencia son: (1) Los mercados asignan la oferta a los compradores que más valoran el bien (medido por disposición a pagar), (2) Los mercados asignan la demanda a los vendedores que pueden producir al menor costo, (3) Los mercados producen la cantidad que maximiza excedente total (donde beneficio marginal = costo marginal). Cuando no se cumplen, tenemos fallas de mercado: poder de mercado (monopolios), externalidades (contaminación), bienes públicos (defensa nacional), información asimétrica (mercado de autos usados). En estos casos, la intervención gubernamental puede mejorar la eficiencia.",
+        conceptosClave: ["Eficiencia de mercado", "Fallas de mercado", "Intervención gubernamental"],
       },
       {
         id: 4,
-        tipo: "calculo",
-        dificultad: "Avanzado",
-        puntos: 30,
-        pregunta:
-          "Un mercado tiene demanda P = 80 - 2Q y oferta P = 20 + Q. Si se impone un precio máximo de $50, calcula la pérdida de peso muerto.",
-        solucion: {
-          pasos: [
-            "Equilibrio libre: 80 - 2Q = 20 + Q, entonces 3Q = 60, Q = 20, P = 40",
-            "Con precio máximo P = 50 > 40, no es vinculante",
-            "Si precio máximo fuera $35: Qd = (80-35)/2 = 22.5, Qs = 35-20 = 15",
-            "Escasez = 22.5 - 15 = 7.5",
-            "PPM = (1/2) × (40-35) × (20-15) = (1/2) × 5 × 5 = 12.5",
-            "Pero con P = 50, no hay pérdida porque no es vinculante",
-          ],
-          respuesta: "Con precio máximo $50, PPM = $0 (no vinculante). Si fuera $35, PPM = $12.5",
-        },
-        conceptosClave: ["Precio máximo", "Pérdida de peso muerto", "Política vinculante", "Eficiencia"],
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta: "¿Cuándo maximiza el bienestar social un planificador benevolente?",
+        opciones: [
+          "Cuando maximiza el excedente del consumidor",
+          "Cuando maximiza el excedente del productor",
+          "Cuando maximiza el excedente total",
+          "Cuando minimiza los precios",
+        ],
+        respuestaCorrecta: 2,
+        explicacion:
+          "Un planificador social benevolente busca maximizar el bienestar total de la sociedad, que se mide por el excedente total (suma del excedente del consumidor y del productor). Esto ocurre cuando el beneficio marginal iguala al costo marginal.",
+        conceptosClave: ["Planificador social", "Excedente total", "Bienestar social"],
       },
     ],
   },
   8: {
-    titulo: "Ejercicios: Los Costos de los Impuestos",
-    descripcion: "Analiza el impacto de los impuestos en el bienestar",
+    titulo: "Ejercicios: Costos de los Impuestos",
+    descripcion: "Analiza la pérdida de peso muerto y efectos de los impuestos",
     ejercicios: [
       {
         id: 1,
-        tipo: "multiple",
-        dificultad: "Básico",
-        puntos: 15,
-        pregunta: "La pérdida de peso muerto de un impuesto representa:",
-        opciones: [
-          "La recaudación fiscal del gobierno",
-          "El aumento en el precio para los consumidores",
-          "La reducción en excedente total debido al impuesto",
-          "El beneficio que obtienen los productores",
-        ],
-        respuestaCorrecta: 2,
-        explicacion:
-          "La pérdida de peso muerto es la reducción en el excedente total (consumidor + productor) que resulta de la imposición de un impuesto. Representa el valor perdido para la sociedad debido a las transacciones que no ocurren por el impuesto.",
-        conceptosClave: ["Pérdida de peso muerto", "Excedente total", "Eficiencia económica"],
-      },
-      {
-        id: 2,
         tipo: "calculo",
         dificultad: "Intermedio",
         puntos: 25,
         pregunta:
-          "En un mercado con demanda P = 60 - Q y oferta P = 10 + Q, se impone un impuesto de $15 por unidad. Calcula la pérdida de peso muerto.",
+          "En un mercado con demanda P = 60 - Q y oferta P = 20 + Q, se impone un impuesto de $8. Calcula la pérdida de peso muerto.",
         solucion: {
           pasos: [
-            "Equilibrio sin impuesto: 60 - Q = 10 + Q, entonces Q = 25, P = 35",
-            "Con impuesto: Pc - Pv = 15",
-            "60 - Q = Pc y 10 + Q = Pv, entonces Pc = 60 - Q y Pv = 10 + Q",
-            "(60 - Q) - (10 + Q) = 15, entonces 50 - 2Q = 15, Q = 17.5",
-            "Pc = 60 - 17.5 = 42.5, Pv = 10 + 17.5 = 27.5",
-            "PPM = (1/2) × 15 × (25 - 17.5) = (1/2) × 15 × 7.5 = 56.25",
+            "Sin impuesto: 60 - Q = 20 + Q, entonces Q = 20, P = 40",
+            "Con impuesto: nueva oferta P = 20 + Q + 8 = 28 + Q",
+            "Nuevo equilibrio: 60 - Q = 28 + Q, entonces Q = 16, P = 44",
+            "Precio que reciben vendedores = 44 - 8 = 36",
+            "Pérdida de peso muerto = (1/2) × impuesto × reducción en cantidad",
+            "PPM = (1/2) × 8 × (20 - 16) = (1/2) × 8 × 4 = 16",
           ],
-          respuesta: "La pérdida de peso muerto es $56.25",
+          respuesta: "La pérdida de peso muerto es $16",
         },
-        conceptosClave: ["Pérdida de peso muerto", "Impuestos", "Cuña fiscal"],
+        conceptosClave: ["Pérdida de peso muerto", "Impuestos", "Ineficiencia"],
+      },
+      {
+        id: 2,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "¿Qué representa la pérdida de peso muerto de un impuesto?",
+        opciones: [
+          "Los ingresos que recibe el gobierno",
+          "La pérdida de excedente que no se transfiere a nadie",
+          "El aumento en el precio del bien",
+          "La reducción en la cantidad vendida",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "La pérdida de peso muerto representa la reducción en el excedente total que no se transfiere a nadie. Es el valor perdido de las transacciones que no ocurren debido al impuesto, representando una ineficiencia pura.",
+        conceptosClave: ["Pérdida de peso muerto", "Ineficiencia", "Excedente perdido"],
       },
       {
         id: 3,
@@ -555,102 +551,100 @@ const ejerciciosData = {
         dificultad: "Avanzado",
         puntos: 30,
         pregunta:
-          "Explica por qué la pérdida de peso muerto aumenta más que proporcionalmente con el tamaño del impuesto. ¿Qué implicaciones tiene esto para la política fiscal?",
+          "Explica la Curva de Laffer y sus implicaciones para la política fiscal. ¿Por qué tiene forma de U invertida?",
         respuestaSugerida:
-          "La pérdida de peso muerto aumenta con el cuadrado del impuesto porque: (1) Un impuesto mayor reduce más la cantidad intercambiada; (2) La base sobre la cual se calcula la pérdida (reducción en cantidad) es mayor; (3) La altura del triángulo de pérdida (tamaño del impuesto) también es mayor. Matemáticamente: PPM ∝ t². Implicaciones: (1) Es mejor tener muchos impuestos pequeños que pocos impuestos grandes; (2) Duplicar un impuesto cuadruplica la pérdida de peso muerto; (3) Los impuestos sobre bienes con demanda inelástica causan menor pérdida; (4) Existe un trade-off entre recaudación y eficiencia.",
-        conceptosClave: ["Pérdida de peso muerto", "Política fiscal", "Eficiencia tributaria", "Diseño de impuestos"],
+          "La Curva de Laffer muestra la relación entre tasas de impuestos y recaudación fiscal total. Tiene forma de U invertida porque: (1) Con tasa 0%, no hay recaudación, (2) Con tasas bajas, aumentar la tasa incrementa la recaudación, (3) Con tasas muy altas (100%), nadie tiene incentivos para trabajar/producir, así que la recaudación es cero, (4) Existe una tasa óptima que maximiza la recaudación. Implicaciones: (a) Tasas muy altas pueden ser contraproducentes, (b) Reducir tasas altas puede aumentar recaudación, (c) Hay un trade-off entre recaudación y eficiencia, (d) La pérdida de peso muerto aumenta cuadráticamente con la tasa. Sin embargo, la ubicación exacta de los países en la curva es debatida.",
+        conceptosClave: ["Curva de Laffer", "Política fiscal", "Recaudación óptima", "Incentivos"],
       },
       {
         id: 4,
-        tipo: "calculo",
-        dificultad: "Avanzado",
-        puntos: 35,
-        pregunta:
-          "Un mercado tiene elasticidad de demanda -1.5 y elasticidad de oferta 2.0. Si se impone un impuesto de $6, y la cantidad inicial era 100 unidades a precio $20, calcula la nueva cantidad y la pérdida de peso muerto.",
-        solucion: {
-          pasos: [
-            "Fórmula: ΔQ/Q = -[Ed × Es/(Ed + Es)] × (t/P)",
-            "ΔQ/100 = -[1.5 × 2/(1.5 + 2)] × (6/20)",
-            "ΔQ/100 = -[3/3.5] × 0.3 = -0.857 × 0.3 = -0.257",
-            "ΔQ = -25.7, entonces Q nueva = 100 - 25.7 = 74.3",
-            "PPM = (1/2) × t × ΔQ = (1/2) × 6 × 25.7 = 77.1",
-          ],
-          respuesta: "Nueva cantidad: 74.3 unidades, PPM = $77.1",
-        },
-        conceptosClave: ["Elasticidad", "Pérdida de peso muerto", "Incidencia fiscal", "Análisis cuantitativo"],
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta: "¿Cómo afecta la elasticidad de la demanda a la pérdida de peso muerto de un impuesto?",
+        opciones: [
+          "Mayor elasticidad resulta en menor pérdida de peso muerto",
+          "Mayor elasticidad resulta en mayor pérdida de peso muerto",
+          "La elasticidad no afecta la pérdida de peso muerto",
+          "Solo la elasticidad de la oferta importa",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "Mayor elasticidad de la demanda resulta en mayor pérdida de peso muerto porque los consumidores reducen más su consumo cuando aumenta el precio debido al impuesto. Esto significa que se pierden más transacciones mutuamente beneficiosas.",
+        conceptosClave: ["Elasticidad", "Pérdida de peso muerto", "Sensibilidad al precio"],
       },
     ],
   },
   9: {
     titulo: "Ejercicios: Comercio Internacional",
-    descripcion: "Analiza los efectos del comercio internacional en el bienestar",
+    descripcion: "Analiza los efectos del comercio y políticas comerciales",
     ejercicios: [
       {
         id: 1,
-        tipo: "multiple",
-        dificultad: "Básico",
-        puntos: 15,
-        pregunta: "Un país se convierte en exportador de un bien cuando:",
-        opciones: [
-          "Su precio doméstico es mayor que el precio mundial",
-          "Su precio doméstico es menor que el precio mundial",
-          "Su precio doméstico es igual al precio mundial",
-          "No tiene relación con los precios",
-        ],
-        respuestaCorrecta: 1,
-        explicacion:
-          "Un país se convierte en exportador cuando su precio doméstico (sin comercio) es menor que el precio mundial. Esto indica que el país puede producir el bien a menor costo relativo, por lo que tiene ventaja comparativa y puede vender en el mercado mundial.",
-        conceptosClave: ["Comercio internacional", "Precio mundial", "Ventaja comparativa", "Exportaciones"],
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Un país tiene demanda doméstica Qd = 80 - P y oferta doméstica Qs = P - 20. El precio mundial es $40. Si se impone un arancel de $10, calcula la pérdida de peso muerto.",
+        solucion: {
+          pasos: [
+            "Equilibrio de autarquía: 80 - P = P - 20, entonces P = 50, Q = 30",
+            "Con precio mundial $40: Qd = 80 - 40 = 40, Qs = 40 - 20 = 20",
+            "Importaciones sin arancel = 40 - 20 = 20",
+            "Con arancel, precio doméstico = 40 + 10 = 50",
+            "Con arancel: Qd = 80 - 50 = 30, Qs = 50 - 20 = 30",
+            "Importaciones con arancel = 30 - 30 = 0",
+            "PPM = pérdida en producción + pérdida en consumo",
+            "PPM = (1/2) × 10 × (30-20) + (1/2) × 10 × (40-30) = 50 + 50 = 100",
+          ],
+          respuesta: "La pérdida de peso muerto del arancel es $100",
+        },
+        conceptosClave: ["Aranceles", "Pérdida de peso muerto", "Comercio internacional"],
       },
       {
         id: 2,
-        tipo: "calculo",
-        dificultad: "Intermedio",
-        puntos: 25,
-        pregunta:
-          "Un país tiene demanda doméstica Qd = 100 - P y oferta doméstica Qs = P - 20. El precio mundial es $40. Calcula las ganancias del comercio si el país puede comerciar libremente.",
-        solucion: {
-          pasos: [
-            "Equilibrio sin comercio: 100 - P = P - 20, entonces P = 60, Q = 40",
-            "Con precio mundial $40 < $60, el país importa",
-            "Qd = 100 - 40 = 60, Qs = 40 - 20 = 20",
-            "Importaciones = 60 - 20 = 40",
-            "Ganancia = (1/2) × (60 - 40) × 40 = (1/2) × 20 × 40 = 400",
-          ],
-          respuesta: "Las ganancias del comercio son $400",
-        },
-        conceptosClave: ["Ganancias del comercio", "Importaciones", "Precio mundial", "Bienestar económico"],
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "¿Cuándo un país se convierte en exportador de un bien?",
+        opciones: [
+          "Cuando el precio mundial es mayor que el precio doméstico de autarquía",
+          "Cuando el precio mundial es menor que el precio doméstico de autarquía",
+          "Cuando el precio mundial es igual al precio doméstico",
+          "Cuando el gobierno lo decide",
+        ],
+        respuestaCorrecta: 0,
+        explicacion:
+          "Un país se convierte en exportador cuando el precio mundial es mayor que su precio de autarquía. Esto significa que puede vender su producto a un precio más alto en el mercado internacional, por lo que tiene incentivos para exportar.",
+        conceptosClave: ["Exportaciones", "Precio mundial", "Autarquía"],
       },
       {
         id: 3,
         tipo: "desarrollo",
         dificultad: "Avanzado",
-        puntos: 30,
+        puntos: 35,
         pregunta:
-          "Analiza los efectos de un arancel en el bienestar de diferentes grupos: consumidores, productores domésticos, gobierno y sociedad en general.",
+          "Compara los efectos de un arancel versus una cuota de importación equivalente. ¿En qué se parecen y en qué difieren?",
         respuestaSugerida:
-          "Efectos de un arancel: (1) Consumidores: Pierden debido a precios más altos y menor cantidad disponible. Su excedente disminuye; (2) Productores domésticos: Ganan porque pueden vender a precio más alto y aumentar producción. Su excedente aumenta; (3) Gobierno: Gana recaudación arancelaria igual al arancel × cantidad importada; (4) Sociedad: Pierde neto debido a pérdida de peso muerto. Esta pérdida tiene dos componentes: triángulo de producción (producción doméstica ineficiente) y triángulo de consumo (consumo perdido). La pérdida social supera las ganancias de productores y gobierno, resultando en pérdida neta para el país.",
-        conceptosClave: ["Arancel", "Pérdida de peso muerto", "Excedente del consumidor", "Proteccionismo"],
+          "Similitudes: Ambos (1) aumentan el precio doméstico, (2) reducen las importaciones, (3) benefician a productores domésticos, (4) perjudican a consumidores domésticos, (5) causan pérdida de peso muerto. Diferencias clave: (1) Ingresos: Los aranceles generan ingresos para el gobierno, las cuotas crean 'rentas de cuota' que van a los importadores con licencias, (2) Flexibilidad: Los aranceles permiten que las importaciones varíen con la demanda, las cuotas fijan la cantidad, (3) Transparencia: Los aranceles son más transparentes, las cuotas pueden ser menos visibles, (4) Administración: Los aranceles son más fáciles de administrar. En general, los aranceles son preferibles desde la perspectiva del bienestar porque al menos el gobierno recibe ingresos en lugar de que vayan a importadores privados.",
+        conceptosClave: ["Aranceles", "Cuotas", "Política comercial", "Bienestar económico"],
       },
       {
         id: 4,
-        tipo: "calculo",
-        dificultad: "Avanzado",
-        puntos: 35,
-        pregunta:
-          "Un país importador tiene Qd = 80 - P, Qs = P - 10, precio mundial $30. Se impone arancel de $10. Calcula: (a) nueva cantidad importada, (b) recaudación arancelaria, (c) pérdida de peso muerto.",
-        solucion: {
-          pasos: [
-            "Sin arancel: Qd = 80 - 30 = 50, Qs = 30 - 10 = 20, Importaciones = 30",
-            "Con arancel: Precio doméstico = 30 + 10 = 40",
-            "Qd = 80 - 40 = 40, Qs = 40 - 10 = 30",
-            "(a) Nuevas importaciones = 40 - 30 = 10",
-            "(b) Recaudación = 10 × 10 = 100",
-            "(c) PPM = (1/2) × 10 × [(30-20) + (50-40)] = (1/2) × 10 × 20 = 100",
-          ],
-          respuesta: "(a) 10 unidades, (b) $100, (c) PPM = $100",
-        },
-        conceptosClave: ["Arancel", "Importaciones", "Recaudación arancelaria", "Pérdida de peso muerto"],
+        tipo: "multiple",
+        dificultad: "Intermedio",
+        puntos: 25,
+        pregunta: "¿Cuál es el argumento más sólido económicamente para restringir el comercio?",
+        opciones: [
+          "Proteger empleos domésticos",
+          "Industrias nacientes que necesitan tiempo para desarrollarse",
+          "Competencia desleal de países con salarios bajos",
+          "Ninguno de los anteriores es sólido económicamente",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "El argumento de industrias nacientes es el más sólido teóricamente, aunque difícil de implementar en la práctica. La idea es que algunas industrias necesitan protección temporal para desarrollar economías de escala y experiencia antes de poder competir. Sin embargo, es difícil identificar qué industrias se beneficiarán realmente y la protección 'temporal' a menudo se vuelve permanente.",
+        conceptosClave: ["Industrias nacientes", "Proteccionismo", "Argumentos comerciales"],
       },
     ],
   },
@@ -662,7 +656,6 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
   const [respuestasDesarrollo, setRespuestasDesarrollo] = useState<{ [key: number]: string }>({})
   const [puntajeTotal, setPuntajeTotal] = useState(0)
   const [ejerciciosCompletados, setEjerciciosCompletados] = useState(0)
-  const [ejerciciosIntentados, setEjerciciosIntentados] = useState<Set<number>>(new Set())
 
   const ejercicios = ejerciciosData[Number.parseInt(params.id) as keyof typeof ejerciciosData]
 
@@ -708,28 +701,19 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
     const ejercicio = ejercicios.ejercicios.find((e) => e.id === ejercicioId)
     if (!ejercicio) return
 
-    // Marcar como mostrado
     setMostrarResultados((prev) => ({
       ...prev,
       [ejercicioId]: true,
     }))
 
-    // Si no se había intentado antes, contar como nuevo intento
-    if (!ejerciciosIntentados.has(ejercicioId)) {
-      setEjerciciosIntentados(prev => new Set([...prev, ejercicioId]))
-      
-      // Calcular puntaje
-      if (ejercicio.tipo === "multiple") {
-        const esCorrecta = Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta
-        if (esCorrecta) {
-          setPuntajeTotal((prev) => prev + ejercicio.puntos)
-          setEjerciciosCompletados((prev) => prev + 1)
-        }
-      } else if (ejercicio.tipo === "desarrollo" || ejercicio.tipo === "calculo") {
-        // Para ejercicios de desarrollo y cálculo, otorgar puntos por completar
-        setPuntajeTotal((prev) => prev + ejercicio.puntos)
-        setEjerciciosCompletados((prev) => prev + 1)
-      }
+    // Calcular puntaje si es correcto
+    if (ejercicio.tipo === "multiple" && Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta) {
+      setPuntajeTotal((prev) => prev + ejercicio.puntos)
+      setEjerciciosCompletados((prev) => prev + 1)
+    } else if (ejercicio.tipo === "desarrollo" || ejercicio.tipo === "calculo") {
+      // Para ejercicios de desarrollo, asumimos que se completan
+      setPuntajeTotal((prev) => prev + ejercicio.puntos)
+      setEjerciciosCompletados((prev) => prev + 1)
     }
   }
 
@@ -737,7 +721,6 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
     const ejercicio = ejercicios.ejercicios.find((e) => e.id === ejercicioId)
     if (!ejercicio) return
 
-    // Limpiar respuestas
     setRespuestas((prev) => {
       const nuevas = { ...prev }
       delete nuevas[ejercicioId]
@@ -754,24 +737,10 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
       return nuevas
     })
 
-    // Restar puntaje y completados si ya se había intentado
-    if (ejerciciosIntentados.has(ejercicioId)) {
-      setEjerciciosIntentados(prev => {
-        const newSet = new Set(prev)
-        newSet.delete(ejercicioId)
-        return newSet
-      })
-      
-      if (ejercicio.tipo === "multiple") {
-        const eraCorrecta = Number.parseInt(respuestas[ejercicioId]) === ejercicio.respuestaCorrecta
-        if (eraCorrecta) {
-          setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
-          setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
-        }
-      } else {
-        setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
-        setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
-      }
+    // Restar puntaje si estaba completado
+    if (mostrarResultados[ejercicioId]) {
+      setPuntajeTotal((prev) => Math.max(0, prev - ejercicio.puntos))
+      setEjerciciosCompletados((prev) => Math.max(0, prev - 1))
     }
   }
 
@@ -839,7 +808,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            {/* Panel de progreso mejorado */}
+            {/* Panel de progreso */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-slate-200 min-w-[280px]">
               <div className="text-center mb-4">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -864,16 +833,6 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                   ></div>
                 </div>
                 <div className="text-center text-sm text-slate-600">{porcentajeCompletado.toFixed(0)}% completado</div>
-                
-                {/* Indicador de rendimiento */}
-                <div className="mt-4 p-3 bg-slate-50 rounded-xl">
-                  <div className="text-xs text-slate-600 mb-1">Rendimiento</div>
-                  <div className="text-sm font-medium text-slate-800">
-                    {porcentajeCompletado >= 80 ? "¡Excelente!" : 
-                     porcentajeCompletado >= 60 ? "Muy bien" :
-                     porcentajeCompletado >= 40 ? "Buen progreso" : "Sigue practicando"}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1144,7 +1103,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
           ))}
         </div>
 
-        {/* Resumen final mejorado */}
+        {/* Resumen final */}
         <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-50 to-violet-50 mt-12">
           <CardContent className="pt-8 pb-8 text-center">
             <div className="max-w-2xl mx-auto">
@@ -1153,17 +1112,6 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                 Has completado {ejerciciosCompletados} de {ejercicios.ejercicios.length} ejercicios y obtenido{" "}
                 {puntajeTotal} de {puntajeMaximo} puntos posibles.
               </p>
-              
-              {/* Mensaje motivacional basado en rendimiento */}
-              <div className="mb-6 p-4 rounded-xl bg-white/50">
-                <p className="text-slate-700">
-                  {porcentajeCompletado === 100 ? "¡Perfecto! Has dominado todos los conceptos." :
-                   porcentajeCompletado >= 75 ? "¡Muy bien! Tienes un excelente dominio del tema." :
-                   porcentajeCompletado >= 50 ? "Buen progreso. Sigue practicando para mejorar." :
-                   "Continúa practicando. Cada ejercicio te acerca más al dominio del tema."}
-                </p>
-              </div>
-              
               <div className="flex justify-center gap-4">
                 <Link href={`/capitulo/${params.id}`}>
                   <Button variant="outline" size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">

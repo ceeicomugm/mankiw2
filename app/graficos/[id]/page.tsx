@@ -2,391 +2,970 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, BarChart3, BookOpen, Calculator, TrendingUp, Zap, RefreshCw, DollarSign, Target, Users, Building } from "lucide-react"
+import { ArrowLeft, BookOpen, Calculator, BarChart3, TrendingUp, DollarSign, Globe, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ReferenceLine, Area, AreaChart, BarChart, Bar, ComposedChart } from "recharts"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart, ReferenceLine, BarChart, Bar } from "recharts"
 
 const graficosData = {
   1: {
-    titulo: "Gráficos Interactivos: Los Diez Principios de la Economía",
-    descripcion: "Visualizaciones interactivas de los conceptos fundamentales",
+    titulo: "Gráficos: Los Diez Principios de la Economía",
+    descripcion: "Visualizaciones interactivas de los conceptos fundamentales económicos",
     graficos: [
       {
-        id: "costo-oportunidad",
-        titulo: "Costo de Oportunidad",
-        descripcion: "Explora cómo las decisiones implican sacrificar alternativas",
-        tipo: "interactivo"
+        id: "frontera-posibilidades",
+        titulo: "Frontera de Posibilidades de Producción",
+        descripcion: "Explora las disyuntivas y el costo de oportunidad",
+        tipo: "interactivo",
       },
-      {
-        id: "incentivos",
-        titulo: "Respuesta a Incentivos",
-        descripcion: "Observa cómo cambia el comportamiento con diferentes incentivos",
-        tipo: "simulacion"
-      }
-    ]
-  },
-  2: {
-    titulo: "Gráficos Interactivos: Pensando como Economista",
-    descripcion: "Modelos económicos fundamentales visualizados",
-    graficos: [
       {
         id: "flujo-circular",
         titulo: "Diagrama de Flujo Circular",
         descripcion: "Visualiza cómo fluye el dinero en la economía",
-        tipo: "interactivo"
+        tipo: "estatico",
+      },
+    ],
+  },
+  2: {
+    titulo: "Gráficos: Pensando como Economista",
+    descripcion: "Modelos económicos fundamentales y herramientas de análisis",
+    graficos: [
+      {
+        id: "fpp-interactiva",
+        titulo: "Frontera de Posibilidades de Producción Interactiva",
+        descripcion: "Manipula recursos y tecnología para ver cambios en la FPP",
+        tipo: "interactivo",
       },
       {
-        id: "fpp",
-        titulo: "Frontera de Posibilidades de Producción",
-        descripcion: "Explora los trade-offs en la producción",
-        tipo: "interactivo"
-      }
-    ]
+        id: "modelos-economicos",
+        titulo: "Comparación de Modelos Económicos",
+        descripcion: "Visualiza diferentes supuestos y sus efectos",
+        tipo: "comparativo",
+      },
+    ],
   },
   3: {
-    titulo: "Gráficos Interactivos: Interdependencia y Comercio",
-    descripcion: "Ventaja comparativa y ganancias del comercio",
+    titulo: "Gráficos: Interdependencia y Comercio",
+    descripcion: "Visualización de ventaja comparativa y ganancias del comercio",
     graficos: [
       {
         id: "ventaja-comparativa",
-        titulo: "Ventaja Comparativa",
-        descripcion: "Calcula y visualiza ventajas comparativas",
-        tipo: "calculadora"
+        titulo: "Calculadora de Ventaja Comparativa",
+        descripcion: "Calcula y visualiza ventajas comparativas entre países",
+        tipo: "calculadora",
       },
       {
         id: "ganancias-comercio",
         titulo: "Ganancias del Comercio",
-        descripcion: "Demuestra cómo el comercio beneficia a ambas partes",
-        tipo: "simulacion"
-      }
-    ]
+        descripcion: "Muestra cómo el comercio beneficia a ambas partes",
+        tipo: "interactivo",
+      },
+    ],
   },
   4: {
-    titulo: "Gráficos Interactivos: Oferta y Demanda",
-    descripcion: "Visualización dinámica de mercados competitivos",
+    titulo: "Gráficos: Oferta y Demanda",
+    descripcion: "Simulaciones interactivas del funcionamiento de los mercados",
     graficos: [
       {
-        id: "equilibrio-mercado",
-        titulo: "Equilibrio de Mercado",
-        descripcion: "Explora cómo se determina el precio y cantidad de equilibrio",
-        tipo: "interactivo"
+        id: "oferta-demanda-basico",
+        titulo: "Modelo Básico de Oferta y Demanda",
+        descripcion: "Manipula factores para ver cambios en equilibrio",
+        tipo: "simulacion",
       },
       {
         id: "desplazamientos",
-        titulo: "Desplazamientos de Oferta y Demanda",
-        descripcion: "Analiza efectos de cambios en determinantes",
-        tipo: "simulacion"
-      }
-    ]
+        titulo: "Desplazamientos de Curvas",
+        descripcion: "Analiza cómo diferentes factores afectan las curvas",
+        tipo: "interactivo",
+      },
+    ],
   },
   5: {
-    titulo: "Gráficos Interactivos: Elasticidad",
-    descripcion: "Sensibilidad de oferta y demanda visualizada",
+    titulo: "Gráficos: Elasticidad y Aplicaciones",
+    descripcion: "Herramientas interactivas para entender la elasticidad",
     graficos: [
       {
-        id: "elasticidad-demanda",
-        titulo: "Elasticidad Precio de la Demanda",
-        descripcion: "Calcula y visualiza diferentes elasticidades",
-        tipo: "calculadora"
+        id: "elasticidad-calculadora",
+        titulo: "Calculadora de Elasticidad",
+        descripcion: "Calcula diferentes tipos de elasticidad",
+        tipo: "calculadora",
       },
       {
-        id: "ingreso-total",
+        id: "elasticidad-ingreso-total",
         titulo: "Elasticidad e Ingreso Total",
-        descripcion: "Relación entre elasticidad y ingresos",
-        tipo: "interactivo"
-      }
-    ]
+        descripcion: "Visualiza la relación entre elasticidad e ingresos",
+        tipo: "interactivo",
+      },
+    ],
   },
   6: {
-    titulo: "Gráficos Interactivos: Políticas Gubernamentales",
-    descripcion: "Efectos de la intervención gubernamental en mercados",
+    titulo: "Gráficos: Políticas Gubernamentales",
+    descripcion: "Simulaciones del impacto de políticas en los mercados",
     graficos: [
       {
         id: "controles-precios",
-        titulo: "Controles de Precios",
-        descripcion: "Efectos de precios máximos y mínimos",
-        tipo: "simulacion"
+        titulo: "Simulador de Controles de Precios",
+        descripcion: "Analiza efectos de precios máximos y mínimos",
+        tipo: "simulacion",
       },
       {
-        id: "impuestos",
-        titulo: "Impacto de Impuestos",
-        descripcion: "Incidencia fiscal y pérdida de eficiencia",
-        tipo: "interactivo"
-      }
-    ]
+        id: "impuestos-mercado",
+        titulo: "Efectos de Impuestos en el Mercado",
+        descripcion: "Visualiza incidencia fiscal y pérdida de peso muerto",
+        tipo: "interactivo",
+      },
+    ],
   },
   7: {
-    titulo: "Gráficos Interactivos: Excedentes y Eficiencia",
+    titulo: "Gráficos: Excedentes y Eficiencia",
     descripcion: "Análisis visual del bienestar económico",
     graficos: [
       {
-        id: "excedente-consumidor",
-        titulo: "Excedente del Consumidor",
-        descripcion: "Visualiza el beneficio que obtienen los consumidores",
-        tipo: "interactivo"
-      },
-      {
-        id: "excedente-productor",
-        titulo: "Excedente del Productor",
-        descripcion: "Analiza el beneficio de los productores",
-        tipo: "interactivo"
+        id: "excedentes-interactivo",
+        titulo: "Calculadora de Excedentes",
+        descripcion: "Calcula excedente del consumidor y productor",
+        tipo: "calculadora",
       },
       {
         id: "eficiencia-mercado",
-        titulo: "Eficiencia del Mercado",
-        descripcion: "Demuestra cómo los mercados maximizan el bienestar",
-        tipo: "simulacion"
-      }
-    ]
+        titulo: "Análisis de Eficiencia del Mercado",
+        descripcion: "Visualiza condiciones de eficiencia económica",
+        tipo: "interactivo",
+      },
+    ],
   },
   8: {
-    titulo: "Gráficos Interactivos: Costos de los Impuestos",
-    descripcion: "Pérdida de peso muerto y efectos de los impuestos",
+    titulo: "Gráficos: Costos de los Impuestos",
+    descripcion: "Análisis visual de la pérdida de peso muerto",
     graficos: [
       {
         id: "perdida-peso-muerto",
-        titulo: "Pérdida de Peso Muerto",
-        descripcion: "Visualiza la ineficiencia causada por impuestos",
-        tipo: "interactivo"
+        titulo: "Simulador de Pérdida de Peso Muerto",
+        descripcion: "Visualiza cómo los impuestos crean ineficiencias",
+        tipo: "simulacion",
       },
       {
         id: "curva-laffer",
-        titulo: "Curva de Laffer",
-        descripcion: "Relación entre tasas de impuesto y recaudación",
-        tipo: "simulacion"
-      }
-    ]
+        titulo: "Curva de Laffer Interactiva",
+        descripcion: "Explora la relación entre tasas de impuestos e ingresos",
+        tipo: "interactivo",
+      },
+    ],
   },
   9: {
-    titulo: "Gráficos Interactivos: Comercio Internacional",
-    descripcion: "Efectos del comercio y políticas comerciales",
+    titulo: "Gráficos: Comercio Internacional",
+    descripcion: "Análisis visual del comercio y políticas comerciales",
     graficos: [
       {
-        id: "ganancias-comercio-internacional",
-        titulo: "Ganancias del Comercio Internacional",
-        descripcion: "Beneficios para países exportadores e importadores",
-        tipo: "interactivo"
+        id: "comercio-internacional",
+        titulo: "Simulador de Comercio Internacional",
+        descripcion: "Analiza efectos del comercio en países exportadores e importadores",
+        tipo: "simulacion",
       },
       {
-        id: "efectos-arancel",
-        titulo: "Efectos de un Arancel",
-        descripcion: "Impacto de aranceles en el bienestar",
-        tipo: "simulacion"
-      }
+        id: "aranceles-cuotas",
+        titulo: "Efectos de Aranceles y Cuotas",
+        descripcion: "Compara impactos de diferentes políticas comerciales",
+        tipo: "comparativo",
+      },
+    ],
+  },
+}
+
+// Componentes de gráficos específicos
+function ExcedentesInteractivo() {
+  const [precio, setPrecio] = useState([50])
+  const [interceptoDemanda, setInterceptoDemanda] = useState([100])
+  const [interceptoOferta, setInterceptoOferta] = useState([20])
+
+  // Calcular puntos de las curvas
+  const generarDatos = () => {
+    const datos = []
+    for (let q = 0; q <= 100; q += 5) {
+      const pDemanda = interceptoDemanda[0] - q
+      const pOferta = interceptoOferta[0] + q * 0.8
+      datos.push({
+        cantidad: q,
+        demanda: Math.max(0, pDemanda),
+        oferta: Math.max(0, pOferta),
+        precio: precio[0],
+      })
+    }
+    return datos
+  }
+
+  // Calcular equilibrio
+  const calcularEquilibrio = () => {
+    const pendienteDemanda = -1
+    const pendienteOferta = 0.8
+    const qEquilibrio = (interceptoDemanda[0] - interceptoOferta[0]) / (1 + 0.8)
+    const pEquilibrio = interceptoDemanda[0] + pendienteDemanda * qEquilibrio
+    return { q: qEquilibrio, p: pEquilibrio }
+  }
+
+  // Calcular excedentes
+  const calcularExcedentes = () => {
+    const equilibrio = calcularEquilibrio()
+    const excedentesConsumidor = 0.5 * equilibrio.q * (interceptoDemanda[0] - equilibrio.p)
+    const excedentesProductor = 0.5 * equilibrio.q * (equilibrio.p - interceptoOferta[0])
+    return {
+      consumidor: excedentesConsumidor,
+      productor: excedentesProductor,
+      total: excedentesConsumidor + excedentesProductor,
+    }
+  }
+
+  const datos = generarDatos()
+  const equilibrio = calcularEquilibrio()
+  const excedentes = calcularExcedentes()
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Controles Interactivos</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Intercepto de Demanda: {interceptoDemanda[0]}
+              </label>
+              <Slider
+                value={interceptoDemanda}
+                onValueChange={setInterceptoDemanda}
+                max={150}
+                min={50}
+                step={5}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Intercepto de Oferta: {interceptoOferta[0]}
+              </label>
+              <Slider
+                value={interceptoOferta}
+                onValueChange={setInterceptoOferta}
+                max={50}
+                min={0}
+                step={5}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Resultados</h4>
+          <div className="space-y-3">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-sm text-blue-600">Equilibrio</div>
+              <div className="font-semibold">P = ${equilibrio.p.toFixed(2)}, Q = {equilibrio.q.toFixed(1)}</div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-sm text-green-600">Excedente del Consumidor</div>
+              <div className="font-semibold">${excedentes.consumidor.toFixed(2)}</div>
+            </div>
+            <div className="bg-orange-50 p-3 rounded-lg">
+              <div className="text-sm text-orange-600">Excedente del Productor</div>
+              <div className="font-semibold">${excedentes.productor.toFixed(2)}</div>
+            </div>
+            <div className="bg-purple-50 p-3 rounded-lg">
+              <div className="text-sm text-purple-600">Excedente Total</div>
+              <div className="font-semibold">${excedentes.total.toFixed(2)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={datos}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
+            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip 
+              formatter={(value, name) => [
+                `$${Number(value).toFixed(2)}`, 
+                name === 'demanda' ? 'Demanda' : name === 'oferta' ? 'Oferta' : 'Precio'
+              ]}
+            />
+            <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" dot={false} />
+            <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" dot={false} />
+            <ReferenceLine x={equilibrio.q} stroke="#8b5cf6" strokeDasharray="5 5" />
+            <ReferenceLine y={equilibrio.p} stroke="#8b5cf6" strokeDasharray="5 5" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  )
+}
+
+function CurvaLafferInteractiva() {
+  const [tasaImpuesto, setTasaImpuesto] = useState([30])
+
+  const generarDatosLaffer = () => {
+    const datos = []
+    for (let tasa = 0; tasa <= 100; tasa += 2) {
+      // Función de Laffer simplificada: R = t * (100 - t) * factor
+      const baseImponible = Math.max(0, 100 - tasa * 0.8)
+      const recaudacion = (tasa / 100) * baseImponible * 100
+      const perdidaPesoMuerto = Math.pow(tasa / 100, 2) * 50
+      
+      datos.push({
+        tasa,
+        recaudacion,
+        perdidaPesoMuerto,
+        baseImponible,
+        tasaActual: tasa === tasaImpuesto[0] ? recaudacion : null,
+      })
+    }
+    return datos
+  }
+
+  const datos = generarDatosLaffer()
+  const puntoActual = datos.find(d => d.tasa === tasaImpuesto[0])
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Control de Tasa de Impuesto</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Tasa de Impuesto: {tasaImpuesto[0]}%
+              </label>
+              <Slider
+                value={tasaImpuesto}
+                onValueChange={setTasaImpuesto}
+                max={100}
+                min={0}
+                step={2}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Resultados en Tasa Actual</h4>
+          <div className="space-y-3">
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-sm text-green-600">Recaudación Fiscal</div>
+              <div className="font-semibold">${puntoActual?.recaudacion.toFixed(2)}</div>
+            </div>
+            <div className="bg-red-50 p-3 rounded-lg">
+              <div className="text-sm text-red-600">Pérdida de Peso Muerto</div>
+              <div className="font-semibold">${puntoActual?.perdidaPesoMuerto.toFixed(2)}</div>
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-sm text-blue-600">Base Imponible</div>
+              <div className="font-semibold">{puntoActual?.baseImponible.toFixed(1)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={datos}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="tasa" label={{ value: 'Tasa de Impuesto (%)', position: 'insideBottom', offset: -5 }} />
+            <YAxis label={{ value: 'Valor ($)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip 
+              formatter={(value, name) => [
+                `$${Number(value).toFixed(2)}`, 
+                name === 'recaudacion' ? 'Recaudación' : 
+                name === 'perdidaPesoMuerto' ? 'Pérdida de Peso Muerto' : 'Base Imponible'
+              ]}
+            />
+            <Line type="monotone" dataKey="recaudacion" stroke="#10b981" strokeWidth={3} name="Recaudación" dot={false} />
+            <Line type="monotone" dataKey="perdidaPesoMuerto" stroke="#ef4444" strokeWidth={3} name="Pérdida de Peso Muerto" dot={false} />
+            <ReferenceLine x={tasaImpuesto[0]} stroke="#8b5cf6" strokeDasharray="5 5" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="bg-amber-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-amber-800 mb-2">Interpretación de la Curva de Laffer</h5>
+        <ul className="text-sm text-amber-700 space-y-1">
+          <li>• <strong>Lado izquierdo (tasas bajas):</strong> Aumentar impuestos incrementa la recaudación</li>
+          <li>• <strong>Punto máximo:</strong> Tasa que maximiza la recaudación fiscal</li>
+          <li>• <strong>Lado derecho (tasas altas):</strong> Aumentar impuestos reduce la recaudación</li>
+          <li>• <strong>Pérdida de peso muerto:</strong> Aumenta cuadráticamente con la tasa de impuesto</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+function ComercioInternacional() {
+  const [precioMundial, setPrecioMundial] = useState([45])
+  const [arancel, setArancel] = useState([0])
+
+  const generarDatosComercio = () => {
+    const datos = []
+    for (let q = 0; q <= 100; q += 5) {
+      const demandaDomestica = 80 - q * 0.6
+      const ofertaDomestica = 20 + q * 0.4
+      
+      datos.push({
+        cantidad: q,
+        demandaDomestica: Math.max(0, demandaDomestica),
+        ofertaDomestica: Math.max(0, ofertaDomestica),
+        precioMundial: precioMundial[0],
+        precioConArancel: precioMundial[0] + arancel[0],
+      })
+    }
+    return datos
+  }
+
+  // Calcular equilibrio de autarquía
+  const calcularAutarquia = () => {
+    // Demanda: P = 80 - 0.6Q, Oferta: P = 20 + 0.4Q
+    const qAutarquia = (80 - 20) / (0.6 + 0.4)
+    const pAutarquia = 20 + 0.4 * qAutarquia
+    return { q: qAutarquia, p: pAutarquia }
+  }
+
+  // Calcular cantidades con comercio
+  const calcularComercio = () => {
+    const precioEfectivo = precioMundial[0] + arancel[0]
+    const qDemandada = (80 - precioEfectivo) / 0.6
+    const qOfrecida = (precioEfectivo - 20) / 0.4
+    const importaciones = Math.max(0, qDemandada - qOfrecida)
+    
+    return {
+      qDemandada: Math.max(0, qDemandada),
+      qOfrecida: Math.max(0, qOfrecida),
+      importaciones,
+      precioEfectivo,
+    }
+  }
+
+  // Calcular efectos del bienestar
+  const calcularBienestar = () => {
+    const autarquia = calcularAutarquia()
+    const comercio = calcularComercio()
+    
+    // Cambios en excedentes (simplificado)
+    const cambioConsumidor = 0.5 * (autarquia.p - comercio.precioEfectivo) * (comercio.qDemandada + autarquia.q)
+    const cambioProductor = -0.5 * (autarquia.p - comercio.precioEfectivo) * (comercio.qOfrecida + autarquia.q)
+    const recaudacionArancel = arancel[0] * comercio.importaciones
+    const perdidaPesoMuerto = 0.5 * arancel[0] * (autarquia.q - comercio.qOfrecida) + 
+                             0.5 * arancel[0] * (comercio.qDemandada - autarquia.q)
+    
+    return {
+      cambioConsumidor,
+      cambioProductor,
+      recaudacionArancel,
+      perdidaPesoMuerto,
+      cambioTotal: cambioConsumidor + cambioProductor + recaudacionArancel,
+    }
+  }
+
+  const datos = generarDatosComercio()
+  const autarquia = calcularAutarquia()
+  const comercio = calcularComercio()
+  const bienestar = calcularBienestar()
+
+  const esImportador = precioMundial[0] < autarquia.p
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Controles de Política</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Precio Mundial: ${precioMundial[0]}
+              </label>
+              <Slider
+                value={precioMundial}
+                onValueChange={setPrecioMundial}
+                max={70}
+                min={30}
+                step={1}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Arancel: ${arancel[0]}
+              </label>
+              <Slider
+                value={arancel}
+                onValueChange={setArancel}
+                max={20}
+                min={0}
+                step={1}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Análisis del Mercado</h4>
+          <div className="space-y-3">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-sm text-blue-600">Tipo de País</div>
+              <div className="font-semibold">{esImportador ? 'Importador' : 'Exportador'}</div>
+            </div>
+            <div className="bg-gray-50 p-3 rounded-lg">
+              <div className="text-sm text-gray-600">Precio de Autarquía</div>
+              <div className="font-semibold">${autarquia.p.toFixed(2)}</div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-sm text-green-600">Precio Efectivo</div>
+              <div className="font-semibold">${comercio.precioEfectivo.toFixed(2)}</div>
+            </div>
+            <div className="bg-orange-50 p-3 rounded-lg">
+              <div className="text-sm text-orange-600">
+                {esImportador ? 'Importaciones' : 'Exportaciones'}
+              </div>
+              <div className="font-semibold">{comercio.importaciones.toFixed(1)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={datos}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
+            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip 
+              formatter={(value, name) => [
+                `$${Number(value).toFixed(2)}`, 
+                name === 'demandaDomestica' ? 'Demanda Doméstica' : 
+                name === 'ofertaDomestica' ? 'Oferta Doméstica' :
+                name === 'precioMundial' ? 'Precio Mundial' : 'Precio con Arancel'
+              ]}
+            />
+            <Line type="monotone" dataKey="demandaDomestica" stroke="#3b82f6" strokeWidth={3} name="Demanda Doméstica" dot={false} />
+            <Line type="monotone" dataKey="ofertaDomestica" stroke="#ef4444" strokeWidth={3} name="Oferta Doméstica" dot={false} />
+            <ReferenceLine y={precioMundial[0]} stroke="#10b981" strokeDasharray="5 5" label="Precio Mundial" />
+            {arancel[0] > 0 && (
+              <ReferenceLine y={precioMundial[0] + arancel[0]} stroke="#f59e0b" strokeDasharray="5 5" label="Precio + Arancel" />
+            )}
+            <ReferenceLine x={autarquia.q} y={autarquia.p} stroke="#8b5cf6" strokeDasharray="2 2" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="bg-green-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-green-800 mb-2">Efectos en el Bienestar</h5>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span>Cambio Consumidor:</span>
+              <span className={bienestar.cambioConsumidor >= 0 ? 'text-green-600' : 'text-red-600'}>
+                ${bienestar.cambioConsumidor.toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span>Cambio Productor:</span>
+              <span className={bienestar.cambioProductor >= 0 ? 'text-green-600' : 'text-red-600'}>
+                ${bienestar.cambioProductor.toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span>Recaudación Arancel:</span>
+              <span className="text-blue-600">${bienestar.recaudacionArancel.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between font-semibold border-t pt-2">
+              <span>Cambio Total:</span>
+              <span className={bienestar.cambioTotal >= 0 ? 'text-green-600' : 'text-red-600'}>
+                ${bienestar.cambioTotal.toFixed(2)}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-red-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-red-800 mb-2">Pérdida de Peso Muerto</h5>
+          <div className="text-2xl font-bold text-red-600 mb-2">
+            ${bienestar.perdidaPesoMuerto.toFixed(2)}
+          </div>
+          <p className="text-sm text-red-700">
+            Pérdida de eficiencia económica debido al arancel. Representa transacciones 
+            mutuamente beneficiosas que no ocurren por la distorsión del precio.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function OfertaDemandaBasico() {
+  const [interceptoDemanda, setInterceptoDemanda] = useState([100])
+  const [pendienteDemanda, setPendienteDemanda] = useState([1])
+  const [interceptoOferta, setInterceptoOferta] = useState([20])
+  const [pendienteOferta, setPendienteOferta] = useState([0.8])
+
+  const generarDatos = () => {
+    const datos = []
+    for (let q = 0; q <= 100; q += 2) {
+      const pDemanda = interceptoDemanda[0] - pendienteDemanda[0] * q
+      const pOferta = interceptoOferta[0] + pendienteOferta[0] * q
+      datos.push({
+        cantidad: q,
+        demanda: Math.max(0, pDemanda),
+        oferta: Math.max(0, pOferta),
+      })
+    }
+    return datos
+  }
+
+  const calcularEquilibrio = () => {
+    const qEq = (interceptoDemanda[0] - interceptoOferta[0]) / (pendienteDemanda[0] + pendienteOferta[0])
+    const pEq = interceptoDemanda[0] - pendienteDemanda[0] * qEq
+    return { q: qEq, p: pEq }
+  }
+
+  const datos = generarDatos()
+  const equilibrio = calcularEquilibrio()
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Parámetros de Demanda</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Intercepto: {interceptoDemanda[0]}
+              </label>
+              <Slider
+                value={interceptoDemanda}
+                onValueChange={setInterceptoDemanda}
+                max={150}
+                min={50}
+                step={5}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Pendiente: {pendienteDemanda[0]}
+              </label>
+              <Slider
+                value={pendienteDemanda}
+                onValueChange={setPendienteDemanda}
+                max={2}
+                min={0.2}
+                step={0.1}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Parámetros de Oferta</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Intercepto: {interceptoOferta[0]}
+              </label>
+              <Slider
+                value={interceptoOferta}
+                onValueChange={setInterceptoOferta}
+                max={50}
+                min={0}
+                step={2}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Pendiente: {pendienteOferta[0]}
+              </label>
+              <Slider
+                value={pendienteOferta}
+                onValueChange={setPendienteOferta}
+                max={2}
+                min={0.2}
+                step={0.1}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-blue-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-blue-800 mb-2">Equilibrio de Mercado</h5>
+        <div className="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <span className="text-blue-600">Precio de Equilibrio:</span>
+            <div className="font-semibold text-lg">${equilibrio.p.toFixed(2)}</div>
+          </div>
+          <div>
+            <span className="text-blue-600">Cantidad de Equilibrio:</span>
+            <div className="font-semibold text-lg">{equilibrio.q.toFixed(1)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={datos}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
+            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip 
+              formatter={(value, name) => [
+                `$${Number(value).toFixed(2)}`, 
+                name === 'demanda' ? 'Demanda' : 'Oferta'
+              ]}
+            />
+            <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" dot={false} />
+            <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" dot={false} />
+            <ReferenceLine x={equilibrio.q} stroke="#8b5cf6" strokeDasharray="5 5" />
+            <ReferenceLine y={equilibrio.p} stroke="#8b5cf6" strokeDasharray="5 5" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="bg-gray-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-800 mb-2">Ecuaciones del Modelo</h5>
+        <div className="grid md:grid-cols-2 gap-4 text-sm font-mono">
+          <div>
+            <div className="text-blue-600">Función de Demanda:</div>
+            <div>P = {interceptoDemanda[0]} - {pendienteDemanda[0]}Q</div>
+          </div>
+          <div>
+            <div className="text-red-600">Función de Oferta:</div>
+            <div>P = {interceptoOferta[0]} + {pendienteOferta[0]}Q</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ElasticidadCalculadora() {
+  const [precio1, setPrecio1] = useState([10])
+  const [precio2, setPrecio2] = useState([12])
+  const [cantidad1, setCantidad1] = useState([100])
+  const [cantidad2, setCantidad2] = useState([80])
+
+  const calcularElasticidad = () => {
+    const deltaP = precio2[0] - precio1[0]
+    const deltaQ = cantidad2[0] - cantidad1[0]
+    const promP = (precio1[0] + precio2[0]) / 2
+    const promQ = (cantidad1[0] + cantidad2[0]) / 2
+    
+    const elasticidad = (deltaQ / promQ) / (deltaP / promP)
+    
+    return {
+      elasticidad,
+      cambioP: (deltaP / promP) * 100,
+      cambioQ: (deltaQ / promQ) * 100,
+      tipo: Math.abs(elasticidad) > 1 ? 'Elástica' : Math.abs(elasticidad) < 1 ? 'Inelástica' : 'Unitaria',
+    }
+  }
+
+  const calcularIngresoTotal = () => {
+    const ingreso1 = precio1[0] * cantidad1[0]
+    const ingreso2 = precio2[0] * cantidad2[0]
+    const cambioIngreso = ingreso2 - ingreso1
+    
+    return { ingreso1, ingreso2, cambioIngreso }
+  }
+
+  const elasticidad = calcularElasticidad()
+  const ingresos = calcularIngresoTotal()
+
+  const generarDatosElasticidad = () => {
+    return [
+      {
+        punto: 'Inicial',
+        precio: precio1[0],
+        cantidad: cantidad1[0],
+        ingreso: ingresos.ingreso1,
+      },
+      {
+        punto: 'Final',
+        precio: precio2[0],
+        cantidad: cantidad2[0],
+        ingreso: ingresos.ingreso2,
+      },
     ]
   }
+
+  const datos = generarDatosElasticidad()
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Punto Inicial</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Precio 1: ${precio1[0]}
+              </label>
+              <Slider
+                value={precio1}
+                onValueChange={setPrecio1}
+                max={20}
+                min={5}
+                step={0.5}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Cantidad 1: {cantidad1[0]}
+              </label>
+              <Slider
+                value={cantidad1}
+                onValueChange={setCantidad1}
+                max={150}
+                min={50}
+                step={5}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Punto Final</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Precio 2: ${precio2[0]}
+              </label>
+              <Slider
+                value={precio2}
+                onValueChange={setPrecio2}
+                max={20}
+                min={5}
+                step={0.5}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Cantidad 2: {cantidad2[0]}
+              </label>
+              <Slider
+                value={cantidad2}
+                onValueChange={setCantidad2}
+                max={150}
+                min={50}
+                step={5}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-blue-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-blue-800 mb-2">Elasticidad Precio</h5>
+          <div className="text-2xl font-bold text-blue-600 mb-1">
+            {elasticidad.elasticidad.toFixed(3)}
+          </div>
+          <div className="text-sm text-blue-700">
+            Demanda {elasticidad.tipo}
+          </div>
+        </div>
+
+        <div className="bg-green-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-green-800 mb-2">Cambio en Precio</h5>
+          <div className="text-2xl font-bold text-green-600 mb-1">
+            {elasticidad.cambioP.toFixed(1)}%
+          </div>
+          <div className="text-sm text-green-700">
+            ${precio1[0]} → ${precio2[0]}
+          </div>
+        </div>
+
+        <div className="bg-orange-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-orange-800 mb-2">Cambio en Cantidad</h5>
+          <div className="text-2xl font-bold text-orange-600 mb-1">
+            {elasticidad.cambioQ.toFixed(1)}%
+          </div>
+          <div className="text-sm text-orange-700">
+            {cantidad1[0]} → {cantidad2[0]}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="h-64">
+          <h5 className="font-semibold mb-2">Cambio en Precio y Cantidad</h5>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={datos}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="punto" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="precio" fill="#3b82f6" name="Precio ($)" />
+              <Bar dataKey="cantidad" fill="#ef4444" name="Cantidad" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="bg-purple-50 p-4 rounded-lg">
+          <h5 className="font-semibold text-purple-800 mb-3">Análisis de Ingreso Total</h5>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span>Ingreso Inicial:</span>
+              <span className="font-semibold">${ingresos.ingreso1}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Ingreso Final:</span>
+              <span className="font-semibold">${ingresos.ingreso2}</span>
+            </div>
+            <div className="flex justify-between border-t pt-2">
+              <span>Cambio en Ingreso:</span>
+              <span className={`font-semibold ${ingresos.cambioIngreso >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                ${ingresos.cambioIngreso.toFixed(2)}
+              </span>
+            </div>
+          </div>
+          <div className="mt-3 text-xs text-purple-700">
+            {Math.abs(elasticidad.elasticidad) > 1 
+              ? "Con demanda elástica, precio e ingreso se mueven en direcciones opuestas"
+              : "Con demanda inelástica, precio e ingreso se mueven en la misma dirección"
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-gray-800 mb-2">Fórmula de Elasticidad (Método del Punto Medio)</h5>
+        <div className="font-mono text-sm bg-white p-3 rounded border">
+          Ed = [(Q₂-Q₁)/((Q₂+Q₁)/2)] / [(P₂-P₁)/((P₂+P₁)/2)]
+        </div>
+        <div className="mt-2 text-sm text-gray-600">
+          Ed = [{cantidad2[0]}-{cantidad1[0]}]/[({cantidad2[0]}+{cantidad1[0]})/2] / [{precio2[0]}-{precio1[0]}]/[({precio2[0]}+{precio1[0]})/2] = {elasticidad.elasticidad.toFixed(3)}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function GraficosPage({ params }: { params: { id: string } }) {
-  // Estados para controles interactivos
-  const [computadoras, setComputadoras] = useState([50])
-  const [trabajadorA, setTrabajadorA] = useState([8])
-  const [trabajadorB, setTrabajadorB] = useState([6])
-  const [precioGasolina, setPrecioGasolina] = useState([3])
-  const [productividadA, setProductividadA] = useState([10])
-  const [productividadB, setProductividadB] = useState([6])
-  const [precioEquilibrio, setPrecioEquilibrio] = useState([25])
-  const [desplazamientoDemanda, setDesplazamientoDemanda] = useState([0])
-  const [desplazamientoOferta, setDesplazamientoOferta] = useState([0])
-  const [elasticidad, setElasticidad] = useState([1.5])
-  const [precioControl, setPrecioControl] = useState([20])
-  const [impuesto, setImpuesto] = useState([5])
-  const [precioMercado, setPrecioMercado] = useState([30])
-  const [tasaImpuesto, setTasaImpuesto] = useState([20])
-  const [precioMundial, setPrecioMundial] = useState([25])
-  const [arancel, setArancel] = useState([5])
-
   const graficos = graficosData[Number.parseInt(params.id) as keyof typeof graficosData]
 
   if (!graficos) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4 py-8">
-          <Card className="max-w-md mx-auto">
-            <CardContent className="pt-6 text-center">
-              <p className="text-slate-600">Los gráficos para este capítulo están en desarrollo.</p>
-              <Link href={`/capitulo/${params.id}`}>
-                <Button className="mt-4">Volver al capítulo</Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    )
-  }
-
-  // Funciones para generar datos
-  const generarDatosFPP = () => {
-    const automoviles = Math.max(0, 100 - computadoras[0] * 2)
-    return [
-      { computadoras: 0, automoviles: 100 },
-      { computadoras: 10, automoviles: 80 },
-      { computadoras: 20, automoviles: 60 },
-      { computadoras: 30, automoviles: 40 },
-      { computadoras: 40, automoviles: 20 },
-      { computadoras: 50, automoviles: 0 },
-      { computadoras: computadoras[0], automoviles: automoviles, tipo: 'actual' }
-    ]
-  }
-
-  const generarDatosOfertaDemanda = () => {
-    const datos = []
-    for (let p = 5; p <= 50; p += 5) {
-      const demanda = Math.max(0, 100 - p * 1.5 + desplazamientoDemanda[0])
-      const oferta = Math.max(0, p * 2 - 20 + desplazamientoOferta[0])
-      datos.push({ precio: p, demanda, oferta })
-    }
-    return datos
-  }
-
-  const generarDatosElasticidad = () => {
-    const datos = []
-    const precioBase = 20
-    const cantidadBase = 100
-    
-    for (let p = 10; p <= 40; p += 2) {
-      const cambioP = (p - precioBase) / precioBase
-      const cambioQ = -elasticidad[0] * cambioP
-      const cantidad = Math.max(0, cantidadBase * (1 + cambioQ))
-      const ingresoTotal = p * cantidad
-      datos.push({ precio: p, cantidad, ingresoTotal })
-    }
-    return datos
-  }
-
-  const generarDatosExcedentes = () => {
-    const precio = precioMercado[0]
-    const cantidad = Math.max(0, 100 - precio)
-    const excedenteCons = (1/2) * cantidad * (100 - precio)
-    const excedenteProd = (1/2) * cantidad * (precio - 10)
-    const excedentTotal = excedenteCons + excedenteProd
-    
-    return {
-      precio,
-      cantidad,
-      excedenteCons,
-      excedenteProd,
-      excedentTotal,
-      datos: [
-        { precio: 10, demanda: 90, oferta: 0 },
-        { precio: 20, demanda: 80, oferta: 10 },
-        { precio: 30, demanda: 70, oferta: 20 },
-        { precio: 40, demanda: 60, oferta: 30 },
-        { precio: 50, demanda: 50, oferta: 40 },
-        { precio: 60, demanda: 40, oferta: 50 },
-        { precio: 70, demanda: 30, oferta: 60 },
-        { precio: 80, demanda: 20, oferta: 70 },
-        { precio: 90, demanda: 10, oferta: 80 },
-        { precio: 100, demanda: 0, oferta: 90 }
-      ]
-    }
-  }
-
-  const generarDatosCurvaLaffer = () => {
-    const datos = []
-    for (let t = 0; t <= 100; t += 5) {
-      const baseImponible = Math.max(0, 100 - t * 0.8)
-      const recaudacion = (t / 100) * baseImponible
-      const perdidaPesoMuerto = (t / 100) * (t / 100) * 50
-      datos.push({ 
-        tasa: t, 
-        recaudacion, 
-        perdidaPesoMuerto,
-        baseImponible 
-      })
-    }
-    return datos
-  }
-
-  const generarDatosComercioInternacional = () => {
-    const precioDomestico = 35
-    const precio = precioMundial[0]
-    
-    // Datos básicos del mercado
-    const demandaDomestica = Math.max(0, 100 - precio)
-    const ofertaDomestica = Math.max(0, precio - 10)
-    
-    let esExportador = precio > precioDomestico
-    let exportaciones = 0
-    let importaciones = 0
-    
-    if (esExportador) {
-      exportaciones = Math.max(0, ofertaDomestica - demandaDomestica)
-    } else {
-      importaciones = Math.max(0, demandaDomestica - ofertaDomestica)
-    }
-    
-    const gananciasComercio = esExportador 
-      ? (1/2) * (precio - precioDomestico) * exportaciones
-      : (1/2) * (precioDomestico - precio) * importaciones
-    
-    return {
-      precio,
-      precioDomestico,
-      demandaDomestica,
-      ofertaDomestica,
-      esExportador,
-      exportaciones,
-      importaciones,
-      gananciasComercio,
-      datos: [
-        { precio: 10, demanda: 90, oferta: 0 },
-        { precio: 20, demanda: 80, oferta: 10 },
-        { precio: 30, demanda: 70, oferta: 20 },
-        { precio: 40, demanda: 60, oferta: 30 },
-        { precio: 50, demanda: 50, oferta: 40 }
-      ]
-    }
-  }
-
-  const generarDatosArancel = () => {
-    const precioMundialBase = 20
-    const precioConArancel = precioMundialBase + arancel[0]
-    
-    const demandaSinArancel = Math.max(0, 100 - precioMundialBase)
-    const ofertaSinArancel = Math.max(0, precioMundialBase - 10)
-    const importacionesSinArancel = demandaSinArancel - ofertaSinArancel
-    
-    const demandaConArancel = Math.max(0, 100 - precioConArancel)
-    const ofertaConArancel = Math.max(0, precioConArancel - 10)
-    const importacionesConArancel = Math.max(0, demandaConArancel - ofertaConArancel)
-    
-    const recaudacionArancel = arancel[0] * importacionesConArancel
-    const perdidaPesoMuerto = (1/2) * arancel[0] * (importacionesSinArancel - importacionesConArancel)
-    
-    return {
-      precioMundialBase,
-      precioConArancel,
-      demandaSinArancel,
-      ofertaSinArancel,
-      importacionesSinArancel,
-      demandaConArancel,
-      ofertaConArancel,
-      importacionesConArancel,
-      recaudacionArancel,
-      perdidaPesoMuerto
-    }
-  }
-
-  // Generar datos según el capítulo
-  const fppData = generarDatosFPP()
-  const ofertaDemandaData = generarDatosOfertaDemanda()
-  const elasticidadData = generarDatosElasticidad()
-  const excedentesData = generarDatosExcedentes()
-  const lafferData = generarDatosCurvaLaffer()
-  const comercioData = generarDatosComercioInternacional()
-  const arancelData = generarDatosArancel()
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm mb-8 -mx-4 px-4 py-4">
             <div className="flex items-center gap-4">
               <Link href={`/capitulo/${params.id}`}>
                 <Button variant="ghost" size="sm">
@@ -399,700 +978,153 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
                 <span className="font-semibold text-slate-800">EconoHub CEIC</span>
               </div>
             </div>
-            <Badge variant="outline" className="text-slate-600 border-slate-300">
-              Capítulo {params.id}
-            </Badge>
+          </header>
+          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <CardContent className="pt-6 text-center">
+              <p className="text-slate-600 mb-4">Los gráficos para este capítulo están en desarrollo.</p>
+              <Link href={`/capitulo/${params.id}`}>
+                <Button>Volver al contenido teórico</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    )
+  }
+
+  const renderGrafico = (graficoId: string) => {
+    switch (graficoId) {
+      case "excedentes-interactivo":
+        return <ExcedentesInteractivo />
+      case "curva-laffer":
+        return <CurvaLafferInteractiva />
+      case "comercio-internacional":
+        return <ComercioInternacional />
+      case "oferta-demanda-basico":
+        return <OfertaDemandaBasico />
+      case "elasticidad-calculadora":
+        return <ElasticidadCalculadora />
+      default:
+        return (
+          <div className="text-center py-8">
+            <p className="text-slate-600">Este gráfico está en desarrollo.</p>
+          </div>
+        )
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Header */}
+      <header className="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href={`/capitulo/${params.id}`}>
+                <Button variant="ghost" size="sm" className="hover:bg-slate-100">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Volver al capítulo
+                </Button>
+              </Link>
+              <div className="flex items-center gap-3">
+                <Image src="/logo-ceic.png" alt="CEIC Logo" width={32} height={32} className="rounded shadow-sm" />
+                <div>
+                  <span className="font-semibold text-slate-800">EconoHub CEIC</span>
+                  <p className="text-xs text-slate-600">Gráficos Interactivos</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Badge variant="outline" className="text-slate-600 border-slate-300">
+                Capítulo {params.id}
+              </Badge>
+            </div>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        {/* Hero */}
-        <div className="bg-gradient-to-br from-blue-50 to-violet-50 rounded-3xl p-8 mb-12 shadow-lg">
-          <h1 className="text-4xl font-bold text-slate-800 mb-4">{graficos.titulo}</h1>
-          <p className="text-xl text-slate-700 mb-6 leading-relaxed">{graficos.descripcion}</p>
-          <div className="flex items-center gap-4">
-            <Badge className="bg-blue-100 text-blue-700 border-blue-200" variant="outline">
-              {graficos.graficos.length} visualizaciones
-            </Badge>
-            <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
-              Interactivo
-            </Badge>
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        {/* Hero section */}
+        <div className="bg-gradient-to-br from-blue-50 via-white to-violet-50 rounded-3xl p-8 mb-8 shadow-lg border border-blue-100">
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-slate-800 mb-4">{graficos.titulo}</h1>
+              <p className="text-xl text-slate-700 mb-6 leading-relaxed">{graficos.descripcion}</p>
+              <div className="flex items-center gap-4">
+                <Badge className="bg-blue-100 text-blue-700 border-blue-200" variant="outline">
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  {graficos.graficos.length} gráficos interactivos
+                </Badge>
+                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
+                  <Zap className="h-4 w-4 mr-2" />
+                  Simulaciones en tiempo real
+                </Badge>
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* Gráficos */}
         <div className="space-y-12">
-          {/* Gráficos específicos por capítulo */}
-          
-          {/* Capítulo 1: Principios de Economía */}
-          {params.id === "1" && (
-            <>
-              {/* Costo de Oportunidad */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
+          {graficos.graficos.map((grafico, index) => (
+            <Card key={grafico.id} className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+              <CardHeader className="pb-4">
+                <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
-                      <TrendingUp className="h-6 w-6 text-white" />
+                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 text-white font-bold">
+                      {index + 1}
                     </div>
-                    Costo de Oportunidad Interactivo
+                    <span>{grafico.titulo}</span>
                   </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Escenario: Tiempo de Estudio</h4>
-                      <p className="text-slate-600 mb-4">
-                        Tienes 10 horas para estudiar. Puedes dedicarlas a Economía o Matemáticas.
-                      </p>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Horas dedicadas a Economía: {trabajadorA[0]}
-                          </label>
-                          <Slider
-                            value={trabajadorA}
-                            onValueChange={setTrabajadorA}
-                            max={10}
-                            min={0}
-                            step={1}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl">
-                          <p><strong>Horas en Economía:</strong> {trabajadorA[0]}</p>
-                          <p><strong>Horas en Matemáticas:</strong> {10 - trabajadorA[0]}</p>
-                          <p className="text-blue-600 font-semibold mt-2">
-                            <strong>Costo de Oportunidad:</strong> {10 - trabajadorA[0]} horas de Matemáticas
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <AreaChart data={[
-                          { materia: 'Economía', horas: trabajadorA[0] },
-                          { materia: 'Matemáticas', horas: 10 - trabajadorA[0] }
-                        ]}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="materia" />
-                          <YAxis />
-                          <Tooltip />
-                          <Area dataKey="horas" fill="#3b82f6" fillOpacity={0.6} />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Badge 
+                      className={
+                        grafico.tipo === 'interactivo' ? 'bg-green-100 text-green-700 border-green-200' :
+                        grafico.tipo === 'simulacion' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+                        grafico.tipo === 'calculadora' ? 'bg-purple-100 text-purple-700 border-purple-200' :
+                        'bg-orange-100 text-orange-700 border-orange-200'
+                      } 
+                      variant="outline"
+                    >
+                      {grafico.tipo === 'interactivo' && <TrendingUp className="h-3 w-3 mr-1" />}
+                      {grafico.tipo === 'simulacion' && <BarChart3 className="h-3 w-3 mr-1" />}
+                      {grafico.tipo === 'calculadora' && <Calculator className="h-3 w-3 mr-1" />}
+                      {grafico.tipo === 'comparativo' && <Globe className="h-3 w-3 mr-1" />}
+                      {grafico.tipo.charAt(0).toUpperCase() + grafico.tipo.slice(1)}
+                    </Badge>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+                <p className="text-slate-600 text-lg mt-2">{grafico.descripcion}</p>
+              </CardHeader>
+              <CardContent>
+                {renderGrafico(grafico.id)}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-              {/* Incentivos */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl">
-                      <Zap className="h-6 w-6 text-white" />
-                    </div>
-                    Respuesta a Incentivos
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Precio de la Gasolina y Demanda de Autos Grandes</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Precio de la gasolina: ${precioGasolina[0]}/galón
-                          </label>
-                          <Slider
-                            value={precioGasolina}
-                            onValueChange={setPrecioGasolina}
-                            max={6}
-                            min={1}
-                            step={0.5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl">
-                          <p><strong>Precio gasolina:</strong> ${precioGasolina[0]}/galón</p>
-                          <p><strong>Demanda autos grandes:</strong> {Math.max(10, 100 - precioGasolina[0] * 15)} unidades</p>
-                          <p className="text-emerald-600 font-semibold mt-2">
-                            {precioGasolina[0] > 4 ? "Alta reducción en demanda" : 
-                             precioGasolina[0] > 2 ? "Reducción moderada" : "Demanda alta"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={[
-                          { precio: 1, demanda: 85 },
-                          { precio: 2, demanda: 70 },
-                          { precio: 3, demanda: 55 },
-                          { precio: 4, demanda: 40 },
-                          { precio: 5, demanda: 25 },
-                          { precio: precioGasolina[0], demanda: Math.max(10, 100 - precioGasolina[0] * 15), tipo: 'actual' }
-                        ]}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis label={{ value: 'Demanda', angle: -90, position: 'insideLeft' }} />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="demanda" stroke="#10b981" strokeWidth={3} />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 2: Pensando como Economista */}
-          {params.id === "2" && (
-            <>
-              {/* Frontera de Posibilidades de Producción */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl">
-                      <BarChart3 className="h-6 w-6 text-white" />
-                    </div>
-                    Frontera de Posibilidades de Producción (FPP)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Producción de Computadoras vs Automóviles</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Computadoras producidas: {computadoras[0]}
-                          </label>
-                          <Slider
-                            value={computadoras}
-                            onValueChange={setComputadoras}
-                            max={50}
-                            min={0}
-                            step={5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl">
-                          <p><strong>Computadoras:</strong> {computadoras[0]} unidades</p>
-                          <p><strong>Automóviles:</strong> {Math.max(0, 100 - computadoras[0] * 2)} unidades</p>
-                          <p><strong>Costo de Oportunidad:</strong> {(computadoras[0] * 2).toFixed(1)} automóviles</p>
-                          <p className="text-violet-600 font-semibold mt-2">
-                            {Math.max(0, 100 - computadoras[0] * 2) === 0 ? "Especialización completa en computadoras" :
-                             computadoras[0] === 0 ? "Especialización completa en automóviles" :
-                             "Producción mixta"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={fppData}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis 
-                            dataKey="computadoras" 
-                            label={{ value: 'Computadoras', position: 'insideBottom', offset: -5 }} 
-                          />
-                          <YAxis 
-                            label={{ value: 'Automóviles', angle: -90, position: 'insideLeft' }} 
-                          />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="automoviles" stroke="#8b5cf6" strokeWidth={2} />
-                          <Scatter 
-                            data={fppData.filter(d => d.tipo === 'actual')} 
-                            fill="#ef4444" 
-                          />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Flujo Circular */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
-                      <RefreshCw className="h-6 w-6 text-white" />
-                    </div>
-                    Diagrama de Flujo Circular
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-gradient-to-br from-blue-50 to-violet-50 p-8 rounded-2xl">
-                    <div className="grid grid-cols-3 gap-8 items-center">
-                      {/* Hogares */}
-                      <div className="text-center">
-                        <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <Users className="h-8 w-8 text-white" />
-                        </div>
-                        <h4 className="font-bold text-blue-700 mb-2">HOGARES</h4>
-                        <p className="text-sm text-slate-600">Propietarios de factores de producción</p>
-                      </div>
-
-                      {/* Mercados */}
-                      <div className="space-y-8">
-                        <div className="bg-emerald-100 p-4 rounded-xl text-center">
-                          <h4 className="font-semibold text-emerald-800">Mercado de Factores</h4>
-                          <p className="text-xs text-emerald-600">Trabajo, Tierra, Capital</p>
-                        </div>
-                        <div className="bg-orange-100 p-4 rounded-xl text-center">
-                          <h4 className="font-semibold text-orange-800">Mercado de Bienes</h4>
-                          <p className="text-xs text-orange-600">Productos y Servicios</p>
-                        </div>
-                      </div>
-
-                      {/* Empresas */}
-                      <div className="text-center">
-                        <div className="w-24 h-24 bg-violet-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <Building className="h-8 w-8 text-white" />
-                        </div>
-                        <h4 className="font-bold text-violet-700 mb-2">EMPRESAS</h4>
-                        <p className="text-sm text-slate-600">Productores de bienes y servicios</p>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 grid md:grid-cols-2 gap-6">
-                      <div className="bg-white p-4 rounded-xl">
-                        <h5 className="font-semibold text-blue-700 mb-2">Flujos Reales</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Hogares → Empresas: Trabajo, tierra, capital</li>
-                          <li>• Empresas → Hogares: Bienes y servicios</li>
-                        </ul>
-                      </div>
-                      <div className="bg-white p-4 rounded-xl">
-                        <h5 className="font-semibold text-emerald-700 mb-2">Flujos Monetarios</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• Empresas → Hogares: Salarios, rentas, beneficios</li>
-                          <li>• Hogares → Empresas: Gastos en bienes</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 4: Oferta y Demanda */}
-          {params.id === "4" && (
-            <>
-              {/* Equilibrio de Mercado */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
-                      <Target className="h-6 w-6 text-white" />
-                    </div>
-                    Equilibrio de Mercado Interactivo
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Desplazamientos de Oferta y Demanda</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Desplazamiento de Demanda: {desplazamientoDemanda[0] > 0 ? '+' : ''}{desplazamientoDemanda[0]}
-                          </label>
-                          <Slider
-                            value={desplazamientoDemanda}
-                            onValueChange={setDesplazamientoDemanda}
-                            max={30}
-                            min={-30}
-                            step={5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Desplazamiento de Oferta: {desplazamientoOferta[0] > 0 ? '+' : ''}{desplazamientoOferta[0]}
-                          </label>
-                          <Slider
-                            value={desplazamientoOferta}
-                            onValueChange={setDesplazamientoOferta}
-                            max={30}
-                            min={-30}
-                            step={5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl">
-                          <p><strong>Efecto en el mercado:</strong></p>
-                          <p className="text-blue-600">
-                            {desplazamientoDemanda[0] > 0 ? "↑ Aumento de demanda" : 
-                             desplazamientoDemanda[0] < 0 ? "↓ Disminución de demanda" : "→ Demanda sin cambios"}
-                          </p>
-                          <p className="text-emerald-600">
-                            {desplazamientoOferta[0] > 0 ? "↑ Aumento de oferta" : 
-                             desplazamientoOferta[0] < 0 ? "↓ Disminución de oferta" : "→ Oferta sin cambios"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={ofertaDemandaData}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" />
-                          <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 5: Elasticidad */}
-          {params.id === "5" && (
-            <>
-              {/* Elasticidad e Ingreso Total */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl">
-                      <DollarSign className="h-6 w-6 text-white" />
-                    </div>
-                    Elasticidad e Ingreso Total
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Elasticidad Precio de la Demanda</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Elasticidad: {elasticidad[0].toFixed(1)}
-                          </label>
-                          <Slider
-                            value={elasticidad}
-                            onValueChange={setElasticidad}
-                            max={3}
-                            min={0.1}
-                            step={0.1}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl">
-                          <p><strong>Tipo de demanda:</strong></p>
-                          <p className="text-purple-600 font-semibold">
-                            {elasticidad[0] > 1 ? "Elástica (sensible al precio)" : 
-                             elasticidad[0] === 1 ? "Unitaria" : "Inelástica (poco sensible)"}
-                          </p>
-                          <p className="text-sm mt-2">
-                            {elasticidad[0] > 1 ? "Reducir precio aumenta ingresos" : 
-                             elasticidad[0] === 1 ? "Cambios de precio no afectan ingresos" : 
-                             "Aumentar precio aumenta ingresos"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <ComposedChart data={elasticidadData}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis yAxisId="left" label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
-                          <YAxis yAxisId="right" orientation="right" label={{ value: 'Ingreso Total', angle: 90, position: 'insideRight' }} />
-                          <Tooltip />
-                          <Line yAxisId="left" type="monotone" dataKey="cantidad" stroke="#8b5cf6" strokeWidth={2} name="Cantidad" />
-                          <Line yAxisId="right" type="monotone" dataKey="ingresoTotal" stroke="#f59e0b" strokeWidth={2} name="Ingreso Total" />
-                        </ComposedChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 7: Excedentes y Eficiencia */}
-          {params.id === "7" && (
-            <>
-              {/* Excedentes del Consumidor y Productor */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl">
-                      <BarChart3 className="h-6 w-6 text-white" />
-                    </div>
-                    Excedentes del Consumidor y Productor
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Análisis de Bienestar</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Precio de Mercado: ${precioMercado[0]}
-                          </label>
-                          <Slider
-                            value={precioMercado}
-                            onValueChange={setPrecioMercado}
-                            max={80}
-                            min={20}
-                            step={5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl space-y-2">
-                          <p><strong>Cantidad de equilibrio:</strong> {excedentesData.cantidad.toFixed(0)} unidades</p>
-                          <p className="text-blue-600"><strong>Excedente del consumidor:</strong> ${excedentesData.excedenteCons.toFixed(0)}</p>
-                          <p className="text-emerald-600"><strong>Excedente del productor:</strong> ${excedentesData.excedenteProd.toFixed(0)}</p>
-                          <p className="text-purple-600 font-semibold"><strong>Excedente total:</strong> ${excedentesData.excedentTotal.toFixed(0)}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={excedentesData.datos}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" />
-                          <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" />
-                          <ReferenceLine y={precioMercado[0]} stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" label="Precio de Mercado" />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 8: Costos de los Impuestos */}
-          {params.id === "8" && (
-            <>
-              {/* Curva de Laffer */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl">
-                      <TrendingUp className="h-6 w-6 text-white" />
-                    </div>
-                    Curva de Laffer: Impuestos vs Recaudación
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Tasa de Impuesto</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Tasa de impuesto: {tasaImpuesto[0]}%
-                          </label>
-                          <Slider
-                            value={tasaImpuesto}
-                            onValueChange={setTasaImpuesto}
-                            max={100}
-                            min={0}
-                            step={5}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl space-y-2">
-                          {(() => {
-                            const baseImponible = Math.max(0, 100 - tasaImpuesto[0] * 0.8)
-                            const recaudacion = (tasaImpuesto[0] / 100) * baseImponible
-                            const perdidaPesoMuerto = (tasaImpuesto[0] / 100) * (tasaImpuesto[0] / 100) * 50
-                            return (
-                              <>
-                                <p><strong>Base imponible:</strong> {baseImponible.toFixed(0)} unidades</p>
-                                <p className="text-green-600"><strong>Recaudación:</strong> ${recaudacion.toFixed(0)}</p>
-                                <p className="text-red-600"><strong>Pérdida peso muerto:</strong> ${perdidaPesoMuerto.toFixed(0)}</p>
-                                <p className="text-amber-600 font-semibold">
-                                  {tasaImpuesto[0] < 30 ? "Zona de crecimiento de recaudación" :
-                                   tasaImpuesto[0] < 70 ? "Zona de máxima recaudación" :
-                                   "Zona de reducción de recaudación"}
-                                </p>
-                              </>
-                            )
-                          })()}
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <ComposedChart data={lafferData}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="tasa" label={{ value: 'Tasa de Impuesto (%)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis label={{ value: 'Recaudación / PPM', angle: -90, position: 'insideLeft' }} />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="recaudacion" stroke="#10b981" strokeWidth={3} name="Recaudación" />
-                          <Line type="monotone" dataKey="perdidaPesoMuerto" stroke="#ef4444" strokeWidth={3} name="Pérdida Peso Muerto" />
-                          <ReferenceLine x={tasaImpuesto[0]} stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" />
-                        </ComposedChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Capítulo 9: Comercio Internacional */}
-          {params.id === "9" && (
-            <>
-              {/* Ganancias del Comercio Internacional */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
-                      <TrendingUp className="h-6 w-6 text-white" />
-                    </div>
-                    Ganancias del Comercio Internacional
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Precio Mundial vs Precio Doméstico</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Precio Mundial: ${precioMundial[0]}
-                          </label>
-                          <Slider
-                            value={precioMundial}
-                            onValueChange={setPrecioMundial}
-                            max={50}
-                            min={15}
-                            step={2}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl space-y-2">
-                          <p><strong>Precio doméstico (sin comercio):</strong> $35</p>
-                          <p><strong>Precio mundial:</strong> ${comercioData.precio}</p>
-                          <p className="font-semibold">
-                            {comercioData.esExportador ? 
-                              <span className="text-green-600">País EXPORTADOR</span> :
-                              <span className="text-blue-600">País IMPORTADOR</span>
-                            }
-                          </p>
-                          <p><strong>Demanda doméstica:</strong> {comercioData.demandaDomestica} unidades</p>
-                          <p><strong>Oferta doméstica:</strong> {comercioData.ofertaDomestica} unidades</p>
-                          {comercioData.esExportador ? (
-                            <p className="text-green-600"><strong>Exportaciones:</strong> {comercioData.exportaciones} unidades</p>
-                          ) : (
-                            <p className="text-blue-600"><strong>Importaciones:</strong> {comercioData.importaciones} unidades</p>
-                          )}
-                          <p className="text-purple-600 font-semibold">
-                            <strong>Ganancias del comercio:</strong> ${comercioData.gananciasComercio.toFixed(0)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={comercioData.datos}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
-                          <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
-                          <Tooltip />
-                          <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda Doméstica" />
-                          <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta Doméstica" />
-                          <ReferenceLine y={precioMundial[0]} stroke="#10b981" strokeWidth={2} strokeDasharray="5 5" label="Precio Mundial" />
-                          <ReferenceLine y={35} stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" label="Precio Doméstico" />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Efectos de un Arancel */}
-              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="p-2 bg-gradient-to-br from-red-500 to-red-600 rounded-xl">
-                      <DollarSign className="h-6 w-6 text-white" />
-                    </div>
-                    Efectos de un Arancel
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4">Arancel a las Importaciones</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            Arancel: ${arancel[0]} por unidad
-                          </label>
-                          <Slider
-                            value={arancel}
-                            onValueChange={setArancel}
-                            max={15}
-                            min={0}
-                            step={1}
-                            className="w-full"
-                          />
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-xl space-y-2">
-                          <p><strong>Precio mundial:</strong> ${arancelData.precioMundialBase}</p>
-                          <p><strong>Precio con arancel:</strong> ${arancelData.precioConArancel}</p>
-                          <p><strong>Importaciones sin arancel:</strong> {arancelData.importacionesSinArancel} unidades</p>
-                          <p><strong>Importaciones con arancel:</strong> {arancelData.importacionesConArancel} unidades</p>
-                          <p className="text-green-600"><strong>Recaudación arancelaria:</strong> ${arancelData.recaudacionArancel.toFixed(0)}</p>
-                          <p className="text-red-600"><strong>Pérdida peso muerto:</strong> ${arancelData.perdidaPesoMuerto.toFixed(0)}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <BarChart data={[
-                          { concepto: 'Recaudación Arancelaria', valor: arancelData.recaudacionArancel },
-                          { concepto: 'Pérdida Peso Muerto', valor: arancelData.perdidaPesoMuerto },
-                          { concepto: 'Reducción Importaciones', valor: arancelData.importacionesSinArancel - arancelData.importacionesConArancel }
-                        ]}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="concepto" />
-                          <YAxis />
-                          <Tooltip />
-                          <Bar dataKey="valor" fill="#f59e0b" />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          )}
-
-          {/* Navegación */}
-          <div className="flex justify-center gap-4 pt-8">
-            <Link href={`/capitulo/${params.id}`}>
-              <Button variant="outline" size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Volver a la Teoría
-              </Button>
-            </Link>
-            <Link href={`/ejercicios/${params.id}`}>
-              <Button size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-                <Calculator className="h-5 w-5 mr-2" />
-                Practicar Ejercicios
-              </Button>
-            </Link>
-          </div>
+        {/* Navegación */}
+        <div className="mt-12 flex justify-center">
+          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <CardContent className="pt-6 text-center">
+              <h3 className="font-semibold text-slate-800 mb-2">¿Terminaste de explorar?</h3>
+              <p className="text-sm text-slate-600 mb-4">Continúa tu aprendizaje con ejercicios prácticos</p>
+              <div className="flex gap-3 justify-center">
+                <Link href={`/capitulo/${params.id}`}>
+                  <Button variant="outline" className="shadow-md hover:shadow-lg transition-all duration-300">
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Repasar Teoría
+                  </Button>
+                </Link>
+                <Link href={`/ejercicios/${params.id}`}>
+                  <Button className="shadow-lg hover:shadow-xl transition-all duration-300">
+                    <Calculator className="h-4 w-4 mr-2" />
+                    Hacer Ejercicios
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
