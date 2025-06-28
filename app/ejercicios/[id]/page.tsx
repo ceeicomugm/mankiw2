@@ -339,6 +339,100 @@ const ejerciciosData = {
           "La empresa debería disminuir el precio. Con una elasticidad de -2.0, la demanda es elástica (|Ed| > 1). Esto significa que un cambio porcentual en el precio resulta en un cambio porcentual mayor en la cantidad demandada en dirección opuesta. Por tanto, una reducción del precio causará un aumento proporcionalmente mayor en la cantidad vendida, incrementando el ingreso total. La regla es: con demanda elástica, precio e ingreso total se mueven en direcciones opuestas.",
         conceptosClave: ["Elasticidad e ingreso total", "Demanda elástica", "Estrategia de precios"],
       },
+      {
+        id: 4,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Una empresa tiene una función de demanda P = 50 - 2Q. Calcula el ingreso total cuando Q = 10 y determina si debería aumentar o disminuir la cantidad para maximizar ingresos.",
+        solucion: {
+          pasos: [
+            "Cuando Q = 10: P = 50 - 2(10) = 30",
+            "Ingreso Total = P × Q = 30 × 10 = 300",
+            "Para maximizar IT, derivamos: IT = PQ = (50 - 2Q)Q = 50Q - 2Q²",
+            "dIT/dQ = 50 - 4Q = 0, entonces Q* = 12.5",
+            "Como Q = 10 < 12.5, debería aumentar la cantidad",
+          ],
+          respuesta: "IT = $300. Debería aumentar la cantidad hasta Q = 12.5 para maximizar ingresos",
+        },
+        conceptosClave: ["Ingreso total", "Maximización", "Elasticidad unitaria"],
+      },
+    ],
+  },
+  6: {
+    titulo: "Ejercicios: Oferta, Demanda y Políticas Gubernamentales",
+    descripcion: "Analiza el impacto de la intervención gubernamental",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "Un precio máximo será efectivo (vinculante) solo si se establece:",
+        opciones: [
+          "Por encima del precio de equilibrio",
+          "Por debajo del precio de equilibrio",
+          "Igual al precio de equilibrio",
+          "No importa donde se establezca",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "Un precio máximo solo es vinculante cuando se establece por debajo del precio de equilibrio. Si se establece por encima, el mercado operará al precio de equilibrio natural y el control no tendrá efecto.",
+        conceptosClave: ["Precio máximo", "Precio de equilibrio", "Política vinculante"],
+      },
+      {
+        id: 2,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 25,
+        pregunta:
+          "En un mercado con Qd = 100 - P y Qs = 2P - 50, el gobierno impone un impuesto de $6 por unidad a los vendedores. Calcula el nuevo precio que pagan los compradores y el precio que reciben los vendedores.",
+        solucion: {
+          pasos: [
+            "Equilibrio original: 100 - P = 2P - 50, entonces P = 50, Q = 50",
+            "Con impuesto: Pc - Pv = 6 (donde Pc = precio compradores, Pv = precio vendedores)",
+            "Nueva condición de equilibrio: 100 - Pc = 2Pv - 50",
+            "Sustituyendo Pv = Pc - 6: 100 - Pc = 2(Pc - 6) - 50",
+            "100 - Pc = 2Pc - 12 - 50, entonces 162 = 3Pc, Pc = 54",
+            "Pv = 54 - 6 = 48, Q = 100 - 54 = 46",
+          ],
+          respuesta: "Precio compradores: $54, Precio vendedores: $48, Cantidad: 46 unidades",
+        },
+        conceptosClave: ["Impuestos", "Incidencia fiscal", "Cuña fiscal"],
+      },
+      {
+        id: 3,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Explica por qué un salario mínimo puede causar desempleo y qué factores determinan la magnitud de este efecto.",
+        respuestaSugerida:
+          "Un salario mínimo causa desempleo cuando se establece por encima del salario de equilibrio. A este salario más alto, más personas quieren trabajar (mayor cantidad ofrecida de trabajo) pero las empresas demandan menos trabajadores (menor cantidad demandada). La diferencia es desempleo. La magnitud depende de: (1) Elasticidad de la demanda laboral - si es más elástica, mayor desempleo; (2) Elasticidad de la oferta laboral - si es más elástica, más personas buscarán trabajo; (3) Qué tan por encima del equilibrio se establece el salario mínimo. El efecto es mayor en trabajadores jóvenes y no calificados cuya demanda laboral es más elástica.",
+        conceptosClave: ["Salario mínimo", "Desempleo", "Elasticidad laboral", "Precio mínimo"],
+      },
+      {
+        id: 4,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 35,
+        pregunta:
+          "Un mercado tiene Qd = 80 - P y Qs = P - 20. Se impone un impuesto de $10. Calcula: (a) la pérdida de peso muerto, (b) la recaudación fiscal, (c) quién paga más del impuesto.",
+        solucion: {
+          pasos: [
+            "Equilibrio original: 80 - P = P - 20, entonces P = 50, Q = 30",
+            "Con impuesto: 80 - Pc = Pv - 20 y Pc - Pv = 10",
+            "Sustituyendo: 80 - (Pv + 10) = Pv - 20, entonces 110 = 2Pv, Pv = 55",
+            "Pc = 65, Q = 15",
+            "(a) PPM = (1/2) × 10 × (30-15) = 75",
+            "(b) Recaudación = 10 × 15 = 150",
+            "(c) Compradores pagan 65-50 = 15, vendedores pagan 50-45 = 5",
+          ],
+          respuesta: "(a) PPM = $75, (b) Recaudación = $150, (c) Compradores pagan $15, vendedores $5",
+        },
+        conceptosClave: ["Pérdida de peso muerto", "Recaudación fiscal", "Incidencia fiscal", "Elasticidad"],
+      },
     ],
   },
 }
@@ -521,7 +615,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                   {ejercicios.ejercicios.length} ejercicios
                 </Badge>
                 <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
-                  {puntajeMaximo} puntos máximos
+                  {puntaje Máximo} puntos máximos
                 </Badge>
               </div>
             </div>

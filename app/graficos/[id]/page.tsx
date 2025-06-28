@@ -2,13 +2,13 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, BarChart3, BookOpen, Calculator, TrendingUp, Zap, RefreshCw } from "lucide-react"
+import { ArrowLeft, BarChart3, BookOpen, Calculator, TrendingUp, Zap, RefreshCw, DollarSign, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ReferenceLine, Area, AreaChart } from "recharts"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ReferenceLine, Area, AreaChart, BarChart, Bar } from "recharts"
 
 const graficosData = {
   1: {
@@ -76,6 +76,78 @@ const graficosData = {
         tipo: "interactivo"
       }
     ]
+  },
+  4: {
+    titulo: "Gráficos Interactivos: Oferta y Demanda",
+    descripcion: "Visualización dinámica de mercados competitivos",
+    graficos: [
+      {
+        id: "equilibrio-mercado",
+        titulo: "Equilibrio de Mercado",
+        descripcion: "Explora cómo se determina el precio y cantidad de equilibrio",
+        tipo: "interactivo"
+      },
+      {
+        id: "desplazamientos",
+        titulo: "Desplazamientos de Oferta y Demanda",
+        descripcion: "Analiza efectos de cambios en determinantes",
+        tipo: "simulacion"
+      },
+      {
+        id: "excedentes",
+        titulo: "Exceso de Oferta y Demanda",
+        descripcion: "Visualiza desequilibrios de mercado",
+        tipo: "interactivo"
+      }
+    ]
+  },
+  5: {
+    titulo: "Gráficos Interactivos: Elasticidad",
+    descripcion: "Sensibilidad de oferta y demanda visualizada",
+    graficos: [
+      {
+        id: "elasticidad-demanda",
+        titulo: "Elasticidad Precio de la Demanda",
+        descripcion: "Calcula y visualiza diferentes elasticidades",
+        tipo: "calculadora"
+      },
+      {
+        id: "ingreso-total",
+        titulo: "Elasticidad e Ingreso Total",
+        descripcion: "Relación entre elasticidad y ingresos",
+        tipo: "interactivo"
+      },
+      {
+        id: "elasticidades-comparadas",
+        titulo: "Comparación de Elasticidades",
+        descripcion: "Compara bienes elásticos vs inelásticos",
+        tipo: "comparativo"
+      }
+    ]
+  },
+  6: {
+    titulo: "Gráficos Interactivos: Políticas Gubernamentales",
+    descripcion: "Efectos de la intervención gubernamental en mercados",
+    graficos: [
+      {
+        id: "controles-precios",
+        titulo: "Controles de Precios",
+        descripcion: "Efectos de precios máximos y mínimos",
+        tipo: "simulacion"
+      },
+      {
+        id: "impuestos",
+        titulo: "Impacto de Impuestos",
+        descripcion: "Incidencia fiscal y pérdida de eficiencia",
+        tipo: "interactivo"
+      },
+      {
+        id: "perdida-peso-muerto",
+        titulo: "Pérdida de Peso Muerto",
+        descripcion: "Visualización de ineficiencias causadas por impuestos",
+        tipo: "calculadora"
+      }
+    ]
   }
 }
 
@@ -86,6 +158,12 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
   const [precioGasolina, setPrecioGasolina] = useState([3])
   const [productividadA, setProductividadA] = useState([10])
   const [productividadB, setProductividadB] = useState([6])
+  const [precioEquilibrio, setPrecioEquilibrio] = useState([25])
+  const [desplazamientoDemanda, setDesplazamientoDemanda] = useState([0])
+  const [desplazamientoOferta, setDesplazamientoOferta] = useState([0])
+  const [elasticidad, setElasticidad] = useState([1.5])
+  const [precioControl, setPrecioControl] = useState([20])
+  const [impuesto, setImpuesto] = useState([5])
 
   const graficos = graficosData[Number.parseInt(params.id) as keyof typeof graficosData]
 
@@ -145,6 +223,46 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
     { categoria: 'Sin Especialización', produccion: sinEspecializacion },
     { categoria: 'Con Especialización', produccion: conEspecializacion }
   ]
+
+  // Datos para oferta y demanda (Capítulo 4)
+  const generarDatosOfertaDemanda = (precio: number, desplDemanda: number, desplOferta: number) => {
+    const datos = []
+    for (let p = 5; p <= 50; p += 5) {
+      const demanda = Math.max(0, 100 - p * 1.5 + desplDemanda)
+      const oferta = Math.max(0, p * 2 - 20 + desplOferta)
+      datos.push({ precio: p, demanda, oferta })
+    }
+    return datos
+  }
+
+  const datosOfertaDemanda = generarDatosOfertaDemanda(precioEquilibrio[0], desplazamientoDemanda[0], desplazamientoOferta[0])
+
+  // Datos para elasticidad (Capítulo 5)
+  const generarDatosElasticidad = (elasticidadValor: number) => {
+    const datos = []
+    const precioBase = 20
+    const cantidadBase = 100
+    
+    for (let p = 10; p <= 40; p += 2) {
+      const cambioP = (p - precioBase) / precioBase
+      const cambioQ = -elasticidadValor * cambioP
+      const cantidad = Math.max(0, cantidadBase * (1 + cambioQ))
+      const ingresoTotal = p * cantidad
+      datos.push({ precio: p, cantidad, ingresoTotal })
+    }
+    return datos
+  }
+
+  const datosElasticidad = generarDatosElasticidad(elasticidad[0])
+
+  // Datos para impuestos (Capítulo 6)
+  const precioSinImpuesto = 25
+  const cantidadSinImpuesto = 50
+  const precioCompradores = precioSinImpuesto + impuesto[0] * 0.6
+  const precioVendedores = precioSinImpuesto - impuesto[0] * 0.4
+  const cantidadConImpuesto = Math.max(0, cantidadSinImpuesto - impuesto[0] * 2)
+  const recaudacion = impuesto[0] * cantidadConImpuesto
+  const perdidaPesoMuerto = 0.5 * impuesto[0] * (cantidadSinImpuesto - cantidadConImpuesto)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -593,6 +711,275 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
                           <Tooltip />
                           <Area dataKey="produccion" fill="#10b981" fillOpacity={0.6} />
                         </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          )}
+
+          {/* Capítulo 4: Oferta y Demanda */}
+          {params.id === "4" && (
+            <>
+              {/* Equilibrio de Mercado */}
+              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl">
+                    <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
+                      <Target className="h-6 w-6 text-white" />
+                    </div>
+                    Equilibrio de Mercado Interactivo
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-semibold mb-4">Desplazamientos de Oferta y Demanda</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            Desplazamiento de Demanda: {desplazamientoDemanda[0] > 0 ? '+' : ''}{desplazamientoDemanda[0]}
+                          </label>
+                          <Slider
+                            value={desplazamientoDemanda}
+                            onValueChange={setDesplazamientoDemanda}
+                            max={30}
+                            min={-30}
+                            step={5}
+                            className="w-full"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            Desplazamiento de Oferta: {desplazamientoOferta[0] > 0 ? '+' : ''}{desplazamientoOferta[0]}
+                          </label>
+                          <Slider
+                            value={desplazamientoOferta}
+                            onValueChange={setDesplazamientoOferta}
+                            max={30}
+                            min={-30}
+                            step={5}
+                            className="w-full"
+                          />
+                        </div>
+                        <div className="bg-slate-50 p-4 rounded-xl">
+                          <p><strong>Efecto en el mercado:</strong></p>
+                          <p className="text-blue-600">
+                            {desplazamientoDemanda[0] > 0 ? "↑ Aumento de demanda" : 
+                             desplazamientoDemanda[0] < 0 ? "↓ Disminución de demanda" : "→ Demanda sin cambios"}
+                          </p>
+                          <p className="text-emerald-600">
+                            {desplazamientoOferta[0] > 0 ? "↑ Aumento de oferta" : 
+                             desplazamientoOferta[0] < 0 ? "↓ Disminución de oferta" : "→ Oferta sin cambios"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={datosOfertaDemanda}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
+                          <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip />
+                          <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" />
+                          <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          )}
+
+          {/* Capítulo 5: Elasticidad */}
+          {params.id === "5" && (
+            <>
+              {/* Elasticidad e Ingreso Total */}
+              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl">
+                    <div className="p-2 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl">
+                      <DollarSign className="h-6 w-6 text-white" />
+                    </div>
+                    Elasticidad e Ingreso Total
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-semibold mb-4">Elasticidad Precio de la Demanda</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            Elasticidad: {elasticidad[0].toFixed(1)}
+                          </label>
+                          <Slider
+                            value={elasticidad}
+                            onValueChange={setElasticidad}
+                            max={3}
+                            min={0.1}
+                            step={0.1}
+                            className="w-full"
+                          />
+                        </div>
+                        <div className="bg-slate-50 p-4 rounded-xl">
+                          <p><strong>Tipo de demanda:</strong></p>
+                          <p className="text-purple-600 font-semibold">
+                            {elasticidad[0] > 1 ? "Elástica (sensible al precio)" : 
+                             elasticidad[0] === 1 ? "Unitaria" : "Inelástica (poco sensible)"}
+                          </p>
+                          <p className="text-sm mt-2">
+                            {elasticidad[0] > 1 ? "Reducir precio aumenta ingresos" : 
+                             elasticidad[0] === 1 ? "Cambios de precio no afectan ingresos" : 
+                             "Aumentar precio aumenta ingresos"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={datosElasticidad}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
+                          <YAxis yAxisId="left" label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
+                          <YAxis yAxisId="right" orientation="right" label={{ value: 'Ingreso Total', angle: 90, position: 'insideRight' }} />
+                          <Tooltip />
+                          <Line yAxisId="left" type="monotone" dataKey="cantidad" stroke="#8b5cf6" strokeWidth={2} name="Cantidad" />
+                          <Line yAxisId="right" type="monotone" dataKey="ingresoTotal" stroke="#f59e0b" strokeWidth={2} name="Ingreso Total" />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          )}
+
+          {/* Capítulo 6: Políticas Gubernamentales */}
+          {params.id === "6" && (
+            <>
+              {/* Controles de Precios */}
+              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl">
+                    <div className="p-2 bg-gradient-to-br from-red-500 to-red-600 rounded-xl">
+                      <Target className="h-6 w-6 text-white" />
+                    </div>
+                    Controles de Precios
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-semibold mb-4">Precio Máximo/Mínimo</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            Precio de Control: ${precioControl[0]}
+                          </label>
+                          <Slider
+                            value={precioControl}
+                            onValueChange={setPrecioControl}
+                            max={40}
+                            min={10}
+                            step={2}
+                            className="w-full"
+                          />
+                        </div>
+                        <div className="bg-slate-50 p-4 rounded-xl">
+                          <p><strong>Precio de equilibrio:</strong> $25</p>
+                          <p><strong>Precio de control:</strong> ${precioControl[0]}</p>
+                          <p className="font-semibold mt-2">
+                            {precioControl[0] < 25 ? 
+                              <span className="text-red-600">Precio máximo vinculante → Escasez</span> :
+                              precioControl[0] > 25 ?
+                              <span className="text-orange-600">Precio mínimo vinculante → Excedente</span> :
+                              <span className="text-green-600">No vinculante → Sin efecto</span>
+                            }
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={[
+                          { precio: 10, demanda: 85, oferta: 0 },
+                          { precio: 15, demanda: 77, oferta: 10 },
+                          { precio: 20, demanda: 70, oferta: 20 },
+                          { precio: 25, demanda: 62, oferta: 30 },
+                          { precio: 30, demanda: 55, oferta: 40 },
+                          { precio: 35, demanda: 47, oferta: 50 },
+                          { precio: 40, demanda: 40, oferta: 60 }
+                        ]}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="precio" label={{ value: 'Precio ($)', position: 'insideBottom', offset: -5 }} />
+                          <YAxis label={{ value: 'Cantidad', angle: -90, position: 'insideLeft' }} />
+                          <Tooltip />
+                          <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" />
+                          <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" />
+                          <ReferenceLine y={precioControl[0]} stroke="#f59e0b" strokeWidth={2} strokeDasharray="5 5" label="Control" />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Impuestos y Pérdida de Peso Muerto */}
+              <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3 text-2xl">
+                    <div className="p-2 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl">
+                      <DollarSign className="h-6 w-6 text-white" />
+                    </div>
+                    Impacto de Impuestos
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="font-semibold mb-4">Impuesto por Unidad</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">
+                            Impuesto: ${impuesto[0]} por unidad
+                          </label>
+                          <Slider
+                            value={impuesto}
+                            onValueChange={setImpuesto}
+                            max={15}
+                            min={0}
+                            step={1}
+                            className="w-full"
+                          />
+                        </div>
+                        <div className="bg-slate-50 p-4 rounded-xl space-y-2">
+                          <p><strong>Sin impuesto:</strong> P=${precioSinImpuesto}, Q={cantidadSinImpuesto}</p>
+                          <p><strong>Con impuesto:</strong></p>
+                          <p className="text-red-600">• Precio compradores: ${precioCompradores.toFixed(2)}</p>
+                          <p className="text-blue-600">• Precio vendedores: ${precioVendedores.toFixed(2)}</p>
+                          <p>• Cantidad: {cantidadConImpuesto.toFixed(0)}</p>
+                          <p className="text-green-600">• Recaudación: ${recaudacion.toFixed(0)}</p>
+                          <p className="text-orange-600">• Pérdida peso muerto: ${perdidaPesoMuerto.toFixed(0)}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={[
+                          { concepto: 'Recaudación', valor: recaudacion },
+                          { concepto: 'Pérdida Peso Muerto', valor: perdidaPesoMuerto },
+                          { concepto: 'Excedente Perdido', valor: perdidaPesoMuerto + recaudacion }
+                        ]}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="concepto" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="valor" fill="#f59e0b" />
+                        </BarChart>
                       </ResponsiveContainer>
                     </div>
                   </div>

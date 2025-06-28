@@ -433,6 +433,408 @@ const capitulosData = {
         descripcion: "Aunque un médico puede ser mejor tomando presión arterial que una enfermera, es más eficiente que la enfermera haga esto mientras el médico se enfoca en diagnósticos complejos donde su ventaja comparativa es mayor."
       }
     ]
+  },
+  4: {
+    titulo: "Las fuerzas del mercado de la oferta y la demanda",
+    resumen: "Fundamentos de la oferta, demanda y determinación de precios en mercados competitivos.",
+    duracion: "60 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Comprender las leyes de oferta y demanda",
+      "Analizar los determinantes de la oferta y demanda",
+      "Explicar cómo se determina el equilibrio de mercado",
+      "Predecir efectos de cambios en oferta y demanda",
+    ],
+    contenido: {
+      introduccion:
+        "La oferta y la demanda son las fuerzas que hacen que las economías de mercado funcionen. Determinan la cantidad producida de cada bien y el precio al que se vende. Si quiere saber cómo cualquier evento o política afectará la economía, debe pensar primero en cómo afectará la oferta y la demanda.",
+      secciones: [
+        {
+          titulo: "Mercados y competencia",
+          descripcion: "Definición y características de los mercados competitivos.",
+          contenido: [
+            {
+              subtitulo: "¿Qué es un mercado?",
+              texto: "Un mercado es un grupo de compradores y vendedores de un bien o servicio particular. Los compradores como grupo determinan la demanda del producto, y los vendedores como grupo determinan la oferta del producto.",
+              ejemplo: "El mercado de helados incluye a todos los compradores de helados (desde niños hasta adultos) y todos los vendedores (desde vendedores ambulantes hasta supermercados)."
+            },
+            {
+              subtitulo: "¿Qué es la competencia?",
+              texto: "Un mercado competitivo es un mercado en el que hay muchos compradores y vendedores, por lo que cada uno tiene un impacto insignificante en el precio de mercado. En mercados perfectamente competitivos, los bienes son exactamente iguales y las empresas pueden entrar y salir libremente.",
+              ejemplo: "El mercado de trigo se aproxima a la competencia perfecta: hay miles de agricultores vendiendo trigo esencialmente idéntico, y ningún agricultor individual puede influir significativamente en el precio."
+            }
+          ]
+        },
+        {
+          titulo: "La demanda",
+          descripcion: "Comportamiento de los compradores en el mercado.",
+          contenido: [
+            {
+              subtitulo: "La curva de demanda: la relación entre precio y cantidad demandada",
+              texto: "La cantidad demandada de cualquier bien es la cantidad del bien que los compradores están dispuestos y pueden comprar. La ley de la demanda establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad demandada del bien disminuye.",
+              ejemplo: "Cuando el precio de los helados aumenta de $2 a $3 por cono, la cantidad demandada podría disminuir de 10 a 8 conos por día."
+            },
+            {
+              subtitulo: "Demanda del mercado versus demanda individual",
+              texto: "La demanda del mercado es la suma de todas las demandas individuales para un bien o servicio particular. Se obtiene sumando horizontalmente las curvas de demanda individuales.",
+              ejemplo: "Si Ana demanda 3 helados a $2 y Bruno demanda 2 helados al mismo precio, la demanda del mercado a $2 es 5 helados."
+            },
+            {
+              subtitulo: "Desplazamientos en la curva de demanda",
+              texto: "Cuando cualquier factor que afecta la demanda (excepto el precio) cambia, la curva de demanda se desplaza. Un aumento en la demanda desplaza la curva hacia la derecha; una disminución la desplaza hacia la izquierda.",
+              ejemplo: "Si aumenta el ingreso de los consumidores y los helados son un bien normal, la demanda de helados aumenta y la curva se desplaza hacia la derecha."
+            }
+          ]
+        },
+        {
+          titulo: "La oferta",
+          descripcion: "Comportamiento de los vendedores en el mercado.",
+          contenido: [
+            {
+              subtitulo: "La curva de oferta: la relación entre precio y cantidad ofrecida",
+              texto: "La cantidad ofrecida de cualquier bien es la cantidad del bien que los vendedores están dispuestos y pueden vender. La ley de la oferta establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad ofrecida del bien también aumenta.",
+              ejemplo: "Cuando el precio de los helados aumenta de $2 a $3 por cono, los vendedores están dispuestos a ofrecer más helados, digamos de 8 a 12 conos por día."
+            },
+            {
+              subtitulo: "Oferta del mercado versus oferta individual",
+              texto: "La oferta del mercado es la suma de las ofertas de todas las empresas. Se obtiene sumando horizontalmente las curvas de oferta individuales de todas las empresas en el mercado.",
+              ejemplo: "Si la heladería A ofrece 5 helados a $3 y la heladería B ofrece 7 helados al mismo precio, la oferta del mercado a $3 es 12 helados."
+            },
+            {
+              subtitulo: "Desplazamientos en la curva de oferta",
+              texto: "Cuando cualquier factor que afecta la oferta (excepto el precio) cambia, la curva de oferta se desplaza. Un aumento en la oferta desplaza la curva hacia la derecha; una disminución la desplaza hacia la izquierda.",
+              ejemplo: "Si mejora la tecnología para hacer helados, los costos de producción disminuyen, la oferta aumenta y la curva se desplaza hacia la derecha."
+            }
+          ]
+        },
+        {
+          titulo: "Oferta y demanda juntas",
+          descripcion: "Cómo interactúan la oferta y demanda para determinar el equilibrio.",
+          contenido: [
+            {
+              subtitulo: "Equilibrio",
+              texto: "El equilibrio se refiere a una situación en la que el precio de mercado ha alcanzado el nivel en el que la cantidad ofrecida es igual a la cantidad demandada. El precio de equilibrio equilibra la oferta y la demanda.",
+              ejemplo: "Si a $2.50 por helado, los vendedores quieren vender exactamente 10 helados y los compradores quieren comprar exactamente 10 helados, entonces $2.50 es el precio de equilibrio."
+            },
+            {
+              subtitulo: "Tres pasos para analizar cambios en el equilibrio",
+              texto: "Para analizar cómo un evento afecta un mercado: (1) Decidir si el evento desplaza la curva de oferta, la curva de demanda, o ambas. (2) Decidir si la curva se desplaza hacia la derecha o hacia la izquierda. (3) Usar el diagrama de oferta y demanda para examinar cómo el desplazamiento afecta el precio y cantidad de equilibrio.",
+              ejemplo: "Si aumenta el precio del azúcar (insumo para helados): (1) Afecta la oferta. (2) La oferta disminuye (desplazamiento hacia la izquierda). (3) El precio aumenta y la cantidad disminuye."
+            }
+          ]
+        }
+      ]
+    },
+    formulas: [
+      {
+        nombre: "Función de Demanda",
+        formula: "Qd = a - bP",
+        descripcion: "Relación lineal entre precio (P) y cantidad demandada (Qd), donde 'a' es la demanda máxima y 'b' es la sensibilidad al precio.",
+        ejemplo: "Si Qd = 100 - 2P, cuando P = $10, entonces Qd = 100 - 2(10) = 80 unidades."
+      },
+      {
+        nombre: "Función de Oferta",
+        formula: "Qs = c + dP",
+        descripcion: "Relación lineal entre precio (P) y cantidad ofrecida (Qs), donde 'c' es la oferta base y 'd' es la sensibilidad al precio.",
+        ejemplo: "Si Qs = 20 + 3P, cuando P = $10, entonces Qs = 20 + 3(10) = 50 unidades."
+      },
+      {
+        nombre: "Equilibrio de Mercado",
+        formula: "Qd = Qs",
+        descripcion: "En equilibrio, la cantidad demandada iguala la cantidad ofrecida.",
+        ejemplo: "Si 100 - 2P = 20 + 3P, entonces 80 = 5P, por lo que P = $16 y Q = 68 unidades."
+      }
+    ],
+    conceptosClave: [
+      "Mercado competitivo",
+      "Cantidad demandada",
+      "Ley de la demanda",
+      "Curva de demanda",
+      "Cantidad ofrecida",
+      "Ley de la oferta",
+      "Curva de oferta",
+      "Equilibrio",
+      "Precio de equilibrio",
+      "Exceso de demanda",
+      "Exceso de oferta"
+    ],
+    ejemplosReales: [
+      {
+        titulo: "Mercado de Vivienda durante COVID-19",
+        descripcion: "La pandemia aumentó la demanda de viviendas (trabajo remoto, tasas bajas) mientras la oferta se mantuvo limitada, resultando en precios más altos en muchas ciudades."
+      },
+      {
+        titulo: "Precio de la Gasolina y Eventos Geopolíticos",
+        descripcion: "Cuando hay tensiones en Medio Oriente, la oferta de petróleo puede verse amenazada, desplazando la curva de oferta hacia la izquierda y aumentando los precios."
+      },
+      {
+        titulo: "Mercado de Mascarillas en 2020",
+        descripcion: "Al inicio de la pandemia, la demanda de mascarillas se disparó mientras la oferta era limitada, causando escasez y precios altos hasta que la producción se ajustó."
+      }
+    ]
+  },
+  5: {
+    titulo: "La elasticidad y sus aplicaciones",
+    resumen: "Medición de la sensibilidad de oferta y demanda ante cambios en variables económicas.",
+    duracion: "65 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Calcular diferentes tipos de elasticidad",
+      "Interpretar valores de elasticidad",
+      "Relacionar elasticidad con ingresos totales",
+      "Aplicar conceptos de elasticidad a políticas públicas",
+    ],
+    contenido: {
+      introduccion:
+        "La elasticidad es una medida de qué tan sensible es una variable a los cambios en otra variable. En economía, la elasticidad más comúnmente utilizada es la elasticidad precio de la demanda, que mide qué tan sensible es la cantidad demandada a cambios en el precio.",
+      secciones: [
+        {
+          titulo: "La elasticidad de la demanda",
+          descripcion: "Medición de la sensibilidad de la demanda a cambios en el precio.",
+          contenido: [
+            {
+              subtitulo: "La elasticidad precio de la demanda y sus determinantes",
+              texto: "La elasticidad precio de la demanda mide qué tanto responde la cantidad demandada a un cambio en el precio. Se calcula como el cambio porcentual en la cantidad demandada dividido por el cambio porcentual en el precio.",
+              ejemplo: "Si el precio de los helados aumenta 10% y la cantidad demandada disminuye 20%, la elasticidad precio de la demanda es -20%/10% = -2."
+            },
+            {
+              subtitulo: "Cálculo de la elasticidad precio de la demanda",
+              texto: "La elasticidad precio de la demanda se calcula usando el método del punto medio para evitar el problema de que el resultado dependa de cuál punto se tome como inicial. La fórmula es: Ed = [(Q2-Q1)/((Q2+Q1)/2)] / [(P2-P1)/((P2+P1)/2)]",
+              ejemplo: "Si el precio cambia de $4 a $6 y la cantidad de 100 a 80: Ed = [(80-100)/90] / [(6-4)/5] = (-20/90) / (2/5) = -0.56"
+            },
+            {
+              subtitulo: "La variedad de curvas de demanda",
+              texto: "Las curvas de demanda varían en su elasticidad. La demanda es elástica cuando la elasticidad es mayor que 1 en valor absoluto, inelástica cuando es menor que 1, y unitaria cuando es igual a 1.",
+              ejemplo: "Los bienes de lujo tienden a tener demanda elástica (elasticidad > 1), mientras que las necesidades básicas tienden a tener demanda inelástica (elasticidad < 1)."
+            }
+          ]
+        },
+        {
+          titulo: "La elasticidad y el ingreso total",
+          descripcion: "Relación entre elasticidad y los ingresos de los vendedores.",
+          contenido: [
+            {
+              subtitulo: "Cómo afecta el ingreso total a lo largo de una curva de demanda lineal",
+              texto: "El ingreso total es el precio multiplicado por la cantidad vendida. Cuando la demanda es inelástica, un aumento en el precio aumenta el ingreso total. Cuando la demanda es elástica, un aumento en el precio disminuye el ingreso total.",
+              ejemplo: "Si la demanda de medicamentos es inelástica, un aumento del 10% en el precio podría reducir la cantidad solo 3%, aumentando el ingreso total."
+            },
+            {
+              subtitulo: "Elasticidad e ingreso total a lo largo de una curva de demanda lineal",
+              texto: "En una curva de demanda lineal, la elasticidad varía a lo largo de la curva. En la parte superior (precios altos), la demanda es elástica. En la parte inferior (precios bajos), la demanda es inelástica. En el punto medio, la demanda es unitariamente elástica.",
+              ejemplo: "En una curva de demanda de P = 10 - Q, cuando P = 8, la demanda es elástica; cuando P = 2, la demanda es inelástica; cuando P = 5, la elasticidad es unitaria."
+            }
+          ]
+        },
+        {
+          titulo: "Otras elasticidades de la demanda",
+          descripcion: "Elasticidad ingreso y elasticidad cruzada de la demanda.",
+          contenido: [
+            {
+              subtitulo: "La elasticidad ingreso de la demanda",
+              texto: "La elasticidad ingreso de la demanda mide qué tanto responde la cantidad demandada a un cambio en el ingreso del consumidor. Se calcula como el cambio porcentual en la cantidad demandada dividido por el cambio porcentual en el ingreso.",
+              ejemplo: "Si el ingreso aumenta 10% y la demanda de restaurantes aumenta 15%, la elasticidad ingreso es 1.5, indicando que es un bien de lujo."
+            },
+            {
+              subtitulo: "La elasticidad precio cruzada de la demanda",
+              texto: "La elasticidad precio cruzada de la demanda mide qué tanto responde la cantidad demandada de un bien a un cambio en el precio de otro bien. Es positiva para bienes sustitutos y negativa para bienes complementarios.",
+              ejemplo: "Si el precio de la mantequilla aumenta 10% y la demanda de margarina aumenta 8%, la elasticidad cruzada es 0.8, confirmando que son sustitutos."
+            }
+          ]
+        },
+        {
+          titulo: "La elasticidad de la oferta",
+          descripcion: "Medición de la sensibilidad de la oferta a cambios en el precio.",
+          contenido: [
+            {
+              subtitulo: "La elasticidad precio de la oferta y sus determinantes",
+              texto: "La elasticidad precio de la oferta mide qué tanto responde la cantidad ofrecida a cambios en el precio. Generalmente es positiva porque los precios más altos incentivan mayor producción.",
+              ejemplo: "Si el precio del trigo aumenta 20% y los agricultores aumentan la producción 30%, la elasticidad de oferta es 1.5."
+            },
+            {
+              subtitulo: "La variedad de curvas de oferta",
+              texto: "La elasticidad de la oferta depende de la flexibilidad de los vendedores para cambiar la cantidad que producen. La oferta es más elástica en el largo plazo que en el corto plazo.",
+              ejemplo: "La oferta de apartamentos es muy inelástica en el corto plazo (no se pueden construir rápidamente) pero más elástica en el largo plazo."
+            }
+          ]
+        }
+      ]
+    },
+    formulas: [
+      {
+        nombre: "Elasticidad Precio de la Demanda",
+        formula: "Ed = (% Δ Cantidad Demandada) / (% Δ Precio)",
+        descripcion: "Mide la sensibilidad de la cantidad demandada ante cambios en el precio.",
+        ejemplo: "Si el precio aumenta 10% y la cantidad demandada disminuye 15%, Ed = -15%/10% = -1.5"
+      },
+      {
+        nombre: "Método del Punto Medio",
+        formula: "Ed = [(Q2-Q1)/((Q2+Q1)/2)] / [(P2-P1)/((P2+P1)/2)]",
+        descripcion: "Método para calcular elasticidad que evita el problema del punto de referencia.",
+        ejemplo: "Más preciso que usar solo los valores iniciales o finales como base del cálculo."
+      },
+      {
+        nombre: "Elasticidad Ingreso",
+        formula: "Ei = (% Δ Cantidad Demandada) / (% Δ Ingreso)",
+        descripcion: "Mide cómo responde la demanda a cambios en el ingreso del consumidor.",
+        ejemplo: "Si el ingreso aumenta 5% y la demanda aumenta 8%, Ei = 8%/5% = 1.6 (bien de lujo)"
+      },
+      {
+        nombre: "Ingreso Total",
+        formula: "IT = P × Q",
+        descripcion: "El ingreso total es el precio multiplicado por la cantidad vendida.",
+        ejemplo: "Si P = $5 y Q = 100, entonces IT = $5 × 100 = $500"
+      }
+    ],
+    conceptosClave: [
+      "Elasticidad precio de la demanda",
+      "Demanda elástica",
+      "Demanda inelástica",
+      "Elasticidad unitaria",
+      "Método del punto medio",
+      "Ingreso total",
+      "Elasticidad ingreso",
+      "Elasticidad cruzada",
+      "Bienes sustitutos",
+      "Bienes complementarios",
+      "Elasticidad de la oferta"
+    ],
+    ejemplosReales: [
+      {
+        titulo: "Elasticidad de la Demanda de Gasolina",
+        descripcion: "La demanda de gasolina es relativamente inelástica en el corto plazo (la gente necesita conducir) pero más elástica en el largo plazo (pueden cambiar de auto o mudarse)."
+      },
+      {
+        titulo: "Precios de Medicamentos",
+        descripcion: "Los medicamentos esenciales tienen demanda muy inelástica, lo que explica por qué las farmacéuticas pueden cobrar precios altos sin perder muchos clientes."
+      },
+      {
+        titulo: "Streaming vs Cable TV",
+        descripcion: "Netflix y cable TV son sustitutos con elasticidad cruzada positiva: cuando aumenta el precio del cable, aumenta la demanda de servicios de streaming."
+      }
+    ]
+  },
+  6: {
+    titulo: "Oferta, demanda y políticas gubernamentales",
+    resumen: "Análisis del impacto de la intervención gubernamental en los mercados.",
+    duracion: "55 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Analizar efectos de controles de precios",
+      "Evaluar impacto de impuestos en mercados",
+      "Calcular pérdida de eficiencia económica",
+      "Comparar diferentes políticas gubernamentales",
+    ],
+    contenido: {
+      introduccion:
+        "Los economistas tienen dos roles. Como científicos, desarrollan y prueban teorías para explicar el mundo que los rodea. Como asesores de políticas, usan sus teorías para ayudar a cambiar el mundo para mejor. Este capítulo examina cómo la política gubernamental afecta la asignación de recursos.",
+      secciones: [
+        {
+          titulo: "Controles sobre los precios",
+          descripcion: "Efectos de precios máximos y mínimos en los mercados.",
+          contenido: [
+            {
+              subtitulo: "Cómo los precios máximos afectan los resultados del mercado",
+              texto: "Un precio máximo es un límite legal sobre el precio al que se puede vender un bien. Cuando el precio máximo está por debajo del precio de equilibrio, es vinculante y causa escasez. Cuando está por encima del precio de equilibrio, no es vinculante y no tiene efecto.",
+              ejemplo: "Si el gobierno establece un precio máximo de $3 para la gasolina cuando el precio de equilibrio es $4, habrá escasez porque la cantidad demandada excederá la cantidad ofrecida."
+            },
+            {
+              subtitulo: "Cómo los precios mínimos afectan los resultados del mercado",
+              texto: "Un precio mínimo es un límite legal sobre el precio al que se puede vender un bien. Cuando el precio mínimo está por encima del precio de equilibrio, es vinculante y causa excedente. Cuando está por debajo del precio de equilibrio, no es vinculante.",
+              ejemplo: "El salario mínimo es un precio mínimo en el mercado laboral. Si se establece por encima del salario de equilibrio, puede causar desempleo porque la cantidad de trabajo ofrecida excede la cantidad demandada."
+            },
+            {
+              subtitulo: "Evaluación de los controles de precios",
+              texto: "Los controles de precios a menudo se adoptan cuando los responsables de las políticas creen que el precio de mercado de un bien o servicio es injusto para compradores o vendedores. Sin embargo, estos controles tienen efectos secundarios no deseados.",
+              ejemplo: "El control de alquileres puede hacer la vivienda más asequible para algunos inquilinos, pero también reduce la cantidad y calidad de viviendas disponibles."
+            }
+          ]
+        },
+        {
+          titulo: "Impuestos",
+          descripcion: "Cómo los impuestos afectan el equilibrio del mercado.",
+          contenido: [
+            {
+              subtitulo: "Cómo los impuestos sobre los vendedores afectan los resultados del mercado",
+              texto: "Cuando el gobierno impone un impuesto sobre un bien, el equilibrio del mercado se mueve a un nuevo punto. El precio que pagan los compradores aumenta, y el precio que reciben los vendedores disminuye. La cantidad vendida disminuye.",
+              ejemplo: "Si se impone un impuesto de $1 por helado, el precio que pagan los compradores podría aumentar de $3 a $3.60, mientras que el precio que reciben los vendedores disminuye a $2.60."
+            },
+            {
+              subtitulo: "Cómo los impuestos sobre los compradores afectan los resultados del mercado",
+              texto: "Los impuestos sobre los compradores y sobre los vendedores son equivalentes. En ambos casos, el impuesto coloca una cuña entre el precio que pagan los compradores y el precio que reciben los vendedores.",
+              ejemplo: "Un impuesto de $1 sobre los compradores de helados tiene exactamente el mismo efecto que un impuesto de $1 sobre los vendedores: mismos precios finales y misma cantidad."
+            },
+            {
+              subtitulo: "Elasticidad e incidencia fiscal",
+              texto: "La incidencia fiscal (quién realmente paga el impuesto) depende de las elasticidades de oferta y demanda. El lado del mercado que es menos elástico (menos sensible al precio) soporta una mayor parte de la carga del impuesto.",
+              ejemplo: "Si la demanda de cigarrillos es muy inelástica y la oferta es elástica, los consumidores pagarán la mayor parte de un impuesto sobre cigarrillos, incluso si legalmente se cobra a los productores."
+            }
+          ]
+        },
+        {
+          titulo: "Pérdida de peso muerto de los impuestos",
+          descripcion: "Cómo los impuestos reducen la eficiencia económica.",
+          contenido: [
+            {
+              subtitulo: "Cómo un impuesto afecta el bienestar del mercado",
+              texto: "Los impuestos tienen un costo más allá del dinero que recauda el gobierno. Reducen el tamaño del mercado, lo que significa que se pierden algunas de las ganancias del comercio. Esta pérdida de bienestar económico se llama pérdida de peso muerto.",
+              ejemplo: "Si un impuesto reduce las ventas de helados de 100 a 80 unidades, las 20 transacciones perdidas representan ganancias del comercio que se pierden para siempre."
+            },
+            {
+              subtitulo: "Los determinantes de la pérdida de peso muerto",
+              texto: "La pérdida de peso muerto de un impuesto depende de las elasticidades de oferta y demanda. Cuando la oferta o la demanda es más elástica, la pérdida de peso muerto del impuesto es mayor.",
+              ejemplo: "Un impuesto sobre bienes con demanda muy elástica (como entretenimiento) causará mayor pérdida de peso muerto que un impuesto sobre bienes con demanda inelástica (como medicinas)."
+            }
+          ]
+        }
+      ]
+    },
+    formulas: [
+      {
+        nombre: "Incidencia Fiscal",
+        formula: "Carga del Comprador / Carga del Vendedor = Es / Ed",
+        descripcion: "La distribución de la carga fiscal depende de las elasticidades relativas de oferta (Es) y demanda (Ed).",
+        ejemplo: "Si Es = 2 y Ed = 0.5, entonces los compradores pagan 4 veces más del impuesto que los vendedores."
+      },
+      {
+        nombre: "Pérdida de Peso Muerto",
+        formula: "PPM = (1/2) × Impuesto × Reducción en Cantidad",
+        descripcion: "La pérdida de eficiencia causada por un impuesto, representada como un triángulo en el gráfico.",
+        ejemplo: "Si un impuesto de $2 reduce la cantidad de 100 a 80, PPM = (1/2) × $2 × 20 = $20."
+      },
+      {
+        nombre: "Recaudación Fiscal",
+        formula: "Recaudación = Impuesto × Cantidad Vendida",
+        descripcion: "El ingreso total que obtiene el gobierno del impuesto.",
+        ejemplo: "Un impuesto de $2 por unidad con 80 unidades vendidas genera $160 en recaudación."
+      }
+    ],
+    conceptosClave: [
+      "Precio máximo",
+      "Precio mínimo",
+      "Escasez",
+      "Excedente",
+      "Incidencia fiscal",
+      "Pérdida de peso muerto",
+      "Cuña fiscal",
+      "Control de precios",
+      "Salario mínimo",
+      "Control de alquileres",
+      "Eficiencia económica"
+    ],
+    ejemplosReales: [
+      {
+        titulo: "Control de Alquileres en Nueva York",
+        descripcion: "Los controles de alquiler en NYC mantienen algunos alquileres bajos pero han reducido la cantidad y calidad de apartamentos disponibles, creando largas listas de espera."
+      },
+      {
+        titulo: "Salario Mínimo y Empleo Juvenil",
+        descripcion: "Los aumentos del salario mínimo pueden reducir el empleo juvenil porque los jóvenes tienen menos habilidades y experiencia, haciendo su demanda laboral más elástica."
+      },
+      {
+        titulo: "Impuestos sobre Cigarrillos",
+        descripcion: "Los altos impuestos sobre cigarrillos son efectivos para reducir el consumo porque generan ingresos fiscales mientras desalientan un hábito dañino, aunque crean pérdida de peso muerto."
+      }
+    ]
   }
 }
 
@@ -599,8 +1001,8 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
             </div>
           )}
 
-          {/* Contenido para capítulos 2 y 3 */}
-          {(params.id === "2" || params.id === "3") && capitulo.contenido.secciones && (
+          {/* Contenido para capítulos 2, 3, 4, 5, 6 */}
+          {(params.id === "2" || params.id === "3" || params.id === "4" || params.id === "5" || params.id === "6") && capitulo.contenido.secciones && (
             <div className="space-y-8">
               {capitulo.contenido.secciones.map((seccion, index) => (
                 <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">

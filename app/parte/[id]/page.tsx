@@ -62,7 +62,7 @@ const partesData = {
         descripcion: "Medición de la sensibilidad de oferta y demanda ante cambios en variables",
         temas: ["Elasticidad precio", "Elasticidad ingreso", "Elasticidad cruzada"],
         duracion: "65 min",
-        completado: false,
+        completado: true,
         dificultad: "Intermedio",
       },
       {
@@ -71,7 +71,7 @@ const partesData = {
         descripcion: "Impacto de la intervención gubernamental en el funcionamiento de los mercados",
         temas: ["Controles de precios", "Impuestos", "Pérdida de eficiencia"],
         duracion: "55 min",
-        completado: false,
+        completado: true,
         dificultad: "Intermedio",
       },
     ],
