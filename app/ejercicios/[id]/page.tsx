@@ -615,7 +615,7 @@ export default function EjerciciosPage({ params }: { params: { id: string } }) {
                   {ejercicios.ejercicios.length} ejercicios
                 </Badge>
                 <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
-                  {puntaje Máximo} puntos máximos
+                  {puntajeMaximo} puntos máximos
                 </Badge>
               </div>
             </div>
