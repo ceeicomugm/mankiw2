@@ -88,7 +88,7 @@ const partesData = {
         descripcion: "Excedente del consumidor y productor como medidas de bienestar económico",
         temas: ["Excedente del consumidor", "Excedente del productor", "Eficiencia de mercado"],
         duracion: "50 min",
-        completado: false,
+        completado: true,
         dificultad: "Intermedio",
       },
       {
@@ -97,7 +97,7 @@ const partesData = {
         descripcion: "Análisis del impacto de los impuestos en el bienestar y la eficiencia económica",
         temas: ["Incidencia fiscal", "Pérdida de peso muerto", "Recaudación tributaria"],
         duracion: "45 min",
-        completado: false,
+        completado: true,
         dificultad: "Intermedio",
       },
       {
@@ -106,7 +106,7 @@ const partesData = {
         descripcion: "Efectos del comercio internacional en el bienestar nacional",
         temas: ["Ganancias del comercio", "Aranceles", "Cuotas de importación"],
         duracion: "60 min",
-        completado: false,
+        completado: true,
         dificultad: "Avanzado",
       },
     ],

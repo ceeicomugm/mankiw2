@@ -435,6 +435,225 @@ const ejerciciosData = {
       },
     ],
   },
+  7: {
+    titulo: "Ejercicios: Consumidores, Productores y Eficiencia",
+    descripcion: "Practica el análisis de bienestar económico",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "El excedente del consumidor se define como:",
+        opciones: [
+          "El precio que paga el consumidor",
+          "La diferencia entre disposición a pagar y precio pagado",
+          "La cantidad total consumida",
+          "El costo de producción del bien",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "El excedente del consumidor es la diferencia entre lo que un consumidor está dispuesto a pagar por un bien y lo que realmente paga. Representa el beneficio neto que obtiene el consumidor de la transacción.",
+        conceptosClave: ["Excedente del consumidor", "Disposición a pagar", "Bienestar económico"],
+      },
+      {
+        id: 2,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 20,
+        pregunta:
+          "En un mercado con demanda P = 100 - Q y oferta P = 20 + Q, calcula el excedente del consumidor y del productor en equilibrio.",
+        solucion: {
+          pasos: [
+            "Encontrar equilibrio: 100 - Q = 20 + Q, entonces 2Q = 80, Q = 40",
+            "Precio de equilibrio: P = 100 - 40 = 60",
+            "Excedente del consumidor: (1/2) × (100 - 60) × 40 = (1/2) × 40 × 40 = 800",
+            "Excedente del productor: (1/2) × (60 - 20) × 40 = (1/2) × 40 × 40 = 800",
+            "Excedente total = 800 + 800 = 1600",
+          ],
+          respuesta: "EC = $800, EP = $800, Excedente total = $1600",
+        },
+        conceptosClave: ["Excedente del consumidor", "Excedente del productor", "Equilibrio de mercado"],
+      },
+      {
+        id: 3,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 25,
+        pregunta:
+          "Explica por qué los mercados libres son eficientes en términos de asignación de recursos. ¿Qué condiciones deben cumplirse para esta eficiencia?",
+        respuestaSugerida:
+          "Los mercados libres son eficientes porque: (1) Asignan bienes a compradores con mayor valoración - quienes más valoran el bien son quienes lo compran; (2) Asignan producción a vendedores con menor costo - los productores más eficientes son quienes producen; (3) Producen la cantidad que maximiza excedente total - se produce hasta donde beneficio marginal = costo marginal. Condiciones necesarias: competencia perfecta, información completa, sin externalidades, sin poder de mercado, derechos de propiedad bien definidos. Cuando estas condiciones se cumplen, el equilibrio de mercado maximiza el bienestar económico total.",
+        conceptosClave: ["Eficiencia económica", "Asignación de recursos", "Competencia perfecta", "Bienestar social"],
+      },
+      {
+        id: 4,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Un mercado tiene demanda P = 80 - 2Q y oferta P = 20 + Q. Si se impone un precio máximo de $50, calcula la pérdida de peso muerto.",
+        solucion: {
+          pasos: [
+            "Equilibrio libre: 80 - 2Q = 20 + Q, entonces 3Q = 60, Q = 20, P = 40",
+            "Con precio máximo P = 50 > 40, no es vinculante",
+            "Si precio máximo fuera $35: Qd = (80-35)/2 = 22.5, Qs = 35-20 = 15",
+            "Escasez = 22.5 - 15 = 7.5",
+            "PPM = (1/2) × (40-35) × (20-15) = (1/2) × 5 × 5 = 12.5",
+            "Pero con P = 50, no hay pérdida porque no es vinculante",
+          ],
+          respuesta: "Con precio máximo $50, PPM = $0 (no vinculante). Si fuera $35, PPM = $12.5",
+        },
+        conceptosClave: ["Precio máximo", "Pérdida de peso muerto", "Política vinculante", "Eficiencia"],
+      },
+    ],
+  },
+  8: {
+    titulo: "Ejercicios: Los Costos de los Impuestos",
+    descripcion: "Analiza el impacto de los impuestos en el bienestar",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "La pérdida de peso muerto de un impuesto representa:",
+        opciones: [
+          "La recaudación fiscal del gobierno",
+          "El aumento en el precio para los consumidores",
+          "La reducción en excedente total debido al impuesto",
+          "El beneficio que obtienen los productores",
+        ],
+        respuestaCorrecta: 2,
+        explicacion:
+          "La pérdida de peso muerto es la reducción en el excedente total (consumidor + productor) que resulta de la imposición de un impuesto. Representa el valor perdido para la sociedad debido a las transacciones que no ocurren por el impuesto.",
+        conceptosClave: ["Pérdida de peso muerto", "Excedente total", "Eficiencia económica"],
+      },
+      {
+        id: 2,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 25,
+        pregunta:
+          "En un mercado con demanda P = 60 - Q y oferta P = 10 + Q, se impone un impuesto de $15 por unidad. Calcula la pérdida de peso muerto.",
+        solucion: {
+          pasos: [
+            "Equilibrio sin impuesto: 60 - Q = 10 + Q, entonces Q = 25, P = 35",
+            "Con impuesto: Pc - Pv = 15",
+            "60 - Q = Pc y 10 + Q = Pv, entonces Pc = 60 - Q y Pv = 10 + Q",
+            "(60 - Q) - (10 + Q) = 15, entonces 50 - 2Q = 15, Q = 17.5",
+            "Pc = 60 - 17.5 = 42.5, Pv = 10 + 17.5 = 27.5",
+            "PPM = (1/2) × 15 × (25 - 17.5) = (1/2) × 15 × 7.5 = 56.25",
+          ],
+          respuesta: "La pérdida de peso muerto es $56.25",
+        },
+        conceptosClave: ["Pérdida de peso muerto", "Impuestos", "Cuña fiscal"],
+      },
+      {
+        id: 3,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Explica por qué la pérdida de peso muerto aumenta más que proporcionalmente con el tamaño del impuesto. ¿Qué implicaciones tiene esto para la política fiscal?",
+        respuestaSugerida:
+          "La pérdida de peso muerto aumenta con el cuadrado del impuesto porque: (1) Un impuesto mayor reduce más la cantidad intercambiada; (2) La base sobre la cual se calcula la pérdida (reducción en cantidad) es mayor; (3) La altura del triángulo de pérdida (tamaño del impuesto) también es mayor. Matemáticamente: PPM ∝ t². Implicaciones: (1) Es mejor tener muchos impuestos pequeños que pocos impuestos grandes; (2) Duplicar un impuesto cuadruplica la pérdida de peso muerto; (3) Los impuestos sobre bienes con demanda inelástica causan menor pérdida; (4) Existe un trade-off entre recaudación y eficiencia.",
+        conceptosClave: ["Pérdida de peso muerto", "Política fiscal", "Eficiencia tributaria", "Diseño de impuestos"],
+      },
+      {
+        id: 4,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 35,
+        pregunta:
+          "Un mercado tiene elasticidad de demanda -1.5 y elasticidad de oferta 2.0. Si se impone un impuesto de $6, y la cantidad inicial era 100 unidades a precio $20, calcula la nueva cantidad y la pérdida de peso muerto.",
+        solucion: {
+          pasos: [
+            "Fórmula: ΔQ/Q = -[Ed × Es/(Ed + Es)] × (t/P)",
+            "ΔQ/100 = -[1.5 × 2/(1.5 + 2)] × (6/20)",
+            "ΔQ/100 = -[3/3.5] × 0.3 = -0.857 × 0.3 = -0.257",
+            "ΔQ = -25.7, entonces Q nueva = 100 - 25.7 = 74.3",
+            "PPM = (1/2) × t × ΔQ = (1/2) × 6 × 25.7 = 77.1",
+          ],
+          respuesta: "Nueva cantidad: 74.3 unidades, PPM = $77.1",
+        },
+        conceptosClave: ["Elasticidad", "Pérdida de peso muerto", "Incidencia fiscal", "Análisis cuantitativo"],
+      },
+    ],
+  },
+  9: {
+    titulo: "Ejercicios: Comercio Internacional",
+    descripcion: "Analiza los efectos del comercio internacional en el bienestar",
+    ejercicios: [
+      {
+        id: 1,
+        tipo: "multiple",
+        dificultad: "Básico",
+        puntos: 15,
+        pregunta: "Un país se convierte en exportador de un bien cuando:",
+        opciones: [
+          "Su precio doméstico es mayor que el precio mundial",
+          "Su precio doméstico es menor que el precio mundial",
+          "Su precio doméstico es igual al precio mundial",
+          "No tiene relación con los precios",
+        ],
+        respuestaCorrecta: 1,
+        explicacion:
+          "Un país se convierte en exportador cuando su precio doméstico (sin comercio) es menor que el precio mundial. Esto indica que el país puede producir el bien a menor costo relativo, por lo que tiene ventaja comparativa y puede vender en el mercado mundial.",
+        conceptosClave: ["Comercio internacional", "Precio mundial", "Ventaja comparativa", "Exportaciones"],
+      },
+      {
+        id: 2,
+        tipo: "calculo",
+        dificultad: "Intermedio",
+        puntos: 25,
+        pregunta:
+          "Un país tiene demanda doméstica Qd = 100 - P y oferta doméstica Qs = P - 20. El precio mundial es $40. Calcula las ganancias del comercio si el país puede comerciar libremente.",
+        solucion: {
+          pasos: [
+            "Equilibrio sin comercio: 100 - P = P - 20, entonces P = 60, Q = 40",
+            "Con precio mundial $40 < $60, el país importa",
+            "Qd = 100 - 40 = 60, Qs = 40 - 20 = 20",
+            "Importaciones = 60 - 20 = 40",
+            "Ganancia = (1/2) × (60 - 40) × 40 = (1/2) × 20 × 40 = 400",
+          ],
+          respuesta: "Las ganancias del comercio son $400",
+        },
+        conceptosClave: ["Ganancias del comercio", "Importaciones", "Precio mundial", "Bienestar económico"],
+      },
+      {
+        id: 3,
+        tipo: "desarrollo",
+        dificultad: "Avanzado",
+        puntos: 30,
+        pregunta:
+          "Analiza los efectos de un arancel en el bienestar de diferentes grupos: consumidores, productores domésticos, gobierno y sociedad en general.",
+        respuestaSugerida:
+          "Efectos de un arancel: (1) Consumidores: Pierden debido a precios más altos y menor cantidad disponible. Su excedente disminuye; (2) Productores domésticos: Ganan porque pueden vender a precio más alto y aumentar producción. Su excedente aumenta; (3) Gobierno: Gana recaudación arancelaria igual al arancel × cantidad importada; (4) Sociedad: Pierde neto debido a pérdida de peso muerto. Esta pérdida tiene dos componentes: triángulo de producción (producción doméstica ineficiente) y triángulo de consumo (consumo perdido). La pérdida social supera las ganancias de productores y gobierno, resultando en pérdida neta para el país.",
+        conceptosClave: ["Arancel", "Pérdida de peso muerto", "Excedente del consumidor", "Proteccionismo"],
+      },
+      {
+        id: 4,
+        tipo: "calculo",
+        dificultad: "Avanzado",
+        puntos: 35,
+        pregunta:
+          "Un país importador tiene Qd = 80 - P, Qs = P - 10, precio mundial $30. Se impone arancel de $10. Calcula: (a) nueva cantidad importada, (b) recaudación arancelaria, (c) pérdida de peso muerto.",
+        solucion: {
+          pasos: [
+            "Sin arancel: Qd = 80 - 30 = 50, Qs = 30 - 10 = 20, Importaciones = 30",
+            "Con arancel: Precio doméstico = 30 + 10 = 40",
+            "Qd = 80 - 40 = 40, Qs = 40 - 10 = 30",
+            "(a) Nuevas importaciones = 40 - 30 = 10",
+            "(b) Recaudación = 10 × 10 = 100",
+            "(c) PPM = (1/2) × 10 × [(30-20) + (50-40)] = (1/2) × 10 × 20 = 100",
+          ],
+          respuesta: "(a) 10 unidades, (b) $100, (c) PPM = $100",
+        },
+        conceptosClave: ["Arancel", "Importaciones", "Recaudación arancelaria", "Pérdida de peso muerto"],
+      },
+    ],
+  },
 }
 
 export default function EjerciciosPage({ params }: { params: { id: string } }) {
