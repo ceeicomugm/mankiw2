@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, BookOpen, Calculator, BarChart3, CheckCircle, Clock, Users, Globe, ArrowRight } from "lucide-react"
+import { ArrowLeft, BookOpen, Calculator, BarChart3, CheckCircle, Clock, Users, Globe, ArrowRight, TrendingUp, Target, DollarSign, AlertTriangle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -192,80 +192,122 @@ const capitulosData = {
     dificultad: "Básico",
     objetivos: [
       "Comprender el método científico en economía",
-      "Distinguir entre economía positiva y normativa",
-      "Analizar modelos económicos básicos",
-      "Interpretar gráficos económicos fundamentales",
+      "Analizar la diferencia entre economía positiva y normativa",
+      "Interpretar modelos económicos básicos como la FPP y el flujo circular",
     ],
     contenido: {
       introduccion:
-        "Los economistas intentan abordar su tema de estudio con la objetividad de un científico. Desarrollan teorías, recopilan datos y analizan estos datos para verificar o refutar sus teorías. Para los principiantes, puede parecer extraño afirmar que la economía es una ciencia.",
+        "Los economistas intentan abordar su tema de estudio con la objetividad de un científico. Como todos los científicos, hacen supuestos apropiados y construyen modelos simplificados para comprender el mundo que los rodea. Dos modelos simples son especialmente útiles: el diagrama de flujo circular y la frontera de posibilidades de producción.",
       secciones: [
         {
-          titulo: "El economista como científico",
-          descripcion: "Los economistas siguen el método científico para estudiar la economía.",
+          titulo: "El Economista como Científico",
           contenido: [
             {
-              subtitulo: "El método científico: observación, teoría y más observación",
-              texto: "Los economistas, como los astrónomos y los biólogos evolutivos, a menudo no pueden realizar experimentos controlados. En su lugar, deben hacer uso de los experimentos que la historia les proporciona. Cuando ocurre una guerra en Medio Oriente, los precios del petróleo suben en todo el mundo. Para un economista que estudia los efectos de los cambios en los precios del petróleo, esta guerra ofrece un experimento natural.",
-              ejemplo: "Cuando el huracán Katrina interrumpió la producción de petróleo en el Golfo de México en 2005, los economistas pudieron estudiar cómo los choques de oferta afectan los precios y la economía."
+              subtitulo: "El Método Científico",
+              descripcion: "Los economistas siguen el método científico: observan, formulan teorías y recopilan datos para verificar o refutar sus teorías.",
+              puntosClave: [
+                "Observación de fenómenos económicos",
+                "Formulación de hipótesis",
+                "Recopilación y análisis de datos",
+                "Verificación o refutación de teorías"
+              ]
             },
             {
-              subtitulo: "El papel de los supuestos",
-              texto: "Los supuestos pueden simplificar el mundo complejo y hacer que sea más fácil de entender. Para estudiar los efectos del comercio internacional, por ejemplo, podríamos suponer que el mundo consiste en solo dos países y que cada país produce solo dos bienes.",
-              ejemplo: "Al estudiar la física de los objetos que caen, los físicos pueden suponer que no hay resistencia del aire. Al estudiar el comercio internacional, los economistas pueden suponer que hay solo dos países."
-            },
-            {
-              subtitulo: "Modelos económicos",
-              texto: "Los modelos económicos omiten muchos detalles para permitirnos ver lo que es verdaderamente importante. Así como un mapa de la ciudad omite muchos detalles menores para que podamos ver las calles principales más claramente.",
-              ejemplo: "El modelo de flujo circular es una representación visual de cómo fluye el dinero a través de los mercados entre hogares y empresas."
+              subtitulo: "Supuestos en Economía",
+              descripcion: "Los economistas hacen supuestos para simplificar el complejo mundo real y enfocarse en lo que realmente importa.",
+              puntosClave: [
+                "Los supuestos simplifican la realidad",
+                "Permiten enfocarse en relaciones importantes",
+                "Diferentes supuestos para diferentes propósitos",
+                "Ejemplo: 'Ceteris paribus' (todo lo demás constante)"
+              ]
             }
           ]
         },
         {
-          titulo: "Dos modelos económicos simples",
-          descripcion: "Modelos fundamentales para entender la economía.",
+          titulo: "Modelos Económicos",
           contenido: [
             {
-              subtitulo: "El diagrama de flujo circular",
-              texto: "El diagrama de flujo circular es un modelo visual de la economía que muestra cómo fluye el dinero a través de los mercados entre hogares y empresas. En este modelo simplificado, la economía se compone de dos tipos de tomadores de decisiones: hogares y empresas.",
-              ejemplo: "Los hogares venden su trabajo a las empresas en el mercado de factores y usan sus ingresos para comprar bienes y servicios de las empresas en el mercado de bienes."
+              subtitulo: "¿Qué son los Modelos?",
+              descripcion: "Los modelos económicos son representaciones simplificadas de la realidad que nos ayudan a entender fenómenos complejos.",
+              puntosClave: [
+                "Simplifican la realidad compleja",
+                "Se enfocan en relaciones clave",
+                "Permiten hacer predicciones",
+                "Son herramientas, no la realidad misma"
+              ]
             },
             {
-              subtitulo: "La frontera de posibilidades de producción",
-              texto: "La frontera de posibilidades de producción es un gráfico que muestra las combinaciones de producción que la economía puede producir posiblemente dados los factores de producción disponibles y la tecnología de producción disponible.",
-              ejemplo: "Una economía que produce solo computadoras y automóviles. Si todos los recursos se dedican a computadoras, se pueden producir 1000 computadoras y 0 automóviles. Si todos se dedican a automóviles, se pueden producir 700 automóviles y 0 computadoras."
+              subtitulo: "Primer Modelo: Diagrama de Flujo Circular",
+              descripcion: "Muestra cómo el dinero fluye a través de los mercados entre hogares y empresas.",
+              puntosClave: [
+                "Hogares: propietarios de factores de producción",
+                "Empresas: productores de bienes y servicios",
+                "Mercado de factores: donde se venden trabajo, tierra y capital",
+                "Mercado de bienes: donde se venden productos y servicios",
+                "Flujos reales vs flujos monetarios"
+              ]
+            },
+            {
+              subtitulo: "Segundo Modelo: Frontera de Posibilidades de Producción (FPP)",
+              descripcion: "Muestra las combinaciones de producción que una economía puede lograr dados sus factores de producción y tecnología.",
+              puntosClave: [
+                "Representa la escasez y el costo de oportunidad",
+                "Puntos sobre la frontera: eficiencia productiva",
+                "Puntos dentro de la frontera: ineficiencia",
+                "Puntos fuera de la frontera: inalcanzables",
+                "La forma cóncava refleja costos de oportunidad crecientes"
+              ]
             }
           ]
         },
         {
-          titulo: "Microeconomía y macroeconomía",
-          descripcion: "Las dos ramas principales del estudio económico.",
+          titulo: "Microeconomía y Macroeconomía",
           contenido: [
             {
               subtitulo: "Microeconomía",
-              texto: "La microeconomía es el estudio de cómo los hogares y las empresas toman decisiones y cómo interactúan en los mercados. Un microeconomista podría estudiar los efectos del alquiler controlado en la vivienda en la ciudad de Nueva York.",
-              ejemplo: "Estudiar cómo el precio de la gasolina afecta la demanda de automóviles grandes, o cómo las políticas de salario mínimo afectan el empleo juvenil."
+              descripcion: "Estudia cómo los hogares y las empresas toman decisiones y cómo interactúan en los mercados.",
+              puntosClave: [
+                "Decisiones individuales de consumo",
+                "Decisiones empresariales de producción",
+                "Funcionamiento de mercados específicos",
+                "Formación de precios individuales"
+              ]
             },
             {
               subtitulo: "Macroeconomía",
-              texto: "La macroeconomía es el estudio de los fenómenos de toda la economía, incluida la inflación, el desempleo y el crecimiento económico. Un macroeconomista podría estudiar los efectos del endeudamiento del gobierno federal en la economía.",
-              ejemplo: "Estudiar por qué las economías experimentan períodos de recesión y crecimiento, o cómo las políticas gubernamentales pueden reducir el desempleo."
+              descripcion: "Estudia los fenómenos que afectan a toda la economía, incluyendo inflación, desempleo y crecimiento económico.",
+              puntosClave: [
+                "Nivel general de precios (inflación)",
+                "Desempleo total en la economía",
+                "Crecimiento económico (PIB)",
+                "Políticas monetarias y fiscales"
+              ]
             }
           ]
         },
         {
-          titulo: "El economista como asesor de políticas",
-          descripcion: "Cómo los economistas contribuyen a la formulación de políticas públicas.",
+          titulo: "Economía Positiva vs Normativa",
           contenido: [
             {
-              subtitulo: "Análisis positivo versus normativo",
-              texto: "Las declaraciones positivas son declaraciones que intentan describir el mundo tal como es. Las declaraciones normativas son declaraciones que intentan prescribir cómo debería ser el mundo.",
-              ejemplo: "Positivo: 'El salario mínimo causa desempleo.' Normativo: 'El gobierno debería aumentar el salario mínimo.'"
+              subtitulo: "Declaraciones Positivas",
+              descripcion: "Describen el mundo como es. Son afirmaciones sobre hechos que pueden ser confirmadas o refutadas.",
+              puntosClave: [
+                "Describen 'lo que es'",
+                "Pueden ser verificadas con datos",
+                "Son objetivas",
+                "Ejemplo: 'El desempleo aumentó 2% este año'"
+              ]
             },
             {
-              subtitulo: "Economistas en Washington",
-              texto: "Los economistas que asesoran a los responsables de las políticas ofrecen consejos que están destinados a hacer que las políticas sean más efectivas o el resultado económico más eficiente.",
-              ejemplo: "El Consejo de Asesores Económicos del Presidente, la Reserva Federal, y organismos como el Departamento del Tesoro emplean muchos economistas."
+              subtitulo: "Declaraciones Normativas",
+              descripcion: "Describen cómo debería ser el mundo. Son afirmaciones sobre valores y juicios.",
+              puntosClave: [
+                "Describen 'lo que debería ser'",
+                "Involucran juicios de valor",
+                "Son subjetivas",
+                "Ejemplo: 'El gobierno debería reducir el desempleo'"
+              ]
             }
           ]
         }
@@ -273,16 +315,25 @@ const capitulosData = {
     },
     formulas: [
       {
-        nombre: "Costo de Oportunidad en FPP",
-        formula: "CO = Cantidad sacrificada del bien Y / Cantidad ganada del bien X",
-        descripcion: "En la frontera de posibilidades de producción, el costo de oportunidad se mide por la pendiente de la curva.",
-        ejemplo: "Si para producir 1 computadora adicional debemos sacrificar 2 automóviles, el CO de la computadora es 2 automóviles."
+        nombre: "Frontera de Posibilidades de Producción",
+        formula: "Y = f(X) donde Y + X ≤ Recursos Totales",
+        descripcion: "Muestra las combinaciones máximas de dos bienes que se pueden producir con recursos limitados.",
+        ejemplo: "Si una economía puede producir 100 computadoras O 50 autos, la FPP muestra todas las combinaciones posibles.",
+        grafico: "Curva cóncava que muestra el trade-off entre dos bienes"
+      },
+      {
+        nombre: "Costo de Oportunidad en la FPP",
+        formula: "CO = ΔY / ΔX",
+        descripcion: "El costo de oportunidad es la pendiente de la FPP en cualquier punto.",
+        ejemplo: "Si para producir 10 computadoras más hay que sacrificar 5 autos, CO = 5/10 = 0.5 autos por computadora.",
+        grafico: "La pendiente de la FPP representa el costo de oportunidad"
       },
       {
         nombre: "Eficiencia Productiva",
-        formula: "Punto sobre la FPP = Uso eficiente de recursos",
-        descripcion: "La eficiencia productiva se logra cuando la economía está produciendo en su frontera de posibilidades de producción.",
-        ejemplo: "Cualquier punto dentro de la FPP representa ineficiencia; cualquier punto fuera es inalcanzable con los recursos actuales."
+        formula: "Punto sobre la FPP",
+        descripcion: "Una economía es productivamente eficiente cuando opera sobre su FPP.",
+        ejemplo: "Producir 60 computadoras y 20 autos cuando la FPP permite máximo esta combinación.",
+        grafico: "Cualquier punto sobre la curva de la FPP"
       }
     ],
     conceptosClave: [
@@ -293,95 +344,140 @@ const capitulosData = {
       "Frontera de posibilidades de producción",
       "Microeconomía",
       "Macroeconomía",
-      "Análisis positivo",
-      "Análisis normativo",
-      "Eficiencia productiva"
+      "Economía positiva",
+      "Economía normativa",
+      "Eficiencia productiva",
+      "Costo de oportunidad creciente"
     ],
     ejemplosReales: [
       {
-        titulo: "Modelos Climáticos vs Modelos Económicos",
-        descripcion: "Así como los climatólogos usan modelos para predecir el clima, los economistas usan modelos para entender y predecir comportamientos económicos, ambos simplificando la realidad compleja."
-      },
-      {
         titulo: "FPP durante la Segunda Guerra Mundial",
-        descripcion: "Estados Unidos tuvo que decidir entre producir bienes civiles (automóviles, electrodomésticos) y bienes militares (tanques, aviones), ilustrando perfectamente el concepto de frontera de posibilidades de producción."
+        descripcion:
+          "Estados Unidos tuvo que decidir entre producir bienes civiles (autos, electrodomésticos) y bienes militares (tanques, aviones). La FPP mostró este trade-off claramente.",
       },
       {
-        titulo: "Debate sobre Salario Mínimo",
-        descripcion: "Los economistas pueden estar de acuerdo en que el salario mínimo causa algún desempleo (positivo) pero diferir sobre si debería aumentarse (normativo)."
-      }
-    ]
+        titulo: "Flujo Circular en la Economía Digital",
+        descripcion:
+          "En plataformas como Amazon, los hogares compran bienes (flujo real) y pagan dinero (flujo monetario), mientras Amazon paga salarios a empleados y dividendos a accionistas.",
+      },
+      {
+        titulo: "Economía Positiva vs Normativa en Política",
+        descripcion:
+          "Positiva: 'El salario mínimo de $15 reduciría el empleo en 2%'. Normativa: 'El salario mínimo debería ser $15 para ayudar a los trabajadores pobres'.",
+      },
+    ],
   },
   3: {
     titulo: "La interdependencia y las ganancias del comercio",
-    resumen: "Ventaja absoluta, comparativa y los beneficios de la especialización en el comercio.",
+    resumen: "Ventaja absoluta, ventaja comparativa y los beneficios de la especialización y el comercio.",
     duracion: "55 min",
     dificultad: "Intermedio",
     objetivos: [
       "Distinguir entre ventaja absoluta y ventaja comparativa",
-      "Explicar cómo la especialización aumenta la producción total",
-      "Analizar las ganancias del comercio para todas las partes",
-      "Aplicar estos conceptos al comercio internacional",
+      "Calcular costos de oportunidad y determinar ventajas comparativas",
+      "Explicar cómo el comercio beneficia a todas las partes involucradas",
     ],
     contenido: {
       introduccion:
-        "Considere su día típico. Se despierta por la mañana y se sirve jugo de naranja de Florida y café de Brasil. Durante el desayuno, mira las noticias en su televisor hecho en Japón. Se viste con ropa hecha en China y conduce al trabajo en un automóvil hecho en Japón, Alemania o Corea. Luego abre su computadora portátil hecha en Malasia. Esta interdependencia es posible porque las personas comercian entre sí.",
+        "Considera tu día típico. Te despiertas con un despertador hecho en Corea, te pones ropa hecha en China, y desayunas bananas de Honduras y café de Brasil. Antes del mediodía, ya has dependido de docenas de países. Esta interdependencia es posible porque las personas comercian entre sí. En este capítulo examinamos las ventajas del comercio.",
       secciones: [
         {
-          titulo: "Una parábola para la economía moderna",
-          descripcion: "El ejemplo de dos personas que se especializan y comercian.",
+          titulo: "Una Parábola para la Economía Moderna",
           contenido: [
             {
-              subtitulo: "Posibilidades de producción",
-              texto: "Supongamos que hay dos bienes: carne y papas. Y hay dos personas: un ganadero y un agricultor. El ganadero es mejor criando ganado y produciendo carne, mientras que el agricultor es mejor cultivando papas.",
-              ejemplo: "Si el ganadero dedica todo su tiempo a la carne, puede producir 18 onzas por día. Si dedica todo su tiempo a las papas, puede producir 12 onzas por día. El agricultor puede producir 6 onzas de carne o 24 onzas de papas por día."
-            },
-            {
-              subtitulo: "Especialización y comercio",
-              texto: "Aunque el ganadero es mejor en ambas actividades (ventaja absoluta), ambos pueden beneficiarse del comercio si se especializan según su ventaja comparativa.",
-              ejemplo: "El ganadero se especializa en carne y el agricultor en papas. Luego intercambian: el ganadero da 5 onzas de carne por 15 onzas de papas del agricultor."
+              subtitulo: "Autosuficiencia vs Especialización",
+              descripcion: "Imagina a dos personas: un ganadero que produce carne y un agricultor que produce papas. Cada uno puede elegir ser autosuficiente o especializarse y comerciar.",
+              puntosClave: [
+                "Autosuficiencia: cada persona produce todo lo que consume",
+                "Especialización: cada persona se enfoca en lo que hace mejor",
+                "El comercio permite que ambos consuman más",
+                "La interdependencia puede mejorar el bienestar de todos"
+              ]
             }
           ]
         },
         {
-          titulo: "Ventaja comparativa: la fuerza motriz de la especialización",
-          descripcion: "El principio fundamental que explica por qué el comercio beneficia a todos.",
+          titulo: "El Principio de la Ventaja Comparativa",
           contenido: [
             {
-              subtitulo: "Ventaja absoluta",
-              texto: "Una persona tiene ventaja absoluta en la producción de un bien si puede producir ese bien usando menos insumos que otra persona. La ventaja absoluta se mide comparando productividades.",
-              ejemplo: "Si el ganadero puede producir tanto carne como papas con menos tiempo que el agricultor, el ganadero tiene ventaja absoluta en ambos bienes."
+              subtitulo: "Ventaja Absoluta",
+              descripcion: "Una persona tiene ventaja absoluta en la producción de un bien si puede producir más de ese bien que otra persona usando la misma cantidad de recursos.",
+              puntosClave: [
+                "Compara productividades absolutas",
+                "Quien produce más con los mismos recursos",
+                "No determina quién debería especializarse",
+                "Ejemplo: Si María produce 10 tortas/día y Juan 6 tortas/día, María tiene ventaja absoluta"
+              ]
             },
             {
-              subtitulo: "Ventaja comparativa",
-              texto: "Una persona tiene ventaja comparativa en la producción de un bien si puede producir ese bien a un menor costo de oportunidad que otra persona. La ventaja comparativa se mide comparando costos de oportunidad.",
-              ejemplo: "El costo de oportunidad del ganadero de producir 1 onza de papas es 1.5 onzas de carne. El costo de oportunidad del agricultor es 0.25 onzas de carne. El agricultor tiene ventaja comparativa en papas."
+              subtitulo: "Costo de Oportunidad",
+              descripcion: "Para determinar la ventaja comparativa, debemos calcular el costo de oportunidad de cada bien para cada productor.",
+              puntosClave: [
+                "CO = lo que se sacrifica / lo que se obtiene",
+                "Mide el valor de la mejor alternativa sacrificada",
+                "Es la base para determinar la ventaja comparativa",
+                "Ejemplo: Si María puede hacer 10 tortas O 20 panes, CO de 1 torta = 2 panes"
+              ]
             },
             {
-              subtitulo: "Ventaja comparativa y comercio",
-              texto: "Las ganancias del comercio se basan en la ventaja comparativa, no en la ventaja absoluta. Cuando cada persona se especializa en producir el bien en el que tiene ventaja comparativa, la producción total en la economía aumenta.",
-              ejemplo: "Incluso si el ganadero es mejor en todo, ambos se benefician si el ganadero se especializa en carne (donde su ventaja es mayor) y el agricultor en papas."
+              subtitulo: "Ventaja Comparativa",
+              descripcion: "Una persona tiene ventaja comparativa en la producción de un bien si puede producir ese bien con un menor costo de oportunidad que otra persona.",
+              puntosClave: [
+                "Compara costos de oportunidad, no productividades absolutas",
+                "Quien tiene menor costo de oportunidad tiene ventaja comparativa",
+                "Determina quién debería especializarse en qué",
+                "Incluso quien no tiene ventaja absoluta puede tener ventaja comparativa"
+              ]
             }
           ]
         },
         {
-          titulo: "Aplicaciones de la ventaja comparativa",
-          descripcion: "Cómo se aplica este principio en el mundo real.",
+          titulo: "Aplicaciones de la Ventaja Comparativa",
           contenido: [
             {
-              subtitulo: "¿Debería Tiger Woods cortar su propio césped?",
-              texto: "Tiger Woods probablemente puede cortar su césped más rápido que cualquier otra persona. Pero eso no significa que deba hacerlo. Su tiempo es muy valioso dando clases de golf o jugando torneos.",
-              ejemplo: "Aunque Tiger tenga ventaja absoluta cortando césped, su costo de oportunidad es muy alto. Es mejor que pague a alguien más para que corte su césped mientras él se enfoca en el golf."
+              subtitulo: "Ganancias del Comercio",
+              descripcion: "Cuando cada persona se especializa en el bien en el que tiene ventaja comparativa, el consumo total aumenta.",
+              puntosClave: [
+                "La especialización aumenta la producción total",
+                "El comercio permite que ambas partes se beneficien",
+                "Cada parte consume fuera de su FPP individual",
+                "Las ganancias provienen de la especialización, no del comercio per se"
+              ]
             },
             {
-              subtitulo: "Comercio internacional",
-              texto: "El principio de ventaja comparativa explica por qué los países comercian entre sí. Cada país se especializa en producir los bienes en los que tiene ventaja comparativa.",
-              ejemplo: "Japón tiene ventaja comparativa en electrónicos, Brasil en café, y Arabia Saudita en petróleo. Todos se benefician del comercio internacional."
+              subtitulo: "Términos de Intercambio",
+              descripcion: "El precio al cual se intercambian los bienes debe beneficiar a ambas partes.",
+              puntosClave: [
+                "Debe estar entre los costos de oportunidad de ambas partes",
+                "Si CO_A < precio < CO_B, ambos se benefician",
+                "Determina cómo se reparten las ganancias del comercio",
+                "Ejemplo: Si CO_María = 2 panes/torta y CO_Juan = 3 panes/torta, precio debe estar entre 2 y 3"
+              ]
+            }
+          ]
+        },
+        {
+          titulo: "Comercio Internacional",
+          contenido: [
+            {
+              subtitulo: "Aplicación a Países",
+              descripcion: "Los mismos principios se aplican al comercio entre países.",
+              puntosClave: [
+                "Los países se especializan según su ventaja comparativa",
+                "Incluso países 'atrasados' pueden beneficiarse del comercio",
+                "El comercio no es un juego de suma cero",
+                "Ejemplo: Japón en electrónicos, Brasil en café"
+              ]
             },
             {
-              subtitulo: "Comercio dentro de las familias",
-              texto: "Incluso dentro de una familia, los miembros se especializan según sus ventajas comparativas y 'comercian' entre sí.",
-              ejemplo: "En una familia, quizás la madre tiene ventaja comparativa en cocinar y el padre en reparaciones del hogar. Se especializan y ambos se benefician."
+              subtitulo: "Mitos sobre el Comercio",
+              descripcion: "Varios mitos comunes sobre el comercio internacional son incorrectos.",
+              puntosClave: [
+                "Mito: El comercio es bueno solo si tu país 'gana'",
+                "Realidad: Ambos países pueden ganar simultáneamente",
+                "Mito: Los países ricos siempre explotan a los pobres",
+                "Realidad: El comercio puede beneficiar a países de todos los niveles de desarrollo"
+              ]
             }
           ]
         }
@@ -390,21 +486,31 @@ const capitulosData = {
     formulas: [
       {
         nombre: "Costo de Oportunidad",
-        formula: "CO de X = Cantidad de Y sacrificada / Cantidad de X ganada",
-        descripcion: "Para determinar ventaja comparativa, calculamos el costo de oportunidad de cada bien para cada productor.",
-        ejemplo: "Si para producir 1 unidad de carne debo sacrificar 2 unidades de papas, el CO de la carne es 2 papas."
+        formula: "CO_X = Cantidad sacrificada de Y / Cantidad obtenida de X",
+        descripcion: "Calcula cuánto de un bien se debe sacrificar para obtener una unidad adicional de otro bien.",
+        ejemplo: "Si para producir 1 torta más debo sacrificar 2 panes, entonces CO_torta = 2 panes.",
+        grafico: "Pendiente de la FPP individual"
       },
       {
         nombre: "Ventaja Comparativa",
-        formula: "Ventaja Comparativa en X: menor CO de X entre los productores",
-        descripcion: "Quien tenga el menor costo de oportunidad en la producción de un bien tiene ventaja comparativa en ese bien.",
-        ejemplo: "Si el CO del ganadero para papas es 1.5 carne y el del agricultor es 0.25 carne, el agricultor tiene ventaja comparativa en papas."
+        formula: "Ventaja Comparativa en X si: CO_A(X) < CO_B(X)",
+        descripcion: "La persona A tiene ventaja comparativa en X si su costo de oportunidad de X es menor que el de B.",
+        ejemplo: "Si CO_María(torta) = 2 panes y CO_Juan(torta) = 3 panes, María tiene ventaja comparativa en tortas.",
+        grafico: "Comparación de pendientes de FPP"
+      },
+      {
+        nombre: "Términos de Intercambio Mutuamente Beneficiosos",
+        formula: "CO_A(X) < Precio_X < CO_B(X)",
+        descripcion: "Para que el comercio beneficie a ambas partes, el precio debe estar entre sus costos de oportunidad.",
+        ejemplo: "Si CO_María = 2 panes/torta y CO_Juan = 3 panes/torta, el precio debe estar entre 2 y 3 panes por torta.",
+        grafico: "Rango de precios beneficiosos en el gráfico de intercambio"
       },
       {
         nombre: "Ganancias del Comercio",
-        formula: "Precio de intercambio debe estar entre los CO de ambos productores",
-        descripcion: "Para que ambas partes se beneficien, el precio de intercambio debe estar entre sus costos de oportunidad.",
-        ejemplo: "Si el CO de carne es 0.67 papas para el ganadero y 4 papas para el agricultor, pueden intercambiar entre 0.67 y 4 papas por carne."
+        formula: "Consumo con comercio > Consumo sin comercio",
+        descripcion: "El comercio permite consumir fuera de la FPP individual.",
+        ejemplo: "Sin comercio: María consume 5 tortas y 10 panes. Con comercio: 6 tortas y 12 panes.",
+        grafico: "Punto de consumo fuera de la FPP individual"
       }
     ],
     conceptosClave: [
@@ -412,114 +518,165 @@ const capitulosData = {
       "Ventaja comparativa", 
       "Costo de oportunidad",
       "Especialización",
+      "Términos de intercambio",
       "Ganancias del comercio",
       "Interdependencia",
       "Comercio internacional",
-      "Productividad",
-      "Frontera de posibilidades de producción",
-      "Términos de intercambio"
+      "Autosuficiencia",
+      "Productividad"
     ],
     ejemplosReales: [
       {
-        titulo: "Comercio entre Estados Unidos y México",
-        descripcion: "Estados Unidos tiene ventaja comparativa en bienes intensivos en capital (aviones, maquinaria), mientras México tiene ventaja comparativa en bienes intensivos en trabajo (textiles, agricultura). Ambos se benefician del TLCAN."
+        titulo: "Comercio entre Estados Unidos y México (NAFTA/USMCA)",
+        descripcion:
+          "Estados Unidos se especializa en bienes intensivos en capital y tecnología (software, maquinaria), mientras México se especializa en bienes intensivos en trabajo (textiles, ensamblaje). Ambos países se benefician.",
       },
       {
         titulo: "Especialización en Silicon Valley",
-        descripcion: "Las empresas tecnológicas se especializan: Apple en diseño de productos, Intel en procesadores, Microsoft en software. Esta especialización aumenta la innovación y eficiencia total."
+        descripcion:
+          "Las empresas tecnológicas se especializan: Apple en diseño, TSMC en manufactura de chips, Google en software. Esta especialización aumenta la eficiencia global.",
       },
       {
-        titulo: "Médicos y Asistentes",
-        descripcion: "Aunque un médico puede ser mejor tomando presión arterial que una enfermera, es más eficiente que la enfermera haga esto mientras el médico se enfoca en diagnósticos complejos donde su ventaja comparativa es mayor."
-      }
-    ]
+        titulo: "David Ricardo y el Comercio de Vinos",
+        descripcion:
+          "El economista David Ricardo usó el ejemplo de Inglaterra (textiles) y Portugal (vino) para demostrar que incluso si Portugal era mejor en ambos, el comercio beneficiaba a ambos países.",
+      },
+    ],
   },
   4: {
-    titulo: "Las fuerzas del mercado de la oferta y la demanda",
-    resumen: "Fundamentos de la oferta, demanda y determinación de precios en mercados competitivos.",
+    titulo: "Las fuerzas del mercado: oferta y demanda",
+    resumen: "Fundamentos de oferta, demanda y determinación de precios en mercados competitivos.",
     duracion: "60 min",
     dificultad: "Intermedio",
     objetivos: [
-      "Comprender las leyes de oferta y demanda",
-      "Analizar los determinantes de la oferta y demanda",
-      "Explicar cómo se determina el equilibrio de mercado",
-      "Predecir efectos de cambios en oferta y demanda",
+      "Analizar los factores que determinan la demanda de un bien",
+      "Analizar los factores que determinan la oferta de un bien",
+      "Explicar cómo la oferta y demanda determinan el precio y cantidad de equilibrio",
     ],
     contenido: {
       introduccion:
-        "La oferta y la demanda son las fuerzas que hacen que las economías de mercado funcionen. Determinan la cantidad producida de cada bien y el precio al que se vende. Si quiere saber cómo cualquier evento o política afectará la economía, debe pensar primero en cómo afectará la oferta y la demanda.",
+        "La oferta y la demanda son las fuerzas que hacen que las economías de mercado funcionen. Determinan la cantidad producida de cada bien y el precio al que se vende. Si quieres entender cómo funciona cualquier evento o política económica, debes pensar primero en cómo afectará la oferta y la demanda.",
       secciones: [
         {
-          titulo: "Mercados y competencia",
-          descripcion: "Definición y características de los mercados competitivos.",
+          titulo: "Los Mercados y la Competencia",
           contenido: [
             {
-              subtitulo: "¿Qué es un mercado?",
-              texto: "Un mercado es un grupo de compradores y vendedores de un bien o servicio particular. Los compradores como grupo determinan la demanda del producto, y los vendedores como grupo determinan la oferta del producto.",
-              ejemplo: "El mercado de helados incluye a todos los compradores de helados (desde niños hasta adultos) y todos los vendedores (desde vendedores ambulantes hasta supermercados)."
+              subtitulo: "¿Qué es un Mercado?",
+              descripcion: "Un mercado es un grupo de compradores y vendedores de un bien o servicio particular.",
+              puntosClave: [
+                "Compradores determinan la demanda",
+                "Vendedores determinan la oferta",
+                "Puede ser físico (mercado de agricultores) o virtual (eBay)",
+                "Los mercados toman muchas formas"
+              ]
             },
             {
-              subtitulo: "¿Qué es la competencia?",
-              texto: "Un mercado competitivo es un mercado en el que hay muchos compradores y vendedores, por lo que cada uno tiene un impacto insignificante en el precio de mercado. En mercados perfectamente competitivos, los bienes son exactamente iguales y las empresas pueden entrar y salir libremente.",
-              ejemplo: "El mercado de trigo se aproxima a la competencia perfecta: hay miles de agricultores vendiendo trigo esencialmente idéntico, y ningún agricultor individual puede influir significativamente en el precio."
+              subtitulo: "Competencia Perfecta",
+              descripcion: "Un mercado perfectamente competitivo tiene muchos compradores y vendedores, por lo que cada uno tiene un impacto insignificante en el precio de mercado.",
+              puntosClave: [
+                "Muchos compradores y vendedores",
+                "Los bienes son idénticos",
+                "Las empresas son precio-aceptantes",
+                "Libre entrada y salida del mercado",
+                "Información perfecta"
+              ]
             }
           ]
         },
         {
-          titulo: "La demanda",
-          descripcion: "Comportamiento de los compradores en el mercado.",
+          titulo: "La Demanda",
           contenido: [
             {
-              subtitulo: "La curva de demanda: la relación entre precio y cantidad demandada",
-              texto: "La cantidad demandada de cualquier bien es la cantidad del bien que los compradores están dispuestos y pueden comprar. La ley de la demanda establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad demandada del bien disminuye.",
-              ejemplo: "Cuando el precio de los helados aumenta de $2 a $3 por cono, la cantidad demandada podría disminuir de 10 a 8 conos por día."
+              subtitulo: "La Curva de Demanda",
+              descripcion: "La cantidad demandada de cualquier bien es la cantidad que los compradores están dispuestos y pueden comprar.",
+              puntosClave: [
+                "Relación entre precio y cantidad demandada",
+                "Ley de la demanda: precio ↑, cantidad demandada ↓",
+                "Pendiente negativa",
+                "Ceteris paribus (todo lo demás constante)"
+              ]
             },
             {
-              subtitulo: "Demanda del mercado versus demanda individual",
-              texto: "La demanda del mercado es la suma de todas las demandas individuales para un bien o servicio particular. Se obtiene sumando horizontalmente las curvas de demanda individuales.",
-              ejemplo: "Si Ana demanda 3 helados a $2 y Bruno demanda 2 helados al mismo precio, la demanda del mercado a $2 es 5 helados."
+              subtitulo: "Determinantes de la Demanda",
+              descripcion: "Varios factores determinan cuánto están dispuestos a comprar los consumidores a cualquier precio dado.",
+              puntosClave: [
+                "Ingreso (bienes normales vs inferiores)",
+                "Precios de bienes relacionados (sustitutos y complementos)",
+                "Gustos y preferencias",
+                "Expectativas sobre el futuro",
+                "Número de compradores"
+              ]
             },
             {
-              subtitulo: "Desplazamientos en la curva de demanda",
-              texto: "Cuando cualquier factor que afecta la demanda (excepto el precio) cambia, la curva de demanda se desplaza. Un aumento en la demanda desplaza la curva hacia la derecha; una disminución la desplaza hacia la izquierda.",
-              ejemplo: "Si aumenta el ingreso de los consumidores y los helados son un bien normal, la demanda de helados aumenta y la curva se desplaza hacia la derecha."
+              subtitulo: "Desplazamientos vs Movimientos",
+              descripcion: "Es crucial distinguir entre movimientos a lo largo de la curva de demanda y desplazamientos de toda la curva.",
+              puntosClave: [
+                "Movimiento: cambio en precio del bien",
+                "Desplazamiento: cambio en determinantes (excepto precio)",
+                "Aumento de demanda: curva se desplaza a la derecha",
+                "Disminución de demanda: curva se desplaza a la izquierda"
+              ]
             }
           ]
         },
         {
-          titulo: "La oferta",
-          descripcion: "Comportamiento de los vendedores en el mercado.",
+          titulo: "La Oferta",
           contenido: [
             {
-              subtitulo: "La curva de oferta: la relación entre precio y cantidad ofrecida",
-              texto: "La cantidad ofrecida de cualquier bien es la cantidad del bien que los vendedores están dispuestos y pueden vender. La ley de la oferta establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad ofrecida del bien también aumenta.",
-              ejemplo: "Cuando el precio de los helados aumenta de $2 a $3 por cono, los vendedores están dispuestos a ofrecer más helados, digamos de 8 a 12 conos por día."
+              subtitulo: "La Curva de Oferta",
+              descripcion: "La cantidad ofrecida de cualquier bien es la cantidad que los vendedores están dispuestos y pueden vender.",
+              puntosClave: [
+                "Relación entre precio y cantidad ofrecida",
+                "Ley de la oferta: precio ↑, cantidad ofrecida ↑",
+                "Pendiente positiva",
+                "Refleja costos de oportunidad crecientes"
+              ]
             },
             {
-              subtitulo: "Oferta del mercado versus oferta individual",
-              texto: "La oferta del mercado es la suma de las ofertas de todas las empresas. Se obtiene sumando horizontalmente las curvas de oferta individuales de todas las empresas en el mercado.",
-              ejemplo: "Si la heladería A ofrece 5 helados a $3 y la heladería B ofrece 7 helados al mismo precio, la oferta del mercado a $3 es 12 helados."
-            },
-            {
-              subtitulo: "Desplazamientos en la curva de oferta",
-              texto: "Cuando cualquier factor que afecta la oferta (excepto el precio) cambia, la curva de oferta se desplaza. Un aumento en la oferta desplaza la curva hacia la derecha; una disminución la desplaza hacia la izquierda.",
-              ejemplo: "Si mejora la tecnología para hacer helados, los costos de producción disminuyen, la oferta aumenta y la curva se desplaza hacia la derecha."
+              subtitulo: "Determinantes de la Oferta",
+              descripcion: "Varios factores determinan cuánto están dispuestos a vender los productores a cualquier precio dado.",
+              puntosClave: [
+                "Precios de los insumos",
+                "Tecnología",
+                "Expectativas sobre precios futuros",
+                "Número de vendedores",
+                "Políticas gubernamentales (impuestos, subsidios)"
+              ]
             }
           ]
         },
         {
-          titulo: "Oferta y demanda juntas",
-          descripcion: "Cómo interactúan la oferta y demanda para determinar el equilibrio.",
+          titulo: "Oferta y Demanda Juntas",
           contenido: [
             {
-              subtitulo: "Equilibrio",
-              texto: "El equilibrio se refiere a una situación en la que el precio de mercado ha alcanzado el nivel en el que la cantidad ofrecida es igual a la cantidad demandada. El precio de equilibrio equilibra la oferta y la demanda.",
-              ejemplo: "Si a $2.50 por helado, los vendedores quieren vender exactamente 10 helados y los compradores quieren comprar exactamente 10 helados, entonces $2.50 es el precio de equilibrio."
+              subtitulo: "Equilibrio de Mercado",
+              descripcion: "El equilibrio ocurre donde la curva de oferta y demanda se intersectan.",
+              puntosClave: [
+                "Precio de equilibrio: oferta = demanda",
+                "Cantidad de equilibrio: cantidad que se intercambia",
+                "Mercado se 'vacía' - no hay escasez ni excedente",
+                "Tendencia natural hacia el equilibrio"
+              ]
             },
             {
-              subtitulo: "Tres pasos para analizar cambios en el equilibrio",
-              texto: "Para analizar cómo un evento afecta un mercado: (1) Decidir si el evento desplaza la curva de oferta, la curva de demanda, o ambas. (2) Decidir si la curva se desplaza hacia la derecha o hacia la izquierda. (3) Usar el diagrama de oferta y demanda para examinar cómo el desplazamiento afecta el precio y cantidad de equilibrio.",
-              ejemplo: "Si aumenta el precio del azúcar (insumo para helados): (1) Afecta la oferta. (2) La oferta disminuye (desplazamiento hacia la izquierda). (3) El precio aumenta y la cantidad disminuye."
+              subtitulo: "Exceso de Demanda y Oferta",
+              descripcion: "Cuando el precio no está en equilibrio, hay presiones para que cambie.",
+              puntosClave: [
+                "Exceso de demanda (escasez): precio tiende a subir",
+                "Exceso de oferta (excedente): precio tiende a bajar",
+                "Fuerzas del mercado empujan hacia el equilibrio",
+                "Ley de la oferta y demanda"
+              ]
+            },
+            {
+              subtitulo: "Análisis de Cambios en Equilibrio",
+              descripcion: "Podemos predecir cómo eventos afectan el precio y cantidad de equilibrio.",
+              puntosClave: [
+                "Paso 1: ¿Afecta oferta, demanda, o ambas?",
+                "Paso 2: ¿En qué dirección se desplaza la curva?",
+                "Paso 3: Comparar equilibrios inicial y final",
+                "Efectos en precio y cantidad"
+              ]
             }
           ]
         }
@@ -527,51 +684,72 @@ const capitulosData = {
     },
     formulas: [
       {
-        nombre: "Función de Demanda",
+        nombre: "Función de Demanda Lineal",
         formula: "Qd = a - bP",
-        descripcion: "Relación lineal entre precio (P) y cantidad demandada (Qd), donde 'a' es la demanda máxima y 'b' es la sensibilidad al precio.",
-        ejemplo: "Si Qd = 100 - 2P, cuando P = $10, entonces Qd = 100 - 2(10) = 80 unidades."
+        descripcion: "Donde Qd es cantidad demandada, P es precio, 'a' es intercepto y 'b' es pendiente.",
+        ejemplo: "Qd = 100 - 2P significa que cuando P = 0, Qd = 100; cuando P aumenta en $1, Qd disminuye en 2 unidades.",
+        grafico: "Línea recta con pendiente negativa en gráfico P vs Q"
       },
       {
-        nombre: "Función de Oferta",
+        nombre: "Función de Oferta Lineal", 
         formula: "Qs = c + dP",
-        descripcion: "Relación lineal entre precio (P) y cantidad ofrecida (Qs), donde 'c' es la oferta base y 'd' es la sensibilidad al precio.",
-        ejemplo: "Si Qs = 20 + 3P, cuando P = $10, entonces Qs = 20 + 3(10) = 50 unidades."
+        descripcion: "Donde Qs es cantidad ofrecida, P es precio, 'c' es intercepto y 'd' es pendiente.",
+        ejemplo: "Qs = -20 + 3P significa que cuando P = 0, Qs = -20 (no se produce); cuando P aumenta en $1, Qs aumenta en 3 unidades.",
+        grafico: "Línea recta con pendiente positiva en gráfico P vs Q"
       },
       {
         nombre: "Equilibrio de Mercado",
         formula: "Qd = Qs",
         descripcion: "En equilibrio, la cantidad demandada iguala la cantidad ofrecida.",
-        ejemplo: "Si 100 - 2P = 20 + 3P, entonces 80 = 5P, por lo que P = $16 y Q = 68 unidades."
+        ejemplo: "Si Qd = 100 - 2P y Qs = -20 + 3P, entonces 100 - 2P = -20 + 3P, resolviendo: P = 24, Q = 52.",
+        grafico: "Intersección de curvas de oferta y demanda"
+      },
+      {
+        nombre: "Exceso de Demanda",
+        formula: "Exceso = Qd - Qs (cuando Qd > Qs)",
+        descripcion: "Cuando el precio está por debajo del equilibrio, hay escasez.",
+        ejemplo: "Si P = 20, Qd = 60 y Qs = 40, entonces hay exceso de demanda de 20 unidades.",
+        grafico: "Distancia horizontal entre curvas cuando P < P*"
+      },
+      {
+        nombre: "Exceso de Oferta",
+        formula: "Exceso = Qs - Qd (cuando Qs > Qd)",
+        descripcion: "Cuando el precio está por encima del equilibrio, hay excedente.",
+        ejemplo: "Si P = 30, Qs = 70 y Qd = 40, entonces hay exceso de oferta de 30 unidades.",
+        grafico: "Distancia horizontal entre curvas cuando P > P*"
       }
     ],
     conceptosClave: [
-      "Mercado competitivo",
-      "Cantidad demandada",
+      "Mercado",
+      "Competencia perfecta",
+      "Demanda",
+      "Oferta", 
       "Ley de la demanda",
-      "Curva de demanda",
-      "Cantidad ofrecida",
       "Ley de la oferta",
-      "Curva de oferta",
+      "Determinantes de demanda",
+      "Determinantes de oferta",
       "Equilibrio",
-      "Precio de equilibrio",
       "Exceso de demanda",
-      "Exceso de oferta"
+      "Exceso de oferta",
+      "Desplazamientos vs movimientos"
     ],
     ejemplosReales: [
       {
-        titulo: "Mercado de Vivienda durante COVID-19",
-        descripcion: "La pandemia aumentó la demanda de viviendas (trabajo remoto, tasas bajas) mientras la oferta se mantuvo limitada, resultando en precios más altos en muchas ciudades."
+        titulo: "Mercado de Gasolina durante Crisis del Petróleo",
+        descripcion:
+          "En 1973, el embargo petrolero redujo la oferta de petróleo (desplazamiento izquierdo de oferta), causando aumento en precios de gasolina y reducción en cantidad vendida.",
       },
       {
-        titulo: "Precio de la Gasolina y Eventos Geopolíticos",
-        descripcion: "Cuando hay tensiones en Medio Oriente, la oferta de petróleo puede verse amenazada, desplazando la curva de oferta hacia la izquierda y aumentando los precios."
+        titulo: "Mercado de Mascarillas durante COVID-19",
+        descripcion:
+          "La pandemia aumentó dramáticamente la demanda de mascarillas (desplazamiento derecho) mientras la oferta inicialmente se mantuvo constante, causando escasez y precios altos.",
       },
       {
-        titulo: "Mercado de Mascarillas en 2020",
-        descripcion: "Al inicio de la pandemia, la demanda de mascarillas se disparó mientras la oferta era limitada, causando escasez y precios altos hasta que la producción se ajustó."
-      }
-    ]
+        titulo: "Mercado de Vivienda y Tasas de Interés",
+        descripcion:
+          "Cuando las tasas de interés bajan, es más barato financiar una casa, aumentando la demanda de viviendas y elevando los precios inmobiliarios.",
+      },
+    ],
   },
   5: {
     titulo: "La elasticidad y sus aplicaciones",
@@ -579,81 +757,151 @@ const capitulosData = {
     duracion: "65 min",
     dificultad: "Intermedio",
     objetivos: [
-      "Calcular diferentes tipos de elasticidad",
-      "Interpretar valores de elasticidad",
-      "Relacionar elasticidad con ingresos totales",
-      "Aplicar conceptos de elasticidad a políticas públicas",
+      "Calcular e interpretar diferentes tipos de elasticidad",
+      "Analizar la relación entre elasticidad e ingreso total",
+      "Aplicar conceptos de elasticidad a situaciones del mundo real",
     ],
     contenido: {
       introduccion:
-        "La elasticidad es una medida de qué tan sensible es una variable a los cambios en otra variable. En economía, la elasticidad más comúnmente utilizada es la elasticidad precio de la demanda, que mide qué tan sensible es la cantidad demandada a cambios en el precio.",
+        "Cuando estudiamos oferta y demanda, vimos que los consumidores compran menos cuando el precio sube, pero no discutimos cuánto menos. La elasticidad es una medida de qué tan sensible es la cantidad demandada u ofrecida a cambios en uno de sus determinantes. Es crucial para entender cómo funcionan los mercados.",
       secciones: [
         {
-          titulo: "La elasticidad de la demanda",
-          descripcion: "Medición de la sensibilidad de la demanda a cambios en el precio.",
+          titulo: "La Elasticidad Precio de la Demanda",
           contenido: [
             {
-              subtitulo: "La elasticidad precio de la demanda y sus determinantes",
-              texto: "La elasticidad precio de la demanda mide qué tanto responde la cantidad demandada a un cambio en el precio. Se calcula como el cambio porcentual en la cantidad demandada dividido por el cambio porcentual en el precio.",
-              ejemplo: "Si el precio de los helados aumenta 10% y la cantidad demandada disminuye 20%, la elasticidad precio de la demanda es -20%/10% = -2."
+              subtitulo: "Definición y Cálculo",
+              descripcion: "La elasticidad precio de la demanda mide qué tan sensible es la cantidad demandada a cambios en el precio.",
+              puntosClave: [
+                "Elasticidad = % cambio en cantidad / % cambio en precio",
+                "Siempre es negativa (ley de la demanda)",
+                "Se reporta en valor absoluto",
+                "Método del punto medio para mayor precisión"
+              ]
             },
             {
-              subtitulo: "Cálculo de la elasticidad precio de la demanda",
-              texto: "La elasticidad precio de la demanda se calcula usando el método del punto medio para evitar el problema de que el resultado dependa de cuál punto se tome como inicial. La fórmula es: Ed = [(Q2-Q1)/((Q2+Q1)/2)] / [(P2-P1)/((P2+P1)/2)]",
-              ejemplo: "Si el precio cambia de $4 a $6 y la cantidad de 100 a 80: Ed = [(80-100)/90] / [(6-4)/5] = (-20/90) / (2/5) = -0.56"
+              subtitulo: "Interpretación de Valores",
+              descripcion: "El valor de la elasticidad nos dice qué tan sensible es la demanda.",
+              puntosClave: [
+                "Elástica: |Ed| > 1 (muy sensible al precio)",
+                "Inelástica: |Ed| < 1 (poco sensible al precio)", 
+                "Unitaria: |Ed| = 1 (proporcionalmente sensible)",
+                "Perfectamente elástica: |Ed| = ∞",
+                "Perfectamente inelástica: |Ed| = 0"
+              ]
             },
             {
-              subtitulo: "La variedad de curvas de demanda",
-              texto: "Las curvas de demanda varían en su elasticidad. La demanda es elástica cuando la elasticidad es mayor que 1 en valor absoluto, inelástica cuando es menor que 1, y unitaria cuando es igual a 1.",
-              ejemplo: "Los bienes de lujo tienden a tener demanda elástica (elasticidad > 1), mientras que las necesidades básicas tienden a tener demanda inelástica (elasticidad < 1)."
+              subtitulo: "Determinantes de la Elasticidad",
+              descripcion: "Varios factores determinan si la demanda es elástica o inelástica.",
+              puntosClave: [
+                "Disponibilidad de sustitutos cercanos",
+                "Necesidades vs lujos",
+                "Definición del mercado (amplia vs estrecha)",
+                "Horizonte temporal",
+                "Proporción del ingreso gastado en el bien"
+              ]
             }
           ]
         },
         {
-          titulo: "La elasticidad y el ingreso total",
-          descripcion: "Relación entre elasticidad y los ingresos de los vendedores.",
+          titulo: "Elasticidad e Ingreso Total",
           contenido: [
             {
-              subtitulo: "Cómo afecta el ingreso total a lo largo de una curva de demanda lineal",
-              texto: "El ingreso total es el precio multiplicado por la cantidad vendida. Cuando la demanda es inelástica, un aumento en el precio aumenta el ingreso total. Cuando la demanda es elástica, un aumento en el precio disminuye el ingreso total.",
-              ejemplo: "Si la demanda de medicamentos es inelástica, un aumento del 10% en el precio podría reducir la cantidad solo 3%, aumentando el ingreso total."
+              subtitulo: "Relación Fundamental",
+              descripcion: "La elasticidad determina cómo cambios en precio afectan el ingreso total de los vendedores.",
+              puntosClave: [
+                "Ingreso Total = Precio × Cantidad",
+                "Con demanda elástica: precio e ingreso se mueven en direcciones opuestas",
+                "Con demanda inelástica: precio e ingreso se mueven en la misma dirección",
+                "Con demanda unitaria: ingreso no cambia con el precio"
+              ]
             },
             {
-              subtitulo: "Elasticidad e ingreso total a lo largo de una curva de demanda lineal",
-              texto: "En una curva de demanda lineal, la elasticidad varía a lo largo de la curva. En la parte superior (precios altos), la demanda es elástica. En la parte inferior (precios bajos), la demanda es inelástica. En el punto medio, la demanda es unitariamente elástica.",
-              ejemplo: "En una curva de demanda de P = 10 - Q, cuando P = 8, la demanda es elástica; cuando P = 2, la demanda es inelástica; cuando P = 5, la elasticidad es unitaria."
+              subtitulo: "Aplicaciones Empresariales",
+              descripcion: "Las empresas usan elasticidad para tomar decisiones de precios.",
+              puntosClave: [
+                "Si demanda es elástica: reducir precio aumenta ingresos",
+                "Si demanda es inelástica: aumentar precio aumenta ingresos",
+                "Maximización de ingresos en elasticidad unitaria",
+                "Estrategias de discriminación de precios"
+              ]
             }
           ]
         },
         {
-          titulo: "Otras elasticidades de la demanda",
-          descripcion: "Elasticidad ingreso y elasticidad cruzada de la demanda.",
+          titulo: "Otros Tipos de Elasticidad de la Demanda",
           contenido: [
             {
-              subtitulo: "La elasticidad ingreso de la demanda",
-              texto: "La elasticidad ingreso de la demanda mide qué tanto responde la cantidad demandada a un cambio en el ingreso del consumidor. Se calcula como el cambio porcentual en la cantidad demandada dividido por el cambio porcentual en el ingreso.",
-              ejemplo: "Si el ingreso aumenta 10% y la demanda de restaurantes aumenta 15%, la elasticidad ingreso es 1.5, indicando que es un bien de lujo."
+              subtitulo: "Elasticidad Ingreso de la Demanda",
+              descripcion: "Mide qué tan sensible es la cantidad demandada a cambios en el ingreso del consumidor.",
+              puntosClave: [
+                "Ei = % cambio en cantidad / % cambio en ingreso",
+                "Bienes normales: Ei > 0",
+                "Bienes inferiores: Ei < 0",
+                "Bienes de lujo: Ei > 1",
+                "Bienes necesarios: 0 < Ei < 1"
+              ]
             },
             {
-              subtitulo: "La elasticidad precio cruzada de la demanda",
-              texto: "La elasticidad precio cruzada de la demanda mide qué tanto responde la cantidad demandada de un bien a un cambio en el precio de otro bien. Es positiva para bienes sustitutos y negativa para bienes complementarios.",
-              ejemplo: "Si el precio de la mantequilla aumenta 10% y la demanda de margarina aumenta 8%, la elasticidad cruzada es 0.8, confirmando que son sustitutos."
+              subtitulo: "Elasticidad Cruzada de la Demanda",
+              descripcion: "Mide qué tan sensible es la cantidad demandada de un bien a cambios en el precio de otro bien.",
+              puntosClave: [
+                "Exy = % cambio en cantidad de X / % cambio en precio de Y",
+                "Bienes sustitutos: Exy > 0",
+                "Bienes complementos: Exy < 0", 
+                "Bienes independientes: Exy ≈ 0",
+                "Mayor valor absoluto = mayor relación entre bienes"
+              ]
             }
           ]
         },
         {
-          titulo: "La elasticidad de la oferta",
-          descripcion: "Medición de la sensibilidad de la oferta a cambios en el precio.",
+          titulo: "La Elasticidad de la Oferta",
           contenido: [
             {
-              subtitulo: "La elasticidad precio de la oferta y sus determinantes",
-              texto: "La elasticidad precio de la oferta mide qué tanto responde la cantidad ofrecida a cambios en el precio. Generalmente es positiva porque los precios más altos incentivan mayor producción.",
-              ejemplo: "Si el precio del trigo aumenta 20% y los agricultores aumentan la producción 30%, la elasticidad de oferta es 1.5."
+              subtitulo: "Definición y Cálculo",
+              descripcion: "La elasticidad precio de la oferta mide qué tan sensible es la cantidad ofrecida a cambios en el precio.",
+              puntosClave: [
+                "Es = % cambio en cantidad ofrecida / % cambio en precio",
+                "Siempre es positiva (ley de la oferta)",
+                "Elástica: Es > 1, Inelástica: Es < 1",
+                "Perfectamente elástica: Es = ∞, Perfectamente inelástica: Es = 0"
+              ]
             },
             {
-              subtitulo: "La variedad de curvas de oferta",
-              texto: "La elasticidad de la oferta depende de la flexibilidad de los vendedores para cambiar la cantidad que producen. La oferta es más elástica en el largo plazo que en el corto plazo.",
-              ejemplo: "La oferta de apartamentos es muy inelástica en el corto plazo (no se pueden construir rápidamente) pero más elástica en el largo plazo."
+              subtitulo: "Determinantes de la Elasticidad de Oferta",
+              descripcion: "Varios factores determinan qué tan sensible es la oferta al precio.",
+              puntosClave: [
+                "Flexibilidad del proceso productivo",
+                "Horizonte temporal (corto vs largo plazo)",
+                "Disponibilidad de insumos",
+                "Capacidad de almacenamiento",
+                "Número de empresas en el mercado"
+              ]
+            }
+          ]
+        },
+        {
+          titulo: "Aplicaciones de la Elasticidad",
+          contenido: [
+            {
+              subtitulo: "Política Fiscal",
+              descripcion: "La elasticidad determina quién realmente paga los impuestos.",
+              puntosClave: [
+                "Incidencia fiscal depende de elasticidades relativas",
+                "Lado menos elástico paga más del impuesto",
+                "Demanda inelástica: consumidores pagan más",
+                "Oferta inelástica: productores pagan más"
+              ]
+            },
+            {
+              subtitulo: "Política de Drogas",
+              descripcion: "La elasticidad explica por qué ciertas políticas pueden tener efectos no deseados.",
+              puntosClave: [
+                "Demanda de drogas es inelástica",
+                "Reducir oferta aumenta precio más que reduce cantidad",
+                "Puede aumentar crimen relacionado con drogas",
+                "Políticas de demanda vs oferta"
+              ]
             }
           ]
         }
@@ -661,128 +909,213 @@ const capitulosData = {
     },
     formulas: [
       {
-        nombre: "Elasticidad Precio de la Demanda",
-        formula: "Ed = (% Δ Cantidad Demandada) / (% Δ Precio)",
-        descripcion: "Mide la sensibilidad de la cantidad demandada ante cambios en el precio.",
-        ejemplo: "Si el precio aumenta 10% y la cantidad demandada disminuye 15%, Ed = -15%/10% = -1.5"
-      },
-      {
-        nombre: "Método del Punto Medio",
+        nombre: "Elasticidad Precio de la Demanda (Método del Punto Medio)",
         formula: "Ed = [(Q2-Q1)/((Q2+Q1)/2)] / [(P2-P1)/((P2+P1)/2)]",
-        descripcion: "Método para calcular elasticidad que evita el problema del punto de referencia.",
-        ejemplo: "Más preciso que usar solo los valores iniciales o finales como base del cálculo."
-      },
-      {
-        nombre: "Elasticidad Ingreso",
-        formula: "Ei = (% Δ Cantidad Demandada) / (% Δ Ingreso)",
-        descripcion: "Mide cómo responde la demanda a cambios en el ingreso del consumidor.",
-        ejemplo: "Si el ingreso aumenta 5% y la demanda aumenta 8%, Ei = 8%/5% = 1.6 (bien de lujo)"
+        descripcion: "Método más preciso que evita el problema de qué punto usar como base.",
+        ejemplo: "Si Q cambia de 100 a 80 y P de $10 a $12: Ed = [(-20)/90] / [(2)/11] = -1.22",
+        grafico: "Arco entre dos puntos en la curva de demanda"
       },
       {
         nombre: "Ingreso Total",
         formula: "IT = P × Q",
         descripcion: "El ingreso total es el precio multiplicado por la cantidad vendida.",
-        ejemplo: "Si P = $5 y Q = 100, entonces IT = $5 × 100 = $500"
+        ejemplo: "Si P = $5 y Q = 100, entonces IT = $500",
+        grafico: "Área del rectángulo bajo la curva de demanda"
+      },
+      {
+        nombre: "Relación Elasticidad-Ingreso Total",
+        formula: "Si |Ed| > 1: ΔP y ΔIT en direcciones opuestas; Si |Ed| < 1: ΔP y ΔIT en misma dirección",
+        descripcion: "La elasticidad determina cómo cambios en precio afectan el ingreso total.",
+        ejemplo: "Con Ed = -2 (elástica), reducir precio de $10 a $9 aumenta IT porque Q aumenta proporcionalmente más.",
+        grafico: "Curva de ingreso total en forma de U invertida"
+      },
+      {
+        nombre: "Elasticidad Ingreso de la Demanda",
+        formula: "Ei = (% cambio en Q) / (% cambio en Ingreso)",
+        descripcion: "Mide sensibilidad de la demanda a cambios en el ingreso del consumidor.",
+        ejemplo: "Si ingreso aumenta 10% y demanda de autos aumenta 15%, entonces Ei = 1.5 (bien de lujo).",
+        grafico: "Curva de Engel mostrando relación ingreso-cantidad"
+      },
+      {
+        nombre: "Elasticidad Cruzada de la Demanda",
+        formula: "Exy = (% cambio en Qx) / (% cambio en Py)",
+        descripcion: "Mide cómo el precio de un bien afecta la demanda de otro bien.",
+        ejemplo: "Si precio de café aumenta 10% y demanda de té aumenta 5%, entonces Exy = 0.5 (sustitutos).",
+        grafico: "Desplazamiento de demanda de X cuando cambia precio de Y"
+      },
+      {
+        nombre: "Elasticidad Precio de la Oferta",
+        formula: "Es = (% cambio en Qs) / (% cambio en P)",
+        descripcion: "Mide sensibilidad de la cantidad ofrecida a cambios en el precio.",
+        ejemplo: "Si precio aumenta 20% y cantidad ofrecida aumenta 30%, entonces Es = 1.5 (elástica).",
+        grafico: "Pendiente de la curva de oferta determina elasticidad"
       }
     ],
     conceptosClave: [
       "Elasticidad precio de la demanda",
-      "Demanda elástica",
-      "Demanda inelástica",
-      "Elasticidad unitaria",
+      "Demanda elástica vs inelástica",
       "Método del punto medio",
       "Ingreso total",
       "Elasticidad ingreso",
       "Elasticidad cruzada",
-      "Bienes sustitutos",
-      "Bienes complementarios",
-      "Elasticidad de la oferta"
+      "Bienes normales vs inferiores",
+      "Bienes sustitutos vs complementos",
+      "Elasticidad de la oferta",
+      "Incidencia fiscal",
+      "Determinantes de elasticidad"
     ],
     ejemplosReales: [
       {
-        titulo: "Elasticidad de la Demanda de Gasolina",
-        descripcion: "La demanda de gasolina es relativamente inelástica en el corto plazo (la gente necesita conducir) pero más elástica en el largo plazo (pueden cambiar de auto o mudarse)."
+        titulo: "Elasticidad de la Gasolina",
+        descripcion:
+          "La demanda de gasolina es inelástica a corto plazo (Ed ≈ -0.2) porque no hay buenos sustitutos inmediatos, pero más elástica a largo plazo (Ed ≈ -0.7) cuando la gente puede cambiar de auto o mudarse.",
       },
       {
-        titulo: "Precios de Medicamentos",
-        descripcion: "Los medicamentos esenciales tienen demanda muy inelástica, lo que explica por qué las farmacéuticas pueden cobrar precios altos sin perder muchos clientes."
+        titulo: "Netflix y la Elasticidad de Suscripciones",
+        descripcion:
+          "Netflix estudia cuidadosamente la elasticidad precio antes de cambiar sus tarifas. En mercados con muchas alternativas (alta elasticidad), aumentos de precio causan más cancelaciones.",
       },
       {
-        titulo: "Streaming vs Cable TV",
-        descripcion: "Netflix y cable TV son sustitutos con elasticidad cruzada positiva: cuando aumenta el precio del cable, aumenta la demanda de servicios de streaming."
-      }
-    ]
+        titulo: "Impuestos al Cigarrillo",
+        descripcion:
+          "Los impuestos al cigarrillo son efectivos para reducir el consumo porque la demanda es relativamente elástica a largo plazo, especialmente entre jóvenes. Los fumadores actuales pagan la mayor parte del impuesto (demanda inelástica a corto plazo).",
+      },
+    ],
   },
   6: {
     titulo: "Oferta, demanda y políticas gubernamentales",
-    resumen: "Análisis del impacto de la intervención gubernamental en los mercados.",
+    resumen: "Análisis del impacto de la intervención gubernamental en mercados competitivos.",
     duracion: "55 min",
     dificultad: "Intermedio",
     objetivos: [
-      "Analizar efectos de controles de precios",
-      "Evaluar impacto de impuestos en mercados",
-      "Calcular pérdida de eficiencia económica",
-      "Comparar diferentes políticas gubernamentales",
+      "Analizar los efectos de controles de precios en mercados",
+      "Evaluar el impacto de impuestos en equilibrio de mercado",
+      "Calcular pérdidas de eficiencia causadas por intervenciones gubernamentales",
     ],
     contenido: {
       introduccion:
-        "Los economistas tienen dos roles. Como científicos, desarrollan y prueban teorías para explicar el mundo que los rodea. Como asesores de políticas, usan sus teorías para ayudar a cambiar el mundo para mejor. Este capítulo examina cómo la política gubernamental afecta la asignación de recursos.",
+        "Los economistas tienen dos roles. Como científicos, desarrollan y prueban teorías para explicar el mundo. Como asesores de política, usan sus teorías para ayudar a cambiar el mundo para mejor. Este capítulo examina cómo las políticas gubernamentales afectan los resultados de mercado.",
       secciones: [
         {
-          titulo: "Controles sobre los precios",
-          descripcion: "Efectos de precios máximos y mínimos en los mercados.",
+          titulo: "Controles de Precios",
           contenido: [
             {
-              subtitulo: "Cómo los precios máximos afectan los resultados del mercado",
-              texto: "Un precio máximo es un límite legal sobre el precio al que se puede vender un bien. Cuando el precio máximo está por debajo del precio de equilibrio, es vinculante y causa escasez. Cuando está por encima del precio de equilibrio, no es vinculante y no tiene efecto.",
-              ejemplo: "Si el gobierno establece un precio máximo de $3 para la gasolina cuando el precio de equilibrio es $4, habrá escasez porque la cantidad demandada excederá la cantidad ofrecida."
+              subtitulo: "Precios Máximos (Price Ceilings)",
+              descripcion: "Un precio máximo es un límite legal sobre el precio al que se puede vender un bien.",
+              puntosClave: [
+                "Solo es vinculante si está por debajo del precio de equilibrio",
+                "Causa escasez (exceso de demanda)",
+                "Reduce la cantidad intercambiada",
+                "Puede llevar a mercados negros",
+                "Ejemplos: control de alquileres, precios de gasolina en crisis"
+              ]
             },
             {
-              subtitulo: "Cómo los precios mínimos afectan los resultados del mercado",
-              texto: "Un precio mínimo es un límite legal sobre el precio al que se puede vender un bien. Cuando el precio mínimo está por encima del precio de equilibrio, es vinculante y causa excedente. Cuando está por debajo del precio de equilibrio, no es vinculante.",
-              ejemplo: "El salario mínimo es un precio mínimo en el mercado laboral. Si se establece por encima del salario de equilibrio, puede causar desempleo porque la cantidad de trabajo ofrecida excede la cantidad demandada."
+              subtitulo: "Efectos de Precios Máximos",
+              descripcion: "Los precios máximos vinculantes tienen varios efectos no deseados.",
+              puntosClave: [
+                "Escasez persistente",
+                "Deterioro de la calidad",
+                "Largas filas y tiempo de espera",
+                "Discriminación por parte de vendedores",
+                "Mercados negros con precios más altos"
+              ]
             },
             {
-              subtitulo: "Evaluación de los controles de precios",
-              texto: "Los controles de precios a menudo se adoptan cuando los responsables de las políticas creen que el precio de mercado de un bien o servicio es injusto para compradores o vendedores. Sin embargo, estos controles tienen efectos secundarios no deseados.",
-              ejemplo: "El control de alquileres puede hacer la vivienda más asequible para algunos inquilinos, pero también reduce la cantidad y calidad de viviendas disponibles."
+              subtitulo: "Precios Mínimos (Price Floors)",
+              descripcion: "Un precio mínimo es un límite legal sobre qué tan bajo puede ser el precio de un bien.",
+              puntosClave: [
+                "Solo es vinculante si está por encima del precio de equilibrio",
+                "Causa excedente (exceso de oferta)",
+                "Reduce la cantidad intercambiada",
+                "Ejemplos: salario mínimo, precios de apoyo agrícola"
+              ]
+            },
+            {
+              subtitulo: "El Salario Mínimo",
+              descripcion: "El salario mínimo es un ejemplo importante de precio mínimo en el mercado laboral.",
+              puntosClave: [
+                "Puede causar desempleo si está por encima del equilibrio",
+                "Afecta más a trabajadores jóvenes y no calificados",
+                "Debate sobre magnitud de efectos en empleo",
+                "Beneficia a trabajadores que mantienen empleo",
+                "Puede reducir pobreza pero también empleo"
+              ]
             }
           ]
         },
         {
           titulo: "Impuestos",
-          descripcion: "Cómo los impuestos afectan el equilibrio del mercado.",
           contenido: [
             {
-              subtitulo: "Cómo los impuestos sobre los vendedores afectan los resultados del mercado",
-              texto: "Cuando el gobierno impone un impuesto sobre un bien, el equilibrio del mercado se mueve a un nuevo punto. El precio que pagan los compradores aumenta, y el precio que reciben los vendedores disminuye. La cantidad vendida disminuye.",
-              ejemplo: "Si se impone un impuesto de $1 por helado, el precio que pagan los compradores podría aumentar de $3 a $3.60, mientras que el precio que reciben los vendedores disminuye a $2.60."
+              subtitulo: "Cómo Afectan los Impuestos a los Participantes del Mercado",
+              descripcion: "Los impuestos crean una cuña entre el precio que pagan los compradores y el que reciben los vendedores.",
+              puntosClave: [
+                "Precio compradores = Precio vendedores + Impuesto",
+                "Reduce la cantidad de equilibrio",
+                "Crea pérdida de peso muerto",
+                "No importa legalmente quién paga el impuesto"
+              ]
             },
             {
-              subtitulo: "Cómo los impuestos sobre los compradores afectan los resultados del mercado",
-              texto: "Los impuestos sobre los compradores y sobre los vendedores son equivalentes. En ambos casos, el impuesto coloca una cuña entre el precio que pagan los compradores y el precio que reciben los vendedores.",
-              ejemplo: "Un impuesto de $1 sobre los compradores de helados tiene exactamente el mismo efecto que un impuesto de $1 sobre los vendedores: mismos precios finales y misma cantidad."
+              subtitulo: "Incidencia Fiscal",
+              descripcion: "La incidencia fiscal se refiere a quién realmente soporta la carga del impuesto.",
+              puntosClave: [
+                "Depende de elasticidades relativas de oferta y demanda",
+                "Lado menos elástico paga mayor proporción",
+                "Si demanda es menos elástica: compradores pagan más",
+                "Si oferta es menos elástica: vendedores pagan más",
+                "Incidencia legal vs incidencia económica"
+              ]
             },
             {
-              subtitulo: "Elasticidad e incidencia fiscal",
-              texto: "La incidencia fiscal (quién realmente paga el impuesto) depende de las elasticidades de oferta y demanda. El lado del mercado que es menos elástico (menos sensible al precio) soporta una mayor parte de la carga del impuesto.",
-              ejemplo: "Si la demanda de cigarrillos es muy inelástica y la oferta es elástica, los consumidores pagarán la mayor parte de un impuesto sobre cigarrillos, incluso si legalmente se cobra a los productores."
+              subtitulo: "Pérdida de Peso Muerto",
+              descripcion: "Los impuestos causan pérdidas de eficiencia porque reducen el tamaño del mercado.",
+              puntosClave: [
+                "Pérdida de excedente total no capturada por nadie",
+                "Área del triángulo entre curvas de oferta y demanda",
+                "Aumenta con el cuadrado de la tasa de impuesto",
+                "Mayor cuando oferta y demanda son más elásticas",
+                "Representa ineficiencia económica"
+              ]
             }
           ]
         },
         {
-          titulo: "Pérdida de peso muerto de los impuestos",
-          descripcion: "Cómo los impuestos reducen la eficiencia económica.",
+          titulo: "Aplicaciones de Política",
           contenido: [
             {
-              subtitulo: "Cómo un impuesto afecta el bienestar del mercado",
-              texto: "Los impuestos tienen un costo más allá del dinero que recauda el gobierno. Reducen el tamaño del mercado, lo que significa que se pierden algunas de las ganancias del comercio. Esta pérdida de bienestar económico se llama pérdida de peso muerto.",
-              ejemplo: "Si un impuesto reduce las ventas de helados de 100 a 80 unidades, las 20 transacciones perdidas representan ganancias del comercio que se pierden para siempre."
+              subtitulo: "Control de Alquileres",
+              descripcion: "Los controles de alquileres son precios máximos en el mercado de vivienda.",
+              puntosClave: [
+                "Reducen cantidad de viviendas disponibles",
+                "Causan escasez de vivienda",
+                "Reducen incentivos para mantenimiento",
+                "Benefician a inquilinos actuales, perjudican a futuros",
+                "Pueden llevar a discriminación en alquileres"
+              ]
             },
             {
-              subtitulo: "Los determinantes de la pérdida de peso muerto",
-              texto: "La pérdida de peso muerto de un impuesto depende de las elasticidades de oferta y demanda. Cuando la oferta o la demanda es más elástica, la pérdida de peso muerto del impuesto es mayor.",
-              ejemplo: "Un impuesto sobre bienes con demanda muy elástica (como entretenimiento) causará mayor pérdida de peso muerto que un impuesto sobre bienes con demanda inelástica (como medicinas)."
+              subtitulo: "Política Agrícola",
+              descripcion: "Los gobiernos a menudo intervienen en mercados agrícolas con precios mínimos.",
+              puntosClave: [
+                "Precios de apoyo por encima del equilibrio",
+                "Gobierno debe comprar excedentes",
+                "Beneficia a agricultores, cuesta a contribuyentes",
+                "Puede llevar a sobreproducción",
+                "Alternativas: pagos directos, seguros de cosecha"
+              ]
+            },
+            {
+              subtitulo: "Impuestos sobre Bienes Específicos",
+              descripcion: "Los impuestos sobre bienes como cigarrillos y gasolina tienen efectos particulares.",
+              puntosClave: [
+                "Impuestos 'pecaminosos' para desincentivar consumo",
+                "Efectividad depende de elasticidad de demanda",
+                "Pueden ser regresivos (afectan más a pobres)",
+                "Generan ingresos para el gobierno",
+                "Ejemplo: impuestos al carbono para combatir cambio climático"
+              ]
             }
           ]
         }
@@ -790,52 +1123,87 @@ const capitulosData = {
     },
     formulas: [
       {
-        nombre: "Incidencia Fiscal",
-        formula: "Carga del Comprador / Carga del Vendedor = Es / Ed",
-        descripcion: "La distribución de la carga fiscal depende de las elasticidades relativas de oferta (Es) y demanda (Ed).",
-        ejemplo: "Si Es = 2 y Ed = 0.5, entonces los compradores pagan 4 veces más del impuesto que los vendedores."
+        nombre: "Cuña Fiscal",
+        formula: "Pc - Pv = T",
+        descripcion: "La diferencia entre el precio que pagan compradores y reciben vendedores iguala el impuesto.",
+        ejemplo: "Si Pc = $12, Pv = $8, entonces T = $4 por unidad.",
+        grafico: "Distancia vertical entre curvas de oferta y demanda después del impuesto"
+      },
+      {
+        nombre: "Incidencia Fiscal - Compradores",
+        formula: "Carga compradores = Pc - P* = T × [Es/(Es + |Ed|)]",
+        descripcion: "La proporción del impuesto pagada por compradores depende de elasticidades relativas.",
+        ejemplo: "Si Es = 1 y |Ed| = 2, compradores pagan T × [1/(1+2)] = T/3 del impuesto.",
+        grafico: "Aumento en precio para compradores desde equilibrio original"
+      },
+      {
+        nombre: "Incidencia Fiscal - Vendedores", 
+        formula: "Carga vendedores = P* - Pv = T × [|Ed|/(Es + |Ed|)]",
+        descripcion: "La proporción del impuesto pagada por vendedores depende de elasticidades relativas.",
+        ejemplo: "Si Es = 1 y |Ed| = 2, vendedores pagan T × [2/(1+2)] = 2T/3 del impuesto.",
+        grafico: "Disminución en precio para vendedores desde equilibrio original"
       },
       {
         nombre: "Pérdida de Peso Muerto",
-        formula: "PPM = (1/2) × Impuesto × Reducción en Cantidad",
-        descripcion: "La pérdida de eficiencia causada por un impuesto, representada como un triángulo en el gráfico.",
-        ejemplo: "Si un impuesto de $2 reduce la cantidad de 100 a 80, PPM = (1/2) × $2 × 20 = $20."
+        formula: "PPM = (1/2) × T × (Q* - Qt)",
+        descripcion: "Área del triángulo que representa la pérdida de eficiencia por el impuesto.",
+        ejemplo: "Si T = $4 y la cantidad se reduce de 100 a 80, PPM = (1/2) × 4 × 20 = $40.",
+        grafico: "Triángulo entre curvas de oferta y demanda en el rango de reducción de cantidad"
       },
       {
         nombre: "Recaudación Fiscal",
-        formula: "Recaudación = Impuesto × Cantidad Vendida",
-        descripcion: "El ingreso total que obtiene el gobierno del impuesto.",
-        ejemplo: "Un impuesto de $2 por unidad con 80 unidades vendidas genera $160 en recaudación."
+        formula: "Recaudación = T × Qt",
+        descripcion: "El ingreso total del gobierno es el impuesto por unidad multiplicado por la cantidad vendida.",
+        ejemplo: "Si T = $4 y Qt = 80, la recaudación = $320.",
+        grafico: "Rectángulo con altura T y base Qt"
+      },
+      {
+        nombre: "Escasez por Precio Máximo",
+        formula: "Escasez = Qd(Pmax) - Qs(Pmax)",
+        descripcion: "Cuando hay precio máximo vinculante, la cantidad demandada excede la ofrecida.",
+        ejemplo: "Si a Pmax = $5, Qd = 100 y Qs = 60, hay escasez de 40 unidades.",
+        grafico: "Distancia horizontal entre curvas al nivel del precio máximo"
+      },
+      {
+        nombre: "Excedente por Precio Mínimo",
+        formula: "Excedente = Qs(Pmin) - Qd(Pmin)",
+        descripcion: "Cuando hay precio mínimo vinculante, la cantidad ofrecida excede la demandada.",
+        ejemplo: "Si a Pmin = $15, Qs = 120 y Qd = 80, hay excedente de 40 unidades.",
+        grafico: "Distancia horizontal entre curvas al nivel del precio mínimo"
       }
     ],
     conceptosClave: [
       "Precio máximo",
       "Precio mínimo",
-      "Escasez",
-      "Excedente",
+      "Controles de precios",
+      "Salario mínimo",
       "Incidencia fiscal",
       "Pérdida de peso muerto",
       "Cuña fiscal",
-      "Control de precios",
-      "Salario mínimo",
+      "Escasez",
+      "Excedente",
       "Control de alquileres",
+      "Política agrícola",
       "Eficiencia económica"
     ],
     ejemplosReales: [
       {
         titulo: "Control de Alquileres en Nueva York",
-        descripcion: "Los controles de alquiler en NYC mantienen algunos alquileres bajos pero han reducido la cantidad y calidad de apartamentos disponibles, creando largas listas de espera."
+        descripcion:
+          "Nueva York ha tenido controles de alquileres desde la Segunda Guerra Mundial. Esto ha causado escasez crónica de viviendas, deterioro de edificios, y un mercado negro de apartamentos. Los apartamentos controlados benefician a inquilinos de largo plazo pero perjudican a nuevos residentes.",
       },
       {
-        titulo: "Salario Mínimo y Empleo Juvenil",
-        descripcion: "Los aumentos del salario mínimo pueden reducir el empleo juvenil porque los jóvenes tienen menos habilidades y experiencia, haciendo su demanda laboral más elástica."
+        titulo: "Salario Mínimo de $15 en Seattle",
+        descripcion:
+          "Seattle implementó gradualmente un salario mínimo de $15/hora. Los estudios muestran efectos mixtos: algunos trabajadores ganaron más, pero hubo reducción en horas trabajadas y empleo en algunos sectores, especialmente para trabajadores menos experimentados.",
       },
       {
-        titulo: "Impuestos sobre Cigarrillos",
-        descripcion: "Los altos impuestos sobre cigarrillos son efectivos para reducir el consumo porque generan ingresos fiscales mientras desalientan un hábito dañino, aunque crean pérdida de peso muerto."
-      }
-    ]
-  }
+        titulo: "Impuestos al Cigarrillo y Salud Pública",
+        descripcion:
+          "Los altos impuestos al cigarrillo han sido efectivos para reducir el consumo, especialmente entre jóvenes. La demanda inelástica significa que los fumadores pagan la mayor parte del impuesto, generando ingresos significativos para programas de salud pública.",
+      },
+    ],
+  },
 }
 
 export default function CapituloPage({ params }: { params: { id: string } }) {
@@ -957,7 +1325,8 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
             </CardContent>
           </Card>
 
-          {/* Contenido principal - Los 10 principios para capítulo 1 */}
+          {/* Contenido principal */}
+          {/* Capítulo 1: Los 10 principios */}
           {params.id === "1" && capitulo.contenido.principios && (
             <div className="space-y-8">
               {capitulo.contenido.principios.map((categoria, index) => (
@@ -1001,14 +1370,22 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
             </div>
           )}
 
-          {/* Contenido para capítulos 2, 3, 4, 5, 6 */}
-          {(params.id === "2" || params.id === "3" || params.id === "4" || params.id === "5" || params.id === "6") && capitulo.contenido.secciones && (
+          {/* Capítulos 2-6: Contenido por secciones */}
+          {(params.id === "2" || params.id === "3" || params.id === "4" || params.id === "5" || params.id === "6") && 
+           capitulo.contenido.secciones && (
             <div className="space-y-8">
               {capitulo.contenido.secciones.map((seccion, index) => (
                 <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="text-2xl text-blue-700">{seccion.titulo}</CardTitle>
-                    <p className="text-slate-600 text-lg">{seccion.descripcion}</p>
+                    <CardTitle className="text-2xl text-blue-700 flex items-center gap-3">
+                      <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
+                        {index === 0 ? <Target className="h-6 w-6 text-white" /> :
+                         index === 1 ? <TrendingUp className="h-6 w-6 text-white" /> :
+                         index === 2 ? <BarChart3 className="h-6 w-6 text-white" /> :
+                         <DollarSign className="h-6 w-6 text-white" />}
+                      </div>
+                      {seccion.titulo}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-6">
@@ -1016,16 +1393,19 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
                         <div key={idx} className="border-l-4 border-blue-200 pl-6">
                           <div className="bg-gradient-to-r from-blue-50 to-violet-50 p-6 rounded-2xl">
                             <h4 className="font-bold text-xl mb-4 text-slate-800">{item.subtitulo}</h4>
-                            <p className="text-slate-700 mb-4 text-lg leading-relaxed">{item.texto}</p>
+                            <p className="text-slate-700 mb-4 text-lg leading-relaxed">{item.descripcion}</p>
                             
-                            {item.ejemplo && (
-                              <div className="bg-amber-100 p-4 rounded-xl">
-                                <h5 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
-                                  💡 Ejemplo
-                                </h5>
-                                <p className="text-amber-700 text-sm leading-relaxed">{item.ejemplo}</p>
-                              </div>
-                            )}
+                            <div className="bg-white p-4 rounded-xl">
+                              <h5 className="font-semibold text-slate-800 mb-3">Puntos Clave:</h5>
+                              <ul className="space-y-2">
+                                {item.puntosClave.map((punto, pIdx) => (
+                                  <li key={pIdx} className="flex items-start gap-2">
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                    <span className="text-slate-700">{punto}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -1056,9 +1436,16 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
                     </div>
                     <p className="text-slate-700 mb-3 leading-relaxed">{formula.descripcion}</p>
                     {formula.ejemplo && (
-                      <div className="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                      <div className="bg-amber-50 p-3 rounded-xl border border-amber-200 mb-3">
                         <p className="text-sm text-amber-800">
                           <strong>Ejemplo:</strong> {formula.ejemplo}
+                        </p>
+                      </div>
+                    )}
+                    {formula.grafico && (
+                      <div className="bg-blue-50 p-3 rounded-xl border border-blue-200">
+                        <p className="text-sm text-blue-800">
+                          <strong>Representación Gráfica:</strong> {formula.grafico}
                         </p>
                       </div>
                     )}
