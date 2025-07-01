@@ -1,1340 +1,200 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft, BookOpen, Calculator, BarChart3, TrendingUp, DollarSign, Globe, Zap } from "lucide-react"
+import { ArrowLeft, TrendingUp, TrendingDown, RotateCcw, Info, Play, Pause, Settings, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
-import { useState } from "react"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart, ReferenceLine, BarChart, Bar, PieChart, Pie, Cell } from "recharts"
-
-const graficosData = {
-  1: {
-    titulo: "Gráficos: Los Diez Principios de la Economía",
-    descripcion: "Visualizaciones interactivas de los conceptos fundamentales económicos",
-    graficos: [
-      {
-        id: "frontera-posibilidades",
-        titulo: "Frontera de Posibilidades de Producción",
-        descripcion: "Explora las disyuntivas y el costo de oportunidad",
-        tipo: "interactivo",
-      },
-      {
-        id: "flujo-circular",
-        titulo: "Diagrama de Flujo Circular",
-        descripcion: "Visualiza cómo fluye el dinero en la economía",
-        tipo: "estatico",
-      },
-    ],
-  },
-  2: {
-    titulo: "Gráficos: Pensando como Economista",
-    descripcion: "Modelos económicos fundamentales y herramientas de análisis",
-    graficos: [
-      {
-        id: "fpp-interactiva",
-        titulo: "Frontera de Posibilidades de Producción Interactiva",
-        descripcion: "Manipula recursos y tecnología para ver cambios en la FPP",
-        tipo: "interactivo",
-      },
-      {
-        id: "modelos-economicos",
-        titulo: "Comparación de Modelos Económicos",
-        descripcion: "Visualiza diferentes supuestos y sus efectos",
-        tipo: "comparativo",
-      },
-    ],
-  },
-  3: {
-    titulo: "Gráficos: Interdependencia y Comercio",
-    descripcion: "Visualización de ventaja comparativa y ganancias del comercio",
-    graficos: [
-      {
-        id: "ventaja-comparativa",
-        titulo: "Calculadora de Ventaja Comparativa",
-        descripcion: "Calcula y visualiza ventajas comparativas entre países",
-        tipo: "calculadora",
-      },
-      {
-        id: "ganancias-comercio",
-        titulo: "Ganancias del Comercio",
-        descripcion: "Muestra cómo el comercio beneficia a ambas partes",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  4: {
-    titulo: "Gráficos: Oferta y Demanda",
-    descripcion: "Simulaciones interactivas del funcionamiento de los mercados",
-    graficos: [
-      {
-        id: "oferta-demanda-basico",
-        titulo: "Modelo Básico de Oferta y Demanda",
-        descripcion: "Manipula factores para ver cambios en equilibrio",
-        tipo: "simulacion",
-      },
-      {
-        id: "desplazamientos",
-        titulo: "Desplazamientos de Curvas",
-        descripcion: "Analiza cómo diferentes factores afectan las curvas",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  5: {
-    titulo: "Gráficos: Elasticidad y Aplicaciones",
-    descripcion: "Herramientas interactivas para entender la elasticidad",
-    graficos: [
-      {
-        id: "elasticidad-calculadora",
-        titulo: "Calculadora de Elasticidad",
-        descripcion: "Calcula diferentes tipos de elasticidad",
-        tipo: "calculadora",
-      },
-      {
-        id: "elasticidad-ingreso-total",
-        titulo: "Elasticidad e Ingreso Total",
-        descripcion: "Visualiza la relación entre elasticidad e ingresos",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  6: {
-    titulo: "Gráficos: Políticas Gubernamentales",
-    descripcion: "Simulaciones del impacto de políticas en los mercados",
-    graficos: [
-      {
-        id: "controles-precios",
-        titulo: "Simulador de Controles de Precios",
-        descripcion: "Analiza efectos de precios máximos y mínimos",
-        tipo: "simulacion",
-      },
-      {
-        id: "impuestos-mercado",
-        titulo: "Efectos de Impuestos en el Mercado",
-        descripcion: "Visualiza incidencia fiscal y pérdida de peso muerto",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  7: {
-    titulo: "Gráficos: Excedentes y Eficiencia",
-    descripcion: "Análisis visual del bienestar económico",
-    graficos: [
-      {
-        id: "excedentes-interactivo",
-        titulo: "Calculadora de Excedentes",
-        descripcion: "Calcula excedente del consumidor y productor",
-        tipo: "calculadora",
-      },
-      {
-        id: "eficiencia-mercado",
-        titulo: "Análisis de Eficiencia del Mercado",
-        descripcion: "Visualiza condiciones de eficiencia económica",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  8: {
-    titulo: "Gráficos: Costos de los Impuestos",
-    descripcion: "Análisis visual de la pérdida de peso muerto",
-    graficos: [
-      {
-        id: "perdida-peso-muerto",
-        titulo: "Simulador de Pérdida de Peso Muerto",
-        descripcion: "Visualiza cómo los impuestos crean ineficiencias",
-        tipo: "simulacion",
-      },
-      {
-        id: "curva-laffer",
-        titulo: "Curva de Laffer Interactiva",
-        descripcion: "Explora la relación entre tasas de impuestos e ingresos",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  9: {
-    titulo: "Gráficos: Comercio Internacional",
-    descripcion: "Análisis visual del comercio y políticas comerciales",
-    graficos: [
-      {
-        id: "comercio-internacional",
-        titulo: "Simulador de Comercio Internacional",
-        descripcion: "Analiza efectos del comercio en países exportadores e importadores",
-        tipo: "simulacion",
-      },
-      {
-        id: "aranceles-cuotas",
-        titulo: "Efectos de Aranceles y Cuotas",
-        descripcion: "Compara impactos de diferentes políticas comerciales",
-        tipo: "comparativo",
-      },
-    ],
-  },
-  10: {
-    titulo: "Gráficos: Externalidades",
-    descripcion: "Visualización de efectos externos y soluciones de mercado",
-    graficos: [
-      {
-        id: "externalidades-negativas",
-        titulo: "Simulador de Externalidades Negativas",
-        descripcion: "Analiza cómo la contaminación afecta el equilibrio del mercado",
-        tipo: "simulacion",
-      },
-      {
-        id: "externalidades-positivas",
-        titulo: "Externalidades Positivas en Educación",
-        descripcion: "Visualiza los beneficios sociales de la educación",
-        tipo: "interactivo",
-      },
-    ],
-  },
-  11: {
-    titulo: "Gráficos: Bienes Públicos y Recursos Comunes",
-    descripcion: "Clasificación y análisis de diferentes tipos de bienes",
-    graficos: [
-      {
-        id: "clasificacion-bienes",
-        titulo: "Clasificación de Bienes",
-        descripcion: "Matriz interactiva de tipos de bienes",
-        tipo: "interactivo",
-      },
-      {
-        id: "tragedia-comunes",
-        titulo: "Simulador de la Tragedia de los Comunes",
-        descripcion: "Explora el sobreuso de recursos comunes",
-        tipo: "simulacion",
-      },
-    ],
-  },
-  12: {
-    titulo: "Gráficos: Sistema Impositivo",
-    descripcion: "Análisis de diferentes estructuras tributarias",
-    graficos: [
-      {
-        id: "tipos-impuestos",
-        titulo: "Comparador de Sistemas Tributarios",
-        descripcion: "Compara impuestos progresivos, proporcionales y regresivos",
-        tipo: "comparativo",
-      },
-      {
-        id: "incidencia-fiscal",
-        titulo: "Simulador de Incidencia Fiscal",
-        descripcion: "Analiza quién realmente paga los impuestos",
-        tipo: "simulacion",
-      },
-    ],
-  },
-}
-
-// Componentes de gráficos específicos
-function FronteraPosibilidades() {
-  const [recursos, setRecursos] = useState([100])
-  const [tecnologia, setTecnologia] = useState([1])
-
-  const generarDatosFPP = () => {
-    const datos = []
-    const factorRecursos = recursos[0] / 100
-    const factorTecnologia = tecnologia[0]
-    
-    for (let x = 0; x <= 100; x += 10) {
-      const y = Math.sqrt(10000 - x * x) * factorRecursos * factorTecnologia
-      datos.push({
-        bienX: x,
-        bienY: Math.max(0, y),
-        eficiente: true
-      })
-    }
-    
-    // Punto ineficiente
-    datos.push({
-      bienX: 50,
-      bienY: 50 * factorRecursos * factorTecnologia,
-      eficiente: false
-    })
-    
-    return datos
-  }
-
-  const datos = generarDatosFPP()
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Controles de la Economía</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Recursos Disponibles: {recursos[0]}%
-              </label>
-              <Slider
-                value={recursos}
-                onValueChange={setRecursos}
-                max={150}
-                min={50}
-                step={10}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Nivel Tecnológico: {tecnologia[0].toFixed(1)}x
-              </label>
-              <Slider
-                value={tecnologia}
-                onValueChange={setTecnologia}
-                max={2}
-                min={0.5}
-                step={0.1}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Interpretación</h4>
-          <div className="space-y-3 text-sm">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-blue-600 font-medium">Frontera de Posibilidades</div>
-              <div>Muestra las combinaciones máximas de producción posibles</div>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-green-600 font-medium">Puntos Eficientes</div>
-              <div>Sobre la frontera - uso completo de recursos</div>
-            </div>
-            <div className="bg-red-50 p-3 rounded-lg">
-              <div className="text-red-600 font-medium">Puntos Ineficientes</div>
-              <div>Dentro de la frontera - recursos desperdiciados</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={datos.filter(d => d.eficiente)}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="bienX" label={{ value: 'Bien X (unidades)', position: 'insideBottom', offset: -5 }} />
-            <YAxis dataKey="bienY" label={{ value: 'Bien Y (unidades)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip 
-              formatter={(value, name) => [
-                `${Number(value).toFixed(1)} unidades`, 
-                name === 'bienY' ? 'Bien Y' : 'Bien X'
-              ]}
-            />
-            <Line type="monotone" dataKey="bienY" stroke="#3b82f6" strokeWidth={3} name="Frontera de Posibilidades" dot={false} />
-            <Area dataKey="bienY" fill="#3b82f6" fillOpacity={0.1} />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="bg-amber-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-amber-800 mb-2">Conceptos Clave</h5>
-        <ul className="text-sm text-amber-700 space-y-1">
-          <li>• <strong>Escasez:</strong> Los recursos son limitados</li>
-          <li>• <strong>Costo de oportunidad:</strong> Lo que se sacrifica para obtener algo</li>
-          <li>• <strong>Eficiencia:</strong> Uso óptimo de recursos disponibles</li>
-          <li>• <strong>Crecimiento económico:</strong> Expansión de la frontera</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-
-function FlujoCicular() {
-  const datos = [
-    { nombre: 'Hogares', valor: 40, color: '#3b82f6' },
-    { nombre: 'Empresas', valor: 35, color: '#ef4444' },
-    { nombre: 'Gobierno', valor: 15, color: '#10b981' },
-    { nombre: 'Sector Externo', valor: 10, color: '#f59e0b' }
-  ]
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="h-80">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={datos}
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="valor"
-                label={({ nombre, valor }) => `${nombre}: ${valor}%`}
-              >
-                {datos.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Flujos en la Economía</h4>
-          <div className="space-y-3">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-blue-600 font-medium">Hogares → Empresas</div>
-              <div className="text-sm">Trabajo, tierra, capital</div>
-            </div>
-            <div className="bg-red-50 p-3 rounded-lg">
-              <div className="text-red-600 font-medium">Empresas → Hogares</div>
-              <div className="text-sm">Salarios, rentas, beneficios</div>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-green-600 font-medium">Gobierno</div>
-              <div className="text-sm">Impuestos, gasto público</div>
-            </div>
-            <div className="bg-amber-50 p-3 rounded-lg">
-              <div className="text-amber-600 font-medium">Sector Externo</div>
-              <div className="text-sm">Importaciones, exportaciones</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-slate-50 p-6 rounded-lg">
-        <h5 className="font-semibold text-slate-800 mb-3">Mercados en el Flujo Circular</h5>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="bg-white p-4 rounded-lg">
-            <h6 className="font-medium text-slate-800 mb-2">Mercado de Factores</h6>
-            <p className="text-sm text-slate-600">Donde los hogares venden factores de producción a las empresas</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg">
-            <h6 className="font-medium text-slate-800 mb-2">Mercado de Bienes</h6>
-            <p className="text-sm text-slate-600">Donde las empresas venden bienes y servicios a los hogares</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function VentajaComparativa() {
-  const [productividadA1, setProductividadA1] = useState([4])
-  const [productividadA2, setProductividadA2] = useState([2])
-  const [productividadB1, setProductividadB1] = useState([2])
-  const [productividadB2, setProductividadB2] = useState([6])
-
-  const calcularVentajas = () => {
-    // Costo de oportunidad del país A
-    const costoA_bien1 = productividadA2[0] / productividadA1[0]
-    const costoA_bien2 = productividadA1[0] / productividadA2[0]
-    
-    // Costo de oportunidad del país B
-    const costoB_bien1 = productividadB2[0] / productividadB1[0]
-    const costoB_bien2 = productividadB1[0] / productividadB2[0]
-    
-    return {
-      paisA: {
-        ventajaBien1: costoA_bien1 < costoB_bien1,
-        ventajaBien2: costoA_bien2 < costoB_bien2,
-        costoOp1: costoA_bien1,
-        costoOp2: costoA_bien2
-      },
-      paisB: {
-        ventajaBien1: costoB_bien1 < costoA_bien1,
-        ventajaBien2: costoB_bien2 < costoA_bien2,
-        costoOp1: costoB_bien1,
-        costoOp2: costoB_bien2
-      }
-    }
-  }
-
-  const ventajas = calcularVentajas()
-
-  const datosProductividad = [
-    {
-      pais: 'País A',
-      bien1: productividadA1[0],
-      bien2: productividadA2[0]
-    },
-    {
-      pais: 'País B', 
-      bien1: productividadB1[0],
-      bien2: productividadB2[0]
-    }
-  ]
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Productividad por Hora</h4>
-          <div className="space-y-4">
-            <div>
-              <h5 className="text-sm font-medium mb-2">País A</h5>
-              <div className="space-y-2">
-                <div>
-                  <label className="block text-xs mb-1">Bien 1: {productividadA1[0]} unidades/hora</label>
-                  <Slider value={productividadA1} onValueChange={setProductividadA1} max={10} min={1} step={1} />
-                </div>
-                <div>
-                  <label className="block text-xs mb-1">Bien 2: {productividadA2[0]} unidades/hora</label>
-                  <Slider value={productividadA2} onValueChange={setProductividadA2} max={10} min={1} step={1} />
-                </div>
-              </div>
-            </div>
-            <div>
-              <h5 className="text-sm font-medium mb-2">País B</h5>
-              <div className="space-y-2">
-                <div>
-                  <label className="block text-xs mb-1">Bien 1: {productividadB1[0]} unidades/hora</label>
-                  <Slider value={productividadB1} onValueChange={setProductividadB1} max={10} min={1} step={1} />
-                </div>
-                <div>
-                  <label className="block text-xs mb-1">Bien 2: {productividadB2[0]} unidades/hora</label>
-                  <Slider value={productividadB2} onValueChange={setProductividadB2} max={10} min={1} step={1} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Análisis de Ventaja Comparativa</h4>
-          <div className="space-y-3">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-blue-600 font-medium">País A</div>
-              <div className="text-xs space-y-1">
-                <div>Costo oportunidad Bien 1: {ventajas.paisA.costoOp1.toFixed(2)} unidades Bien 2</div>
-                <div>Costo oportunidad Bien 2: {ventajas.paisA.costoOp2.toFixed(2)} unidades Bien 1</div>
-                <div className="font-medium">
-                  Ventaja comparativa en: {ventajas.paisA.ventajaBien1 ? 'Bien 1' : 'Bien 2'}
-                </div>
-              </div>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-green-600 font-medium">País B</div>
-              <div className="text-xs space-y-1">
-                <div>Costo oportunidad Bien 1: {ventajas.paisB.costoOp1.toFixed(2)} unidades Bien 2</div>
-                <div>Costo oportunidad Bien 2: {ventajas.paisB.costoOp2.toFixed(2)} unidades Bien 1</div>
-                <div className="font-medium">
-                  Ventaja comparativa en: {ventajas.paisB.ventajaBien1 ? 'Bien 1' : 'Bien 2'}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={datosProductividad}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="pais" />
-            <YAxis label={{ value: 'Unidades/hora', angle: -90, position: 'insideLeft' }} />
-            <Tooltip />
-            <Bar dataKey="bien1" fill="#3b82f6" name="Bien 1" />
-            <Bar dataKey="bien2" fill="#ef4444" name="Bien 2" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="bg-emerald-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-emerald-800 mb-2">Principio de Ventaja Comparativa</h5>
-        <p className="text-sm text-emerald-700">
-          Cada país debe especializarse en producir el bien para el cual tiene el menor costo de oportunidad. 
-          Esto permite que ambos países se beneficien del comercio, incluso si uno tiene ventaja absoluta en ambos bienes.
-        </p>
-      </div>
-    </div>
-  )
-}
-
-function ExcedentesInteractivo() {
-  const [precio, setPrecio] = useState([50])
-  const [interceptoDemanda, setInterceptoDemanda] = useState([100])
-  const [interceptoOferta, setInterceptoOferta] = useState([20])
-
-  // Calcular puntos de las curvas
-  const generarDatos = () => {
-    const datos = []
-    for (let q = 0; q <= 100; q += 5) {
-      const pDemanda = interceptoDemanda[0] - q
-      const pOferta = interceptoOferta[0] + q * 0.8
-      datos.push({
-        cantidad: q,
-        demanda: Math.max(0, pDemanda),
-        oferta: Math.max(0, pOferta),
-        precio: precio[0],
-      })
-    }
-    return datos
-  }
-
-  // Calcular equilibrio
-  const calcularEquilibrio = () => {
-    const pendienteDemanda = -1
-    const pendienteOferta = 0.8
-    const qEquilibrio = (interceptoDemanda[0] - interceptoOferta[0]) / (1 + 0.8)
-    const pEquilibrio = interceptoDemanda[0] + pendienteDemanda * qEquilibrio
-    return { q: qEquilibrio, p: pEquilibrio }
-  }
-
-  // Calcular excedentes
-  const calcularExcedentes = () => {
-    const equilibrio = calcularEquilibrio()
-    const excedentesConsumidor = 0.5 * equilibrio.q * (interceptoDemanda[0] - equilibrio.p)
-    const excedentesProductor = 0.5 * equilibrio.q * (equilibrio.p - interceptoOferta[0])
-    return {
-      consumidor: excedentesConsumidor,
-      productor: excedentesProductor,
-      total: excedentesConsumidor + excedentesProductor,
-    }
-  }
-
-  const datos = generarDatos()
-  const equilibrio = calcularEquilibrio()
-  const excedentes = calcularExcedentes()
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Controles Interactivos</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Intercepto de Demanda: {interceptoDemanda[0]}
-              </label>
-              <Slider
-                value={interceptoDemanda}
-                onValueChange={setInterceptoDemanda}
-                max={150}
-                min={50}
-                step={5}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Intercepto de Oferta: {interceptoOferta[0]}
-              </label>
-              <Slider
-                value={interceptoOferta}
-                onValueChange={setInterceptoOferta}
-                max={50}
-                min={0}
-                step={5}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Resultados</h4>
-          <div className="space-y-3">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-sm text-blue-600">Equilibrio</div>
-              <div className="font-semibold">P = ${equilibrio.p.toFixed(2)}, Q = {equilibrio.q.toFixed(1)}</div>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-sm text-green-600">Excedente del Consumidor</div>
-              <div className="font-semibold">${excedentes.consumidor.toFixed(2)}</div>
-            </div>
-            <div className="bg-orange-50 p-3 rounded-lg">
-              <div className="text-sm text-orange-600">Excedente del Productor</div>
-              <div className="font-semibold">${excedentes.productor.toFixed(2)}</div>
-            </div>
-            <div className="bg-purple-50 p-3 rounded-lg">
-              <div className="text-sm text-purple-600">Excedente Total</div>
-              <div className="font-semibold">${excedentes.total.toFixed(2)}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
-            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip 
-              formatter={(value, name) => [
-                `$${Number(value).toFixed(2)}`, 
-                name === 'demanda' ? 'Demanda' : name === 'oferta' ? 'Oferta' : 'Precio'
-              ]}
-            />
-            <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" dot={false} />
-            <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" dot={false} />
-            <ReferenceLine x={equilibrio.q} stroke="#8b5cf6" strokeDasharray="5 5" />
-            <ReferenceLine y={equilibrio.p} stroke="#8b5cf6" strokeDasharray="5 5" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  )
-}
-
-function CurvaLafferInteractiva() {
-  const [tasaImpuesto, setTasaImpuesto] = useState([30])
-
-  const generarDatosLaffer = () => {
-    const datos = []
-    for (let tasa = 0; tasa <= 100; tasa += 2) {
-      // Función de Laffer simplificada: R = t * (100 - t) * factor
-      const baseImponible = Math.max(0, 100 - tasa * 0.8)
-      const recaudacion = (tasa / 100) * baseImponible * 100
-      const perdidaPesoMuerto = Math.pow(tasa / 100, 2) * 50
-      
-      datos.push({
-        tasa,
-        recaudacion,
-        perdidaPesoMuerto,
-        baseImponible,
-        tasaActual: tasa === tasaImpuesto[0] ? recaudacion : null,
-      })
-    }
-    return datos
-  }
-
-  const datos = generarDatosLaffer()
-  const puntoActual = datos.find(d => d.tasa === tasaImpuesto[0])
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Control de Tasa de Impuesto</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Tasa de Impuesto: {tasaImpuesto[0]}%
-              </label>
-              <Slider
-                value={tasaImpuesto}
-                onValueChange={setTasaImpuesto}
-                max={100}
-                min={0}
-                step={2}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Resultados en Tasa Actual</h4>
-          <div className="space-y-3">
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-sm text-green-600">Recaudación Fiscal</div>
-              <div className="font-semibold">${puntoActual?.recaudacion.toFixed(2)}</div>
-            </div>
-            <div className="bg-red-50 p-3 rounded-lg">
-              <div className="text-sm text-red-600">Pérdida de Peso Muerto</div>
-              <div className="font-semibold">${puntoActual?.perdidaPesoMuerto.toFixed(2)}</div>
-            </div>
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-sm text-blue-600">Base Imponible</div>
-              <div className="font-semibold">{puntoActual?.baseImponible.toFixed(1)}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="tasa" label={{ value: 'Tasa de Impuesto (%)', position: 'insideBottom', offset: -5 }} />
-            <YAxis label={{ value: 'Valor ($)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip 
-              formatter={(value, name) => [
-                `$${Number(value).toFixed(2)}`, 
-                name === 'recaudacion' ? 'Recaudación' : 
-                name === 'perdidaPesoMuerto' ? 'Pérdida de Peso Muerto' : 'Base Imponible'
-              ]}
-            />
-            <Line type="monotone" dataKey="recaudacion" stroke="#10b981" strokeWidth={3} name="Recaudación" dot={false} />
-            <Line type="monotone" dataKey="perdidaPesoMuerto" stroke="#ef4444" strokeWidth={3} name="Pérdida de Peso Muerto" dot={false} />
-            <ReferenceLine x={tasaImpuesto[0]} stroke="#8b5cf6" strokeDasharray="5 5" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="bg-amber-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-amber-800 mb-2">Interpretación de la Curva de Laffer</h5>
-        <ul className="text-sm text-amber-700 space-y-1">
-          <li>• <strong>Lado izquierdo (tasas bajas):</strong> Aumentar impuestos incrementa la recaudación</li>
-          <li>• <strong>Punto máximo:</strong> Tasa que maximiza la recaudación fiscal</li>
-          <li>• <strong>Lado derecho (tasas altas):</strong> Aumentar impuestos reduce la recaudación</li>
-          <li>• <strong>Pérdida de peso muerto:</strong> Aumenta cuadráticamente con la tasa de impuesto</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-
-function ComercioInternacional() {
-  const [precioMundial, setPrecioMundial] = useState([45])
-  const [arancel, setArancel] = useState([0])
-
-  const generarDatosComercio = () => {
-    const datos = []
-    for (let q = 0; q <= 100; q += 5) {
-      const demandaDomestica = 80 - q * 0.6
-      const ofertaDomestica = 20 + q * 0.4
-      
-      datos.push({
-        cantidad: q,
-        demandaDomestica: Math.max(0, demandaDomestica),
-        ofertaDomestica: Math.max(0, ofertaDomestica),
-        precioMundial: precioMundial[0],
-        precioConArancel: precioMundial[0] + arancel[0],
-      })
-    }
-    return datos
-  }
-
-  // Calcular equilibrio de autarquía
-  const calcularAutarquia = () => {
-    // Demanda: P = 80 - 0.6Q, Oferta: P = 20 + 0.4Q
-    const qAutarquia = (80 - 20) / (0.6 + 0.4)
-    const pAutarquia = 20 + 0.4 * qAutarquia
-    return { q: qAutarquia, p: pAutarquia }
-  }
-
-  // Calcular cantidades con comercio
-  const calcularComercio = () => {
-    const precioEfectivo = precioMundial[0] + arancel[0]
-    const qDemandada = (80 - precioEfectivo) / 0.6
-    const qOfrecida = (precioEfectivo - 20) / 0.4
-    const importaciones = Math.max(0, qDemandada - qOfrecida)
-    
-    return {
-      qDemandada: Math.max(0, qDemandada),
-      qOfrecida: Math.max(0, qOfrecida),
-      importaciones,
-      precioEfectivo,
-    }
-  }
-
-  // Calcular efectos del bienestar
-  const calcularBienestar = () => {
-    const autarquia = calcularAutarquia()
-    const comercio = calcularComercio()
-    
-    // Cambios en excedentes (simplificado)
-    const cambioConsumidor = 0.5 * (autarquia.p - comercio.precioEfectivo) * (comercio.qDemandada + autarquia.q)
-    const cambioProductor = -0.5 * (autarquia.p - comercio.precioEfectivo) * (comercio.qOfrecida + autarquia.q)
-    const recaudacionArancel = arancel[0] * comercio.importaciones
-    const perdidaPesoMuerto = 0.5 * arancel[0] * (autarquia.q - comercio.qOfrecida) + 
-                             0.5 * arancel[0] * (comercio.qDemandada - autarquia.q)
-    
-    return {
-      cambioConsumidor,
-      cambioProductor,
-      recaudacionArancel,
-      perdidaPesoMuerto,
-      cambioTotal: cambioConsumidor + cambioProductor + recaudacionArancel,
-    }
-  }
-
-  const datos = generarDatosComercio()
-  const autarquia = calcularAutarquia()
-  const comercio = calcularComercio()
-  const bienestar = calcularBienestar()
-
-  const esImportador = precioMundial[0] < autarquia.p
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Controles de Política</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Precio Mundial: ${precioMundial[0]}
-              </label>
-              <Slider
-                value={precioMundial}
-                onValueChange={setPrecioMundial}
-                max={70}
-                min={30}
-                step={1}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Arancel: ${arancel[0]}
-              </label>
-              <Slider
-                value={arancel}
-                onValueChange={setArancel}
-                max={20}
-                min={0}
-                step={1}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Análisis del Mercado</h4>
-          <div className="space-y-3">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <div className="text-sm text-blue-600">Tipo de País</div>
-              <div className="font-semibold">{esImportador ? 'Importador' : 'Exportador'}</div>
-            </div>
-            <div className="bg-gray-50 p-3 rounded-lg">
-              <div className="text-sm text-gray-600">Precio de Autarquía</div>
-              <div className="font-semibold">${autarquia.p.toFixed(2)}</div>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <div className="text-sm text-green-600">Precio Efectivo</div>
-              <div className="font-semibold">${comercio.precioEfectivo.toFixed(2)}</div>
-            </div>
-            <div className="bg-orange-50 p-3 rounded-lg">
-              <div className="text-sm text-orange-600">
-                {esImportador ? 'Importaciones' : 'Exportaciones'}
-              </div>
-              <div className="font-semibold">{comercio.importaciones.toFixed(1)}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
-            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip 
-              formatter={(value, name) => [
-                `$${Number(value).toFixed(2)}`, 
-                name === 'demandaDomestica' ? 'Demanda Doméstica' : 
-                name === 'ofertaDomestica' ? 'Oferta Doméstica' :
-                name === 'precioMundial' ? 'Precio Mundial' : 'Precio con Arancel'
-              ]}
-            />
-            <Line type="monotone" dataKey="demandaDomestica" stroke="#3b82f6" strokeWidth={3} name="Demanda Doméstica" dot={false} />
-            <Line type="monotone" dataKey="ofertaDomestica" stroke="#ef4444" strokeWidth={3} name="Oferta Doméstica" dot={false} />
-            <ReferenceLine y={precioMundial[0]} stroke="#10b981" strokeDasharray="5 5" label="Precio Mundial" />
-            {arancel[0] > 0 && (
-              <ReferenceLine y={precioMundial[0] + arancel[0]} stroke="#f59e0b" strokeDasharray="5 5" label="Precio + Arancel" />
-            )}
-            <ReferenceLine x={autarquia.q} y={autarquia.p} stroke="#8b5cf6" strokeDasharray="2 2" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-green-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-green-800 mb-2">Efectos en el Bienestar</h5>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span>Cambio Consumidor:</span>
-              <span className={bienestar.cambioConsumidor >= 0 ? 'text-green-600' : 'text-red-600'}>
-                ${bienestar.cambioConsumidor.toFixed(2)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span>Cambio Productor:</span>
-              <span className={bienestar.cambioProductor >= 0 ? 'text-green-600' : 'text-red-600'}>
-                ${bienestar.cambioProductor.toFixed(2)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span>Recaudación Arancel:</span>
-              <span className="text-blue-600">${bienestar.recaudacionArancel.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between font-semibold border-t pt-2">
-              <span>Cambio Total:</span>
-              <span className={bienestar.cambioTotal >= 0 ? 'text-green-600' : 'text-red-600'}>
-                ${bienestar.cambioTotal.toFixed(2)}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-red-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-red-800 mb-2">Pérdida de Peso Muerto</h5>
-          <div className="text-2xl font-bold text-red-600 mb-2">
-            ${bienestar.perdidaPesoMuerto.toFixed(2)}
-          </div>
-          <p className="text-sm text-red-700">
-            Pérdida de eficiencia económica debido al arancel. Representa transacciones 
-            mutuamente beneficiosas que no ocurren por la distorsión del precio.
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function OfertaDemandaBasico() {
-  const [interceptoDemanda, setInterceptoDemanda] = useState([100])
-  const [pendienteDemanda, setPendienteDemanda] = useState([1])
-  const [interceptoOferta, setInterceptoOferta] = useState([20])
-  const [pendienteOferta, setPendienteOferta] = useState([0.8])
-
-  const generarDatos = () => {
-    const datos = []
-    for (let q = 0; q <= 100; q += 2) {
-      const pDemanda = interceptoDemanda[0] - pendienteDemanda[0] * q
-      const pOferta = interceptoOferta[0] + pendienteOferta[0] * q
-      datos.push({
-        cantidad: q,
-        demanda: Math.max(0, pDemanda),
-        oferta: Math.max(0, pOferta),
-      })
-    }
-    return datos
-  }
-
-  const calcularEquilibrio = () => {
-    const qEq = (interceptoDemanda[0] - interceptoOferta[0]) / (pendienteDemanda[0] + pendienteOferta[0])
-    const pEq = interceptoDemanda[0] - pendienteDemanda[0] * qEq
-    return { q: qEq, p: pEq }
-  }
-
-  const datos = generarDatos()
-  const equilibrio = calcularEquilibrio()
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Parámetros de Demanda</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Intercepto: {interceptoDemanda[0]}
-              </label>
-              <Slider
-                value={interceptoDemanda}
-                onValueChange={setInterceptoDemanda}
-                max={150}
-                min={50}
-                step={5}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Pendiente: {pendienteDemanda[0]}
-              </label>
-              <Slider
-                value={pendienteDemanda}
-                onValueChange={setPendienteDemanda}
-                max={2}
-                min={0.2}
-                step={0.1}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Parámetros de Oferta</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Intercepto: {interceptoOferta[0]}
-              </label>
-              <Slider
-                value={interceptoOferta}
-                onValueChange={setInterceptoOferta}
-                max={50}
-                min={0}
-                step={2}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Pendiente: {pendienteOferta[0]}
-              </label>
-              <Slider
-                value={pendienteOferta}
-                onValueChange={setPendienteOferta}
-                max={2}
-                min={0.2}
-                step={0.1}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-blue-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-blue-800 mb-2">Equilibrio de Mercado</h5>
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div>
-            <span className="text-blue-600">Precio de Equilibrio:</span>
-            <div className="font-semibold text-lg">${equilibrio.p.toFixed(2)}</div>
-          </div>
-          <div>
-            <span className="text-blue-600">Cantidad de Equilibrio:</span>
-            <div className="font-semibold text-lg">{equilibrio.q.toFixed(1)}</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-96">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={datos}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="cantidad" label={{ value: 'Cantidad', position: 'insideBottom', offset: -5 }} />
-            <YAxis label={{ value: 'Precio ($)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip 
-              formatter={(value, name) => [
-                `$${Number(value).toFixed(2)}`, 
-                name === 'demanda' ? 'Demanda' : 'Oferta'
-              ]}
-            />
-            <Line type="monotone" dataKey="demanda" stroke="#3b82f6" strokeWidth={3} name="Demanda" dot={false} />
-            <Line type="monotone" dataKey="oferta" stroke="#ef4444" strokeWidth={3} name="Oferta" dot={false} />
-            <ReferenceLine x={equilibrio.q} stroke="#8b5cf6" strokeDasharray="5 5" />
-            <ReferenceLine y={equilibrio.p} stroke="#8b5cf6" strokeDasharray="5 5" />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="bg-gray-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-gray-800 mb-2">Ecuaciones del Modelo</h5>
-        <div className="grid md:grid-cols-2 gap-4 text-sm font-mono">
-          <div>
-            <div className="text-blue-600">Función de Demanda:</div>
-            <div>P = {interceptoDemanda[0]} - {pendienteDemanda[0]}Q</div>
-          </div>
-          <div>
-            <div className="text-red-600">Función de Oferta:</div>
-            <div>P = {interceptoOferta[0]} + {pendienteOferta[0]}Q</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ElasticidadCalculadora() {
-  const [precio1, setPrecio1] = useState([10])
-  const [precio2, setPrecio2] = useState([12])
-  const [cantidad1, setCantidad1] = useState([100])
-  const [cantidad2, setCantidad2] = useState([80])
-
-  const calcularElasticidad = () => {
-    const deltaP = precio2[0] - precio1[0]
-    const deltaQ = cantidad2[0] - cantidad1[0]
-    const promP = (precio1[0] + precio2[0]) / 2
-    const promQ = (cantidad1[0] + cantidad2[0]) / 2
-    
-    const elasticidad = (deltaQ / promQ) / (deltaP / promP)
-    
-    return {
-      elasticidad,
-      cambioP: (deltaP / promP) * 100,
-      cambioQ: (deltaQ / promQ) * 100,
-      tipo: Math.abs(elasticidad) > 1 ? 'Elástica' : Math.abs(elasticidad) < 1 ? 'Inelástica' : 'Unitaria',
-    }
-  }
-
-  const calcularIngresoTotal = () => {
-    const ingreso1 = precio1[0] * cantidad1[0]
-    const ingreso2 = precio2[0] * cantidad2[0]
-    const cambioIngreso = ingreso2 - ingreso1
-    
-    return { ingreso1, ingreso2, cambioIngreso }
-  }
-
-  const elasticidad = calcularElasticidad()
-  const ingresos = calcularIngresoTotal()
-
-  const generarDatosElasticidad = () => {
-    return [
-      {
-        punto: 'Inicial',
-        precio: precio1[0],
-        cantidad: cantidad1[0],
-        ingreso: ingresos.ingreso1,
-      },
-      {
-        punto: 'Final',
-        precio: precio2[0],
-        cantidad: cantidad2[0],
-        ingreso: ingresos.ingreso2,
-      },
-    ]
-  }
-
-  const datos = generarDatosElasticidad()
-
-  return (
-    <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="font-semibold mb-4">Punto Inicial</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Precio 1: ${precio1[0]}
-              </label>
-              <Slider
-                value={precio1}
-                onValueChange={setPrecio1}
-                max={20}
-                min={5}
-                step={0.5}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Cantidad 1: {cantidad1[0]}
-              </label>
-              <Slider
-                value={cantidad1}
-                onValueChange={setCantidad1}
-                max={150}
-                min={50}
-                step={5}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-4">Punto Final</h4>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Precio 2: ${precio2[0]}
-              </label>
-              <Slider
-                value={precio2}
-                onValueChange={setPrecio2}
-                max={20}
-                min={5}
-                step={0.5}
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Cantidad 2: {cantidad2[0]}
-              </label>
-              <Slider
-                value={cantidad2}
-                onValueChange={setCantidad2}
-                max={150}
-                min={50}
-                step={5}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-blue-800 mb-2">Elasticidad Precio</h5>
-          <div className="text-2xl font-bold text-blue-600 mb-1">
-            {elasticidad.elasticidad.toFixed(3)}
-          </div>
-          <div className="text-sm text-blue-700">
-            Demanda {elasticidad.tipo}
-          </div>
-        </div>
-
-        <div className="bg-green-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-green-800 mb-2">Cambio en Precio</h5>
-          <div className="text-2xl font-bold text-green-600 mb-1">
-            {elasticidad.cambioP.toFixed(1)}%
-          </div>
-          <div className="text-sm text-green-700">
-            ${precio1[0]} → ${precio2[0]}
-          </div>
-        </div>
-
-        <div className="bg-orange-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-orange-800 mb-2">Cambio en Cantidad</h5>
-          <div className="text-2xl font-bold text-orange-600 mb-1">
-            {elasticidad.cambioQ.toFixed(1)}%
-          </div>
-          <div className="text-sm text-orange-700">
-            {cantidad1[0]} → {cantidad2[0]}
-          </div>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="h-64">
-          <h5 className="font-semibold mb-2">Cambio en Precio y Cantidad</h5>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={datos}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="punto" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="precio" fill="#3b82f6" name="Precio ($)" />
-              <Bar dataKey="cantidad" fill="#ef4444" name="Cantidad" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div className="bg-purple-50 p-4 rounded-lg">
-          <h5 className="font-semibold text-purple-800 mb-3">Análisis de Ingreso Total</h5>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span>Ingreso Inicial:</span>
-              <span className="font-semibold">${ingresos.ingreso1}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Ingreso Final:</span>
-              <span className="font-semibold">${ingresos.ingreso2}</span>
-            </div>
-            <div className="flex justify-between border-t pt-2">
-              <span>Cambio en Ingreso:</span>
-              <span className={`font-semibold ${ingresos.cambioIngreso >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                ${ingresos.cambioIngreso.toFixed(2)}
-              </span>
-            </div>
-          </div>
-          <div className="mt-3 text-xs text-purple-700">
-            {Math.abs(elasticidad.elasticidad) > 1 
-              ? "Con demanda elástica, precio e ingreso se mueven en direcciones opuestas"
-              : "Con demanda inelástica, precio e ingreso se mueven en la misma dirección"
-            }
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-gray-50 p-4 rounded-lg">
-        <h5 className="font-semibold text-gray-800 mb-2">Fórmula de Elasticidad (Método del Punto Medio)</h5>
-        <div className="font-mono text-sm bg-white p-3 rounded border">
-          Ed = [(Q₂-Q₁)/((Q₂+Q₁)/2)] / [(P₂-P₁)/((P₂+P₁)/2)]
-        </div>
-        <div className="mt-2 text-sm text-gray-600">
-          Ed = [{cantidad2[0]}-{cantidad1[0]}]/[({cantidad2[0]}+{cantidad1[0]})/2] / [{precio2[0]}-{precio1[0]}]/[({precio2[0]}+{precio1[0]})/2] = {elasticidad.elasticidad.toFixed(3)}
-        </div>
-      </div>
-    </div>
-  )
-}
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  ReferenceLine,
+  Area,
+  AreaChart,
+} from "recharts"
+import { useState, useEffect } from "react"
 
 export default function GraficosPage({ params }: { params: { id: string } }) {
-  const graficos = graficosData[Number.parseInt(params.id) as keyof typeof graficosData]
+  // Estados para gráficos de oferta y demanda
+  const [demandSlope, setDemandSlope] = useState([2])
+  const [supplySlope, setSupplySlope] = useState([1])
+  const [demandShift, setDemandShift] = useState([0])
+  const [supplyShift, setSupplyShift] = useState([0])
+  const [showEquilibrium, setShowEquilibrium] = useState(true)
+  const [animateChanges, setAnimateChanges] = useState(false)
 
-  if (!graficos) {
+  // Estados para gráficos de elasticidad
+  const [elasticidad, setElasticidad] = useState([1.5])
+  const [precioInicial, setPrecioInicial] = useState([10])
+  const [showIngresoTotal, setShowIngresoTotal] = useState(true)
+
+  // Estados para FPP
+  const [recursosA, setRecursosA] = useState([50])
+  const [recursosB, setRecursosB] = useState([50])
+  const [eficiencia, setEficiencia] = useState([100])
+  const [puntoSeleccionado, setPuntoSeleccionado] = useState({ x: 25, y: 35 })
+
+  // Estados para animación
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [animationSpeed, setAnimationSpeed] = useState([1])
+
+  // Generar datos para las curvas de oferta y demanda
+  const generateOfertaDemandaData = () => {
+    const data = []
+    for (let quantity = 0; quantity <= 100; quantity += 2) {
+      const demandPrice = Math.max(0, 100 - demandSlope[0] * quantity + demandShift[0])
+      const supplyPrice = Math.max(0, supplySlope[0] * quantity + 10 + supplyShift[0])
+
+      data.push({
+        quantity,
+        demand: demandPrice,
+        supply: supplyPrice,
+        demandArea: demandPrice,
+        supplyArea: supplyPrice,
+      })
+    }
+    return data
+  }
+
+  // Generar datos para elasticidad con más detalle
+  const generateElasticidadData = () => {
+    const data = []
+    const basePrice = precioInicial[0]
+    const baseQuantity = 100
+
+    for (let i = -80; i <= 80; i += 2) {
+      const priceChange = i
+      const newPrice = Math.max(0.1, basePrice + (basePrice * priceChange) / 100)
+      const quantityChange = -elasticidad[0] * priceChange
+      const newQuantity = Math.max(0, baseQuantity + (baseQuantity * quantityChange) / 100)
+
+      data.push({
+        precio: newPrice,
+        cantidad: newQuantity,
+        cambioPrecios: priceChange,
+        ingresoTotal: newPrice * newQuantity,
+        excedente: (newPrice * newQuantity) / 2,
+      })
+    }
+    return data
+  }
+
+  // Generar datos para FPP con curva más realista
+  const generateFPPData = () => {
+    const data = []
+    const maxA = recursosA[0]
+    const maxB = recursosB[0]
+    const eff = eficiencia[0] / 100
+
+    for (let a = 0; a <= maxA; a += maxA / 50) {
+      // Curva cóncava más realista
+      const bEfficient = maxB * Math.pow(1 - a / maxA, 1.5) * eff
+      const bInefficient = bEfficient * 0.7
+      const bImpossible = bEfficient * 1.3
+
+      data.push({
+        bienA: a,
+        bienB: bEfficient,
+        eficiente: bEfficient,
+        ineficiente: bInefficient,
+        imposible: bImpossible,
+      })
+    }
+    return data
+  }
+
+  // Calcular punto de equilibrio con más precisión
+  const calculateEquilibrium = () => {
+    const a = 100 + demandShift[0]
+    const b = demandSlope[0]
+    const c = 10 + supplyShift[0]
+    const d = supplySlope[0]
+
+    const equilibriumQuantity = Math.max(0, (a - c) / (b + d))
+    const equilibriumPrice = Math.max(0, a - b * equilibriumQuantity)
+
+    // Calcular excedentes
+    const consumerSurplus = (equilibriumQuantity * (a - equilibriumPrice)) / 2
+    const producerSurplus = (equilibriumQuantity * (equilibriumPrice - c)) / 2
+
+    return {
+      quantity: equilibriumQuantity,
+      price: equilibriumPrice,
+      consumerSurplus,
+      producerSurplus,
+      totalSurplus: consumerSurplus + producerSurplus,
+    }
+  }
+
+  // Animación automática
+  useEffect(() => {
+    let interval: NodeJS.Timeout
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setDemandShift((prev) => {
+          const newValue = prev[0] + (Math.random() - 0.5) * 5
+          return [Math.max(-30, Math.min(30, newValue))]
+        })
+      }, 1000 / animationSpeed[0])
+    }
+    return () => clearInterval(interval)
+  }, [isPlaying, animationSpeed])
+
+  const resetControls = () => {
+    setDemandSlope([2])
+    setSupplySlope([1])
+    setDemandShift([0])
+    setSupplyShift([0])
+    setElasticidad([1.5])
+    setPrecioInicial([10])
+    setRecursosA([50])
+    setRecursosB([50])
+    setEficiencia([100])
+    setIsPlaying(false)
+  }
+
+  const ofertaDemandaData = generateOfertaDemandaData()
+  const elasticidadData = generateElasticidadData()
+  const fppData = generateFPPData()
+  const equilibrium = calculateEquilibrium()
+
+  // Configuración específica por capítulo
+  const configuraciones = {
+    1: {
+      titulo: "Gráficos Interactivos: Los Diez Principios",
+      descripcion: "Visualización de conceptos fundamentales como costo de oportunidad y FPP",
+      graficos: ["fpp", "costo-oportunidad"],
+    },
+    2: {
+      titulo: "Gráficos Interactivos: Pensando como Economista",
+      descripcion: "Modelos económicos: Frontera de Posibilidades de Producción y Flujo Circular",
+      graficos: ["fpp", "flujo-circular"],
+    },
+    4: {
+      titulo: "Gráficos Interactivos: Oferta y Demanda",
+      descripcion: "Explora cómo los cambios en los parámetros afectan el equilibrio de mercado",
+      graficos: ["oferta-demanda", "excedentes"],
+    },
+    5: {
+      titulo: "Gráficos Interactivos: Elasticidad",
+      descripcion: "Visualiza cómo la elasticidad afecta la respuesta de la demanda",
+      graficos: ["elasticidad", "ingreso-total", "tipos-elasticidad"],
+    },
+  }
+
+  const config = configuraciones[params.id as keyof typeof configuraciones]
+
+  if (!config) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4 py-8">
@@ -1347,14 +207,16 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
                 </Button>
               </Link>
               <div className="flex items-center gap-3">
-                <Image src="/logo-ceic.png" alt="CEIC Logo" width={32} height={32} className="rounded" />
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">EC</span>
+                </div>
                 <span className="font-semibold text-slate-800">EconoHub CEIC</span>
               </div>
             </div>
           </header>
           <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
             <CardContent className="pt-6 text-center">
-              <p className="text-slate-600 mb-4">Los gráficos para este capítulo están en desarrollo.</p>
+              <p className="text-slate-600 mb-4">Los gráficos interactivos para este capítulo están en desarrollo.</p>
               <Link href={`/capitulo/${params.id}`}>
                 <Button>Volver al contenido teórico</Button>
               </Link>
@@ -1365,41 +227,9 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
     )
   }
 
-  const renderGrafico = (graficoId: string) => {
-    switch (graficoId) {
-      case "frontera-posibilidades":
-      case "fpp-interactiva":
-        return <FronteraPosibilidades />
-      case "flujo-circular":
-        return <FlujoCicular />
-      case "ventaja-comparativa":
-      case "ganancias-comercio":
-        return <VentajaComparativa />
-      case "excedentes-interactivo":
-        return <ExcedentesInteractivo />
-      case "curva-laffer":
-        return <CurvaLafferInteractiva />
-      case "comercio-internacional":
-      case "aranceles-cuotas":
-        return <ComercioInternacional />
-      case "oferta-demanda-basico":
-      case "desplazamientos":
-        return <OfertaDemandaBasico />
-      case "elasticidad-calculadora":
-      case "elasticidad-ingreso-total":
-        return <ElasticidadCalculadora />
-      default:
-        return (
-          <div className="text-center py-8">
-            <p className="text-slate-600">Este gráfico está en desarrollo.</p>
-          </div>
-        )
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
+      {/* Header mejorado */}
       <header className="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -1411,7 +241,9 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
                 </Button>
               </Link>
               <div className="flex items-center gap-3">
-                <Image src="/logo-ceic.png" alt="CEIC Logo" width={32} height={32} className="rounded shadow-sm" />
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center shadow-sm">
+                  <span className="text-white font-bold text-sm">EC</span>
+                </div>
                 <div>
                   <span className="font-semibold text-slate-800">EconoHub CEIC</span>
                   <p className="text-xs text-slate-600">Gráficos Interactivos</p>
@@ -1419,6 +251,10 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <Button onClick={resetControls} variant="outline" size="sm" className="hover:bg-slate-50">
+                <RotateCcw className="h-4 w-4 mr-2" />
+                Reiniciar
+              </Button>
               <Badge variant="outline" className="text-slate-600 border-slate-300">
                 Capítulo {params.id}
               </Badge>
@@ -1427,89 +263,1289 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        {/* Hero section */}
+      <div className="container mx-auto px-4 py-8">
+        {/* Hero section mejorado */}
         <div className="bg-gradient-to-br from-blue-50 via-white to-violet-50 rounded-3xl p-8 mb-8 shadow-lg border border-blue-100">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold text-slate-800 mb-4">{graficos.titulo}</h1>
-              <p className="text-xl text-slate-700 mb-6 leading-relaxed">{graficos.descripcion}</p>
-              <div className="flex items-center gap-4">
-                <Badge className="bg-blue-100 text-blue-700 border-blue-200" variant="outline">
-                  <BarChart3 className="h-4 w-4 mr-2" />
-                  {graficos.graficos.length} gráficos interactivos
-                </Badge>
-                <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
-                  <Zap className="h-4 w-4 mr-2" />
-                  Simulaciones en tiempo real
-                </Badge>
-              </div>
+          <div className="max-w-4xl">
+            <h1 className="text-4xl font-bold text-slate-800 mb-4">{config.titulo}</h1>
+            <p className="text-xl text-slate-700 mb-6 leading-relaxed">{config.descripcion}</p>
+            <div className="flex items-center gap-4">
+              <Badge className="bg-blue-100 text-blue-700 border-blue-200" variant="outline">
+                Interactivo
+              </Badge>
+              <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200" variant="outline">
+                Tiempo Real
+              </Badge>
+              <Badge className="bg-violet-100 text-violet-700 border-violet-200" variant="outline">
+                Educativo
+              </Badge>
             </div>
           </div>
         </div>
 
-        {/* Gráficos */}
-        <div className="space-y-12">
-          {graficos.graficos.map((grafico, index) => (
-            <Card key={grafico.id} className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-3 text-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-violet-600 text-white font-bold">
-                      {index + 1}
+        <Tabs defaultValue={config.graficos[0]} className="space-y-8">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 bg-white/80 backdrop-blur-sm shadow-md border-0">
+            {config.graficos.includes("oferta-demanda") && (
+              <TabsTrigger
+                value="oferta-demanda"
+                className="data-[state=active]:bg-blue-100 data-[state=active]:text-blue-700"
+              >
+                Oferta y Demanda
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("excedentes") && (
+              <TabsTrigger
+                value="excedentes"
+                className="data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-700"
+              >
+                Excedentes
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("elasticidad") && (
+              <TabsTrigger
+                value="elasticidad"
+                className="data-[state=active]:bg-violet-100 data-[state=active]:text-violet-700"
+              >
+                Elasticidad
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("ingreso-total") && (
+              <TabsTrigger
+                value="ingreso-total"
+                className="data-[state=active]:bg-orange-100 data-[state=active]:text-orange-700"
+              >
+                Ingreso Total
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("tipos-elasticidad") && (
+              <TabsTrigger
+                value="tipos-elasticidad"
+                className="data-[state=active]:bg-pink-100 data-[state=active]:text-pink-700"
+              >
+                Tipos de Elasticidad
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("fpp") && (
+              <TabsTrigger value="fpp" className="data-[state=active]:bg-teal-100 data-[state=active]:text-teal-700">
+                FPP
+              </TabsTrigger>
+            )}
+            {config.graficos.includes("costo-oportunidad") && (
+              <TabsTrigger
+                value="costo-oportunidad"
+                className="data-[state=active]:bg-amber-100 data-[state=active]:text-amber-700"
+              >
+                Costo de Oportunidad
+              </TabsTrigger>
+            )}
+          </TabsList>
+
+          {/* Gráfico de Oferta y Demanda Mejorado */}
+          <TabsContent value="oferta-demanda" className="space-y-8">
+            <div className="grid lg:grid-cols-4 gap-8">
+              <div className="lg:col-span-1 space-y-6">
+                {/* Controles de Demanda */}
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-red-500 to-red-600 rounded-xl">
+                        <TrendingDown className="h-5 w-5 text-white" />
+                      </div>
+                      Curva de Demanda
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Pendiente</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {demandSlope[0].toFixed(1)}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={demandSlope}
+                        onValueChange={setDemandSlope}
+                        max={5}
+                        min={0.5}
+                        step={0.1}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-slate-500 mt-2">Mayor pendiente = demanda menos elástica</p>
                     </div>
-                    <span>{grafico.titulo}</span>
-                  </CardTitle>
-                  <div className="flex items-center gap-3">
-                    <Badge 
-                      className={
-                        grafico.tipo === 'interactivo' ? 'bg-green-100 text-green-700 border-green-200' :
-                        grafico.tipo === 'simulacion' ? 'bg-blue-100 text-blue-700 border-blue-200' :
-                        grafico.tipo === 'calculadora' ? 'bg-purple-100 text-purple-700 border-purple-200' :
-                        'bg-orange-100 text-orange-700 border-orange-200'
-                      } 
-                      variant="outline"
-                    >
-                      {grafico.tipo === 'interactivo' && <TrendingUp className="h-3 w-3 mr-1" />}
-                      {grafico.tipo === 'simulacion' && <BarChart3 className="h-3 w-3 mr-1" />}
-                      {grafico.tipo === 'calculadora' && <Calculator className="h-3 w-3 mr-1" />}
-                      {grafico.tipo === 'comparativo' && <Globe className="h-3 w-3 mr-1" />}
-                      {grafico.tipo.charAt(0).toUpperCase() + grafico.tipo.slice(1)}
-                    </Badge>
-                  </div>
-                </div>
-                <p className="text-slate-600 text-lg mt-2">{grafico.descripcion}</p>
+
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Desplazamiento</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {demandShift[0] > 0 ? "+" : ""}
+                          {demandShift[0]}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={demandShift}
+                        onValueChange={setDemandShift}
+                        max={30}
+                        min={-30}
+                        step={1}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-slate-500 mt-2">Positivo = aumento de demanda</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Controles de Oferta */}
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-green-500 to-green-600 rounded-xl">
+                        <TrendingUp className="h-5 w-5 text-white" />
+                      </div>
+                      Curva de Oferta
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Pendiente</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {supplySlope[0].toFixed(1)}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={supplySlope}
+                        onValueChange={setSupplySlope}
+                        max={3}
+                        min={0.2}
+                        step={0.1}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-slate-500 mt-2">Mayor pendiente = oferta menos elástica</p>
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Desplazamiento</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {supplyShift[0] > 0 ? "+" : ""}
+                          {supplyShift[0]}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={supplyShift}
+                        onValueChange={setSupplyShift}
+                        max={30}
+                        min={-30}
+                        step={1}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-slate-500 mt-2">Positivo = aumento de oferta</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Información del Equilibrio */}
+                <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-violet-50">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-blue-500 to-violet-600 rounded-xl">
+                        <Info className="h-5 w-5 text-white" />
+                      </div>
+                      Punto de Equilibrio
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-3 bg-white/80 rounded-xl">
+                        <p className="text-xs text-slate-600 mb-1">Cantidad</p>
+                        <p className="text-lg font-bold text-blue-700">{equilibrium.quantity.toFixed(1)}</p>
+                      </div>
+                      <div className="text-center p-3 bg-white/80 rounded-xl">
+                        <p className="text-xs text-slate-600 mb-1">Precio</p>
+                        <p className="text-lg font-bold text-blue-700">${equilibrium.price.toFixed(2)}</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-slate-600">Excedente Consumidor:</span>
+                        <Badge className="bg-green-100 text-green-700 border-green-200" variant="outline">
+                          ${equilibrium.consumerSurplus.toFixed(0)}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-slate-600">Excedente Productor:</span>
+                        <Badge className="bg-blue-100 text-blue-700 border-blue-200" variant="outline">
+                          ${equilibrium.producerSurplus.toFixed(0)}
+                        </Badge>
+                      </div>
+                      <div className="flex justify-between items-center pt-2 border-t">
+                        <span className="text-sm font-medium text-slate-700">Excedente Total:</span>
+                        <Badge className="bg-violet-100 text-violet-700 border-violet-200" variant="outline">
+                          ${equilibrium.totalSurplus.toFixed(0)}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t">
+                      <div className="flex items-center space-x-2">
+                        <Switch id="show-equilibrium" checked={showEquilibrium} onCheckedChange={setShowEquilibrium} />
+                        <Label htmlFor="show-equilibrium" className="text-xs">
+                          Mostrar equilibrio
+                        </Label>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Controles de Animación */}
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
+                        <Settings className="h-5 w-5 text-white" />
+                      </div>
+                      Animación
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <Button
+                        onClick={() => setIsPlaying(!isPlaying)}
+                        variant={isPlaying ? "default" : "outline"}
+                        size="sm"
+                        className="flex-1"
+                      >
+                        {isPlaying ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
+                        {isPlaying ? "Pausar" : "Reproducir"}
+                      </Button>
+                    </div>
+
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Velocidad: {animationSpeed[0]}x</Label>
+                      <Slider
+                        value={animationSpeed}
+                        onValueChange={setAnimationSpeed}
+                        max={3}
+                        min={0.5}
+                        step={0.5}
+                        className="w-full"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="lg:col-span-3">
+                <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-2xl">Gráfico de Oferta y Demanda</CardTitle>
+                    <p className="text-slate-600">Interactúa con los controles para ver cómo cambia el equilibrio</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[500px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={ofertaDemandaData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                          <XAxis
+                            dataKey="quantity"
+                            label={{ value: "Cantidad", position: "insideBottom", offset: -10 }}
+                            stroke="#64748b"
+                          />
+                          <YAxis label={{ value: "Precio ($)", angle: -90, position: "insideLeft" }} stroke="#64748b" />
+                          <Tooltip
+                            formatter={(value, name) => [
+                              `$${Number(value).toFixed(2)}`,
+                              name === "demand" ? "Demanda" : "Oferta",
+                            ]}
+                            labelFormatter={(value) => `Cantidad: ${value}`}
+                            contentStyle={{
+                              backgroundColor: "rgba(255, 255, 255, 0.95)",
+                              border: "1px solid #e2e8f0",
+                              borderRadius: "8px",
+                              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                            }}
+                          />
+                          <Legend />
+
+                          <Line
+                            type="monotone"
+                            dataKey="demand"
+                            stroke="#ef4444"
+                            strokeWidth={3}
+                            dot={false}
+                            name="Demanda"
+                            strokeDasharray={animateChanges ? "5 5" : "0"}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="supply"
+                            stroke="#22c55e"
+                            strokeWidth={3}
+                            dot={false}
+                            name="Oferta"
+                            strokeDasharray={animateChanges ? "5 5" : "0"}
+                          />
+
+                          {showEquilibrium && (
+                            <>
+                              <ReferenceLine
+                                x={equilibrium.quantity}
+                                stroke="#6366f1"
+                                strokeDasharray="8 4"
+                                strokeWidth={2}
+                              />
+                              <ReferenceLine
+                                y={equilibrium.price}
+                                stroke="#6366f1"
+                                strokeDasharray="8 4"
+                                strokeWidth={2}
+                              />
+                            </>
+                          )}
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Gráfico de Excedentes */}
+          <TabsContent value="excedentes" className="space-y-8">
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-2xl">Excedentes del Consumidor y Productor</CardTitle>
+                    <p className="text-slate-600">Visualización de los beneficios económicos en el mercado</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[500px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={ofertaDemandaData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                          <XAxis
+                            dataKey="quantity"
+                            label={{ value: "Cantidad", position: "insideBottom", offset: -10 }}
+                          />
+                          <YAxis label={{ value: "Precio ($)", angle: -90, position: "insideLeft" }} />
+                          <Tooltip
+                            formatter={(value, name) => [
+                              `$${Number(value).toFixed(2)}`,
+                              name === "demand" ? "Demanda" : "Oferta",
+                            ]}
+                            contentStyle={{
+                              backgroundColor: "rgba(255, 255, 255, 0.95)",
+                              border: "1px solid #e2e8f0",
+                              borderRadius: "8px",
+                            }}
+                          />
+
+                          {/* Excedente del consumidor */}
+                          <Area
+                            type="monotone"
+                            dataKey="demand"
+                            stroke="#ef4444"
+                            fill="#10b981"
+                            fillOpacity={0.3}
+                            name="Excedente Consumidor"
+                          />
+
+                          {/* Excedente del productor */}
+                          <Area
+                            type="monotone"
+                            dataKey="supply"
+                            stroke="#22c55e"
+                            fill="#3b82f6"
+                            fillOpacity={0.3}
+                            name="Excedente Productor"
+                          />
+
+                          <Line type="monotone" dataKey="demand" stroke="#ef4444" strokeWidth={3} dot={false} />
+                          <Line type="monotone" dataKey="supply" stroke="#22c55e" strokeWidth={3} dot={false} />
+
+                          <ReferenceLine x={equilibrium.quantity} stroke="#6366f1" strokeDasharray="5 5" />
+                          <ReferenceLine y={equilibrium.price} stroke="#6366f1" strokeDasharray="5 5" />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="space-y-6">
+                <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-blue-50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Análisis de Bienestar</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="p-4 bg-green-100 rounded-xl">
+                      <h4 className="font-semibold text-green-800 mb-2">Excedente del Consumidor</h4>
+                      <p className="text-2xl font-bold text-green-700">${equilibrium.consumerSurplus.toFixed(0)}</p>
+                      <p className="text-xs text-green-600 mt-1">Beneficio que obtienen los consumidores</p>
+                    </div>
+
+                    <div className="p-4 bg-blue-100 rounded-xl">
+                      <h4 className="font-semibold text-blue-800 mb-2">Excedente del Productor</h4>
+                      <p className="text-2xl font-bold text-blue-700">${equilibrium.producerSurplus.toFixed(0)}</p>
+                      <p className="text-xs text-blue-600 mt-1">Beneficio que obtienen los productores</p>
+                    </div>
+
+                    <div className="p-4 bg-violet-100 rounded-xl">
+                      <h4 className="font-semibold text-violet-800 mb-2">Bienestar Total</h4>
+                      <p className="text-2xl font-bold text-violet-700">${equilibrium.totalSurplus.toFixed(0)}</p>
+                      <p className="text-xs text-violet-600 mt-1">Suma de ambos excedentes</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Interpretación</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-green-400 rounded-full mt-1 flex-shrink-0"></div>
+                        <p className="text-slate-700">
+                          <strong>Área verde:</strong> Excedente del consumidor - diferencia entre lo que están
+                          dispuestos a pagar y lo que realmente pagan
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-blue-400 rounded-full mt-1 flex-shrink-0"></div>
+                        <p className="text-slate-700">
+                          <strong>Área azul:</strong> Excedente del productor - diferencia entre el precio de mercado y
+                          el costo mínimo de producción
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-violet-400 rounded-full mt-1 flex-shrink-0"></div>
+                        <p className="text-slate-700">
+                          <strong>Líneas punteadas:</strong> Punto de equilibrio donde se maximiza el bienestar total
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Gráfico de Elasticidad Mejorado */}
+          <TabsContent value="elasticidad" className="space-y-8">
+            <div className="grid lg:grid-cols-4 gap-8">
+              <div className="lg:col-span-1 space-y-6">
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl">
+                        <Info className="h-5 w-5 text-white" />
+                      </div>
+                      Parámetros
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Elasticidad</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {elasticidad[0].toFixed(1)}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={elasticidad}
+                        onValueChange={setElasticidad}
+                        max={5}
+                        min={0.1}
+                        step={0.1}
+                        className="w-full"
+                      />
+                      <div className="text-xs mt-2">
+                        {elasticidad[0] > 1 ? (
+                          <span className="text-red-600 font-medium">Elástica</span>
+                        ) : elasticidad[0] === 1 ? (
+                          <span className="text-yellow-600 font-medium">Unitaria</span>
+                        ) : (
+                          <span className="text-green-600 font-medium">Inelástica</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Precio Base</Label>
+                        <Badge variant="outline" className="text-xs">
+                          ${precioInicial[0]}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={precioInicial}
+                        onValueChange={setPrecioInicial}
+                        max={20}
+                        min={5}
+                        step={1}
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <Switch id="show-revenue" checked={showIngresoTotal} onCheckedChange={setShowIngresoTotal} />
+                      <Label htmlFor="show-revenue" className="text-sm">
+                        Mostrar ingreso total
+                      </Label>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg bg-gradient-to-br from-violet-50 to-purple-50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Interpretación</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 text-sm">
+                      <div className="p-3 bg-white/80 rounded-xl">
+                        <h4 className="font-semibold mb-1">
+                          {elasticidad[0] > 1
+                            ? "Demanda Elástica"
+                            : elasticidad[0] === 1
+                              ? "Demanda Unitaria"
+                              : "Demanda Inelástica"}
+                        </h4>
+                        <p className="text-slate-600">
+                          {elasticidad[0] > 1
+                            ? "Los consumidores son muy sensibles a cambios de precio. Ejemplos: bienes de lujo, entretenimiento."
+                            : elasticidad[0] === 1
+                              ? "Cambio proporcional en cantidad y precio. Punto de maximización del ingreso."
+                              : "Los consumidores son poco sensibles a cambios de precio. Ejemplos: medicinas, gasolina."}
+                        </p>
+                      </div>
+
+                      <div className="p-3 bg-white/80 rounded-xl">
+                        <h4 className="font-semibold mb-1">Fórmula</h4>
+                        <p className="font-mono text-xs bg-slate-100 p-2 rounded">Ed = (% Δ Cantidad) / (% Δ Precio)</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="lg:col-span-3">
+                <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-2xl">Curva de Demanda con Elasticidad Variable</CardTitle>
+                    <p className="text-slate-600">Observa cómo cambia la forma de la curva según la elasticidad</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[500px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={elasticidadData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                          <XAxis
+                            dataKey="cantidad"
+                            label={{ value: "Cantidad", position: "insideBottom", offset: -10 }}
+                            stroke="#64748b"
+                          />
+                          <YAxis label={{ value: "Precio ($)", angle: -90, position: "insideLeft" }} stroke="#64748b" />
+                          <Tooltip
+                            formatter={(value, name) => [
+                              name === "precio" ? `$${Number(value).toFixed(2)}` : Number(value).toFixed(1),
+                              name === "precio" ? "Precio" : name === "cantidad" ? "Cantidad" : "Ingreso Total",
+                            ]}
+                            contentStyle={{
+                              backgroundColor: "rgba(255, 255, 255, 0.95)",
+                              border: "1px solid #e2e8f0",
+                              borderRadius: "8px",
+                            }}
+                          />
+                          <Legend />
+
+                          <Line
+                            type="monotone"
+                            dataKey="precio"
+                            stroke="#8b5cf6"
+                            strokeWidth={4}
+                            dot={{ fill: "#8b5cf6", strokeWidth: 2, r: 3 }}
+                            name="Demanda"
+                          />
+
+                          {showIngresoTotal && (
+                            <Line
+                              type="monotone"
+                              dataKey="ingresoTotal"
+                              stroke="#f59e0b"
+                              strokeWidth={3}
+                              strokeDasharray="8 4"
+                              dot={false}
+                              name="Ingreso Total"
+                            />
+                          )}
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Gráfico de Ingreso Total */}
+          <TabsContent value="ingreso-total" className="space-y-8">
+            <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-2xl">Relación entre Precio e Ingreso Total</CardTitle>
+                <p className="text-slate-600">Cómo la elasticidad afecta los ingresos cuando cambian los precios</p>
               </CardHeader>
               <CardContent>
-                {renderGrafico(grafico.id)}
+                <div className="h-[500px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={elasticidadData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                      <XAxis
+                        dataKey="precio"
+                        label={{ value: "Precio ($)", position: "insideBottom", offset: -10 }}
+                        stroke="#64748b"
+                      />
+                      <YAxis
+                        label={{ value: "Ingreso Total ($)", angle: -90, position: "insideLeft" }}
+                        stroke="#64748b"
+                      />
+                      <Tooltip
+                        formatter={(value) => [`$${Number(value).toFixed(2)}`, "Ingreso Total"]}
+                        contentStyle={{
+                          backgroundColor: "rgba(255, 255, 255, 0.95)",
+                          border: "1px solid #e2e8f0",
+                          borderRadius: "8px",
+                        }}
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="ingresoTotal"
+                        stroke="#10b981"
+                        fill="#10b981"
+                        fillOpacity={0.3}
+                        strokeWidth={3}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+
+                <div className="mt-6 grid md:grid-cols-3 gap-4">
+                  <div className="p-4 bg-green-50 rounded-xl">
+                    <h4 className="font-semibold text-green-800 mb-2">Demanda Elástica</h4>
+                    <p className="text-sm text-green-700">
+                      Una reducción de precio aumenta el ingreso total porque el aumento en cantidad vendida compensa la
+                      reducción de precio.
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-yellow-50 rounded-xl">
+                    <h4 className="font-semibold text-yellow-800 mb-2">Demanda Unitaria</h4>
+                    <p className="text-sm text-yellow-700">
+                      El ingreso total se maximiza cuando la elasticidad es igual a 1. Cambios de precio no afectan el
+                      ingreso total.
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-red-50 rounded-xl">
+                    <h4 className="font-semibold text-red-800 mb-2">Demanda Inelástica</h4>
+                    <p className="text-sm text-red-700">
+                      Un aumento de precio aumenta el ingreso total porque la reducción en cantidad es proporcionalmente
+                      menor.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </TabsContent>
 
-        {/* Navegación */}
-        <div className="mt-12 flex justify-center">
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-            <CardContent className="pt-6 text-center">
-              <h3 className="font-semibold text-slate-800 mb-2">¿Terminaste de explorar?</h3>
-              <p className="text-sm text-slate-600 mb-4">Continúa tu aprendizaje con ejercicios prácticos</p>
-              <div className="flex gap-3 justify-center">
-                <Link href={`/capitulo/${params.id}`}>
-                  <Button variant="outline" className="shadow-md hover:shadow-lg transition-all duration-300">
-                    <BookOpen className="h-4 w-4 mr-2" />
-                    Repasar Teoría
-                  </Button>
-                </Link>
-                <Link href={`/ejercicios/${params.id}`}>
-                  <Button className="shadow-lg hover:shadow-xl transition-all duration-300">
-                    <Calculator className="h-4 w-4 mr-2" />
-                    Hacer Ejercicios
-                  </Button>
-                </Link>
+          {/* Gráfico de FPP Mejorado */}
+          <TabsContent value="fpp" className="space-y-8">
+            <div className="grid lg:grid-cols-4 gap-8">
+              <div className="lg:col-span-1 space-y-6">
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3 text-lg">
+                      <div className="p-2 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl">
+                        <Settings className="h-5 w-5 text-white" />
+                      </div>
+                      Recursos Disponibles
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Recursos para Bien A</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {recursosA[0]}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={recursosA}
+                        onValueChange={setRecursosA}
+                        max={100}
+                        min={20}
+                        step={5}
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Recursos para Bien B</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {recursosB[0]}
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={recursosB}
+                        onValueChange={setRecursosB}
+                        max={100}
+                        min={20}
+                        step={5}
+                        className="w-full"
+                      />
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between items-center mb-3">
+                        <Label className="text-sm font-medium">Eficiencia Tecnológica</Label>
+                        <Badge variant="outline" className="text-xs">
+                          {eficiencia[0]}%
+                        </Badge>
+                      </div>
+                      <Slider
+                        value={eficiencia}
+                        onValueChange={setEficiencia}
+                        max={100}
+                        min={50}
+                        step={5}
+                        className="w-full"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg bg-gradient-to-br from-teal-50 to-cyan-50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Conceptos Clave</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium">Puntos en la curva</p>
+                          <p className="text-slate-600">Producción eficiente</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full mt-1 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium">Puntos dentro</p>
+                          <p className="text-slate-600">Producción ineficiente</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-gray-400 rounded-full mt-1 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium">Puntos fuera</p>
+                          <p className="text-slate-600">Inalcanzables</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-3 h-3 bg-purple-500 rounded-full mt-1 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium">Pendiente</p>
+                          <p className="text-slate-600">Costo de oportunidad</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Punto Seleccionado</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-slate-600">Bien A:</span>
+                        <Badge variant="outline">{puntoSeleccionado.x.toFixed(1)}</Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-slate-600">Bien B:</span>
+                        <Badge variant="outline">{puntoSeleccionado.y.toFixed(1)}</Badge>
+                      </div>
+                      <div className="pt-2 border-t">
+                        <p className="text-xs text-slate-500">
+                          Costo de oportunidad de A: {(puntoSeleccionado.y / puntoSeleccionado.x).toFixed(2)} unidades
+                          de B
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+
+              <div className="lg:col-span-3">
+                <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+                  <CardHeader>
+                    <CardTitle className="text-2xl">Frontera de Posibilidades de Producción</CardTitle>
+                    <p className="text-slate-600">
+                      Explora las combinaciones posibles de producción y el costo de oportunidad
+                    </p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-[500px] w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={fppData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                          <XAxis
+                            dataKey="bienA"
+                            label={{ value: "Bien A (unidades)", position: "insideBottom", offset: -10 }}
+                            stroke="#64748b"
+                          />
+                          <YAxis
+                            label={{ value: "Bien B (unidades)", angle: -90, position: "insideLeft" }}
+                            stroke="#64748b"
+                          />
+                          <Tooltip
+                            formatter={(value, name) => [
+                              Number(value).toFixed(1),
+                              name === "eficiente"
+                                ? "Producción Eficiente"
+                                : name === "ineficiente"
+                                  ? "Producción Ineficiente"
+                                  : "Imposible",
+                            ]}
+                            contentStyle={{
+                              backgroundColor: "rgba(255, 255, 255, 0.95)",
+                              border: "1px solid #e2e8f0",
+                              borderRadius: "8px",
+                            }}
+                          />
+
+                          {/* Área posible pero ineficiente */}
+                          <Area type="monotone" dataKey="eficiente" stroke="none" fill="#10b981" fillOpacity={0.2} />
+
+                          {/* Frontera eficiente */}
+                          <Line
+                            type="monotone"
+                            dataKey="eficiente"
+                            stroke="#2563eb"
+                            strokeWidth={4}
+                            dot={false}
+                            name="Frontera Eficiente"
+                          />
+
+                          {/* Línea de producción ineficiente */}
+                          <Line
+                            type="monotone"
+                            dataKey="ineficiente"
+                            stroke="#ef4444"
+                            strokeWidth={2}
+                            strokeDasharray="8 4"
+                            dot={false}
+                            name="Producción Ineficiente"
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Gráfico de Costo de Oportunidad */}
+          <TabsContent value="costo-oportunidad" className="space-y-8">
+            <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-2xl">Visualización del Costo de Oportunidad</CardTitle>
+                <p className="text-slate-600">Comprende cómo cada decisión implica renunciar a alternativas</p>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div className="p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200">
+                      <h3 className="text-xl font-bold text-amber-800 mb-4">Ejemplo: Tiempo de Estudio</h3>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center p-3 bg-white rounded-xl">
+                          <span className="font-medium">Estudiar Economía</span>
+                          <Badge className="bg-blue-100 text-blue-700">4 horas</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-white rounded-xl">
+                          <span className="font-medium">Trabajar (ganancia)</span>
+                          <Badge className="bg-green-100 text-green-700">$60</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-amber-100 rounded-xl border-2 border-amber-300">
+                          <span className="font-bold">Costo de Oportunidad</span>
+                          <Badge className="bg-amber-200 text-amber-800">$60</Badge>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-6 bg-gradient-to-br from-blue-50 to-violet-50 rounded-2xl border border-blue-200">
+                      <h3 className="text-xl font-bold text-blue-800 mb-4">Ejemplo: Inversión</h3>
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center p-3 bg-white rounded-xl">
+                          <span className="font-medium">Invertir en Acciones</span>
+                          <Badge className="bg-purple-100 text-purple-700">$10,000</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-white rounded-xl">
+                          <span className="font-medium">Depósito a plazo (5%)</span>
+                          <Badge className="bg-green-100 text-green-700">$500/año</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-blue-100 rounded-xl border-2 border-blue-300">
+                          <span className="font-bold">Costo de Oportunidad</span>
+                          <Badge className="bg-blue-200 text-blue-800">$500/año</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-200">
+                      <h3 className="text-xl font-bold text-green-800 mb-4">Principios Clave</h3>
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                            1
+                          </div>
+                          <p className="text-green-700">
+                            <strong>Escasez:</strong> Los recursos son limitados, por lo que debemos elegir
+                          </p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                            2
+                          </div>
+                          <p className="text-green-700">
+                            <strong>Alternativas:</strong> Siempre hay múltiples opciones disponibles
+                          </p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                            3
+                          </div>
+                          <p className="text-green-700">
+                            <strong>Mejor alternativa:</strong> El costo es el valor de la mejor opción no elegida
+                          </p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                            4
+                          </div>
+                          <p className="text-green-700">
+                            <strong>Decisiones racionales:</strong> Comparar beneficios vs costos de oportunidad
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-200">
+                      <h3 className="text-xl font-bold text-purple-800 mb-4">Fórmula del Costo de Oportunidad</h3>
+                      <div className="bg-white p-4 rounded-xl border-2 border-purple-300 mb-4">
+                        <p className="font-mono text-lg text-center text-purple-700">
+                          CO = Valor de la mejor alternativa sacrificada
+                        </p>
+                      </div>
+                      <div className="space-y-2 text-sm text-purple-700">
+                        <p>
+                          <strong>Donde:</strong>
+                        </p>
+                        <p>• CO = Costo de Oportunidad</p>
+                        <p>• Se mide en las mismas unidades que la alternativa (dinero, tiempo, etc.)</p>
+                        <p>• Solo considera la MEJOR alternativa, no todas las alternativas</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* Experimentos Sugeridos Mejorados */}
+        <Card className="border-0 shadow-xl bg-gradient-to-br from-slate-50 to-blue-50 mt-12">
+          <CardHeader>
+            <CardTitle className="text-2xl">🧪 Experimentos Sugeridos</CardTitle>
+            <p className="text-slate-600">Prueba estos escenarios para profundizar tu comprensión</p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {params.id === "4" && (
+                <>
+                  <div className="p-6 border border-blue-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-blue-100 rounded-xl">
+                        <TrendingUp className="h-5 w-5 text-blue-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Aumento de Demanda</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Configura el desplazamiento de demanda a +20 y observa cómo aumentan tanto el precio como la
+                      cantidad de equilibrio.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                        Aumento de ingresos
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-200">
+                        Mayor población
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-emerald-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-emerald-100 rounded-xl">
+                        <TrendingDown className="h-5 w-5 text-emerald-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Mejora Tecnológica</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Aumenta el desplazamiento de oferta a +15 para simular una mejora tecnológica que reduce costos de
+                      producción.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-emerald-50 text-emerald-700 border-emerald-200">
+                        Innovación
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                        Eficiencia
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-violet-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-violet-100 rounded-xl">
+                        <Settings className="h-5 w-5 text-violet-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Elasticidades Diferentes</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Compara una demanda muy elástica (pendiente 0.5) con una muy inelástica (pendiente 4) y observa
+                      los efectos.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-violet-50 text-violet-700 border-violet-200">
+                        Sensibilidad al precio
+                      </Badge>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {params.id === "5" && (
+                <>
+                  <div className="p-6 border border-red-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-red-100 rounded-xl">
+                        <TrendingUp className="h-5 w-5 text-red-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Bienes de Lujo</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Configura elasticidad &gt; 2 y observa cómo el ingreso total disminuye cuando aumenta el precio.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-red-50 text-red-700 border-red-200">
+                        Joyas
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-orange-50 text-orange-700 border-orange-200">
+                        Autos deportivos
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-green-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-green-100 rounded-xl">
+                        <TrendingDown className="h-5 w-5 text-green-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Bienes Necesarios</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Configura elasticidad &lt; 0.5 y analiza cómo el ingreso total aumenta con el precio.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-200">
+                        Medicinas
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                        Gasolina
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-yellow-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-yellow-100 rounded-xl">
+                        <Info className="h-5 w-5 text-yellow-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Elasticidad Unitaria</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Configura elasticidad = 1 y observa cómo el ingreso total permanece constante.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-yellow-50 text-yellow-700 border-yellow-200">
+                        Punto de maximización
+                      </Badge>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {(params.id === "1" || params.id === "2") && (
+                <>
+                  <div className="p-6 border border-teal-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-teal-100 rounded-xl">
+                        <TrendingUp className="h-5 w-5 text-teal-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Crecimiento Económico</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Aumenta ambos recursos y la eficiencia al 100% para observar la expansión de la FPP.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-teal-50 text-teal-700 border-teal-200">
+                        Progreso tecnológico
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                        Más recursos
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-purple-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-purple-100 rounded-xl">
+                        <Users className="h-5 w-5 text-purple-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Especialización</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Aumenta recursos de un bien y reduce del otro para simular ventaja comparativa.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-purple-50 text-purple-700 border-purple-200">
+                        Ventaja comparativa
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-indigo-50 text-indigo-700 border-indigo-200">
+                        Comercio
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6 border border-orange-200 rounded-2xl bg-white/80 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-orange-100 rounded-xl">
+                        <TrendingDown className="h-5 w-5 text-orange-600" />
+                      </div>
+                      <h4 className="font-semibold text-lg">Ineficiencia</h4>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">
+                      Reduce la eficiencia al 70% y analiza la pérdida de producción potencial.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline" className="text-xs bg-orange-50 text-orange-700 border-orange-200">
+                        Desempleo
+                      </Badge>
+                      <Badge variant="outline" className="text-xs bg-red-50 text-red-700 border-red-200">
+                        Recursos ociosos
+                      </Badge>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Guía de Interpretación */}
+        <Card className="border-0 shadow-xl bg-white/95 backdrop-blur-sm mt-8">
+          <CardHeader>
+            <CardTitle className="text-2xl">📚 Guía de Interpretación</CardTitle>
+            <p className="text-slate-600">Cómo leer y analizar los gráficos económicos</p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-slate-800">Elementos Clave</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-4 h-4 bg-blue-500 rounded-full mt-1 flex-shrink-0"></div>
+                    <div>
+                      <p className="font-medium text-slate-800">Ejes del Gráfico</p>
+                      <p className="text-sm text-slate-600">
+                        X = Cantidad, Y = Precio. Siempre verifica las unidades y escalas.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-4 h-4 bg-red-500 rounded-full mt-1 flex-shrink-0"></div>
+                    <div>
+                      <p className="font-medium text-slate-800">Pendiente de las Curvas</p>
+                      <p className="text-sm text-slate-600">
+                        Indica la sensibilidad: pendiente pronunciada = menos sensible al precio.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-4 h-4 bg-green-500 rounded-full mt-1 flex-shrink-0"></div>
+                    <div>
+                      <p className="font-medium text-slate-800">Desplazamientos</p>
+                      <p className="text-sm text-slate-600">
+                        Movimientos de toda la curva debido a factores externos (ingresos, tecnología, etc.).
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-4 h-4 bg-purple-500 rounded-full mt-1 flex-shrink-0"></div>
+                    <div>
+                      <p className="font-medium text-slate-800">Puntos de Intersección</p>
+                      <p className="text-sm text-slate-600">
+                        Representan equilibrios donde las fuerzas del mercado se balancean.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-slate-800">Análisis Económico</h3>
+                <div className="space-y-3">
+                  <div className="p-4 bg-blue-50 rounded-xl">
+                    <h4 className="font-semibold text-blue-800 mb-2">Causa y Efecto</h4>
+                    <p className="text-sm text-blue-700">
+                      Identifica qué variable cambia primero (causa) y cómo afecta a las demás (efecto).
+                    </p>
+                  </div>
+                  <div className="p-4 bg-green-50 rounded-xl">
+                    <h4 className="font-semibold text-green-800 mb-2">Equilibrio vs Desequilibrio</h4>
+                    <p className="text-sm text-green-700">
+                      Observa cómo el mercado tiende hacia el equilibrio cuando hay exceso de oferta o demanda.
+                    </p>
+                  </div>
+                  <div className="p-4 bg-purple-50 rounded-xl">
+                    <h4 className="font-semibold text-purple-800 mb-2">Bienestar Económico</h4>
+                    <p className="text-sm text-purple-700">
+                      Las áreas bajo las curvas representan beneficios para consumidores y productores.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )
