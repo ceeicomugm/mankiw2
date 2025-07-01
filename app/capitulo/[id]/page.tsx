@@ -1,754 +1,1082 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, BookOpen, Calculator, BarChart3, CheckCircle, Clock, Users, Globe, ArrowRight } from "lucide-react"
+import { ArrowLeft, BookOpen, Calculator, BarChart3, Clock, Users, TrendingUp, DollarSign, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const capitulosData = {
   1: {
-    titulo: "Los diez principios de la economía",
-    resumen: "Los diez principios fundamentales que guían el pensamiento económico y la toma de decisiones.",
+    titulo: "Los Diez Principios de la Economía",
+    descripcion: "Fundamentos básicos del pensamiento económico y toma de decisiones",
     duracion: "45 min",
     dificultad: "Básico",
     objetivos: [
-      "Comprender los principios básicos de la toma de decisiones económicas",
-      "Analizar cómo interactúan los individuos en los mercados",
-      "Explicar el funcionamiento de la economía en su conjunto",
+      "Comprender los principios fundamentales que rigen las decisiones económicas",
+      "Analizar cómo las personas toman decisiones racionales",
+      "Entender la interacción entre individuos en los mercados",
+      "Conocer el funcionamiento de la economía en su conjunto"
     ],
     contenido: {
-      introduccion:
-        "La economía es el estudio de cómo la sociedad administra sus recursos escasos. Los economistas estudian cómo las personas toman decisiones, cómo interactúan entre sí y cómo funciona la economía en su conjunto. Estos diez principios proporcionan una visión general de lo que trata la economía.",
-      principios: [
+      introduccion: "La economía es el estudio de cómo la sociedad administra sus recursos escasos. Los economistas estudian cómo las personas toman decisiones: cuánto trabajan, qué compran, cuánto ahorran y cómo invierten sus ahorros. También estudian cómo las personas interactúan entre sí.",
+      secciones: [
         {
-          categoria: "Cómo toman decisiones los individuos",
-          descripcion: "Los primeros cuatro principios se refieren a la toma de decisiones individuales.",
-          items: [
+          titulo: "Cómo las personas toman decisiones",
+          principios: [
             {
               numero: 1,
-              titulo: "Los individuos se enfrentan a disyuntivas",
-              descripcion:
-                "Para obtener algo que nos gusta, por lo general tenemos que renunciar a otra cosa que también nos gusta. Tomar decisiones es elegir entre dos objetivos.",
-              ejemplo:
-                "Un estudiante debe decidir cómo asignar su tiempo entre estudiar economía y estudiar psicología. Una familia debe decidir si gastar sus ingresos en un auto nuevo o en unas vacaciones.",
-              aplicacion:
-                "Este principio es fundamental para entender que los recursos son limitados y que toda elección implica un costo de oportunidad.",
+              titulo: "Las personas enfrentan disyuntivas",
+              explicacion: "Para obtener algo que nos gusta, por lo general tenemos que renunciar a otra cosa que también nos gusta. Tomar decisiones es elegir entre dos objetivos.",
+              ejemplo: "Un estudiante debe decidir cómo asignar su recurso más valioso: el tiempo. Puede pasar todo su tiempo estudiando economía, todo su tiempo estudiando psicología, o dividir el tiempo entre las dos materias."
             },
             {
               numero: 2,
               titulo: "El costo de algo es aquello a lo que se renuncia para obtenerlo",
-              descripcion:
-                "El costo de oportunidad de un artículo es aquello a lo que se renuncia para obtener ese artículo. Es el valor de la mejor alternativa sacrificada.",
-              ejemplo:
-                "El costo de oportunidad de ir a la universidad incluye no solo el dinero gastado en matrícula, libros y alojamiento, sino también el tiempo que podría haberse usado para trabajar y ganar dinero.",
-              aplicacion:
-                "Los economistas utilizan el concepto de costo de oportunidad para analizar las decisiones tanto de individuos como de empresas y gobiernos.",
+              explicacion: "Como las personas enfrentan disyuntivas, tomar decisiones requiere comparar los costos y beneficios de cursos de acción alternativos.",
+              ejemplo: "El costo de oportunidad de ir a la universidad no es solo la matrícula, libros y alojamiento, sino también el salario que se podría ganar trabajando en lugar de estudiar."
             },
             {
               numero: 3,
               titulo: "Las personas racionales piensan en términos marginales",
-              descripcion:
-                "Los cambios marginales son pequeños ajustes incrementales a un plan de acción existente. Las personas racionales toman decisiones comparando beneficios y costos marginales.",
-              ejemplo:
-                "Una aerolínea decide si ofrecer un vuelo adicional comparando los ingresos marginales (el ingreso adicional del vuelo) con los costos marginales (el costo adicional de operar el vuelo).",
-              aplicacion:
-                "El análisis marginal es una herramienta poderosa para la toma de decisiones en economía y negocios.",
+              explicacion: "Los economistas usan el término cambio marginal para describir pequeños ajustes incrementales a un plan de acción existente.",
+              ejemplo: "Una aerolínea decide si ofrecer un vuelo adicional. El costo marginal es el costo de añadir un vuelo más, no el costo promedio de todos los vuelos."
             },
             {
               numero: 4,
-              titulo: "Los individuos responden a incentivos",
-              descripcion:
-                "Un incentivo es algo que induce a una persona a actuar. Los incentivos son cruciales para analizar cómo funcionan los mercados.",
-              ejemplo:
-                "Cuando el precio de las manzanas aumenta, las personas deciden comer menos manzanas y más peras. Cuando el gobierno aumenta los impuestos a la gasolina, las personas tienden a comprar autos más eficientes.",
-              aplicacion:
-                "Los responsables de las políticas públicas deben considerar cómo sus políticas afectan los incentivos, porque las personas cambiarán su comportamiento en respuesta.",
-            },
-          ],
+              titulo: "Las personas responden a incentivos",
+              explicacion: "Un incentivo es algo que induce a una persona a actuar. Como las personas racionales toman decisiones comparando costos y beneficios, responden a incentivos.",
+              ejemplo: "Cuando el precio de las manzanas aumenta, las personas deciden comer menos manzanas y más peras. Al mismo tiempo, los productores de manzanas deciden contratar más trabajadores y cosechar más manzanas."
+            }
+          ]
         },
         {
-          categoria: "Cómo interactúan los individuos",
-          descripcion: "Los siguientes tres principios se refieren a cómo las personas interactúan entre sí.",
-          items: [
+          titulo: "Cómo interactúan las personas",
+          principios: [
             {
               numero: 5,
               titulo: "El comercio puede mejorar el bienestar de todos",
-              descripcion:
-                "El comercio permite a cada persona especializarse en las actividades que mejor sabe hacer, ya sea cultivar maíz o programar computadoras.",
-              ejemplo:
-                "Los países se benefician del comercio internacional especializándose en la producción de bienes en los que tienen ventaja comparativa. Japón se especializa en electrónicos, mientras que Brasil se especializa en café.",
-              aplicacion:
-                "El comercio no es como un juego deportivo donde una persona gana y otra pierde. En el comercio, ambas partes pueden beneficiarse.",
+              explicacion: "El comercio permite a cada persona especializarse en las actividades que mejor realiza. Al comerciar con otros, las personas pueden comprar una mayor variedad de bienes y servicios a menor costo.",
+              ejemplo: "Estados Unidos exporta productos agrícolas e importa automóviles. Japón exporta automóviles e importa productos agrícolas. Ambos países se benefician."
             },
             {
               numero: 6,
               titulo: "Los mercados normalmente son un buen mecanismo para organizar la actividad económica",
-              descripcion:
-                "En una economía de mercado, las decisiones se toman de manera descentralizada por muchas empresas y hogares que interactúan en los mercados.",
-              ejemplo:
-                "Los precios actúan como señales que guían las decisiones económicas individuales. Cuando aumenta la demanda de un producto, su precio sube, incentivando a los productores a fabricar más.",
-              aplicacion:
-                "Adam Smith observó que los hogares y las empresas interactúan en los mercados como si fueran guiados por una 'mano invisible' que los lleva a resultados deseables.",
+              explicacion: "En una economía de mercado, las decisiones del planificador central son reemplazadas por las decisiones de millones de empresas y hogares.",
+              ejemplo: "Los precios son las señales que guían estas decisiones. Cuando el precio de un bien aumenta, los vendedores producen más y los compradores consumen menos."
             },
             {
               numero: 7,
-              titulo: "El gobierno puede mejorar a veces los resultados del mercado",
-              descripcion:
-                "Los mercados pueden fallar cuando no logran asignar eficientemente los recursos o cuando no logran distribuir equitativamente la riqueza económica.",
-              ejemplo:
-                "El gobierno puede intervenir para corregir externalidades (como la contaminación), proporcionar bienes públicos (como la defensa nacional), o regular monopolios.",
-              aplicacion:
-                "La intervención gubernamental puede justificarse para promover la eficiencia o la equidad, pero debe hacerse cuidadosamente.",
-            },
-          ],
+              titulo: "El gobierno puede mejorar algunas veces los resultados del mercado",
+              explicacion: "Aunque los mercados son generalmente una buena forma de organizar la actividad económica, esta regla tiene algunas excepciones importantes.",
+              ejemplo: "El gobierno puede intervenir para promover la eficiencia (corrigiendo fallas de mercado) o para promover la equidad (redistribuyendo el ingreso)."
+            }
+          ]
         },
         {
-          categoria: "Cómo funciona la economía en su conjunto",
-          descripcion: "Los últimos tres principios se refieren al funcionamiento de la economía como un todo.",
-          items: [
+          titulo: "Cómo funciona la economía en su conjunto",
+          principios: [
             {
               numero: 8,
               titulo: "El nivel de vida de un país depende de su capacidad para producir bienes y servicios",
-              descripcion:
-                "La productividad es la cantidad de bienes y servicios producidos por cada unidad de trabajo. Es el determinante principal del nivel de vida.",
-              ejemplo:
-                "Los países con mayor productividad por trabajador tienden a tener niveles de vida más altos. Estados Unidos tiene alta productividad y altos salarios, mientras que países menos desarrollados tienen baja productividad y bajos salarios.",
-              aplicacion:
-                "Para mejorar el nivel de vida, los responsables de las políticas públicas deben elevar la productividad asegurando que los trabajadores estén bien educados, tengan las herramientas necesarias y tengan acceso a la mejor tecnología disponible.",
+              explicacion: "Las diferencias en los niveles de vida entre países son atribuibles a diferencias en la productividad de los países.",
+              ejemplo: "Los trabajadores estadounidenses tienen un nivel de vida más alto que los trabajadores mexicanos porque los trabajadores estadounidenses son más productivos."
             },
             {
               numero: 9,
               titulo: "Los precios suben cuando el gobierno imprime demasiado dinero",
-              descripcion:
-                "La inflación es un aumento en el nivel general de precios en la economía. En la mayoría de los casos de inflación alta o persistente, el culpable es el crecimiento en la cantidad de dinero.",
-              ejemplo:
-                "En Alemania en los años 1920, cuando los precios se triplicaban mensualmente, el gobierno estaba imprimiendo dinero a un ritmo extraordinario. En contraste, cuando el crecimiento del dinero es bajo, la inflación también es baja.",
-              aplicacion:
-                "Cuando un gobierno crea grandes cantidades de dinero, el valor del dinero disminuye, causando inflación.",
+              explicacion: "La inflación es un aumento en el nivel general de precios en la economía. En la mayoría de los casos de inflación alta o persistente, el culpable es el crecimiento en la cantidad de dinero.",
+              ejemplo: "En Alemania en los años 1920, cuando los precios se triplicaban mensualmente, la cantidad de dinero también se triplicaba mensualmente."
             },
             {
               numero: 10,
               titulo: "La sociedad enfrenta una disyuntiva a corto plazo entre inflación y desempleo",
-              descripcion:
-                "A corto plazo, muchas políticas económicas empujan la inflación y el desempleo en direcciones opuestas. Esta disyuntiva es temporal pero importante para entender las fluctuaciones económicas.",
-              ejemplo:
-                "Reducir la inflación a menudo causa un aumento temporal en el desempleo. Estimular la economía para reducir el desempleo puede causar un aumento temporal en la inflación.",
-              aplicacion:
-                "Esta disyuntiva es clave para entender el ciclo económico y las decisiones de política monetaria y fiscal.",
-            },
-          ],
-        },
-      ],
+              explicacion: "Aunque un nivel más alto de precios es, a largo plazo, el efecto primario del aumento en la cantidad de dinero, la historia es más compleja a corto plazo.",
+              ejemplo: "Cuando el gobierno aumenta la cantidad de dinero en la economía, un resultado es que los precios aumentan. Otro resultado, al menos temporalmente, es que el nivel de desempleo disminuye."
+            }
+          ]
+        }
+      ]
     },
-    formulas: [
-      {
-        nombre: "Costo de Oportunidad",
-        formula: "CO = Valor de la mejor alternativa sacrificada",
-        descripcion: "El costo de oportunidad representa el valor de la mejor opción no elegida.",
-        ejemplo: "Si eliges estudiar en lugar de trabajar, el CO es el salario que dejas de percibir.",
-      },
-      {
-        nombre: "Análisis Marginal",
-        formula: "Decisión óptima: Beneficio Marginal = Costo Marginal",
-        descripcion:
-          "Una actividad debe realizarse hasta el punto donde el beneficio marginal iguala al costo marginal.",
-        ejemplo: "Una empresa debe producir hasta donde el ingreso marginal = costo marginal.",
-      },
-    ],
+    resumen: "Los diez principios de la economía proporcionan una visión general de qué trata la economía. Los primeros cuatro principios se refieren a cómo las personas toman decisiones. Los siguientes tres principios se refieren a cómo las personas interactúan entre sí. Los últimos tres principios se refieren a cómo funciona la economía en su conjunto.",
     conceptosClave: [
       "Escasez",
-      "Costo de oportunidad",
+      "Costo de oportunidad", 
       "Análisis marginal",
       "Incentivos",
       "Comercio",
-      "Economía de mercado",
+      "Mercados",
       "Fallas de mercado",
       "Productividad",
       "Inflación",
-      "Curva de Phillips",
+      "Curva de Phillips"
+    ]
+  },
+  2: {
+    titulo: "Pensando como Economista",
+    descripcion: "El método científico aplicado a la economía y los modelos económicos",
+    duracion: "50 min",
+    dificultad: "Básico",
+    objetivos: [
+      "Entender cómo los economistas aplican el método científico",
+      "Distinguir entre economía positiva y normativa",
+      "Comprender el papel de los supuestos en los modelos económicos",
+      "Analizar las herramientas gráficas básicas de la economía"
     ],
-    ejemplosReales: [
-      {
-        titulo: "COVID-19 y Costo de Oportunidad",
-        descripcion:
-          "Durante la pandemia, los gobiernos enfrentaron la disyuntiva entre salvar vidas (confinamientos) y salvar la economía (mantener negocios abiertos).",
-      },
-      {
-        titulo: "Incentivos en Apps de Transporte",
-        descripcion:
-          "Uber y Lyft usan precios dinámicos (surge pricing) para incentivar a más conductores a trabajar durante horas de alta demanda.",
-      },
-      {
-        titulo: "Comercio Internacional y Especialización",
-        descripcion:
-          "China se especializó en manufactura de bajo costo, mientras que Estados Unidos se especializó en tecnología e innovación.",
-      },
+    contenido: {
+      introduccion: "Los economistas intentan abordar su tema de estudio con la objetividad de un científico. Abordan el estudio de la economía de manera muy parecida a como un físico aborda el estudio de la materia y un biólogo aborda el estudio de la vida.",
+      secciones: [
+        {
+          titulo: "El economista como científico",
+          subtemas: [
+            {
+              titulo: "El método científico: observación, teoría y más observación",
+              contenido: "Los economistas, como otros científicos, formulan teorías, recopilan datos y analizan estos datos en un intento por verificar o refutar sus teorías. Para los economistas, los experimentos controlados son a menudo difíciles de realizar, por lo que deben hacer uso de los experimentos naturales que ofrece la historia."
+            },
+            {
+              titulo: "El papel de los supuestos",
+              contenido: "Los supuestos pueden simplificar el mundo complejo y hacer que sea más fácil de entender. Por ejemplo, para estudiar los efectos del comercio internacional, podríamos suponer que el mundo consiste en solo dos países y que cada país produce solo dos bienes."
+            },
+            {
+              titulo: "Modelos económicos",
+              contenido: "Los economistas usan modelos para aprender sobre el mundo. Un modelo económico es una representación simplificada de la realidad que nos permite entender una variedad de fenómenos económicos."
+            }
+          ]
+        },
+        {
+          titulo: "Dos modelos simples",
+          subtemas: [
+            {
+              titulo: "El diagrama de flujo circular",
+              contenido: "El diagrama de flujo circular es un modelo visual de la economía que muestra cómo los dólares fluyen a través de los mercados entre los hogares y las empresas. En este modelo simplificado, la economía tiene dos tipos de tomadores de decisiones: hogares y empresas."
+            },
+            {
+              titulo: "La frontera de posibilidades de producción",
+              contenido: "La frontera de posibilidades de producción es un gráfico que muestra las combinaciones de producción que la economía puede producir posiblemente dados los factores de producción disponibles y la tecnología de producción disponible."
+            }
+          ]
+        },
+        {
+          titulo: "Microeconomía y macroeconomía",
+          subtemas: [
+            {
+              titulo: "Microeconomía",
+              contenido: "La microeconomía es el estudio de cómo los hogares y las empresas toman decisiones y de cómo interactúan en los mercados. Un microeconomista podría estudiar los efectos del alquiler controlado en la vivienda en la ciudad de Nueva York."
+            },
+            {
+              titulo: "Macroeconomía", 
+              contenido: "La macroeconomía es el estudio de los fenómenos de toda la economía, incluidos la inflación, el desempleo y el crecimiento económico. Un macroeconomista podría estudiar los efectos del endeudamiento del gobierno federal en la economía en general."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "Los economistas intentan abordar su tema con la objetividad de los científicos. Como todos los científicos, hacen supuestos apropiados y construyen modelos simplificados para entender el mundo que los rodea. Dos modelos simples pero importantes son el diagrama de flujo circular y la frontera de posibilidades de producción.",
+    conceptosClave: [
+      "Método científico",
+      "Modelos económicos", 
+      "Supuestos",
+      "Diagrama de flujo circular",
+      "Frontera de posibilidades de producción",
+      "Microeconomía",
+      "Macroeconomía",
+      "Economía positiva",
+      "Economía normativa"
+    ]
+  },
+  3: {
+    titulo: "Interdependencia y las Ganancias del Comercio",
+    descripcion: "Ventaja absoluta, comparativa y los beneficios de la especialización",
+    duracion: "55 min", 
+    dificultad: "Intermedio",
+    objetivos: [
+      "Entender cómo todos pueden beneficiarse cuando las personas comercian entre sí",
+      "Aprender el significado de ventaja absoluta y ventaja comparativa",
+      "Ver cómo la ventaja comparativa explica las ganancias del comercio",
+      "Aplicar la teoría de la ventaja comparativa al comercio cotidiano y al comercio internacional"
     ],
+    contenido: {
+      introduccion: "Considere su día típico. Se despierta por la mañana y se sirve jugo de naranja de Florida y café de Brasil. Durante el desayuno, mira las noticias en su televisor hecho en Japón. Se viste con ropa hecha en China y conduce al trabajo en un auto hecho en Corea del Sur.",
+      secciones: [
+        {
+          titulo: "Una parábola para la economía moderna",
+          subtemas: [
+            {
+              titulo: "Autosuficiencia vs. Especialización",
+              contenido: "Imagine que hay dos bienes en el mundo: carne y papas. Y hay dos personas en el mundo: un ganadero y un agricultor. El ganadero es mejor criando ganado y produciendo carne, pero también puede cultivar papas. El agricultor es mejor cultivando papas, pero también puede criar ganado."
+            },
+            {
+              titulo: "Las posibilidades de producción",
+              contenido: "Supongamos que el ganadero puede producir 1 onza de carne en 20 minutos y 1 onza de papas en 60 minutos. El agricultor puede producir 1 onza de carne en 60 minutos y 1 onza de papas en 15 minutos."
+            }
+          ]
+        },
+        {
+          titulo: "Ventaja absoluta",
+          subtemas: [
+            {
+              titulo: "Definición",
+              contenido: "Una persona tiene una ventaja absoluta en la producción de un bien si puede producir ese bien usando menos insumos que otra persona. En nuestro ejemplo, el ganadero tiene una ventaja absoluta en la producción de carne, y el agricultor tiene una ventaja absoluta en la producción de papas."
+            },
+            {
+              titulo: "Limitaciones de la ventaja absoluta",
+              contenido: "Aunque la ventaja absoluta es útil para determinar quién debería producir qué, no es la historia completa. El concepto que realmente importa para el comercio es la ventaja comparativa."
+            }
+          ]
+        },
+        {
+          titulo: "Ventaja comparativa",
+          subtemas: [
+            {
+              titulo: "Costo de oportunidad y ventaja comparativa",
+              contenido: "Una persona tiene una ventaja comparativa en la producción de un bien si puede producir ese bien a un costo de oportunidad menor que otra persona. Para el ganadero, el costo de oportunidad de 1 onza de papas es 1/3 onza de carne. Para el agricultor, el costo de oportunidad de 1 onza de papas es 1/4 onza de carne."
+            },
+            {
+              titulo: "Ventaja comparativa y comercio",
+              contenido: "Las ganancias del comercio se basan en la ventaja comparativa, no en la ventaja absoluta. Cuando cada persona se especializa en producir el bien para el cual tiene una ventaja comparativa, el consumo total en la economía aumenta."
+            }
+          ]
+        },
+        {
+          titulo: "Aplicaciones de la ventaja comparativa",
+          subtemas: [
+            {
+              titulo: "¿Debería Tiger Woods cortar su propio césped?",
+              contenido: "Tiger Woods puede cortar su césped más rápido que cualquier otra persona, pero eso no significa que deba hacerlo. Su ventaja comparativa está en jugar golf, no en cortar césped."
+            },
+            {
+              titulo: "Comercio internacional",
+              contenido: "El principio de la ventaja comparativa se aplica a los países así como a las personas. Los países se benefician del comercio entre ellos porque el comercio permite a cada país especializarse en lo que hace mejor."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "El principio de la ventaja comparativa muestra que el comercio puede hacer que todos estén mejor. La ventaja comparativa significa poder producir un bien a un costo de oportunidad menor. Cuando las personas (o países) se especializan en los bienes para los cuales tienen una ventaja comparativa y luego comercian con otros, todos pueden consumir más de todos los bienes.",
+    conceptosClave: [
+      "Autosuficiencia",
+      "Especialización", 
+      "Ventaja absoluta",
+      "Ventaja comparativa",
+      "Costo de oportunidad",
+      "Ganancias del comercio",
+      "Términos de intercambio",
+      "Comercio internacional"
+    ]
+  },
+  4: {
+    titulo: "Las Fuerzas del Mercado: Oferta y Demanda",
+    descripcion: "Fundamentos de oferta, demanda y determinación de precios en mercados competitivos",
+    duracion: "60 min",
+    dificultad: "Intermedio", 
+    objetivos: [
+      "Examinar qué factores determinan la demanda de un bien en un mercado competitivo",
+      "Examinar qué factores determinan la oferta de un bien en un mercado competitivo", 
+      "Ver cómo la oferta y la demanda juntas determinan el precio de un bien y la cantidad vendida",
+      "Considerar cómo los cambios en los factores que afectan la oferta y la demanda afectan el precio y la cantidad de equilibrio"
+    ],
+    contenido: {
+      introduccion: "Los términos oferta y demanda se refieren al comportamiento de las personas cuando interactúan entre sí en mercados competitivos. Un mercado es un grupo de compradores y vendedores de un bien o servicio particular.",
+      secciones: [
+        {
+          titulo: "Mercados y competencia",
+          subtemas: [
+            {
+              titulo: "¿Qué es un mercado?",
+              contenido: "Un mercado es un grupo de compradores y vendedores de un bien o servicio particular. Los compradores como grupo determinan la demanda del producto, y los vendedores como grupo determinan la oferta del producto."
+            },
+            {
+              titulo: "¿Qué es la competencia?",
+              contenido: "Un mercado competitivo es un mercado en el que hay muchos compradores y muchos vendedores, por lo que cada uno tiene un impacto insignificante en el precio de mercado. En mercados perfectamente competitivos, los bienes ofrecidos en venta son exactamente los mismos, y los compradores y vendedores son tan numerosos que ningún comprador o vendedor individual puede influir en el precio de mercado."
+            }
+          ]
+        },
+        {
+          titulo: "Demanda",
+          subtemas: [
+            {
+              titulo: "La curva de demanda: la relación entre precio y cantidad demandada",
+              contenido: "La cantidad demandada de cualquier bien es la cantidad del bien que los compradores están dispuestos y pueden comprar. La ley de la demanda establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad demandada del bien disminuye."
+            },
+            {
+              titulo: "Demanda de mercado versus demanda individual",
+              contenido: "La demanda de mercado es la suma de todas las demandas individuales para un bien o servicio particular. Gráficamente, las curvas de demanda individuales se suman horizontalmente para obtener la curva de demanda de mercado."
+            },
+            {
+              titulo: "Desplazamientos en la curva de demanda",
+              contenido: "Cuando cualquier factor que influye en las decisiones de compra cambia, excepto el precio, la curva de demanda se desplaza. Los factores incluyen: ingreso, precios de bienes relacionados, gustos, expectativas, y número de compradores."
+            }
+          ]
+        },
+        {
+          titulo: "Oferta",
+          subtemas: [
+            {
+              titulo: "La curva de oferta: la relación entre precio y cantidad ofrecida",
+              contenido: "La cantidad ofrecida de cualquier bien o servicio es la cantidad que los vendedores están dispuestos y pueden vender. La ley de la oferta establece que, manteniéndose todo lo demás constante, cuando el precio de un bien aumenta, la cantidad ofrecida del bien también aumenta."
+            },
+            {
+              titulo: "Oferta de mercado versus oferta individual",
+              contenido: "La oferta de mercado es la suma de las ofertas de todos los vendedores. La curva de oferta de mercado se encuentra sumando horizontalmente las curvas de oferta individuales."
+            },
+            {
+              titulo: "Desplazamientos en la curva de oferta",
+              contenido: "La curva de oferta se desplaza cuando cambia cualquier determinante de la oferta que no sea el precio del bien. Los factores incluyen: precios de los insumos, tecnología, expectativas, número de vendedores."
+            }
+          ]
+        },
+        {
+          titulo: "Oferta y demanda juntas",
+          subtemas: [
+            {
+              titulo: "Equilibrio",
+              contenido: "El equilibrio se refiere a una situación en la que el precio de mercado ha alcanzado el nivel en el que la cantidad ofrecida es igual a la cantidad demandada. El precio de equilibrio equilibra la oferta y la demanda."
+            },
+            {
+              titulo: "Tres pasos para analizar cambios en el equilibrio",
+              contenido: "1. Decidir si el evento desplaza la curva de oferta, la curva de demanda, o ambas. 2. Decidir si la curva se desplaza hacia la derecha o hacia la izquierda. 3. Usar el diagrama de oferta y demanda para ver cómo el desplazamiento cambia el precio y la cantidad de equilibrio."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "Los economistas usan el modelo de oferta y demanda para analizar mercados competitivos. En un mercado competitivo, los compradores y vendedores son tomadores de precios. La curva de demanda muestra cómo la cantidad demandada depende del precio. La curva de oferta muestra cómo la cantidad ofrecida depende del precio. La intersección de las curvas de oferta y demanda determina el precio y la cantidad de equilibrio del mercado.",
+    conceptosClave: [
+      "Mercado competitivo",
+      "Cantidad demandada",
+      "Ley de la demanda", 
+      "Curva de demanda",
+      "Cantidad ofrecida",
+      "Ley de la oferta",
+      "Curva de oferta", 
+      "Equilibrio",
+      "Precio de equilibrio",
+      "Cantidad de equilibrio",
+      "Exceso de demanda",
+      "Exceso de oferta"
+    ]
+  },
+  5: {
+    titulo: "Elasticidad y sus Aplicaciones",
+    descripcion: "Medición de la sensibilidad de oferta y demanda ante cambios en variables económicas",
+    duracion: "65 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Aprender el significado de la elasticidad de la demanda",
+      "Examinar qué determina la elasticidad de la demanda",
+      "Aprender el significado de la elasticidad de la oferta",
+      "Aplicar el concepto de elasticidad en tres mercados muy diferentes"
+    ],
+    contenido: {
+      introduccion: "Cuando estudiamos los factores que determinan la oferta y la demanda, notamos que los compradores usualmente demandan más de un bien cuando el precio del bien es más bajo. Pero ¿cuánto más? Los economistas usan un concepto llamado elasticidad para responder esta pregunta.",
+      secciones: [
+        {
+          titulo: "La elasticidad de la demanda",
+          subtemas: [
+            {
+              titulo: "La elasticidad precio de la demanda y sus determinantes",
+              contenido: "La elasticidad precio de la demanda mide qué tan sensible es la cantidad demandada a cambios en el precio. Se calcula como el cambio porcentual en la cantidad demandada dividido por el cambio porcentual en el precio. Los determinantes incluyen: disponibilidad de sustitutos cercanos, necesidades versus lujos, definición del mercado, y horizonte temporal."
+            },
+            {
+              titulo: "Cálculo de la elasticidad precio de la demanda",
+              contenido: "La elasticidad precio de la demanda = (Cambio porcentual en cantidad demandada) / (Cambio porcentual en precio). El método del punto medio es: Ed = [(Q2-Q1)/((Q2+Q1)/2)] / [(P2-P1)/((P2+P1)/2)]"
+            },
+            {
+              titulo: "La variedad de curvas de demanda",
+              contenido: "Demanda perfectamente inelástica (Ed = 0), demanda inelástica (0 < |Ed| < 1), demanda de elasticidad unitaria (|Ed| = 1), demanda elástica (|Ed| > 1), demanda perfectamente elástica (Ed = ∞)."
+            },
+            {
+              titulo: "Ingreso total y la elasticidad precio de la demanda",
+              contenido: "El ingreso total es la cantidad pagada por los compradores y recibida por los vendedores de un bien. Se calcula como P × Q. Cuando la demanda es inelástica, el precio y el ingreso total se mueven en la misma dirección. Cuando la demanda es elástica, el precio y el ingreso total se mueven en direcciones opuestas."
+            }
+          ]
+        },
+        {
+          titulo: "Otras elasticidades de la demanda",
+          subtemas: [
+            {
+              titulo: "Elasticidad ingreso de la demanda",
+              contenido: "La elasticidad ingreso de la demanda mide qué tan sensible es la cantidad demandada a cambios en el ingreso del consumidor. Para bienes normales, la elasticidad ingreso es positiva. Para bienes inferiores, es negativa."
+            },
+            {
+              titulo: "Elasticidad precio cruzada de la demanda",
+              contenido: "La elasticidad precio cruzada de la demanda mide qué tan sensible es la cantidad demandada de un bien a cambios en el precio de otro bien. Para sustitutos, es positiva. Para complementos, es negativa."
+            }
+          ]
+        },
+        {
+          titulo: "La elasticidad de la oferta",
+          subtemas: [
+            {
+              titulo: "La elasticidad precio de la oferta y sus determinantes",
+              contenido: "La elasticidad precio de la oferta mide qué tan sensible es la cantidad ofrecida a cambios en el precio. Los determinantes principales son: flexibilidad de los vendedores para cambiar la cantidad del bien que producen, y el período de tiempo considerado."
+            },
+            {
+              titulo: "La variedad de curvas de oferta",
+              contenido: "Oferta perfectamente inelástica (Es = 0), oferta inelástica (0 < Es < 1), oferta de elasticidad unitaria (Es = 1), oferta elástica (Es > 1), oferta perfectamente elástica (Es = ∞)."
+            }
+          ]
+        },
+        {
+          titulo: "Tres aplicaciones de la oferta, la demanda y la elasticidad",
+          subtemas: [
+            {
+              titulo: "¿Pueden las buenas noticias para la agricultura ser malas noticias para los agricultores?",
+              contenido: "Cuando se desarrolla una nueva variedad de trigo que es más productiva, la oferta de trigo aumenta. Debido a que la demanda de productos alimentarios básicos es generalmente inelástica, el aumento en la oferta causa una gran caída en el precio. El ingreso total de los agricultores puede disminuir."
+            },
+            {
+              titulo: "¿Por qué la OPEP no pudo mantener alto el precio del petróleo?",
+              contenido: "En el corto plazo, tanto la oferta como la demanda de petróleo son relativamente inelásticas. En el largo plazo, tanto la oferta como la demanda son más elásticas. Los altos precios del petróleo dan incentivos para conservar energía y desarrollar fuentes alternativas."
+            },
+            {
+              titulo: "¿Reduce el control de drogas el crimen relacionado con drogas?",
+              contenido: "La demanda de drogas es inelástica. Los esfuerzos para reducir la oferta aumentan el precio pero reducen poco la cantidad. El gasto total en drogas aumenta, lo que puede llevar a más crimen para financiar el hábito."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "La elasticidad precio de la demanda mide qué tan sensible son los consumidores a cambios en el precio. La demanda tiende a ser más elástica si hay sustitutos cercanos disponibles, si el bien es un lujo en lugar de una necesidad, si el mercado está definido estrechamente, o si los compradores tienen tiempo sustancial para ajustarse al cambio de precio.",
+    conceptosClave: [
+      "Elasticidad precio de la demanda",
+      "Ingreso total",
+      "Elasticidad ingreso de la demanda",
+      "Elasticidad precio cruzada",
+      "Elasticidad precio de la oferta",
+      "Bienes normales",
+      "Bienes inferiores", 
+      "Bienes sustitutos",
+      "Bienes complementarios",
+      "Método del punto medio"
+    ]
+  },
+  6: {
+    titulo: "Oferta, Demanda y Políticas Gubernamentales",
+    descripcion: "Impacto de la intervención gubernamental en el funcionamiento de los mercados",
+    duracion: "55 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Examinar los efectos de las políticas gubernamentales que establecen un techo en los precios",
+      "Examinar los efectos de las políticas gubernamentales que establecen un piso en los precios", 
+      "Considerar cómo los impuestos afectan el precio y la cantidad vendida",
+      "Aprender que los impuestos desalientan la actividad del mercado"
+    ],
+    contenido: {
+      introduccion: "Los economistas tienen dos roles. Como científicos, desarrollan y prueban teorías para explicar el mundo que los rodea. Como asesores de política, usan sus teorías para ayudar a cambiar el mundo para mejor. Este capítulo ofrece nuestro primer vistazo al papel de asesor de política de los economistas.",
+      secciones: [
+        {
+          titulo: "Controles sobre los precios",
+          subtemas: [
+            {
+              titulo: "Cómo los techos de precios afectan los resultados del mercado",
+              contenido: "Un techo de precio es un máximo legal en el precio al que se puede vender un bien o servicio. Cuando el gobierno impone un techo de precio en un mercado competitivo, surgen dos resultados: si el techo de precio está por encima del precio de equilibrio, no es vinculante y no tiene efecto en el precio o la cantidad vendida. Si el techo de precio está por debajo del precio de equilibrio, es vinculante y causa escasez."
+            },
+            {
+              titulo: "Caso de estudio: Líneas en las gasolineras",
+              contenido: "En 1973, la OPEP aumentó el precio del petróleo crudo en los mercados mundiales. Debido a que el petróleo crudo es el principal insumo usado para hacer gasolina, el precio más alto del petróleo aumentó el costo de producir gasolina. En respuesta, el gobierno estadounidense impuso un techo de precio en la gasolina, resultando en largas líneas en las gasolineras."
+            },
+            {
+              titulo: "Caso de estudio: Control de alquileres a corto y largo plazo",
+              contenido: "El control de alquileres es un techo de precio en los alquileres. En el corto plazo, la oferta y demanda de vivienda son relativamente inelásticas, por lo que el control de alquileres reduce poco la cantidad de vivienda disponible. En el largo plazo, la oferta y demanda son más elásticas, por lo que el control de alquileres reduce significativamente la cantidad de vivienda disponible."
+            },
+            {
+              titulo: "Cómo los pisos de precios afectan los resultados del mercado",
+              contenido: "Un piso de precio es un mínimo legal en el precio al que se puede vender un bien o servicio. Cuando el gobierno impone un piso de precio en un mercado competitivo: si el piso de precio está por debajo del precio de equilibrio, no es vinculante. Si el piso de precio está por encima del precio de equilibrio, es vinculante y causa un excedente del bien."
+            },
+            {
+              titulo: "Caso de estudio: El salario mínimo",
+              contenido: "Un ejemplo importante de un piso de precio es el salario mínimo. Cuando el salario mínimo está por encima del salario de equilibrio, causa desempleo. Los trabajadores que mantienen sus empleos están mejor, pero aquellos que habrían tenido un empleo al salario de equilibrio más bajo ahora están desempleados."
+            }
+          ]
+        },
+        {
+          titulo: "Impuestos",
+          subtemas: [
+            {
+              titulo: "Cómo los impuestos sobre los vendedores afectan los resultados del mercado",
+              contenido: "Cuando se impone un impuesto sobre los vendedores de un bien, la curva de oferta se desplaza hacia arriba por el tamaño del impuesto. El precio pagado por los compradores aumenta, y el precio recibido por los vendedores disminuye. Los compradores y vendedores comparten la carga del impuesto."
+            },
+            {
+              titulo: "Cómo los impuestos sobre los compradores afectan los resultados del mercado",
+              contenido: "Cuando se impone un impuesto sobre los compradores de un bien, la curva de demanda se desplaza hacia abajo por el tamaño del impuesto. El precio pagado por los compradores aumenta, y el precio recibido por los vendedores disminuye. Los compradores y vendedores comparten la carga del impuesto."
+            },
+            {
+              titulo: "Caso de estudio: ¿Se pueden distribuir los impuestos legislando?",
+              contenido: "Cuando el Congreso aprobó un impuesto de lujo en 1990 sobre yates, aviones privados, pieles, joyas y autos caros, el objetivo era que los ricos pagaran el impuesto. Sin embargo, el impuesto tuvo efectos no deseados: las industrias que producían estos bienes se redujeron drásticamente, causando despidos de trabajadores de clase media."
+            },
+            {
+              titulo: "Elasticidad e incidencia fiscal",
+              contenido: "La incidencia fiscal - la manera en que se distribuye la carga de un impuesto entre compradores y vendedores - no depende de si el impuesto se impone sobre compradores o vendedores. La incidencia fiscal depende de las elasticidades de oferta y demanda. La carga cae más pesadamente sobre el lado del mercado que es menos elástico."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "Los controles de precios incluyen techos de precios y pisos de precios. Un techo de precio es un máximo legal en el precio de un bien o servicio. Un piso de precio es un mínimo legal en el precio de un bien o servicio. Cuando el gobierno impone impuestos sobre un bien, el precio pagado por los compradores aumenta, y el precio recibido por los vendedores disminuye.",
+    conceptosClave: [
+      "Techo de precio",
+      "Piso de precio", 
+      "Control de alquileres",
+      "Salario mínimo",
+      "Incidencia fiscal",
+      "Impuesto sobre vendedores",
+      "Impuesto sobre compradores",
+      "Elasticidad e impuestos",
+      "Pérdida de peso muerto",
+      "Escasez",
+      "Excedente"
+    ]
   },
   7: {
-    titulo: "Consumidores, productores y eficiencia de los mercados",
-    resumen: "Análisis del bienestar económico a través del excedente del consumidor y productor, y las condiciones para la eficiencia de mercado.",
+    titulo: "Consumidores, Productores y Eficiencia de los Mercados",
+    descripcion: "Excedente del consumidor y productor como medidas de bienestar económico",
     duracion: "50 min",
     dificultad: "Intermedio",
     objetivos: [
-      "Comprender y calcular el excedente del consumidor y del productor",
-      "Analizar las condiciones para la eficiencia económica",
-      "Evaluar el papel de los mercados en la asignación de recursos",
-      "Identificar las principales fallas de mercado"
+      "Examinar el vínculo entre la disposición de los compradores a pagar y la curva de demanda",
+      "Aprender cómo definir y medir el excedente del consumidor",
+      "Examinar el vínculo entre los costos de los vendedores y la curva de oferta", 
+      "Aprender cómo definir y medir el excedente del productor",
+      "Ver que el equilibrio de oferta y demanda maximiza el bienestar total en un mercado"
     ],
     contenido: {
-      introduccion: "El análisis del bienestar económico nos permite evaluar cómo los mercados asignan recursos y distribuyen beneficios entre consumidores y productores. Este capítulo introduce conceptos fundamentales para entender cuándo los mercados funcionan eficientemente y cuándo fallan.",
+      introduccion: "El análisis de oferta y demanda es una herramienta poderosa para analizar mercados. Hasta ahora, hemos visto cómo la oferta y la demanda juntas determinan el precio y la cantidad de equilibrio de un bien vendido en un mercado. Nuestro análisis ha sido descriptivo: ha explicado cómo funciona la economía. Pero los compradores y vendedores dejan el mercado satisfechos?",
       secciones: [
         {
-          titulo: "Excedente del Consumidor",
-          contenido: [
+          titulo: "Excedente del consumidor",
+          subtemas: [
             {
-              subtitulo: "Definición y Concepto",
-              descripcion: "El excedente del consumidor es la diferencia entre lo que los consumidores están dispuestos a pagar por un bien y lo que realmente pagan. Representa el beneficio neto que obtienen los consumidores de participar en el mercado.",
-              formula: "EC = ∫[0 to Q*] [P_demanda(q) - P*] dq",
-              explicacion: "Donde P* es el precio de mercado, Q* es la cantidad de equilibrio, y P_demanda(q) es la función inversa de demanda."
+              titulo: "Disposición a pagar",
+              contenido: "La disposición a pagar de un comprador es la cantidad máxima que el comprador pagará por un bien. Mide qué tanto valora el comprador el bien. Para cualquier comprador, la disposición a pagar es el valor que el comprador asigna al bien."
             },
             {
-              subtitulo: "Disposición a Pagar",
-              descripcion: "La disposición a pagar refleja el valor que cada consumidor asigna al bien. La curva de demanda muestra la disposición a pagar marginal para cada unidad.",
-              ejemplo: "Si estás dispuesto a pagar $50 por una camiseta pero la compras por $30, tu excedente del consumidor es $20."
+              titulo: "Uso de la curva de demanda para medir el excedente del consumidor",
+              contenido: "El excedente del consumidor es la cantidad que un comprador está dispuesto a pagar por un bien menos la cantidad que el comprador realmente paga por él. Mide el beneficio que los compradores reciben de participar en un mercado. En un gráfico, el excedente del consumidor es el área debajo de la curva de demanda y arriba del precio."
             },
             {
-              subtitulo: "Cálculo Gráfico",
-              descripcion: "Gráficamente, el excedente del consumidor es el área bajo la curva de demanda y por encima del precio de mercado, hasta la cantidad consumida.",
-              aplicacion: "En un mercado lineal con demanda P = a - bQ, el excedente del consumidor es EC = ½ × base × altura = ½ × Q* × (a - P*)"
+              titulo: "Cómo un precio más bajo aumenta el excedente del consumidor",
+              contenido: "Cuando el precio disminuye, el excedente del consumidor aumenta por dos razones: los compradores existentes pagan menos por la cantidad que ya estaban comprando, y nuevos compradores entran al mercado porque ahora están dispuestos a comprar al precio más bajo."
             }
           ]
         },
         {
-          titulo: "Excedente del Productor",
-          contenido: [
+          titulo: "Excedente del productor",
+          subtemas: [
             {
-              subtitulo: "Definición y Concepto",
-              descripcion: "El excedente del productor es la diferencia entre el precio que reciben los productores y el costo mínimo al que están dispuestos a vender. Representa el beneficio neto de los productores.",
-              formula: "EP = ∫[0 to Q*] [P* - P_oferta(q)] dq",
-              explicacion: "Donde P_oferta(q) es la función inversa de oferta que representa el costo marginal de producción."
+              titulo: "Costo y disposición a vender",
+              contenido: "El costo de un vendedor es el valor de todo aquello a lo que el vendedor debe renunciar para producir un bien. Para cualquier vendedor, el costo es el valor que el vendedor asigna al bien. La disposición a vender está estrechamente relacionada con el costo del vendedor."
             },
             {
-              subtitulo: "Costos de Producción",
-              descripcion: "La curva de oferta refleja los costos marginales de producción. Cada punto indica el precio mínimo al que un productor está dispuesto a vender una unidad adicional.",
-              ejemplo: "Si tu costo de producir una unidad es $20 pero la vendes por $30, tu excedente del productor es $10."
+              titulo: "Uso de la curva de oferta para medir el excedente del productor",
+              contenido: "El excedente del productor es la cantidad que un vendedor recibe por un bien menos el costo del vendedor de proporcionarlo. Mide el beneficio que los vendedores reciben de participar en un mercado. En un gráfico, el excedente del productor es el área debajo del precio y arriba de la curva de oferta."
             },
             {
-              subtitulo: "Cálculo Gráfico",
-              descripcion: "El excedente del productor es el área por encima de la curva de oferta y por debajo del precio de mercado, hasta la cantidad producida.",
-              aplicacion: "En un mercado lineal con oferta P = c + dQ, el excedente del productor es EP = ½ × Q* × (P* - c)"
+              titulo: "Cómo un precio más alto aumenta el excedente del productor",
+              contenido: "Cuando el precio aumenta, el excedente del productor aumenta por dos razones: los vendedores existentes reciben más por la cantidad que ya estaban vendiendo, y nuevos vendedores entran al mercado porque ahora están dispuestos a producir al precio más alto."
             }
           ]
         },
         {
-          titulo: "Eficiencia de los Mercados",
-          contenido: [
+          titulo: "Eficiencia del mercado",
+          subtemas: [
             {
-              subtitulo: "Planificador Social Benevolente",
-              descripcion: "Un planificador social benevolente busca maximizar el bienestar total de la sociedad, que es la suma del excedente del consumidor y del productor.",
-              formula: "Bienestar Total = EC + EP",
-              objetivo: "Maximizar el excedente total sujeto a las restricciones de recursos y tecnología."
+              titulo: "El planificador social benevolente",
+              contenido: "Para evaluar los resultados del mercado, introducimos un nuevo personaje hipotético llamado el planificador social benevolente. El planificador social es un tomador de decisiones todopoderoso, bien intencionado y omnisciente que quiere maximizar el bienestar económico de todos en la sociedad."
             },
             {
-              subtitulo: "Condiciones de Eficiencia",
-              descripcion: "Un mercado es eficiente cuando maximiza el excedente total. Esto ocurre cuando el valor marginal para los consumidores iguala el costo marginal de los productores.",
-              condicion: "Valor Marginal = Costo Marginal",
-              implicacion: "En equilibrio competitivo: Precio = Costo Marginal = Valor Marginal"
+              titulo: "Evaluación del equilibrio del mercado",
+              contenido: "El excedente total en un mercado es la suma del excedente del consumidor y del excedente del productor. El equilibrio de oferta y demanda maximiza el excedente total. En el equilibrio, la asignación de recursos es eficiente."
             },
             {
-              subtitulo: "Teoremas del Bienestar",
-              descripcion: "Primer Teorema: Todo equilibrio competitivo es eficiente en el sentido de Pareto. Segundo Teorema: Cualquier asignación eficiente puede alcanzarse como equilibrio competitivo con las transferencias apropiadas.",
-              importancia: "Estos teoremas fundamentan la confianza en los mercados como mecanismos de asignación eficiente."
+              titulo: "Caso de estudio: ¿Debería haber un mercado para órganos?",
+              contenido: "Algunos economistas creen que debería haber un mercado para órganos humanos. Un mercado podría aumentar el incentivo para donar órganos y podría asegurar que los órganos vayan a aquellos que los valoran más altamente. Sin embargo, otros se oponen a la comercialización de órganos por razones morales."
             }
           ]
         },
         {
-          titulo: "Fallas de Mercado",
-          contenido: [
+          titulo: "Conclusión: La eficiencia del mercado y las fallas del mercado",
+          subtemas: [
             {
-              subtitulo: "Poder de Mercado",
-              descripcion: "Cuando empresas o consumidores pueden influir en los precios, el mercado no alcanza la eficiencia. Los monopolios restringen la producción para aumentar precios.",
-              efecto: "Pérdida de peso muerto debido a la reducción de la cantidad intercambiada por debajo del nivel eficiente."
+              titulo: "Las virtudes de los mercados libres",
+              contenido: "Los mercados libres asignan la oferta de bienes a los compradores que los valoran más altamente, medido por su disposición a pagar. Los mercados libres asignan la demanda de bienes a los vendedores que pueden producirlos al menor costo. Los mercados libres producen la cantidad de bienes que maximiza la suma del excedente del consumidor y del productor."
             },
             {
-              subtitulo: "Externalidades",
-              descripcion: "Cuando las acciones de una parte afectan el bienestar de terceros sin compensación, el mercado falla en internalizar todos los costos y beneficios.",
-              ejemplos: "Contaminación (externalidad negativa), educación (externalidad positiva), investigación y desarrollo."
-            },
-            {
-              subtitulo: "Bienes Públicos",
-              descripcion: "Bienes no rivales y no excluibles que el mercado privado no provee eficientemente debido al problema del polizón (free rider).",
-              ejemplos: "Defensa nacional, alumbrado público, conocimiento básico, control de enfermedades."
-            },
-            {
-              subtitulo: "Información Asimétrica",
-              descripcion: "Cuando una parte tiene más información que la otra, pueden surgir problemas de selección adversa y riesgo moral.",
-              ejemplos: "Mercado de seguros, mercado de autos usados (problema de los limones), relaciones laborales."
+              titulo: "Las limitaciones de los mercados",
+              contenido: "Los mercados no son perfectos. Cuando un mercado falla en asignar recursos eficientemente por sí solo, los economistas dicen que hay una falla de mercado. Una posible causa de falla de mercado es el poder de mercado. Otra posible causa de falla de mercado es una externalidad."
             }
           ]
         }
       ]
     },
-    formulas: [
-      {
-        nombre: "Excedente del Consumidor",
-        formula: "EC = ½ × Q* × (P_max - P*)",
-        descripcion: "Para una curva de demanda lineal, donde P_max es el precio máximo (intercepto) y P* es el precio de equilibrio.",
-        ejemplo: "Con demanda P = 100 - 2Q y precio de equilibrio P* = 60, Q* = 20: EC = ½ × 20 × (100 - 60) = 400"
-      },
-      {
-        nombre: "Excedente del Productor",
-        formula: "EP = ½ × Q* × (P* - P_min)",
-        descripcion: "Para una curva de oferta lineal, donde P_min es el precio mínimo (intercepto) y P* es el precio de equilibrio.",
-        ejemplo: "Con oferta P = 20 + Q y precio de equilibrio P* = 60, Q* = 40: EP = ½ × 40 × (60 - 20) = 800"
-      },
-      {
-        nombre: "Excedente Total",
-        formula: "ET = EC + EP",
-        descripcion: "El bienestar total de la sociedad es la suma de los excedentes del consumidor y del productor.",
-        ejemplo: "Siguiendo los ejemplos anteriores: ET = 400 + 800 = 1,200"
-      },
-      {
-        nombre: "Condición de Eficiencia",
-        formula: "VMg = CMg",
-        descripcion: "La eficiencia se alcanza cuando el valor marginal para los consumidores iguala el costo marginal de los productores.",
-        ejemplo: "En equilibrio competitivo, el precio refleja tanto el valor marginal como el costo marginal."
-      }
-    ],
+    resumen: "El excedente del consumidor es igual a la disposición de los compradores a pagar por un bien menos la cantidad que realmente pagan por él. El excedente del productor es igual a la cantidad que los vendedores reciben por sus bienes menos sus costos de producción. El excedente total en un mercado es igual al excedente del consumidor más el excedente del productor.",
     conceptosClave: [
       "Excedente del consumidor",
-      "Excedente del productor",
       "Disposición a pagar",
-      "Costo marginal",
-      "Eficiencia de Pareto",
+      "Excedente del productor", 
+      "Costo",
+      "Eficiencia",
+      "Excedente total",
       "Planificador social benevolente",
-      "Teoremas del bienestar",
       "Fallas de mercado",
       "Poder de mercado",
-      "Externalidades",
-      "Bienes públicos",
-      "Información asimétrica"
-    ],
-    ejemplosReales: [
-      {
-        titulo: "Mercado de Vivienda y Excedentes",
-        descripcion: "En el mercado inmobiliario, el excedente del consumidor representa la diferencia entre lo que los compradores valoran una propiedad y lo que pagan. El excedente del productor es la ganancia de constructores y vendedores."
-      },
-      {
-        titulo: "Plataformas Digitales y Eficiencia",
-        descripcion: "Amazon y otras plataformas aumentan la eficiencia del mercado al reducir costos de búsqueda y transacción, incrementando el excedente total al conectar mejor a compradores y vendedores."
-      },
-      {
-        titulo: "Regulación de Medicamentos",
-        descripcion: "La FDA regula medicamentos debido a información asimétrica entre productores y consumidores sobre seguridad y eficacia, corrigiendo una falla de mercado potencial."
-      }
+      "Externalidades"
     ]
   },
   8: {
-    titulo: "Aplicación: los costos de los impuestos",
-    resumen: "Análisis de cómo los impuestos afectan el bienestar económico, la incidencia fiscal y la pérdida de peso muerto.",
+    titulo: "Aplicación: Los Costos de los Impuestos",
+    descripcion: "Análisis del impacto de los impuestos en el bienestar y la eficiencia económica",
     duracion: "45 min",
     dificultad: "Intermedio",
     objetivos: [
-      "Analizar los efectos de los impuestos en el equilibrio de mercado",
-      "Calcular la pérdida de peso muerto causada por los impuestos",
-      "Comprender la incidencia fiscal y sus determinantes",
-      "Evaluar el trade-off entre recaudación y eficiencia"
+      "Examinar cómo los impuestos reducen el excedente del consumidor y del productor",
+      "Aprender el significado y las causas de la pérdida de peso muerto de un impuesto",
+      "Considerar por qué algunos impuestos tienen pérdidas de peso muerto más grandes que otros",
+      "Examinar cómo la recaudación fiscal y la pérdida de peso muerto varían con el tamaño de un impuesto"
     ],
     contenido: {
-      introduccion: "Los impuestos son necesarios para financiar el gasto público, pero crean distorsiones en los mercados que reducen el bienestar económico. Este capítulo analiza estos costos y cómo minimizarlos.",
+      introduccion: "Los impuestos son a menudo una fuente de debate político acalorado. En 1776, la frustración por los impuestos británicos llevó a los colonos americanos a declarar la independencia. Más de dos siglos después, Ronald Reagan fue elegido presidente en una plataforma de reducción de impuestos, y la política fiscal continúa siendo un tema central en las campañas políticas.",
       secciones: [
         {
-          titulo: "Efectos de los Impuestos en el Equilibrio",
-          contenido: [
+          titulo: "La pérdida de peso muerto de los impuestos",
+          subtemas: [
             {
-              subtitulo: "Impuesto por Unidad",
-              descripcion: "Un impuesto por unidad (t) crea una cuña entre el precio que pagan los consumidores (Pc) y el precio que reciben los productores (Pp), donde Pc = Pp + t.",
-              mecanismo: "El impuesto desplaza la curva de oferta hacia arriba en la cantidad del impuesto, o equivalentemente, desplaza la demanda hacia abajo."
+              titulo: "Cómo un impuesto afecta a los participantes del mercado",
+              contenido: "Cuando el gobierno impone un impuesto sobre un bien, el precio pagado por los compradores aumenta, y el precio recibido por los vendedores disminuye. Como resultado, la cantidad del bien vendido disminuye. Estas observaciones son verdaderas ya sea que el impuesto se imponga sobre los compradores o los vendedores."
             },
             {
-              subtitulo: "Nuevo Equilibrio",
-              descripcion: "El equilibrio con impuesto se caracteriza por una cantidad menor intercambiada y una cuña de precios entre compradores y vendedores.",
-              formulas: [
-                "Cantidad con impuesto: Qt < Q* (sin impuesto)",
-                "Precio consumidores: Pc > P* (sin impuesto)", 
-                "Precio productores: Pp < P* (sin impuesto)",
-                "Cuña fiscal: Pc - Pp = t"
-              ]
+              titulo: "Pérdida de peso muerto y las ganancias del comercio",
+              contenido: "Los impuestos causan pérdidas de peso muerto porque impiden que compradores y vendedores realicen algunas de las ganancias mutuamente beneficiosas del comercio. El área de la pérdida de peso muerto mide estas pérdidas. Esta pérdida de peso muerto es ineficiencia causada por el impuesto."
             }
           ]
         },
         {
-          titulo: "Pérdida de Peso Muerto",
-          contenido: [
+          titulo: "Los determinantes de la pérdida de peso muerto",
+          subtemas: [
             {
-              subtitulo: "Concepto y Definición",
-              descripcion: "La pérdida de peso muerto (DWL) es la reducción en el excedente total causada por el impuesto. Representa transacciones mutuamente beneficiosas que no ocurren debido a la distorsión del precio.",
-              formula: "DWL = ½ × t × (Q* - Qt)",
-              interpretacion: "Es el área del triángulo formado entre las curvas de oferta y demanda, desde Qt hasta Q*."
+              titulo: "Caso de estudio: El debate sobre el impuesto a la gasolina",
+              contenido: "En muchos países, la gasolina está entre los bienes más fuertemente gravados. En Estados Unidos, por ejemplo, casi la mitad del precio que los consumidores pagan por la gasolina va al gobierno. ¿Es esto una buena política? Los defensores argumentan que un impuesto a la gasolina corrige dos externalidades negativas asociadas con la conducción."
             },
             {
-              subtitulo: "Determinantes de la Pérdida",
-              descripcion: "La magnitud de la pérdida de peso muerto depende de la elasticidad de la oferta y demanda, y del tamaño del impuesto.",
-              factores: [
-                "Mayor elasticidad → Mayor pérdida de peso muerto",
-                "Mayor impuesto → Mayor pérdida de peso muerto (cuadrática)",
-                "Mercados más competitivos → Mayor sensibilidad a impuestos"
-              ]
-            },
-            {
-              subtitulo: "Cálculo en Mercados Lineales",
-              descripcion: "En mercados con curvas lineales, la pérdida de peso muerto se calcula como el área de un triángulo.",
-              ejemplo: "Con demanda P = 100 - Q y oferta P = Q, un impuesto t = 20 reduce Q de 50 a 40, creando DWL = ½ × 20 × 10 = 100."
+              titulo: "¿Qué determina si una pérdida de peso muerto es grande o pequeña?",
+              contenido: "La pérdida de peso muerto de un impuesto depende de las elasticidades de oferta y demanda. Cuando la oferta o la demanda es inelástica, la pérdida de peso muerto del impuesto es pequeña. Cuando la oferta o la demanda es elástica, la pérdida de peso muerto del impuesto es grande."
             }
           ]
         },
         {
-          titulo: "Incidencia Fiscal",
-          contenido: [
+          titulo: "Pérdida de peso muerto y recaudación fiscal conforme varía el tamaño del impuesto",
+          subtemas: [
             {
-              subtitulo: "Definición de Incidencia",
-              descripcion: "La incidencia fiscal determina quién realmente soporta la carga del impuesto, independientemente de quién lo pague legalmente al gobierno.",
-              principio: "La incidencia depende de las elasticidades relativas, no de sobre quién se impone legalmente el impuesto."
+              titulo: "Caso de estudio: La Curva de Laffer y la economía del lado de la oferta",
+              contenido: "La Curva de Laffer muestra la relación entre el tamaño de un impuesto y la cantidad de ingresos que el gobierno recauda. Los economistas del lado de la oferta en los años 1980 argumentaron que las tasas de impuestos estaban tan altas que reducir las tasas aumentaría los ingresos fiscales. La mayoría de los economistas estaban escépticos de esta afirmación y permanecen escépticos hoy."
             },
             {
-              subtitulo: "Reglas de Incidencia",
-              descripcion: "La parte del mercado con menor elasticidad (más inelástica) soporta mayor proporción del impuesto.",
-              casos: [
-                "Demanda perfectamente inelástica → Consumidores pagan todo el impuesto",
-                "Oferta perfectamente inelástica → Productores pagan todo el impuesto",
-                "Elasticidades iguales → Carga compartida igualmente"
-              ]
-            },
-            {
-              subtitulo: "Fórmula de Incidencia",
-              descripcion: "La proporción del impuesto que pagan los consumidores depende de las elasticidades de oferta (Es) y demanda (Ed).",
-              formula: "Proporción consumidores = Es / (Es + |Ed|)",
-              ejemplo: "Si Es = 2 y |Ed| = 1, los consumidores pagan 2/3 del impuesto y los productores 1/3."
-            }
-          ]
-        },
-        {
-          titulo: "Curva de Laffer",
-          contenido: [
-            {
-              subtitulo: "Concepto y Forma",
-              descripcion: "La curva de Laffer muestra la relación entre las tasas de impuestos y la recaudación fiscal total. Tiene forma de campana invertida.",
-              implicaciones: [
-                "Tasa 0% → Recaudación = 0",
-                "Tasa 100% → Recaudación = 0 (nadie produce)",
-                "Existe una tasa óptima que maximiza la recaudación"
-              ]
-            },
-            {
-              subtitulo: "Lados de la Curva",
-              descripcion: "El lado izquierdo (tasas bajas) permite aumentar recaudación subiendo impuestos. El lado derecho (tasas altas) reduce recaudación al subir impuestos.",
-              debate: "El debate político se centra en determinar en qué lado de la curva se encuentra la economía."
-            },
-            {
-              subtitulo: "Factores que Afectan la Curva",
-              descripcion: "La forma y posición de la curva de Laffer depende de las elasticidades de la oferta laboral y la base imponible.",
-              consideraciones: "Efectos de evasión, economía informal, y respuestas de comportamiento modifican la curva."
-            }
-          ]
-        },
-        {
-          titulo: "Impuestos Correctivos",
-          contenido: [
-            {
-              subtitulo: "Impuestos Pigouvianos",
-              descripcion: "Impuestos diseñados para corregir externalidades negativas, donde el impuesto iguala el costo social marginal.",
-              objetivo: "Internalizar el costo externo y alcanzar la cantidad socialmente óptima."
-            },
-            {
-              subtitulo: "Casos Especiales",
-              descripcion: "En presencia de externalidades negativas, un impuesto correctivo puede aumentar el bienestar total en lugar de reducirlo.",
-              ejemplos: "Impuestos al carbono, impuestos al tabaco, impuestos a la congestión vehicular."
+              titulo: "Cómo la pérdida de peso muerto varía con el tamaño del impuesto",
+              contenido: "La pérdida de peso muerto de un impuesto aumenta más rápidamente que el tamaño del impuesto. De hecho, la pérdida de peso muerto es proporcional al cuadrado del tamaño del impuesto. Esta relación cuadrática surge porque la pérdida de peso muerto mide el área de un triángulo, y el área de un triángulo depende del cuadrado de su tamaño."
             }
           ]
         }
       ]
     },
-    formulas: [
-      {
-        nombre: "Pérdida de Peso Muerto",
-        formula: "DWL = ½ × t × ΔQ",
-        descripcion: "Donde t es el impuesto por unidad y ΔQ es la reducción en la cantidad intercambiada.",
-        ejemplo: "Un impuesto de $10 que reduce las ventas en 100 unidades crea DWL = ½ × 10 × 100 = $500"
-      },
-      {
-        nombre: "Recaudación Fiscal",
-        formula: "R = t × Qt",
-        descripcion: "La recaudación es el impuesto por unidad multiplicado por la cantidad vendida con impuesto.",
-        ejemplo: "Con impuesto t = $5 y cantidad Qt = 200: R = 5 × 200 = $1,000"
-      },
-      {
-        nombre: "Incidencia sobre Consumidores",
-        formula: "Ic = Es / (Es + |Ed|)",
-        descripcion: "Proporción del impuesto que pagan los consumidores, donde Es es elasticidad de oferta y Ed de demanda.",
-        ejemplo: "Con Es = 1.5 y |Ed| = 0.5: Ic = 1.5/(1.5 + 0.5) = 0.75 (75%)"
-      },
-      {
-        nombre: "Cambio en Precio del Consumidor",
-        formula: "ΔPc = t × Es / (Es + |Ed|)",
-        descripcion: "Aumento en el precio que pagan los consumidores debido al impuesto.",
-        ejemplo: "Con t = $10, Es = 2, |Ed| = 1: ΔPc = 10 × 2/(2+1) = $6.67"
-      }
-    ],
+    resumen: "Los impuestos tienen dos efectos: transfieren recursos de los participantes del mercado al gobierno, y distorsionan incentivos y alejan la asignación de recursos del ideal de eficiencia. La pérdida de peso muerto es la reducción en el excedente total que resulta de una distorsión del mercado, como un impuesto.",
     conceptosClave: [
       "Pérdida de peso muerto",
+      "Eficiencia administrativa",
       "Incidencia fiscal",
-      "Cuña fiscal",
-      "Elasticidad e impuestos",
       "Curva de Laffer",
+      "Economía del lado de la oferta",
+      "Distorsión del mercado",
       "Recaudación fiscal",
-      "Impuestos correctivos",
-      "Impuestos pigouvianos",
-      "Eficiencia vs equidad",
-      "Distorsiones fiscales"
-    ],
-    ejemplosReales: [
-      {
-        titulo: "Impuestos a la Gasolina",
-        descripcion: "Los impuestos a los combustibles ilustran la incidencia fiscal: debido a la demanda relativamente inelástica a corto plazo, los consumidores soportan la mayor parte del impuesto, pero también generan ingresos significativos para el gobierno."
-      },
-      {
-        titulo: "Impuesto al Valor Agregado (IVA)",
-        descripcion: "El IVA es un impuesto amplio que minimiza distorsiones al aplicarse uniformemente, pero su regresividad (afecta más a familias de bajos ingresos) genera debates sobre equidad."
-      },
-      {
-        titulo: "Impuestos al Carbono",
-        descripcion: "Los impuestos al carbono son un ejemplo de impuestos correctivos que buscan internalizar el costo ambiental de las emisiones, potencialmente mejorando el bienestar social total."
-      }
+      "Elasticidad e impuestos"
     ]
   },
   9: {
-    titulo: "Aplicación: comercio internacional",
-    resumen: "Análisis de los efectos del comercio internacional en el bienestar, incluyendo aranceles, cuotas y argumentos para el proteccionismo.",
+    titulo: "Aplicación: Comercio Internacional",
+    descripcion: "Efectos del comercio internacional en el bienestar nacional y políticas comerciales",
     duracion: "60 min",
     dificultad: "Avanzado",
     objetivos: [
-      "Analizar los determinantes del comercio internacional",
-      "Evaluar las ganancias del comercio para países exportadores e importadores",
-      "Comprender los efectos de aranceles y cuotas en el bienestar",
-      "Evaluar críticamente los argumentos para el proteccionismo"
+      "Considerar qué determina si un país se convierte en importador o exportador de un bien",
+      "Examinar cómo el libre comercio afecta el bienestar en un país importador",
+      "Examinar cómo el libre comercio afecta el bienestar en un país exportador",
+      "Aprender que las ganancias del comercio para el país en su conjunto exceden las pérdidas para los perdedores",
+      "Analizar los efectos de bienestar de los aranceles y las cuotas de importación"
     ],
     contenido: {
-      introduccion: "El comercio internacional permite a los países especializarse según sus ventajas comparativas, generando ganancias mutuas. Sin embargo, las políticas comerciales pueden alterar estos beneficios y su distribución.",
+      introduccion: "Si atiende a las noticias o sigue las campañas políticas, probablemente ha escuchado sobre el comercio internacional. Los políticos a menudo están en desacuerdo sobre si el gobierno debería promover el libre comercio o proteger las industrias domésticas del comercio extranjero. El debate surge porque el comercio internacional puede afectar a diferentes grupos de manera diferente.",
       secciones: [
         {
-          titulo: "Determinantes del Comercio",
-          contenido: [
+          titulo: "Los determinantes del comercio",
+          subtemas: [
             {
-              subtitulo: "Precio Mundial vs Doméstico",
-              descripcion: "Un país comerciará un bien si su precio de autarquía (sin comercio) difiere del precio mundial. La dirección del comercio depende de esta comparación.",
-              reglas: [
-                "Si P_mundial < P_autarquía → El país importa",
-                "Si P_mundial > P_autarquía → El país exporta",
-                "Si P_mundial = P_autarquía → No hay comercio"
-              ]
+              titulo: "El equilibrio sin comercio internacional",
+              contenido: "Para entender cómo el comercio internacional afecta una economía, comenzamos asumiendo que la economía está aislada del resto del mundo. En esta economía de autarquía, el precio doméstico ajusta para equilibrar la oferta y demanda domésticas. El precio que equilibra la oferta y demanda domésticas en ausencia de comercio se llama precio de autarquía."
             },
             {
-              subtitulo: "Ventaja Comparativa",
-              descripcion: "Los países exportan bienes en los que tienen ventaja comparativa (menor costo de oportunidad relativo) e importan aquellos donde tienen desventaja comparativa.",
-              fundamento: "Basado en diferencias en productividad, dotación de factores, tecnología, o preferencias."
-            },
-            {
-              subtitulo: "Condiciones para el Comercio",
-              descripcion: "El comercio es mutuamente beneficioso cuando los países tienen diferentes costos de oportunidad relativos en la producción de bienes.",
-              requisito: "Los términos de intercambio deben estar entre los costos de oportunidad de ambos países."
+              titulo: "El precio mundial y la ventaja comparativa",
+              contenido: "Ahora suponga que esta economía se abre al comercio internacional. Si el precio doméstico antes del comercio es menor que el precio mundial, el país se convertirá en exportador del bien una vez que se permita el comercio. Si el precio doméstico antes del comercio es mayor que el precio mundial, el país se convertirá en importador del bien."
             }
           ]
         },
         {
-          titulo: "Efectos del Comercio en Países Importadores",
-          contenido: [
+          titulo: "Los ganadores y perdedores del comercio",
+          subtemas: [
             {
-              subtitulo: "Cambios en el Mercado",
-              descripcion: "Cuando un país se abre al comercio como importador, el precio doméstico baja al nivel mundial, aumentando el consumo y reduciendo la producción doméstica.",
-              efectos: [
-                "Precio doméstico baja: P_doméstico → P_mundial",
-                "Consumo aumenta: Q_consumo > Q_autarquía",
-                "Producción doméstica baja: Q_producción < Q_autarquía",
-                "Importaciones = Q_consumo - Q_producción"
-              ]
+              titulo: "Las ganancias y pérdidas de un país exportador",
+              contenido: "Cuando un país se permite exportar un bien, los productores domésticos del bien están mejor, y los consumidores domésticos del bien están peor. El comercio aumenta el bienestar económico de una nación cuando el país se convierte en exportador de un bien."
             },
             {
-              subtitulo: "Efectos en el Bienestar",
-              descripcion: "Los consumidores ganan (mayor excedente) mientras los productores domésticos pierden (menor excedente). La ganancia neta es positiva.",
-              cálculo: [
-                "Ganancia consumidores > Pérdida productores",
-                "Ganancia neta = Área de triángulos de eficiencia",
-                "Mejora en bienestar total del país"
-              ]
+              titulo: "Las ganancias y pérdidas de un país importador",
+              contenido: "Cuando un país se permite importar un bien, los consumidores domésticos del bien están mejor, y los productores domésticos del bien están peor. El comercio aumenta el bienestar económico de una nación cuando el país se convierte en importador de un bien."
+            },
+            {
+              titulo: "Los efectos de un arancel",
+              contenido: "Un arancel es un impuesto sobre bienes producidos en el extranjero y vendidos domésticament. Un arancel aumenta el precio del bien importado arriba del precio mundial por la cantidad del arancel. Los aranceles reducen la cantidad de importaciones y mueven el mercado doméstico más cerca de su equilibrio de autarquía."
+            },
+            {
+              titulo: "Las lecciones para la política comercial",
+              contenido: "Los efectos de los aranceles son similares a los efectos de todos los otros impuestos. Los aranceles causan pérdidas de peso muerto porque son una fuente de ineficiencia económica. Los aranceles también causan una transferencia de ingresos de los consumidores a los productores domésticos y al gobierno."
             }
           ]
         },
         {
-          titulo: "Efectos del Comercio en Países Exportadores",
-          contenido: [
+          titulo: "Los argumentos para restringir el comercio",
+          subtemas: [
             {
-              subtitulo: "Cambios en el Mercado",
-              descripcion: "Cuando un país se abre al comercio como exportador, el precio doméstico sube al nivel mundial, reduciendo el consumo y aumentando la producción doméstica.",
-              efectos: [
-                "Precio doméstico sube: P_doméstico → P_mundial",
-                "Producción aumenta: Q_producción > Q_autarquía",
-                "Consumo doméstico baja: Q_consumo < Q_autarquía",
-                "Exportaciones = Q_producción - Q_consumo"
-              ]
+              titulo: "El argumento de empleos",
+              contenido: "Los oponentes del libre comercio a menudo argumentan que el comercio con otros países destruye empleos domésticos. Los economistas responden que el libre comercio crea empleos al mismo tiempo que destruye otros. Cuando un país importa bienes, destruye empleos en industrias que compiten con las importaciones, pero crea empleos en industrias que exportan bienes."
             },
             {
-              subtitulo: "Efectos en el Bienestar",
-              descripcion: "Los productores domésticos ganan (mayor excedente) mientras los consumidores pierden (menor excedente). La ganancia neta es positiva.",
-              resultado: "El país exportador también experimenta una mejora neta en bienestar, aunque con distribución diferente a los importadores."
+              titulo: "El argumento de seguridad nacional",
+              contenido: "Cuando una industria es amenazada con competencia de otros países, los opositores del libre comercio a menudo argumentan que la industria es vital para la seguridad nacional. Los economistas reconocen que proteger industrias clave puede ser apropiado cuando hay preocupaciones genuinas sobre seguridad nacional."
+            },
+            {
+              titulo: "El argumento de industria naciente",
+              contenido: "Nuevas industrias a veces argumentan por protección comercial temporal para ayudarles a comenzar. Después de un período de protección, el argumento va, estas industrias madurarán y podrán competir con empresas extranjeras. Los economistas son a menudo escépticos sobre este argumento."
+            },
+            {
+              titulo: "El argumento de competencia desleal",
+              contenido: "Un argumento común es que el libre comercio es deseable solo si todos los países juegan por las mismas reglas. Si las empresas en diferentes países están sujetas a diferentes leyes y regulaciones, entonces es injusto esperar que las empresas de un país compitan con empresas de otro país."
+            },
+            {
+              titulo: "Protección como una herramienta de negociación",
+              contenido: "Otro argumento para las restricciones comerciales se refiere a la estrategia de negociación. Muchos políticos argumentan que el gobierno debería amenazar con retirar el acceso al mercado doméstico para presionar a otros países a abrir sus mercados a nuestras exportaciones."
             }
           ]
         },
         {
-          titulo: "Aranceles",
-          contenido: [
+          titulo: "Caso de estudio: NAFTA",
+          subtemas: [
             {
-              subtitulo: "Definición y Mecanismo",
-              descripcion: "Un arancel es un impuesto sobre bienes importados que eleva el precio doméstico por encima del precio mundial.",
-              efecto: "Precio doméstico = Precio mundial + Arancel"
-            },
-            {
-              subtitulo: "Efectos en el Mercado",
-              descripcion: "Los aranceles reducen las importaciones, aumentan la producción doméstica, reducen el consumo, y generan ingresos fiscales.",
-              cambios: [
-                "Reducción en importaciones",
-                "Aumento en producción doméstica (protección)",
-                "Reducción en consumo doméstico",
-                "Recaudación fiscal = Arancel × Importaciones"
-              ]
-            },
-            {
-              subtitulo: "Efectos en el Bienestar",
-              descripcion: "Los aranceles crean pérdida de peso muerto mientras redistribuyen bienestar entre grupos.",
-              componentes: [
-                "Pérdida consumidores (área grande)",
-                "Ganancia productores (área menor)",
-                "Recaudación gobierno (transferencia)",
-                "Pérdida neta = Dos triángulos de peso muerto"
-              ]
-            },
-            {
-              subtitulo: "Cálculo de la Pérdida",
-              descripcion: "La pérdida de peso muerto tiene dos componentes: distorsión en producción y distorsión en consumo.",
-              formula: "DWL = ½ × Arancel × (Reducción importaciones) + Efectos en producción y consumo"
-            }
-          ]
-        },
-        {
-          titulo: "Cuotas de Importación",
-          contenido: [
-            {
-              subtitulo: "Definición y Funcionamiento",
-              descripcion: "Una cuota es una restricción cuantitativa directa sobre la cantidad de un bien que puede importarse.",
-              mecanismo: "Limita físicamente las importaciones a una cantidad específica, elevando el precio doméstico."
-            },
-            {
-              subtitulo: "Comparación con Aranceles",
-              descripcion: "Las cuotas tienen efectos similares a los aranceles en precios y cantidades, pero difieren en la distribución de beneficios.",
-              diferencias: [
-                "Cuotas: Licencias de importación capturan la 'renta de cuota'",
-                "Aranceles: Gobierno recauda ingresos fiscales",
-                "Cuotas son menos transparentes en sus efectos"
-              ]
-            },
-            {
-              subtitulo: "Efectos en el Bienestar",
-              descripcion: "Las cuotas generalmente crean mayor pérdida de bienestar que aranceles equivalentes debido a la captura de rentas.",
-              problema: "Las rentas de cuota pueden ir a importadores extranjeros en lugar del país importador."
-            }
-          ]
-        },
-        {
-          titulo: "Argumentos para el Proteccionismo",
-          contenido: [
-            {
-              subtitulo: "Argumento de la Industria Naciente",
-              descripcion: "Proteger temporalmente industrias nuevas hasta que desarrollen economías de escala y experiencia para competir internacionalmente.",
-              evaluación: "Válido en teoría, pero difícil implementar correctamente. Riesgo de protección permanente."
-            },
-            {
-              subtitulo: "Argumento de Seguridad Nacional",
-              descripcion: "Mantener capacidad productiva doméstica en sectores críticos para la seguridad nacional.",
-              consideraciones: "Debe balancearse con costos económicos. Definir qué constituye 'seguridad nacional'."
-            },
-            {
-              subtitulo: "Argumento Anti-Dumping",
-              descripcion: "Proteger contra competencia 'desleal' cuando países extranjeros venden por debajo del costo.",
-              problemas: "Difícil distinguir dumping real de ventaja comparativa. Puede proteger ineficiencia doméstica."
-            },
-            {
-              subtitulo: "Argumento del Empleo",
-              descripcion: "Proteger empleos domésticos de la competencia extranjera.",
-              crítica: "Ignora empleos creados en sectores exportadores y efectos en consumidores. Solución costosa para desempleo."
-            },
-            {
-              subtitulo: "Argumento de Represalia",
-              descripcion: "Usar proteccionismo para presionar a otros países a reducir sus barreras comerciales.",
-              riesgo: "Puede escalar a guerras comerciales que perjudican a todos los países involucrados."
+              titulo: "Los efectos del NAFTA",
+              contenido: "El Tratado de Libre Comercio de América del Norte (NAFTA) es un acuerdo comercial entre Estados Unidos, Canadá y México que entró en vigor en 1994. El acuerdo eliminó la mayoría de los aranceles entre los tres países. Los economistas han estudiado los efectos del NAFTA y han encontrado que el acuerdo aumentó el comercio entre los países miembros."
             }
           ]
         }
       ]
     },
-    formulas: [
-      {
-        nombre: "Ganancia del Comercio (Importador)",
-        formula: "Ganancia = ½ × (P_autarquía - P_mundial) × (Q_comercio - Q_autarquía)",
-        descripcion: "Ganancia neta en bienestar para un país que se convierte en importador.",
-        ejemplo: "Si el precio baja de $50 a $40 y el consumo aumenta de 100 a 120: Ganancia = ½ × 10 × 20 = $100"
-      },
-      {
-        nombre: "Pérdida por Arancel",
-        formula: "DWL = ½ × t × (Q_sin_arancel - Q_con_arancel)",
-        descripcion: "Pérdida de peso muerto causada por un arancel t.",
-        ejemplo: "Arancel de $5 que reduce importaciones de 50 a 30: DWL = ½ × 5 × 20 = $50"
-      },
-      {
-        nombre: "Recaudación Arancelaria",
-        formula: "R = t × M",
-        descripcion: "Ingresos fiscales del arancel, donde t es la tasa y M son las importaciones con arancel.",
-        ejemplo: "Arancel de $3 por unidad con 40 unidades importadas: R = 3 × 40 = $120"
-      },
-      {
-        nombre: "Términos de Intercambio",
-        formula: "TI = (Precio exportaciones) / (Precio importaciones)",
-        descripción: "Relación entre precios de exportación e importación que determina las ganancias del comercio.",
-        ejemplo: "Si exportas café a $10/kg e importas trigo a $5/kg: TI = 10/5 = 2 (2 kg trigo por 1 kg café)"
-      }
-    ],
+    resumen: "El principio de la ventaja comparativa muestra que el comercio puede hacer que todos estén mejor. Los aranceles y otras restricciones comerciales reducen las ganancias del comercio. Aunque estas políticas benefician a ciertos grupos (productores domésticos), las pérdidas para otros grupos (consumidores) son mayores. Por tanto, el libre comercio aumenta el bienestar económico total.",
     conceptosClave: [
-      "Ventaja comparativa",
       "Precio mundial",
-      "Autarquía",
-      "Ganancias del comercio",
-      "Aranceles",
-      "Cuotas de importación",
-      "Pérdida de peso muerto",
-      "Incidencia de aranceles",
-      "Industria naciente",
+      "Precio de autarquía",
+      "País exportador",
+      "País importador", 
+      "Arancel",
+      "Cuota de importación",
+      "Pérdida de peso muerto del comercio",
+      "Argumento de empleos",
+      "Argumento de seguridad nacional",
+      "Argumento de industria naciente",
       "Dumping",
-      "Términos de intercambio",
-      "Proteccionismo"
+      "NAFTA"
+    ]
+  },
+  10: {
+    titulo: "Externalidades",
+    descripcion: "Efectos externos y soluciones para corregir fallas de mercado",
+    duracion: "55 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Aprender el significado de externalidades",
+      "Ver por qué las externalidades pueden hacer que los resultados del mercado sean ineficientes",
+      "Examinar cómo las personas pueden resolver problemas de externalidades privadamente",
+      "Considerar por qué las soluciones privadas no siempre funcionan",
+      "Examinar las diversas políticas gubernamentales dirigidas a resolver problemas de externalidades"
     ],
-    ejemplosReales: [
-      {
-        titulo: "NAFTA/USMCA y Comercio Automotriz",
-        descripcion: "El tratado de libre comercio de América del Norte eliminó aranceles automotrices, permitiendo especialización: México en ensamblaje, EE.UU. en componentes de alta tecnología, generando ganancias para ambos países."
-      },
-      {
-        titulo: "Guerra Comercial EE.UU.-China 2018-2020",
-        descripcion: "Los aranceles mutuos entre EE.UU. y China ilustran cómo las políticas proteccionistas pueden escalar, creando pérdidas de bienestar significativas para ambos países y disrupciones en cadenas globales de suministro."
-      },
-      {
-        titulo: "Protección Agrícola en la Unión Europea",
-        descripcion: "La Política Agrícola Común (PAC) de la UE protege a agricultores europeos mediante subsidios y aranceles, pero a costa de consumidores europeos y productores agrícolas eficientes en países en desarrollo."
-      }
+    contenido: {
+      introduccion: "Las empresas que fabrican papel también producen, como subproducto de su proceso de producción, una sustancia química llamada dioxina. Los científicos creen que la dioxina aumenta el riesgo de cáncer, problemas cardíacos y defectos de nacimiento. ¿Es el mercado de papel, por sí solo, probable que tome en cuenta los efectos completos de la dioxina?",
+      secciones: [
+        {
+          titulo: "Externalidades y ineficiencia del mercado",
+          subtemas: [
+            {
+              titulo: "Bienestar económico en un mercado",
+              contenido: "Para hacer nuestro análisis concreto, consideraremos un mercado específico: el mercado de aluminio. La Figura 1 muestra la curva de oferta y demanda para el aluminio. Como es usual, la curva de demanda muestra la disposición de los consumidores a pagar por el aluminio, y la curva de oferta muestra los costos de los productores de aluminio."
+            },
+            {
+              titulo: "Externalidades negativas",
+              contenido: "Ahora supongamos que las fábricas de aluminio emiten contaminación: por cada unidad de aluminio producida, una cierta cantidad de humo entra en la atmósfera. Debido a que este humo crea un riesgo para la salud de aquellos que respiran el aire, es una externalidad negativa. ¿Cómo afecta esta externalidad la eficiencia del resultado del mercado?"
+            },
+            {
+              titulo: "Externalidades positivas",
+              contenido: "Aunque algunas actividades imponen costos negativos en terceros, otras actividades producen beneficios externos. Considere el mercado de educación. La educación produce una externalidad positiva porque una población más educada lleva a un mejor gobierno, lo que beneficia a todos."
+            },
+            {
+              titulo: "Caso de estudio: Externalidades tecnológicas, spillovers industriales y Silicon Valley",
+              contenido: "Un tipo importante de externalidad positiva es la externalidad tecnológica. Cuando una empresa desarrolla una nueva tecnología, otras empresas a menudo pueden aplicar esta tecnología a sus propios propósitos. Los spillovers tecnológicos son una razón clave por la que las empresas de alta tecnología se agrupan en áreas geográficas específicas."
+            }
+          ]
+        },
+        {
+          titulo: "Soluciones públicas para las externalidades",
+          subtemas: [
+            {
+              titulo: "Regulación",
+              contenido: "El gobierno puede remediar una externalidad requiriendo o prohibiendo ciertos comportamientos. Por ejemplo, es un crimen tirar basura en lugares públicos. En este caso, la solución al problema de externalidad es directa: el gobierno prohíbe el comportamiento que genera la externalidad."
+            },
+            {
+              titulo: "Impuestos y subsidios pigouvianos",
+              contenido: "En lugar de regular el comportamiento en respuesta a una externalidad, el gobierno puede usar políticas basadas en el mercado para alinear los incentivos privados con la eficiencia social. Por ejemplo, como vimos, el gobierno puede internalizar la externalidad gravando actividades que tienen externalidades negativas y subsidiando actividades que tienen externalidades positivas."
+            },
+            {
+              titulo: "Permisos de contaminación comerciables",
+              contenido: "Supongamos que el gobierno quiere reducir la cantidad de contaminación que emiten las fábricas de acero. El gobierno podría lograr este objetivo de varias maneras: podría regular la cantidad de contaminación que cada fábrica puede emitir, o podría gravar la contaminación que emiten las fábricas. Una tercera opción es que el gobierno emita un número limitado de permisos de contaminación."
+            },
+            {
+              titulo: "Objeciones a los análisis económicos de la contaminación",
+              contenido: "Algunos ambientalistas objetan el enfoque económico de la contaminación. Argumentan que es moralmente incorrecto permitir que alguien contamine el medio ambiente a cambio de dinero. Desde esta perspectiva, los derechos de contaminación comerciables son moralmente repugnantes."
+            }
+          ]
+        },
+        {
+          titulo: "Soluciones privadas para las externalidades",
+          subtemas: [
+            {
+              titulo: "Los tipos de soluciones privadas",
+              contenido: "Aunque las externalidades tienden a causar que los mercados sean ineficientes, la ineficiencia del gobierno no es inevitable. En algunos casos, las personas pueden desarrollar soluciones privadas. A veces, la solución toma la forma de códigos morales y sanciones sociales."
+            },
+            {
+              titulo: "El teorema de Coase",
+              contenido: "¿Qué tan efectivas son las partes privadas en resolver problemas de externalidades por sí mismas? Un famoso resultado, conocido como el teorema de Coase, sugiere que bajo algunas circunstancias pueden hacerlo muy bien. Según el teorema de Coase, si las partes privadas pueden negociar sobre la asignación de recursos sin costo, entonces pueden resolver el problema de externalidades por sí mismas."
+            },
+            {
+              titulo: "Por qué las soluciones privadas no siempre funcionan",
+              contenido: "A pesar del atractivo del teorema de Coase, las partes privadas por sí solas a menudo fallan en resolver los problemas creados por las externalidades. El teorema de Coase se aplica solo cuando las partes interesadas no tienen problemas para llegar y hacer cumplir un acuerdo. En el mundo real, sin embargo, la negociación no siempre funciona, incluso cuando una solución mutuamente beneficiosa existe."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "Cuando una transacción entre un comprador y vendedor afecta directamente a un tercero, el efecto se llama externalidad. Las externalidades negativas causan que la cantidad óptima socialmente sea menor que la cantidad de equilibrio. Las externalidades positivas causan que la cantidad óptima socialmente sea mayor que la cantidad de equilibrio.",
+    conceptosClave: [
+      "Externalidad",
+      "Externalidad negativa",
+      "Externalidad positiva",
+      "Internalizar la externalidad",
+      "Impuesto pigouviano",
+      "Subsidio pigouviano",
+      "Teorema de Coase",
+      "Costos de transacción",
+      "Permisos de contaminación comerciables"
+    ]
+  },
+  11: {
+    titulo: "Bienes Públicos y Recursos Comunes",
+    descripcion: "Clasificación de bienes y problemas de provisión pública",
+    duracion: "50 min",
+    dificultad: "Intermedio",
+    objetivos: [
+      "Aprender las características que definen los bienes públicos y los recursos comunes",
+      "Examinar por qué los mercados privados fallan en proporcionar bienes públicos",
+      "Considerar algunos de los importantes bienes públicos en nuestra economía",
+      "Ver por qué el problema del free rider hace que los mercados privados fallen en proporcionar bienes públicos",
+      "Examinar por qué las personas tienden a usar demasiado los recursos comunes"
+    ],
+    contenido: {
+      introduccion: "Un viejo dicho dice que las mejores cosas de la vida son gratis. Un momento de reflexión revela una gran cantidad de bienes que encajan en esta descripción: las puestas de sol, las risas, las lluvias de otoño, el amor verdadero, y la libertad de expresión. Pero si piensas un poco más, encontrarás que la mayoría de las cosas que valoramos en la vida tienen un precio.",
+      secciones: [
+        {
+          titulo: "Los diferentes tipos de bienes",
+          subtemas: [
+            {
+              titulo: "Clasificación de bienes",
+              contenido: "Los bienes pueden clasificarse según dos características: (1) ¿Es el bien excluyente? Es decir, ¿se puede impedir que las personas usen el bien? (2) ¿Es el bien rival en el consumo? Es decir, ¿el uso del bien por una persona reduce la capacidad de otra persona para usarlo? Usando estas dos características, podemos dividir los bienes en cuatro categorías."
+            },
+            {
+              titulo: "Bienes privados",
+              contenido: "Los bienes privados son tanto excluyentes como rivales en el consumo. Considere un cono de helado, por ejemplo. Un cono de helado es excluyente porque es posible impedir que alguien coma un cono de helado: simplemente no se lo des. Un cono de helado también es rival en el consumo porque si una persona come un cono de helado, otra persona no puede comer el mismo cono."
+            },
+            {
+              titulo: "Bienes públicos",
+              contenido: "Los bienes públicos no son ni excluyentes ni rivales en el consumo. Es decir, las personas no pueden ser impedidas de usar un bien público, y el uso de un bien público por una persona no reduce la capacidad de otra persona para usarlo. Por ejemplo, un tornado siren en una pequeña ciudad es un bien público."
+            },
+            {
+              titulo: "Recursos comunes",
+              contenido: "Los recursos comunes son rivales en el consumo pero no excluyentes. Por ejemplo, los peces en el océano son un recurso común. Cuando una persona atrapa pez, hay menos pez para que la próxima persona atrape. Sin embargo, es difícil cobrar a los pescadores por el pez que atrapan."
+            },
+            {
+              titulo: "Monopolios naturales",
+              contenido: "Los monopolios naturales son excluyentes pero no rivales en el consumo. Por ejemplo, considere la protección contra incendios en una pequeña ciudad. Es fácil excluir a alguien de usar este bien: el departamento de bomberos simplemente puede dejar que la casa de la persona se queme. Sin embargo, la protección contra incendios no es rival en el consumo."
+            }
+          ]
+        },
+        {
+          titulo: "Bienes públicos",
+          subtemas: [
+            {
+              titulo: "El problema del free rider",
+              contenido: "Debido a que los bienes públicos no son excluyentes, las personas tienen un incentivo para ser free riders. Un free rider es una persona que recibe el beneficio de un bien pero evita pagar por él. Debido a que las personas no pueden ser excluidas de disfrutar los beneficios de un bien público, los individuos pueden retener el pago por el bien mientras siguen disfrutando sus beneficios."
+            },
+            {
+              titulo: "Algunos bienes públicos importantes",
+              contenido: "Hay muchos ejemplos de bienes públicos. Aquí consideramos tres de los más importantes: defensa nacional, investigación básica, y programas para combatir la pobreza. En cada caso, debido al problema del free rider, el gobierno proporciona un bien que el mercado privado no proporcionaría en la cantidad eficiente."
+            },
+            {
+              titulo: "Caso de estudio: ¿Son los faros bienes públicos?",
+              contenido: "Algunos bienes pueden cambiar de categoría cuando cambia la tecnología. Por ejemplo, un faro es tradicionalmente considerado un bien público. Los faros son excluyentes porque es imposible impedir que un barco que pasa vea la luz. También son no rivales porque el uso del faro por un barco no reduce la capacidad de otro barco para usarlo."
+            },
+            {
+              titulo: "La difícil tarea del análisis costo-beneficio",
+              contenido: "Hasta ahora hemos visto que el gobierno proporciona bienes públicos porque el mercado privado por sí solo no los proporcionaría. Sin embargo, decidir que el gobierno debe proporcionar un bien público no nos dice cuánto del bien público debe proporcionarse."
+            }
+          ]
+        },
+        {
+          titulo: "Recursos comunes",
+          subtemas: [
+            {
+              titulo: "La tragedia de los comunes",
+              contenido: "En 1968, el biólogo Garrett Hardin escribió un artículo clásico llamado 'La Tragedia de los Comunes'. Hardin argumentó que los recursos comunes se usan más de lo que es deseable desde el punto de vista de la sociedad en su conjunto. Consideró el caso de una ciudad con un pasto común donde cualquier familia de la ciudad puede pastar sus vacas."
+            },
+            {
+              titulo: "Algunos recursos comunes importantes",
+              contenido: "Hay muchos ejemplos de recursos comunes. En casi todos los casos, el mismo problema surge: los usuarios privados del recurso no toman en cuenta las externalidades negativas que imponen en otros usuarios. Como resultado, el recurso tiende a ser usado excesivamente."
+            },
+            {
+              titulo: "Caso de estudio: Por qué la vaca no se extinguió",
+              contenido: "A lo largo de la historia, muchas especies de animales han sido amenazadas con extinción. Cuando los europeos llegaron por primera vez a América del Norte, más de 60 millones de búfalos vagaban por el continente. Sin embargo, la caza redujo la población animal a aproximadamente 400 en 1900. Hoy, la población de búfalos ha recuperado a aproximadamente 200,000."
+            },
+            {
+              titulo: "Caso de estudio: El debate sobre el calentamiento global",
+              contenido: "Los científicos han documentado cambios en el clima global y han argumentado que los cambios son en gran parte el resultado de la actividad humana. El problema surge porque el dióxido de carbono es, en cierto sentido, un contaminante. Cuando las personas queman combustibles fósiles, emiten dióxido de carbono a la atmósfera."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "Los bienes difieren en si son excluyentes y si son rivales en el consumo. Un bien es excluyente si es posible impedir que alguien lo use. Un bien es rival en el consumo si el uso del bien por una persona reduce la capacidad de otra persona para usarlo. Los mercados funcionan mejor para bienes privados, que son tanto excluyentes como rivales en el consumo.",
+    conceptosClave: [
+      "Excluyente",
+      "Rival en el consumo",
+      "Bienes privados",
+      "Bienes públicos",
+      "Recursos comunes",
+      "Monopolios naturales",
+      "Free rider",
+      "Análisis costo-beneficio",
+      "Tragedia de los comunes"
+    ]
+  },
+  12: {
+    titulo: "El Diseño del Sistema Impositivo",
+    descripcion: "Principios de tributación y diseño de políticas fiscales",
+    duracion: "60 min",
+    dificultad: "Avanzado",
+    objetivos: [
+      "Examinar cómo el gobierno estadounidense recauda y gasta dinero",
+      "Considerar la eficiencia de varios impuestos diferentes",
+      "Aprender enfoques alternativos para juzgar la equidad de un sistema impositivo",
+      "Ver por qué estudiar la incidencia fiscal es crucial para evaluar la equidad fiscal",
+      "Considerar el trade-off entre eficiencia y equidad en el diseño de un sistema impositivo"
+    ],
+    contenido: {
+      introduccion: "Benjamin Franklin dijo una vez que 'en este mundo nada puede decirse que sea cierto, excepto la muerte y los impuestos'. Cuando Franklin escribió estas palabras en 1789, el estadounidense promedio pagaba menos del 5 por ciento de su ingreso en impuestos al gobierno. Hoy, todos los niveles de gobierno toman aproximadamente un tercio del ingreso del estadounidense promedio.",
+      secciones: [
+        {
+          titulo: "Una perspectiva financiera del gobierno estadounidense",
+          subtemas: [
+            {
+              titulo: "El gobierno federal",
+              contenido: "El gobierno federal recauda aproximadamente dos tercios de los impuestos en nuestra economía. Obtiene la mayoría de sus ingresos del impuesto sobre la renta personal y del impuesto sobre la nómina. Gasta su dinero en una variedad de propósitos, siendo los más importantes la Seguridad Social, la defensa nacional, y Medicare."
+            },
+            {
+              titulo: "Gobiernos estatales y locales",
+              contenido: "Los gobiernos estatales y locales recaudan aproximadamente 40 por ciento de todos los impuestos pagados. Sus mayores fuentes de ingresos son los impuestos sobre las ventas, los impuestos sobre la propiedad, y los impuestos sobre la renta personal. Gastan la mayoría de su dinero en educación, carreteras y seguridad pública."
+            }
+          ]
+        },
+        {
+          titulo: "Impuestos y eficiencia",
+          subtemas: [
+            {
+              titulo: "Pérdidas de peso muerto",
+              contenido: "Uno de los Diez Principios de la Economía es que las personas responden a incentivos. Esta lección es clave para entender los costos de los impuestos. Debido a que los impuestos distorsionan incentivos, causan que las personas asignen recursos de acuerdo con la política fiscal en lugar de los verdaderos costos y beneficios de los bienes y servicios."
+            },
+            {
+              titulo: "Factores administrativos",
+              contenido: "Si quisieras diseñar un sistema impositivo eficiente, querrías no solo minimizar las pérdidas de peso muerto sino también minimizar los costos administrativos de cumplir con el sistema impositivo. Los costos administrativos incluyen no solo los recursos que el gobierno gasta en hacer cumplir las leyes fiscales sino también el tiempo y dinero que los contribuyentes gastan cumpliendo con las leyes."
+            },
+            {
+              titulo: "Impuestos marginales versus impuestos promedio",
+              contenido: "Cuando discutimos la eficiencia y la equidad de los impuestos, es importante distinguir entre dos nociones de tasas de impuestos: la tasa de impuesto promedio y la tasa de impuesto marginal. La tasa de impuesto promedio es el total de impuestos pagados dividido por el ingreso total. La tasa de impuesto marginal es el impuesto extra pagado sobre un dólar adicional de ingreso."
+            },
+            {
+              titulo: "Impuestos de suma fija",
+              contenido: "Supongamos que el gobierno impusiera un impuesto que fuera el mismo para cada persona, independientemente de sus ganancias o cualquier acción que pudiera tomar. Tal impuesto se llama un impuesto de suma fija. Un impuesto de suma fija no distorsiona incentivos porque las decisiones de una persona no alteran la cantidad adeudada."
+            }
+          ]
+        },
+        {
+          titulo: "Impuestos y equidad",
+          subtemas: [
+            {
+              titulo: "El principio de beneficios",
+              contenido: "Una forma de pensar sobre la equidad es el principio de beneficios, la idea de que las personas deberían pagar impuestos basados en los beneficios que reciben de los servicios gubernamentales. Este principio trata de hacer que la financiación pública sea similar a la financiación privada."
+            },
+            {
+              titulo: "El principio de capacidad de pago",
+              contenido: "Otro enfoque de la equidad fiscal es el principio de capacidad de pago, la idea de que los impuestos deberían basarse en la capacidad de una persona para manejar la carga financiera. Este principio lleva a dos nociones corolarias de equidad: equidad horizontal y equidad vertical."
+            },
+            {
+              titulo: "Equidad horizontal",
+              contenido: "Si los impuestos se basan en la capacidad de pago, entonces los contribuyentes similares deberían pagar cantidades similares. Esta idea se llama equidad horizontal. Por ejemplo, si dos familias tienen el mismo número de dependientes y el mismo ingreso, deberían pagar la misma cantidad en impuestos."
+            },
+            {
+              titulo: "Equidad vertical",
+              contenido: "Si los impuestos se basan en la capacidad de pago, entonces los contribuyentes con una mayor capacidad de pago deberían contribuir más. Esta idea se llama equidad vertical. En la mayoría de las discusiones sobre política fiscal, la equidad vertical es mucho más controvertida que la equidad horizontal."
+            },
+            {
+              titulo: "Proporcionalidad fiscal",
+              contenido: "Mucho del debate sobre equidad fiscal se centra en si los ricos pagan su parte justa. Hay tres formas en que un sistema impositivo puede relacionar la cantidad de impuestos pagados con el ingreso de una persona: impuestos proporcionales, regresivos, y progresivos."
+            }
+          ]
+        },
+        {
+          titulo: "Estudios de caso en el diseño de impuestos",
+          subtemas: [
+            {
+              titulo: "Caso de estudio: Cómo deberían gravarse los ingresos de capital?",
+              contenido: "Las personas reciben ingresos de su trabajo y de su capital. Los ingresos del trabajo incluyen salarios, sueldos, y beneficios marginales. Los ingresos de capital incluyen intereses sobre ahorros, dividendos sobre acciones, ganancias de capital sobre activos apreciados, y las ganancias de un negocio en el que una persona tiene una participación."
+            },
+            {
+              titulo: "Caso de estudio: El impuesto sobre el patrimonio",
+              contenido: "Supongamos que un hombre rico muere y deja $50 millones a su hijo. ¿Debería el gobierno gravar esta herencia? Tal impuesto se llama un impuesto sobre el patrimonio. En 2017, el gobierno estadounidense gravó las herencias de más de $5.49 millones a tasas de hasta 40 por ciento."
+            }
+          ]
+        }
+      ]
+    },
+    resumen: "El gobierno estadounidense recauda impuestos de muchas maneras diferentes y en muchos niveles diferentes. El gobierno federal se basa principalmente en impuestos sobre la renta personal y sobre la nómina. Los gobiernos estatales y locales se basan principalmente en impuestos sobre las ventas, impuestos sobre la propiedad, e impuestos sobre la renta.",
+    conceptosClave: [
+      "Tasa de impuesto promedio",
+      "Tasa de impuesto marginal",
+      "Impuesto de suma fija",
+      "Principio de beneficios",
+      "Principio de capacidad de pago",
+      "Equidad horizontal",
+      "Equidad vertical",
+      "Impuesto proporcional",
+      "Impuesto regresivo",
+      "Impuesto progresivo"
     ]
   }
 }
@@ -762,7 +1090,7 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
         <div className="container mx-auto px-4 py-8">
           <Card className="max-w-md mx-auto">
             <CardContent className="pt-6 text-center">
-              <p className="text-slate-600">Este capítulo está en desarrollo.</p>
+              <p className="text-slate-600">Capítulo no encontrado</p>
               <Link href="/">
                 <Button className="mt-4">Volver al inicio</Button>
               </Link>
@@ -791,495 +1119,169 @@ export default function CapituloPage({ params }: { params: { id: string } }) {
       {/* Header */}
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/">
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Inicio
-                </Button>
-              </Link>
-              <div className="flex items-center gap-3">
-                <Image src="/logo-ceic.png" alt="CEIC Logo" width={32} height={32} className="rounded" />
-                <span className="font-semibold text-slate-800">EconoHub CEIC</span>
-              </div>
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Inicio
+              </Button>
+            </Link>
+            <div className="flex items-center gap-3">
+              <Image src="/logo-ceic.png" alt="CEIC Logo" width={32} height={32} className="rounded" />
+              <span className="font-semibold text-slate-800">EconoHub CEIC</span>
             </div>
-            <Badge variant="outline" className="text-slate-600 border-slate-300">
-              Capítulo {params.id}
-            </Badge>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-5xl">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Hero del capítulo */}
-        <div className="bg-gradient-to-br from-blue-50 to-violet-50 rounded-3xl p-8 mb-12 shadow-lg">
-          <h1 className="text-4xl font-bold text-slate-800 mb-4">{capitulo.titulo}</h1>
-          <p className="text-xl text-slate-700 mb-6 leading-relaxed">{capitulo.resumen}</p>
+        <div className="bg-gradient-to-br from-blue-50 via-white to-violet-50 rounded-3xl p-8 mb-8 shadow-lg border border-blue-100">
+          <div className="flex items-start justify-between mb-6">
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-slate-800 mb-4">
+                Capítulo {params.id}: {capitulo.titulo}
+              </h1>
+              <p className="text-xl text-slate-700 mb-6 leading-relaxed">{capitulo.descripcion}</p>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-slate-600" />
+                  <span className="text-slate-600">{capitulo.duracion}</span>
+                </div>
+                <Badge className={getDificultadColor(capitulo.dificultad)} variant="outline">
+                  {capitulo.dificultad}
+                </Badge>
+              </div>
+            </div>
+          </div>
 
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-slate-600" />
-              <span className="text-slate-700">{capitulo.duracion}</span>
-            </div>
-            <Badge className={getDificultadColor(capitulo.dificultad)} variant="outline">
-              {capitulo.dificultad}
-            </Badge>
-            <div className="flex items-center gap-2">
-              <Users className="h-5 w-5 text-slate-600" />
-              <span className="text-slate-700">Nivel universitario</span>
-            </div>
+          {/* Objetivos de aprendizaje */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-slate-200">
+            <h3 className="font-semibold text-slate-800 mb-4 flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-blue-600" />
+              Objetivos de Aprendizaje
+            </h3>
+            <ul className="space-y-2">
+              {capitulo.objetivos.map((objetivo, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-slate-700">{objetivo}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="space-y-12">
-          {/* Objetivos de Aprendizaje */}
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                Objetivos de Aprendizaje
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                {capitulo.objetivos.map((objetivo, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-emerald-50 rounded-xl">
-                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
-                      {index + 1}
-                    </div>
-                    <span className="text-slate-700 leading-relaxed">{objetivo}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
+        {/* Contenido principal */}
+        <div className="space-y-8">
           {/* Introducción */}
           <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
-                  <BookOpen className="h-6 w-6 text-white" />
-                </div>
-                Introducción
-              </CardTitle>
+              <CardTitle className="text-2xl text-slate-800">Introducción</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-slate-700 leading-relaxed text-lg">{capitulo.contenido.introduccion}</p>
             </CardContent>
           </Card>
 
-          {/* Contenido principal - Los 10 principios para capítulo 1 */}
-          {params.id === "1" && capitulo.contenido.principios && (
-            <div className="space-y-8">
-              {capitulo.contenido.principios.map((categoria, index) => (
-                <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle className="text-2xl text-blue-700">{categoria.categoria}</CardTitle>
-                    <p className="text-slate-600 text-lg">{categoria.descripcion}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-8">
-                      {categoria.items.map((principio, idx) => (
-                        <div key={idx} className="border-l-4 border-blue-200 pl-6">
-                          <div className="bg-gradient-to-r from-blue-50 to-violet-50 p-6 rounded-2xl">
-                            <h4 className="font-bold text-xl mb-4 text-slate-800">
-                              Principio {principio.numero}: {principio.titulo}
-                            </h4>
-                            <p className="text-slate-700 mb-6 text-lg leading-relaxed">{principio.descripcion}</p>
-
-                            <div className="grid md:grid-cols-2 gap-4">
-                              <div className="bg-blue-100 p-4 rounded-xl">
-                                <h5 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
-                                  💡 Ejemplo Práctico
-                                </h5>
-                                <p className="text-blue-700 text-sm leading-relaxed">{principio.ejemplo}</p>
-                              </div>
-
-                              <div className="bg-emerald-100 p-4 rounded-xl">
-                                <h5 className="font-semibold text-emerald-800 mb-2 flex items-center gap-2">
-                                  🎯 Aplicación
-                                </h5>
-                                <p className="text-emerald-700 text-sm leading-relaxed">{principio.aplicacion}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
+          {/* Secciones del contenido */}
+          <div className="space-y-6">
+            {capitulo.contenido.secciones.map((seccion, index) => (
+              <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl text-slate-800 flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                      {index + 1}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-
-          {/* Contenido principal - Secciones para capítulos 7, 8, 9 */}
-          {(params.id === "7" || params.id === "8" || params.id === "9") && capitulo.contenido.secciones && (
-            <div className="space-y-8">
-              {capitulo.contenido.secciones.map((seccion, index) => (
-                <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle className="text-2xl text-blue-700">{seccion.titulo}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
+                    {seccion.titulo}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {'principios' in seccion ? (
+                    // Para capítulo 1 con principios
                     <div className="space-y-6">
-                      {seccion.contenido.map((item, idx) => (
-                        <div key={idx} className="border-l-4 border-blue-200 pl-6">
-                          <div className="bg-gradient-to-r from-blue-50 to-violet-50 p-6 rounded-2xl">
-                            <h4 className="font-bold text-xl mb-4 text-slate-800">{item.subtitulo}</h4>
-                            <p className="text-slate-700 mb-4 text-lg leading-relaxed">{item.descripcion}</p>
-
-                            {/* Fórmulas */}
-                            {item.formula && (
-                              <div className="bg-white p-4 rounded-xl border-2 border-violet-200 mb-4">
-                                <div className="font-mono text-lg text-violet-700 text-center mb-2">{item.formula}</div>
-                                {item.explicacion && (
-                                  <p className="text-sm text-slate-600 text-center">{item.explicacion}</p>
-                                )}
-                              </div>
-                            )}
-
-                            {/* Ejemplos */}
-                            {item.ejemplo && (
-                              <div className="bg-amber-50 p-4 rounded-xl border border-amber-200 mb-4">
-                                <h5 className="font-semibold text-amber-800 mb-2">Ejemplo:</h5>
-                                <p className="text-amber-700 text-sm leading-relaxed">{item.ejemplo}</p>
-                              </div>
-                            )}
-
-                            {/* Aplicaciones */}
-                            {item.aplicacion && (
-                              <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-200 mb-4">
-                                <h5 className="font-semibold text-emerald-800 mb-2">Aplicación:</h5>
-                                <p className="text-emerald-700 text-sm leading-relaxed">{item.aplicacion}</p>
-                              </div>
-                            )}
-
-                            {/* Listas de puntos */}
-                            {item.factores && (
-                              <div className="bg-gray-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-gray-800 mb-2">Factores clave:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-gray-700 text-sm">
-                                  {item.factores.map((factor, i) => (
-                                    <li key={i}>{factor}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.efectos && (
-                              <div className="bg-blue-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-blue-800 mb-2">Efectos:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-blue-700 text-sm">
-                                  {item.efectos.map((efecto, i) => (
-                                    <li key={i}>{efecto}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.reglas && (
-                              <div className="bg-green-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-green-800 mb-2">Reglas:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-green-700 text-sm">
-                                  {item.reglas.map((regla, i) => (
-                                    <li key={i}>{regla}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.casos && (
-                              <div className="bg-purple-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-purple-800 mb-2">Casos especiales:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-purple-700 text-sm">
-                                  {item.casos.map((caso, i) => (
-                                    <li key={i}>{caso}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.formulas && (
-                              <div className="bg-violet-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-violet-800 mb-2">Fórmulas relacionadas:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-violet-700 text-sm font-mono">
-                                  {item.formulas.map((formula, i) => (
-                                    <li key={i}>{formula}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.implicaciones && (
-                              <div className="bg-orange-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-orange-800 mb-2">Implicaciones:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-orange-700 text-sm">
-                                  {item.implicaciones.map((implicacion, i) => (
-                                    <li key={i}>{implicacion}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.cambios && (
-                              <div className="bg-indigo-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-indigo-800 mb-2">Cambios en el mercado:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-indigo-700 text-sm">
-                                  {item.cambios.map((cambio, i) => (
-                                    <li key={i}>{cambio}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.componentes && (
-                              <div className="bg-teal-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-teal-800 mb-2">Componentes:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-teal-700 text-sm">
-                                  {item.componentes.map((componente, i) => (
-                                    <li key={i}>{componente}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.diferencias && (
-                              <div className="bg-pink-50 p-4 rounded-xl">
-                                <h5 className="font-semibold text-pink-800 mb-2">Diferencias clave:</h5>
-                                <ul className="list-disc list-inside space-y-1 text-pink-700 text-sm">
-                                  {item.diferencias.map((diferencia, i) => (
-                                    <li key={i}>{diferencia}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {/* Campos de texto adicionales */}
-                            {item.objetivo && (
-                              <div className="bg-blue-50 p-3 rounded-xl border border-blue-200">
-                                <p className="text-sm text-blue-800"><strong>Objetivo:</strong> {item.objetivo}</p>
-                              </div>
-                            )}
-
-                            {item.condicion && (
-                              <div className="bg-green-50 p-3 rounded-xl border border-green-200">
-                                <p className="text-sm text-green-800"><strong>Condición:</strong> {item.condicion}</p>
-                              </div>
-                            )}
-
-                            {item.implicacion && (
-                              <div className="bg-purple-50 p-3 rounded-xl border border-purple-200">
-                                <p className="text-sm text-purple-800"><strong>Implicación:</strong> {item.implicacion}</p>
-                              </div>
-                            )}
-
-                            {item.importancia && (
-                              <div className="bg-amber-50 p-3 rounded-xl border border-amber-200">
-                                <p className="text-sm text-amber-800"><strong>Importancia:</strong> {item.importancia}</p>
-                              </div>
-                            )}
-
-                            {item.efecto && (
-                              <div className="bg-red-50 p-3 rounded-xl border border-red-200">
-                                <p className="text-sm text-red-800"><strong>Efecto:</strong> {item.efecto}</p>
-                              </div>
-                            )}
-
-                            {item.ejemplos && (
-                              <div className="bg-gray-50 p-3 rounded-xl border border-gray-200">
-                                <p className="text-sm text-gray-800"><strong>Ejemplos:</strong> {item.ejemplos}</p>
-                              </div>
-                            )}
-
-                            {item.mecanismo && (
-                              <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
-                                <p className="text-sm text-indigo-800"><strong>Mecanismo:</strong> {item.mecanismo}</p>
-                              </div>
-                            )}
-
-                            {item.resultado && (
-                              <div className="bg-teal-50 p-3 rounded-xl border border-teal-200">
-                                <p className="text-sm text-teal-800"><strong>Resultado:</strong> {item.resultado}</p>
-                              </div>
-                            )}
-
-                            {item.fundamento && (
-                              <div className="bg-cyan-50 p-3 rounded-xl border border-cyan-200">
-                                <p className="text-sm text-cyan-800"><strong>Fundamento:</strong> {item.fundamento}</p>
-                              </div>
-                            )}
-
-                            {item.requisito && (
-                              <div className="bg-lime-50 p-3 rounded-xl border border-lime-200">
-                                <p className="text-sm text-lime-800"><strong>Requisito:</strong> {item.requisito}</p>
-                              </div>
-                            )}
-
-                            {item.cálculo && (
-                              <div className="bg-violet-50 p-3 rounded-xl border border-violet-200">
-                                <p className="text-sm text-violet-800"><strong>Cálculo:</strong></p>
-                                <ul className="list-disc list-inside mt-1 space-y-1 text-violet-700 text-sm">
-                                  {item.cálculo.map((calc, i) => (
-                                    <li key={i}>{calc}</li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-
-                            {item.principio && (
-                              <div className="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-                                <p className="text-sm text-emerald-800"><strong>Principio:</strong> {item.principio}</p>
-                              </div>
-                            )}
-
-                            {item.debate && (
-                              <div className="bg-orange-50 p-3 rounded-xl border border-orange-200">
-                                <p className="text-sm text-orange-800"><strong>Debate:</strong> {item.debate}</p>
-                              </div>
-                            )}
-
-                            {item.consideraciones && (
-                              <div className="bg-yellow-50 p-3 rounded-xl border border-yellow-200">
-                                <p className="text-sm text-yellow-800"><strong>Consideraciones:</strong> {item.consideraciones}</p>
-                              </div>
-                            )}
-
-                            {item.problemas && (
-                              <div className="bg-red-50 p-3 rounded-xl border border-red-200">
-                                <p className="text-sm text-red-800"><strong>Problemas:</strong> {item.problemas}</p>
-                              </div>
-                            )}
-
-                            {item.crítica && (
-                              <div className="bg-pink-50 p-3 rounded-xl border border-pink-200">
-                                <p className="text-sm text-pink-800"><strong>Crítica:</strong> {item.crítica}</p>
-                              </div>
-                            )}
-
-                            {item.riesgo && (
-                              <div className="bg-red-50 p-3 rounded-xl border border-red-200">
-                                <p className="text-sm text-red-800"><strong>Riesgo:</strong> {item.riesgo}</p>
-                              </div>
-                            )}
-
-                            {item.evaluación && (
-                              <div className="bg-blue-50 p-3 rounded-xl border border-blue-200">
-                                <p className="text-sm text-blue-800"><strong>Evaluación:</strong> {item.evaluación}</p>
-                              </div>
-                            )}
-
-                            {item.problema && (
-                              <div className="bg-red-50 p-3 rounded-xl border border-red-200">
-                                <p className="text-sm text-red-800"><strong>Problema:</strong> {item.problema}</p>
-                              </div>
-                            )}
+                      {seccion.principios.map((principio, pIndex) => (
+                        <div key={pIndex} className="border-l-4 border-blue-500 pl-6 py-4 bg-blue-50/50 rounded-r-lg">
+                          <h4 className="font-bold text-lg text-slate-800 mb-3">
+                            Principio {principio.numero}: {principio.titulo}
+                          </h4>
+                          <p className="text-slate-700 mb-4 leading-relaxed">{principio.explicacion}</p>
+                          <div className="bg-white/80 p-4 rounded-lg border border-blue-200">
+                            <h5 className="font-semibold text-blue-800 mb-2">Ejemplo:</h5>
+                            <p className="text-slate-700 italic">{principio.ejemplo}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
+                  ) : (
+                    // Para otros capítulos con subtemas
+                    <Accordion type="single" collapsible className="w-full">
+                      {seccion.subtemas?.map((subtema, sIndex) => (
+                        <AccordionItem key={sIndex} value={`item-${sIndex}`}>
+                          <AccordionTrigger className="text-left font-semibold text-slate-800">
+                            {subtema.titulo}
+                          </AccordionTrigger>
+                          <AccordionContent>
+                            <p className="text-slate-700 leading-relaxed">{subtema.contenido}</p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
-          {/* Fórmulas */}
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+          {/* Resumen */}
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-emerald-50 to-blue-50">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl">
-                  <Calculator className="h-6 w-6 text-white" />
+              <CardTitle className="text-2xl text-slate-800 flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-xl flex items-center justify-center">
+                  <BookOpen className="h-6 w-6 text-white" />
                 </div>
-                Fórmulas y Conceptos Matemáticos
+                Resumen del Capítulo
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                {capitulo.formulas.map((formula, index) => (
-                  <div key={index} className="bg-gradient-to-r from-violet-50 to-purple-50 p-6 rounded-2xl">
-                    <h4 className="font-bold text-lg mb-3 text-slate-800">{formula.nombre}</h4>
-                    <div className="bg-white p-4 rounded-xl border-2 border-violet-200 text-center mb-4">
-                      <span className="font-mono text-xl text-violet-700">{formula.formula}</span>
-                    </div>
-                    <p className="text-slate-700 mb-3 leading-relaxed">{formula.descripcion}</p>
-                    {formula.ejemplo && (
-                      <div className="bg-amber-50 p-3 rounded-xl border border-amber-200">
-                        <p className="text-sm text-amber-800">
-                          <strong>Ejemplo:</strong> {formula.ejemplo}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Ejemplos del mundo real */}
-          {capitulo.ejemplosReales && (
-            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl">
-                  <div className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
-                    <Globe className="h-6 w-6 text-white" />
-                  </div>
-                  Ejemplos del Mundo Real
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {capitulo.ejemplosReales.map((ejemplo, index) => (
-                    <div key={index} className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl">
-                      <h4 className="font-semibold text-orange-800 mb-3 text-lg">{ejemplo.titulo}</h4>
-                      <p className="text-orange-700 leading-relaxed">{ejemplo.descripcion}</p>
-                    </div>
+              <p className="text-slate-700 leading-relaxed text-lg mb-6">{capitulo.resumen}</p>
+              
+              {/* Conceptos clave */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-200">
+                <h4 className="font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                  <DollarSign className="h-5 w-5 text-emerald-600" />
+                  Conceptos Clave
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {capitulo.conceptosClave.map((concepto, index) => (
+                    <Badge key={index} variant="outline" className="bg-emerald-100 text-emerald-700 border-emerald-200">
+                      {concepto}
+                    </Badge>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Conceptos Clave */}
-          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="p-2 bg-gradient-to-br from-slate-500 to-slate-600 rounded-xl">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                Conceptos Clave para Recordar
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-3">
-                {capitulo.conceptosClave.map((concepto, index) => (
-                  <Badge key={index} variant="outline" className="text-sm py-2 px-4 border-slate-300 hover:bg-slate-50">
-                    {concepto}
-                  </Badge>
-                ))}
               </div>
             </CardContent>
           </Card>
 
           {/* Navegación */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Link href={`/ejercicios/${params.id}`}>
-              <Button size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-                <Calculator className="h-5 w-5 mr-2" />
-                Practicar con Ejercicios
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href={`/graficos/${params.id}`}>
-              <Button variant="outline" size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">
-                <BarChart3 className="h-5 w-5 mr-2" />
-                Explorar Gráficos Interactivos
-              </Button>
-            </Link>
-          </div>
+          <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <CardContent className="pt-6">
+              <div className="flex justify-center gap-4">
+                <Link href={`/ejercicios/${params.id}`}>
+                  <Button size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">
+                    <Calculator className="h-5 w-5 mr-2" />
+                    Practicar con Ejercicios
+                  </Button>
+                </Link>
+                <Link href={`/graficos/${params.id}`}>
+                  <Button variant="outline" size="lg" className="shadow-md hover:shadow-lg transition-all duration-300">
+                    <BarChart3 className="h-5 w-5 mr-2" />
+                    Ver Gráficos Interactivos
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

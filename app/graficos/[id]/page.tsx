@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart, ReferenceLine, BarChart, Bar } from "recharts"
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart, ReferenceLine, BarChart, Bar, PieChart, Pie, Cell } from "recharts"
 
 const graficosData = {
   1: {
@@ -173,9 +173,382 @@ const graficosData = {
       },
     ],
   },
+  10: {
+    titulo: "Gráficos: Externalidades",
+    descripcion: "Visualización de efectos externos y soluciones de mercado",
+    graficos: [
+      {
+        id: "externalidades-negativas",
+        titulo: "Simulador de Externalidades Negativas",
+        descripcion: "Analiza cómo la contaminación afecta el equilibrio del mercado",
+        tipo: "simulacion",
+      },
+      {
+        id: "externalidades-positivas",
+        titulo: "Externalidades Positivas en Educación",
+        descripcion: "Visualiza los beneficios sociales de la educación",
+        tipo: "interactivo",
+      },
+    ],
+  },
+  11: {
+    titulo: "Gráficos: Bienes Públicos y Recursos Comunes",
+    descripcion: "Clasificación y análisis de diferentes tipos de bienes",
+    graficos: [
+      {
+        id: "clasificacion-bienes",
+        titulo: "Clasificación de Bienes",
+        descripcion: "Matriz interactiva de tipos de bienes",
+        tipo: "interactivo",
+      },
+      {
+        id: "tragedia-comunes",
+        titulo: "Simulador de la Tragedia de los Comunes",
+        descripcion: "Explora el sobreuso de recursos comunes",
+        tipo: "simulacion",
+      },
+    ],
+  },
+  12: {
+    titulo: "Gráficos: Sistema Impositivo",
+    descripcion: "Análisis de diferentes estructuras tributarias",
+    graficos: [
+      {
+        id: "tipos-impuestos",
+        titulo: "Comparador de Sistemas Tributarios",
+        descripcion: "Compara impuestos progresivos, proporcionales y regresivos",
+        tipo: "comparativo",
+      },
+      {
+        id: "incidencia-fiscal",
+        titulo: "Simulador de Incidencia Fiscal",
+        descripcion: "Analiza quién realmente paga los impuestos",
+        tipo: "simulacion",
+      },
+    ],
+  },
 }
 
 // Componentes de gráficos específicos
+function FronteraPosibilidades() {
+  const [recursos, setRecursos] = useState([100])
+  const [tecnologia, setTecnologia] = useState([1])
+
+  const generarDatosFPP = () => {
+    const datos = []
+    const factorRecursos = recursos[0] / 100
+    const factorTecnologia = tecnologia[0]
+    
+    for (let x = 0; x <= 100; x += 10) {
+      const y = Math.sqrt(10000 - x * x) * factorRecursos * factorTecnologia
+      datos.push({
+        bienX: x,
+        bienY: Math.max(0, y),
+        eficiente: true
+      })
+    }
+    
+    // Punto ineficiente
+    datos.push({
+      bienX: 50,
+      bienY: 50 * factorRecursos * factorTecnologia,
+      eficiente: false
+    })
+    
+    return datos
+  }
+
+  const datos = generarDatosFPP()
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Controles de la Economía</h4>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Recursos Disponibles: {recursos[0]}%
+              </label>
+              <Slider
+                value={recursos}
+                onValueChange={setRecursos}
+                max={150}
+                min={50}
+                step={10}
+                className="w-full"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Nivel Tecnológico: {tecnologia[0].toFixed(1)}x
+              </label>
+              <Slider
+                value={tecnologia}
+                onValueChange={setTecnologia}
+                max={2}
+                min={0.5}
+                step={0.1}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Interpretación</h4>
+          <div className="space-y-3 text-sm">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-blue-600 font-medium">Frontera de Posibilidades</div>
+              <div>Muestra las combinaciones máximas de producción posibles</div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-green-600 font-medium">Puntos Eficientes</div>
+              <div>Sobre la frontera - uso completo de recursos</div>
+            </div>
+            <div className="bg-red-50 p-3 rounded-lg">
+              <div className="text-red-600 font-medium">Puntos Ineficientes</div>
+              <div>Dentro de la frontera - recursos desperdiciados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={datos.filter(d => d.eficiente)}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="bienX" label={{ value: 'Bien X (unidades)', position: 'insideBottom', offset: -5 }} />
+            <YAxis dataKey="bienY" label={{ value: 'Bien Y (unidades)', angle: -90, position: 'insideLeft' }} />
+            <Tooltip 
+              formatter={(value, name) => [
+                `${Number(value).toFixed(1)} unidades`, 
+                name === 'bienY' ? 'Bien Y' : 'Bien X'
+              ]}
+            />
+            <Line type="monotone" dataKey="bienY" stroke="#3b82f6" strokeWidth={3} name="Frontera de Posibilidades" dot={false} />
+            <Area dataKey="bienY" fill="#3b82f6" fillOpacity={0.1} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="bg-amber-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-amber-800 mb-2">Conceptos Clave</h5>
+        <ul className="text-sm text-amber-700 space-y-1">
+          <li>• <strong>Escasez:</strong> Los recursos son limitados</li>
+          <li>• <strong>Costo de oportunidad:</strong> Lo que se sacrifica para obtener algo</li>
+          <li>• <strong>Eficiencia:</strong> Uso óptimo de recursos disponibles</li>
+          <li>• <strong>Crecimiento económico:</strong> Expansión de la frontera</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+function FlujoCicular() {
+  const datos = [
+    { nombre: 'Hogares', valor: 40, color: '#3b82f6' },
+    { nombre: 'Empresas', valor: 35, color: '#ef4444' },
+    { nombre: 'Gobierno', valor: 15, color: '#10b981' },
+    { nombre: 'Sector Externo', valor: 10, color: '#f59e0b' }
+  ]
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="h-80">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={datos}
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="valor"
+                label={({ nombre, valor }) => `${nombre}: ${valor}%`}
+              >
+                {datos.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Flujos en la Economía</h4>
+          <div className="space-y-3">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-blue-600 font-medium">Hogares → Empresas</div>
+              <div className="text-sm">Trabajo, tierra, capital</div>
+            </div>
+            <div className="bg-red-50 p-3 rounded-lg">
+              <div className="text-red-600 font-medium">Empresas → Hogares</div>
+              <div className="text-sm">Salarios, rentas, beneficios</div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-green-600 font-medium">Gobierno</div>
+              <div className="text-sm">Impuestos, gasto público</div>
+            </div>
+            <div className="bg-amber-50 p-3 rounded-lg">
+              <div className="text-amber-600 font-medium">Sector Externo</div>
+              <div className="text-sm">Importaciones, exportaciones</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-slate-50 p-6 rounded-lg">
+        <h5 className="font-semibold text-slate-800 mb-3">Mercados en el Flujo Circular</h5>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-white p-4 rounded-lg">
+            <h6 className="font-medium text-slate-800 mb-2">Mercado de Factores</h6>
+            <p className="text-sm text-slate-600">Donde los hogares venden factores de producción a las empresas</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg">
+            <h6 className="font-medium text-slate-800 mb-2">Mercado de Bienes</h6>
+            <p className="text-sm text-slate-600">Donde las empresas venden bienes y servicios a los hogares</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function VentajaComparativa() {
+  const [productividadA1, setProductividadA1] = useState([4])
+  const [productividadA2, setProductividadA2] = useState([2])
+  const [productividadB1, setProductividadB1] = useState([2])
+  const [productividadB2, setProductividadB2] = useState([6])
+
+  const calcularVentajas = () => {
+    // Costo de oportunidad del país A
+    const costoA_bien1 = productividadA2[0] / productividadA1[0]
+    const costoA_bien2 = productividadA1[0] / productividadA2[0]
+    
+    // Costo de oportunidad del país B
+    const costoB_bien1 = productividadB2[0] / productividadB1[0]
+    const costoB_bien2 = productividadB1[0] / productividadB2[0]
+    
+    return {
+      paisA: {
+        ventajaBien1: costoA_bien1 < costoB_bien1,
+        ventajaBien2: costoA_bien2 < costoB_bien2,
+        costoOp1: costoA_bien1,
+        costoOp2: costoA_bien2
+      },
+      paisB: {
+        ventajaBien1: costoB_bien1 < costoA_bien1,
+        ventajaBien2: costoB_bien2 < costoA_bien2,
+        costoOp1: costoB_bien1,
+        costoOp2: costoB_bien2
+      }
+    }
+  }
+
+  const ventajas = calcularVentajas()
+
+  const datosProductividad = [
+    {
+      pais: 'País A',
+      bien1: productividadA1[0],
+      bien2: productividadA2[0]
+    },
+    {
+      pais: 'País B', 
+      bien1: productividadB1[0],
+      bien2: productividadB2[0]
+    }
+  ]
+
+  return (
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 className="font-semibold mb-4">Productividad por Hora</h4>
+          <div className="space-y-4">
+            <div>
+              <h5 className="text-sm font-medium mb-2">País A</h5>
+              <div className="space-y-2">
+                <div>
+                  <label className="block text-xs mb-1">Bien 1: {productividadA1[0]} unidades/hora</label>
+                  <Slider value={productividadA1} onValueChange={setProductividadA1} max={10} min={1} step={1} />
+                </div>
+                <div>
+                  <label className="block text-xs mb-1">Bien 2: {productividadA2[0]} unidades/hora</label>
+                  <Slider value={productividadA2} onValueChange={setProductividadA2} max={10} min={1} step={1} />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 className="text-sm font-medium mb-2">País B</h5>
+              <div className="space-y-2">
+                <div>
+                  <label className="block text-xs mb-1">Bien 1: {productividadB1[0]} unidades/hora</label>
+                  <Slider value={productividadB1} onValueChange={setProductividadB1} max={10} min={1} step={1} />
+                </div>
+                <div>
+                  <label className="block text-xs mb-1">Bien 2: {productividadB2[0]} unidades/hora</label>
+                  <Slider value={productividadB2} onValueChange={setProductividadB2} max={10} min={1} step={1} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-semibold mb-4">Análisis de Ventaja Comparativa</h4>
+          <div className="space-y-3">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <div className="text-blue-600 font-medium">País A</div>
+              <div className="text-xs space-y-1">
+                <div>Costo oportunidad Bien 1: {ventajas.paisA.costoOp1.toFixed(2)} unidades Bien 2</div>
+                <div>Costo oportunidad Bien 2: {ventajas.paisA.costoOp2.toFixed(2)} unidades Bien 1</div>
+                <div className="font-medium">
+                  Ventaja comparativa en: {ventajas.paisA.ventajaBien1 ? 'Bien 1' : 'Bien 2'}
+                </div>
+              </div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <div className="text-green-600 font-medium">País B</div>
+              <div className="text-xs space-y-1">
+                <div>Costo oportunidad Bien 1: {ventajas.paisB.costoOp1.toFixed(2)} unidades Bien 2</div>
+                <div>Costo oportunidad Bien 2: {ventajas.paisB.costoOp2.toFixed(2)} unidades Bien 1</div>
+                <div className="font-medium">
+                  Ventaja comparativa en: {ventajas.paisB.ventajaBien1 ? 'Bien 1' : 'Bien 2'}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={datosProductividad}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="pais" />
+            <YAxis label={{ value: 'Unidades/hora', angle: -90, position: 'insideLeft' }} />
+            <Tooltip />
+            <Bar dataKey="bien1" fill="#3b82f6" name="Bien 1" />
+            <Bar dataKey="bien2" fill="#ef4444" name="Bien 2" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="bg-emerald-50 p-4 rounded-lg">
+        <h5 className="font-semibold text-emerald-800 mb-2">Principio de Ventaja Comparativa</h5>
+        <p className="text-sm text-emerald-700">
+          Cada país debe especializarse en producir el bien para el cual tiene el menor costo de oportunidad. 
+          Esto permite que ambos países se beneficien del comercio, incluso si uno tiene ventaja absoluta en ambos bienes.
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function ExcedentesInteractivo() {
   const [precio, setPrecio] = useState([50])
   const [interceptoDemanda, setInterceptoDemanda] = useState([100])
@@ -994,15 +1367,26 @@ export default function GraficosPage({ params }: { params: { id: string } }) {
 
   const renderGrafico = (graficoId: string) => {
     switch (graficoId) {
+      case "frontera-posibilidades":
+      case "fpp-interactiva":
+        return <FronteraPosibilidades />
+      case "flujo-circular":
+        return <FlujoCicular />
+      case "ventaja-comparativa":
+      case "ganancias-comercio":
+        return <VentajaComparativa />
       case "excedentes-interactivo":
         return <ExcedentesInteractivo />
       case "curva-laffer":
         return <CurvaLafferInteractiva />
       case "comercio-internacional":
+      case "aranceles-cuotas":
         return <ComercioInternacional />
       case "oferta-demanda-basico":
+      case "desplazamientos":
         return <OfertaDemandaBasico />
       case "elasticidad-calculadora":
+      case "elasticidad-ingreso-total":
         return <ElasticidadCalculadora />
       default:
         return (
